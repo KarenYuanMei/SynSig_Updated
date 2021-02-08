@@ -8,6 +8,8 @@ import random
 import ddot
 from ddot import Ontology
 
+from load_data_functions import get_gene_names
+
 
 #functions for finding training genes==============================================================================
 def random_select(genelist, big_pool, GO_genes, no_select):
@@ -24,13 +26,13 @@ def find_pos_neg_input(syngo_file, index_file, GO_genes):
 	syngo=get_gene_names(syngo_file)
 	big_pool=get_gene_names(index_file)
 	pos=random_select(syngo, big_pool, GO_genes, int(len(syngo)/2))
-	pos_df=pd.DataFrame({'genes': pos})
-	pos_df.to_csv('%s_positives.csv'%name)
+	#pos_df=pd.DataFrame({'genes': pos})
+	#pos_df.to_csv('%s_positives.csv'%name)
 	
 	negatives=list(set(big_pool)-set(syngo))
 	neg=random_select(negatives, overlap, len(pos))
-	neg_df=pd.DataFrame({'genes': neg})
-	neg_df.to_csv('%s_negatives.csv'%name)
+	#neg_df=pd.DataFrame({'genes': neg})
+	#neg_df.to_csv('%s_negatives.csv'%name)
 	return pos, neg
 
 def make_csv(genelist, first_word, df_name):
