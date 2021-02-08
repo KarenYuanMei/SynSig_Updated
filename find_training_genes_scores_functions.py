@@ -33,6 +33,11 @@ def find_pos_neg_input(syngo_file, index_file, GO_genes):
 	neg_df.to_csv('%s_negatives.csv'%name)
 	return pos, neg
 
+def make_csv(genelist, first_word, df_name):
+	df=pd.DataFrame({'genes': genelist})
+	df.to_csv('%s_%s.csv')%(first_word, df_name)
+	return df
+
 #divide list of genes into five chunks for 5-fold cross-validation
 def divide_5fold(genelist):
 	chunksize=int(len(genelist)/5)
