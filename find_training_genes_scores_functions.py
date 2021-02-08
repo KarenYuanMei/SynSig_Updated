@@ -42,7 +42,7 @@ def make_csv(genelist, first_word, df_name):
 
 #divide list of genes into five chunks for 5-fold cross-validation
 def divide_5fold(genelist):
-	chunksize=int(len(genelist)/5)
+	chunk_size=int(len(genelist)/5)
 	chunks=[genelist[i * chunk_size:(i+1) * chunk_size] for i in range((len(genelist)+chunk_size-1) // chunk_size )]
 	return chunks
 
