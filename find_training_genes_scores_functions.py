@@ -30,7 +30,7 @@ def find_pos_neg_input(syngo_file, index_file, GO_genes):
 	#pos_df.to_csv('%s_positives.csv'%name)
 	
 	negatives=list(set(big_pool)-set(syngo))
-	neg=random_select(negatives, overlap, len(pos))
+	neg=random_select(negatives, big_pool, GO_genes, len(pos))
 	#neg_df=pd.DataFrame({'genes': neg})
 	#neg_df.to_csv('%s_negatives.csv'%name)
 	return pos, neg
@@ -51,7 +51,7 @@ def find_pos_neg_chunks(positives, negatives):
 	neg_chunks=divide_5fold(negatives)
 	return pos_chunks, neg_chunks
 
-def define_training_test(positives, pos_chunks, negatives, neg_chunks, chunk_no, name):
+def define_training_test(positives, pos_chunks, negatives, neg_chunks, chunk_no):
 	test_pos=pos_chunks[chunk_no]
 	training_pos=list(set(positives)-set(test_pos))
 
@@ -60,12 +60,12 @@ def define_training_test(positives, pos_chunks, negatives, neg_chunks, chunk_no,
 
 	training=training_pos+training_neg
 	training.sort()
-	training_df=pd.DataFrame(training, columns=['genes'])
-	training_df.to_csv('%s_training_genes_%s.csv'%(name,chunk_no))
+	#training_df=pd.DataFrame(training, columns=['genes'])
+	#training_df.to_csv('%s_training_genes_%s.csv'%(name,chunk_no))
 	test=test_pos+test_neg
 	test.sort()
-	test_df=pd.DataFrame(test, columns=['genes'])
-	test_df.to_csv('%s_test_genes_%s.csv'%(name, chunk_no))
+	#test_df=pd.DataFrame(test, columns=['genes'])
+	#test_df.to_csv('%s_test_genes_%s.csv'%(name, chunk_no))
 	print ('overlap', len(set(training)&set(test)))
 	return training, test
 

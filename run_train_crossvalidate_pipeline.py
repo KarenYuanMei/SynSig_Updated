@@ -36,3 +36,9 @@ pos_df=make_csv(pos, 'updated', 'positives')
 neg_df=make_csv(neg, 'updated', 'negatives')
 
 pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
+
+for i in range(5):
+	training, test=define_training_test(pos, pos_chunks, neg, neg_chunks, i)
+	training_df=make_csv(training, 'updated', 'training_genes_%s'%i)
+	test_df=make_csv(test, 'updated', 'test_genes_%s'%i)
+
