@@ -44,9 +44,9 @@ sys.path.append('../../../Network_propagation/Propagation_Code/')
 #from propagate_network import calculate_p, fast_random_walk, closed_form_network_propagation, construct_prop_kernel, normalize_network, get_propagated_scores
 
 
-kernel_df=pd.read_csv('../../../Network_propagation/propagate_synapse/mentha_kernel.csv', index_col=[0])
+#kernel_df=pd.read_csv('../../../Network_propagation/propagate_synapse/mentha_kernel.csv', index_col=[0])
 #create a dictionary gene_kernel_index: gene_name -> index in kernel df
-print (kernel_df)
+#print (kernel_df)
 
 #gtex_kernel_df=pd.read_csv('../new_features/gtex_rna_kernel/gtex_rna_kernel.csv', index_col=[0])
 #print (gtex_kernel_df)
