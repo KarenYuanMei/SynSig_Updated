@@ -20,7 +20,7 @@ from sklearn import metrics
 from sklearn.metrics import explained_variance_score, mean_absolute_error, r2_score
 from scipy.stats.stats import pearsonr, spearmanr
 
-from sklearn.kernel_approximation import PolynomialCountSketch
+#from sklearn.kernel_approximation import PolynomialCountSketch
 
 from sklearn.linear_model import SGDRegressor
 
@@ -189,8 +189,8 @@ class PairOfGenes:
 		elif feature_name == 'mentha_kernel':
 			row=self.gene1_name
 			col=self.gene2_name
-			value1=kernel_df.loc[row, col]
-			value2=kernel_df.loc[col, row]
+			value1=gene1_feature[col]
+			value2=gene2_feature[row]
 			avg=mean([value1, value2])
 			#print ('mentha kernel', avg)
 			self.__dict__[feature_name]=avg
@@ -257,11 +257,16 @@ def load_feature(filename, input_genes):
 
 	elif filename in kernel_file:
 		genes=list(feature.columns)
-		index_no=list(range(len(genes)))
 
-		gene_index=list(zip(genes,index_no))
-		feature_dict=dict(gene_index)
+		dict_list=[]
+		for gene in input_genes:
+			gene_row=features.loc[gene]
+			gene_row_dict=dict(zip(genes, gene_row))
+			dict_list.append(gene_row_dict)
 
+		feature_dict=dict(zip(input_genes, dict_list))
+
+		
 	elif filename in gtex_rna_file:
 		genes=list(feature.columns)
 		index_no=list(range(len(genes)))
