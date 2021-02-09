@@ -260,7 +260,7 @@ def load_feature(filename, input_genes):
 
 		dict_list=[]
 		for gene in input_genes:
-			gene_row=features.loc[gene]
+			gene_row=feature.loc[gene]
 			gene_row_dict=dict(zip(genes, gene_row))
 			dict_list.append(gene_row_dict)
 
