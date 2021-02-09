@@ -426,7 +426,7 @@ def make_pred_df(yfit, y_test, train_test_gene_pair_objects):
 	return df
 
 
-def redefine_input(training_feature_array, training_score, tt_score):
+def redefine_input(training_feature_array, tt_feature_array, training_score, tt_score):
 	X_train=training_feature_array
 	print (X_train.shape)
 	X_test=tt_feature_array
@@ -463,8 +463,7 @@ def find_feature_importance(predictor):
 
 def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
 
-	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
-
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 	print ('X_test', len(X_test), 'y_test', len(y_test))
 
 	#forest = RandomForestRegressor(n_estimators=100, max_depth=50, oob_score=True, random_state=0)
@@ -490,7 +489,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 	return df
 
 def run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
-	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 
 	regr = AdaBoostRegressor(random_state=0, n_estimators=100)
 	regr.fit(X_train, y_train)
@@ -512,7 +511,7 @@ def run_adaboost(training_gene_pair_objects, training_feature_array, training_sc
 
 def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, number):
 
-	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 
 	regr = make_pipeline(StandardScaler(), SVR(kernel=kernel, C=1.0, epsilon=0.1))
 	regr.fit(X_train, y_train)
@@ -528,8 +527,8 @@ def run_svm_regressor(training_gene_pair_objects, training_feature_array, traini
 
 
 def run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, number):
-	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
-
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+	
 	ps = PolynomialCountSketch(degree=poly_number, random_state=0)
 	X_features=ps.fit_transform(X_train)
 	regr = SGDRegressor(tol=1e-3)
