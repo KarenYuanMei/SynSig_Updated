@@ -20,7 +20,7 @@ from sklearn import metrics
 from sklearn.metrics import explained_variance_score, mean_absolute_error, r2_score
 from scipy.stats.stats import pearsonr, spearmanr
 
-#from sklearn.kernel_approximation import PolynomialCountSketch
+from sklearn.kernel_approximation import PolynomialCountSketch
 
 from sklearn.linear_model import SGDRegressor
 
