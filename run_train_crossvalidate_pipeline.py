@@ -68,8 +68,8 @@ pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
 for i in range(5):
 	#define each fold of training and test genes:
 	training_gene_names, test_gene_names=define_training_test(pos, pos_chunks, neg, neg_chunks, i)
-	training_df=make_gene_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
-	test_df=make_gene_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
+	training_df=make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
+	test_df=make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
 
 	#define each fold of training gene objects with features and scores
 	training_gene_objects=find_gene_objects(all_training_objects, training_gene_names)
