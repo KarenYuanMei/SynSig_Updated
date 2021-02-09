@@ -39,17 +39,7 @@ from load_data_functions import get_gene_names
 import sys
 sys.path.append('../../../Network_propagation/Propagation_Code/')
 
-#from make_network import make_mentha_df, make_network_G
-#from load_genesets import find_seeds, find_nodesets, find_negatives
-#from propagate_network import calculate_p, fast_random_walk, closed_form_network_propagation, construct_prop_kernel, normalize_network, get_propagated_scores
 
-
-#kernel_df=pd.read_csv('../../../Network_propagation/propagate_synapse/mentha_kernel.csv', index_col=[0])
-#create a dictionary gene_kernel_index: gene_name -> index in kernel df
-#print (kernel_df)
-
-#gtex_kernel_df=pd.read_csv('../new_features/gtex_rna_kernel/gtex_rna_kernel.csv', index_col=[0])
-#print (gtex_kernel_df)
 
 #full 60 features:
 def define_features():
@@ -426,15 +416,17 @@ def find_gene1_gene2(train_test_gene_pair_objects):
 		genes_2.append(gene2)
 	return genes_1, genes_2
 
-def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
-	
-	#training_gene_pair_objects, training_feature_array, training_score=create_input_pair_objects(training_pairs)
+def make_pred_df(yfit, y_test, train_test_gene_pair_objects):
+	df=pd.DataFrame({'ypredict':yfit, 'ytest': y_test})
+	genes_1, genes_2=find_gene1_gene2(train_test_gene_pair_objects)
+	df['Gene1']=genes_1
+	df['Gene2']=genes_2
+	df = df[['Gene1', 'Gene2', 'ytest', 'ypredict']]
+	print (df)
+	return df
 
-	#print ('DONE')
-	#train_test_gene_pair_objects, tt_feature_array, tt_score=create_input_pair_objects(train_test_pairs)
-	#print ('DONE')
-	#training_gene_pair_objects, train_test_gene_pair_objects=load_objects()
 
+def redefine_input(training_feature_array, training_score, tt_score):
 	X_train=training_feature_array
 	print (X_train.shape)
 	X_test=tt_feature_array
@@ -442,6 +434,36 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 	y_train=training_score
 	print (y_train.shape)
 	y_test=tt_score
+	return X_train, X_test, y_train, y_test
+
+def print_pred_metrics(predictor, y_test, yfit):
+	print ('train score', predictor.score(X_train, y_train))
+	print ('oob_sore', predictor.oob_score_)
+	print ('test score:', predictor.score(X_test, y_test))
+	print ('explained variance score', explained_variance_score(y_test, yfit))
+	print ('mean absolute error', mean_absolute_error(y_test, yfit))
+	print ('r^2 score', r2_score(y_test, yfit))
+
+	print (spearmanr(y_test, yfit))
+	print (pearsonr(y_test, yfit))
+	spearmanr_corr=spearmanr(y_test, yfit)[0]
+	spearmanr_corr=np.round(spearmanr_corr,2)
+	p_value=spearmanr(y_test, yfit)[1]
+	return spearmanr_corr, p_value
+
+	#print ('ytest', y_test)
+
+def find_feature_importance(predictor):
+	performance=predictor.feature_importances_
+	performance=performance.tolist()
+	feature_list=define_features()
+	perf=pd.DataFrame({'Features': feature_list, 'Importance': performance})
+	perf.to_csv('full60_random_forest_Feature_Importance_%s.csv'%number)
+	return perf
+
+def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
+
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
 
 	print ('X_test', len(X_test), 'y_test', len(y_test))
 
@@ -451,82 +473,25 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 	forest.fit(X_train, y_train)
 	#depth=[(est.get_depth(), est.tree_.max_depth, est.max_depth) for est in forest.estimators_]
 	#print (depth)
-
 	yfit=forest.predict(X_test)
-
-	print (len(yfit))
-	print (len(y_test))
-
-	performance=forest.feature_importances_
-	performance=performance.tolist()
-
-#metrics:
-	print ('feature importance', performance)
-	print ('train score', forest.score(X_train, y_train))
-	print ('oob_sore', forest.oob_score_)
-	print ('test score:', forest.score(X_test, y_test))
-	print ('explained variance score', explained_variance_score(y_test, yfit))
-	print ('mean absolute error', mean_absolute_error(y_test, yfit))
-	print ('r^2 score', r2_score(y_test, yfit))
-	print ('ytest', y_test)
 	yfit=np.array(yfit)
 	print ('yfit', yfit)
 
-	feature_list=define_features()
+#metrics:
+	spearmanr, p_value=print_pred_metrics(forest, y_test, yfit)
+	#print ('ytest', y_test)
+	feature_imp=find_feature_importance(forest)
 
-	perf=pd.DataFrame({'Features': feature_list, 'Importance': performance})
-	perf.to_csv('full60_random_forest_Feature_Importance_%s.csv'%number)
 #find the genes in all of the features:
-
-	df=pd.DataFrame({'ypredict':yfit, 'ytest': y_test})
-	index=df.index
-
-	print (spearmanr(y_test, yfit))
-	print (pearsonr(y_test, yfit))
-	pearson_corr=pearsonr(y_test, yfit)[0]
-	pearson_corr=np.round(pearson_corr,2)
-	p_value=pearsonr(y_test, yfit)[1]
-
-	genes_1, genes_2=find_gene1_gene2(train_test_gene_pair_objects)
-
-	df['Gene1']=genes_1
-	df['Gene2']=genes_2
-
-	df = df[['Gene1', 'Gene2', 'ytest', 'ypredict']]
-	print (df)
-
+	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 	#df.to_csv('/Users/karenmei/Documents/Synapse_Ontology/NetworkCla/Entry_Ontology/synapse_10/random_forest/ypredict_ytest_%s.csv'%number)
-	df.to_csv('../add_feature/regressors/full60_random_forest_%s.csv'%number)
+	df.to_csv('../SynSig_Updated/regressors/full60_random_forest_%s.csv'%number)
 
-		# yfit=forest.predict(X_train)
-		# yfit=np.array(yfit)
-		# df=pd.DataFrame({'ypredict_train':yfit, 'yactual': y_train})
-
-		# genes_1=[]
-		# genes_2=[]
-		# for item in training_gene_pair_objects:
-		# 	gene1=item.gene1_name
-		# 	genes_1.append(gene1)
-		# 	gene2=item.gene2_name
-		# 	genes_2.append(gene2)
-		# df['Gene1']=genes_1
-		# df['Gene2']=genes_2
-		# df = df[['Gene1', 'Gene2', 'yactual', 'ypredict_train']]
-		# print (df)
-
-		# df.to_csv('%s_train_removed_features_%s_treeno_%s_classifier.csv'%(name, number, tree_no))
 	return df
 
-
-
 def run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
-	X_train=training_feature_array
-	print (X_train.shape)
-	X_test=tt_feature_array
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
 
-	y_train=training_score
-	print (y_train.shape)
-	y_test=tt_score
 	regr = AdaBoostRegressor(random_state=0, n_estimators=100)
 	regr.fit(X_train, y_train)
 
@@ -541,73 +506,48 @@ def run_adaboost(training_gene_pair_objects, training_feature_array, training_sc
 	print (spearmanr(y_test, yfit))
 	print (pearsonr(y_test, yfit))
 
-	# genes_1=[]
-	# genes_2=[]
-	# for item in train_test_gene_pair_objects:
-	# 	gene1=item.gene1_name
-	# 	genes_1.append(gene1)
-	# 	gene2=item.gene2_name
-	# 	genes_2.append(gene2)
-	genes_1, genes_2=find_gene1_gene2(train_test_gene_pair_objects)
-
-	df['Gene1']=genes_1
-	df['Gene2']=genes_2
-
-	df = df[['Gene1', 'Gene2', 'ytest', 'ypredict']]
-	print (df)
-
-	df.to_csv('full60_adaboost_%s.csv'%number)
+	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
+	df.to_csv('../SynSig_Updated/regressors/full60_adaboost_%s.csv'%number)
 	return df
 
-def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
-	X_train=training_feature_array
-	print (X_train.shape)
-	X_test=tt_feature_array
+def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, number):
 
-	y_train=training_score
-	print (y_train.shape)
-	y_test=tt_score
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
 
-	regr = make_pipeline(StandardScaler(), SVR(kernel='sigmoid', C=1.0, epsilon=0.2))
+	regr = make_pipeline(StandardScaler(), SVR(kernel=kernel, C=1.0, epsilon=0.1))
 	regr.fit(X_train, y_train)
 	
 	yfit=regr.predict(X_test)
 
-	# ps = PolynomialCountSketch(degree=4, random_state=0)
-	# X_features=ps.fit_transform(X_train)
-	# regr = SGDRegressor(tol=1e-3)
-	# regr.fit(X_features, y_train)
+	print (spearmanr(y_test, yfit))
+	print (pearsonr(y_test, yfit))
 
-	# X_test=ps.fit_transform(X_test)
+	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 
-	# yfit=regr.predict(X_test)
+	df.to_csv('../SynSig_Updated/regressors/full60_svregressor_%s_%s.csv'%(kernel, number))
 
-	# yfit=np.array(yfit)
-	# print ('yfit', yfit)
 
-	df=pd.DataFrame({'ypredict':yfit, 'ytest': y_test})
-	index=df.index
+def run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, number):
+	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, training_score, tt_score)
+
+	ps = PolynomialCountSketch(degree=poly_number, random_state=0)
+	X_features=ps.fit_transform(X_train)
+	regr = SGDRegressor(tol=1e-3)
+	regr.fit(X_features, y_train)
+
+	X_test=ps.fit_transform(X_test)
+
+	yfit=regr.predict(X_test)
+
+	yfit=np.array(yfit)
+	print ('yfit', yfit)
 
 	print (spearmanr(y_test, yfit))
 	print (pearsonr(y_test, yfit))
 
-	# genes_1=[]
-	# genes_2=[]
-	# for item in train_test_gene_pair_objects:
-	# 	gene1=item.gene1_name
-	# 	genes_1.append(gene1)
-	# 	gene2=item.gene2_name
-	# 	genes_2.append(gene2)
-	genes_1, genes_2=find_gene1_gene2(train_test_gene_pair_objects)
+	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 
-	df['Gene1']=genes_1
-	df['Gene2']=genes_2
-
-	df = df[['Gene1', 'Gene2', 'ytest', 'ypredict']]
-	print (df)
-
-	df.to_csv('../add_feature/regressors/full60_svregressor_sigmoid_%s.csv'%number)
-
+	df.to_csv('../SynSig_Updated/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
 
 def find_data_genes(training_genes):
 	#new_index=pd.read_csv('/Users/karenmei/Documents/Synapse_Ontology/NetworkClass/Entry_Ontology/synapse_10/no_brain_genes_index.csv')
@@ -616,7 +556,6 @@ def find_data_genes(training_genes):
 	all_genes=new_index['genes'].tolist()
 	data_genes=list(set(all_genes)-set(training_genes))
 	return data_genes
-
 
 
 def find_data_array(gene_pairs, feature_list):

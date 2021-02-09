@@ -1,6 +1,6 @@
 #Goal: 1) define training genes and GO scores
 #	   2) five-fold cross-validation
-
+#      3) compare regressors on 5-fold crossvalidation
 
 import pandas as pd
 import numpy as np
@@ -17,6 +17,10 @@ from collections import defaultdict
 from define_gene_objects import define_features, Gene, PairOfGenes, find_input_features, load_feature, create_feature_value_dict, get_feature_value, create_GO_score_dict, create_gene_list, find_pos_genes_in_training, find_gene_objects, find_feature_array, create_input_pair_objects, run_adaboost, run_svm_regressor, run_random_forest, find_data_genes, create_data_gene_list, run_new_rf, find_data_array, find_avg_scores
 from load_data_functions import get_gene_names
 from find_training_genes_scores_functions import make_genes_csv, make_mat_csv, random_select, find_pos_neg_input, divide_5fold, find_pos_neg_chunks, define_training_test, find_GO_ont, find_GO_score_matrix, find_input_gene_GO_scores
+
+import time
+
+
 
 
 def define_GO_score_matrix(pos, neg, GO_human):
@@ -36,41 +40,36 @@ def find_training_pos_neg(syngo, big_pool, GO_genes):
 	print(len(all_training))
 	return pos, neg, all_training
 
-
-
 #load all resource gene lists:
-syngo_file='../correct_db/corr_syngo_cc.csv'
-syngo=get_gene_names(syngo_file)
+def load_resource_gene_lists(syngo_file, index_file):
+	syngo=get_gene_names(syngo_file)
 
-index_file='../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
-big_pool=get_gene_names(index_file)
+	big_pool=get_gene_names(index_file)
 
-GO_human=find_GO_ont()
-GO_genes=GO_human.genes
+	GO_human=find_GO_ont()
+	GO_genes=GO_human.genes
+	return syngo, big_pool, GO_genes
 
 #find the pos and neg training genes:
-
-pos, neg, all_training=find_training_pos_neg(syngo, big_pool, GO_genes)
-pos_df=make_genes_csv(pos, 'updated', 'positives')
-neg_df=make_genes_csv(neg, 'updated', 'negatives')
-
-input_genes=pos+neg
-
+def define_pos_neg_training(syngo, big_pool, GO_genes):
+	pos, neg, all_training=find_training_pos_neg(syngo, big_pool, GO_genes)
+	pos_df=make_genes_csv(pos, 'updated', 'positives')
+	neg_df=make_genes_csv(neg, 'updated', 'negatives')
+	return pos, neg, all_training
 
 #define all gene objects with features and GO scores:
-feature_value_dict = create_feature_value_dict(big_pool)
-print ("DONE1")
+def define_all_training_objects(big_pool, all_training, go_mat_filename):
+	feature_value_dict = create_feature_value_dict(big_pool)
+	print ("DONE1")
+	#go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	go_score_mat=load_GO_score_matrix(go_mat_filename)
+	all_training_objects = create_gene_list(all_training,False,feature_value_dict, go_score_mat)
+	print (len(all_training_objects))
+	print ("DONE2")
+	return all_training_objects
 
-go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
-go_score_mat=load_GO_score_matrix(go_mat_filename)
-all_training_objects = create_gene_list(all_training,False,feature_value_dict, go_score_mat)
-print (len(all_training_objects))
-print ("DONE2")
 
-pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
-
-for i in range(5):
-	#define each fold of training and test genes:
+def find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i):
 	training_gene_names, test_gene_names=define_training_test(pos, pos_chunks, neg, neg_chunks, i)
 	training_df=make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
 	test_df=make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
@@ -98,6 +97,80 @@ for i in range(5):
 	train_test_gene_pair_objects, tt_feature_array, tt_score=create_input_pair_objects(train_test_pairs)
 	print ('DONE')
 
-	run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	return training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score
+
+def fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks):
+	for i in range(5):
+		#define each fold of training and test genes:
+		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i)
+		df=run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	return df
+
+def time_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
+	start = time.time()
+	ada_df=run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	end = time.time()
+	print(end - start)
+	return ada_df
+
+def time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i):
+	start = time.time()
+	svm__df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i)
+	end = time.time()
+	print(end - start)
+	return svm_df
+
+def time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i):
+	start = time.time()
+	svm__df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
+	end = time.time()
+	print(end - start)
+	return svm_df
+
+def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
+	start = time.time()
+	svm__df=run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	end = time.time()
+	print(end - start)
+	return svm_df
+
+def compare_regressors(pos, pos_chunks, neg, neg_chunks):
+	for i in range(5):
+		#define each fold of training and test genes:
+		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i)
+		
+		ada_df=time_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+
+		rf_df=time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+
+		poly3_df=time_svm_poly((training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, '3', i))
+
+		poly4_df=time_svm_poly((training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, '4', i))
+
+		rbf_df=time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 'rbf', i)
+
+		sigmoid_df=time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 'sigmoid', i)
+
+	return ada_df, rf_df, poly3_df, poly4_df, svm_df, sigmoid_df
+
+
+if __name__ == '__main__':
+	syngo_file='../correct_db/corr_syngo_cc.csv'
+	index_file='../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	
+	syngo, big_pool, GO_genes=load_resource_gene_lists(syngo_file, index_file)
+
+	pos, neg, all_training=define_pos_neg_training(syngo, big_pool, GO_genes)
+
+	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+
+	all_training_objects=define_all_training_objects(big_pool, all_training, go_mat_filename)
+
+	pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
+
+	#df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
+	compare_regressors(pos, pos_chunks, neg, neg_chunks)
+
+
 
 
