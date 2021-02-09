@@ -309,8 +309,9 @@ def get_feature_value(gene_name, feature_name, feature_value_dict):
 	
 #go_mat_filename='syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-def create_GO_score_dict(go_mat_filename):
-	df=pd.read_csv(go_mat_filename, index_col=[0])
+def create_GO_score_dict(go_score_mat):
+	#df=pd.read_csv(go_mat_filename, index_col=[0])
+	df=go_score_mat
 	
 	idx=list(df.index)
 	cols=list(df.columns)
@@ -328,7 +329,7 @@ def create_GO_score_dict(go_mat_filename):
 	#print (master_dict['STX4'])
 	return master_dict
 
-def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_mat_filename):
+def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_score_mat):
 	#returns a list of Gene objects, corresponding to the names in gene_names
 	#feature_value_dict is a dictionary containing all feature values for all genes
 
@@ -341,7 +342,7 @@ def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_mat_filename
 			new_gene.create_feature(feature_name, feature_value)
 		gene_list.append(new_gene)
 
-	GO_score_dict=create_GO_score_dict(go_mat_filename)
+	GO_score_dict=create_GO_score_dict(go_score_mat)
 
 	for gene1 in gene_list:
 		gene1_name =gene1.name
@@ -550,7 +551,7 @@ def run_adaboost(training_gene_pair_objects, training_feature_array, training_sc
 	df = df[['Gene1', 'Gene2', 'ytest', 'ypredict']]
 	print (df)
 
-	df.to_csv('../add_feature/regressors/full60_adaboost_%s.csv'%number)
+	df.to_csv('full60_adaboost_%s.csv'%number)
 	return df
 
 def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):

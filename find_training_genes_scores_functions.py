@@ -22,9 +22,9 @@ def random_select(genelist, big_pool, GO_genes, no_select):
 	return sel
 
 #find the pos and neg training genes:
-def find_pos_neg_input(syngo_file, index_file, GO_genes):
-	syngo=get_gene_names(syngo_file)
-	big_pool=get_gene_names(index_file)
+def find_pos_neg_input(syngo, big_pool, GO_genes):
+	#syngo=get_gene_names(syngo_file)
+	#big_pool=get_gene_names(index_file)
 	pos=random_select(syngo, big_pool, GO_genes, int(len(syngo)/2))
 	#pos_df=pd.DataFrame({'genes': pos})
 	#pos_df.to_csv('%s_positives.csv'%name)
@@ -35,7 +35,7 @@ def find_pos_neg_input(syngo_file, index_file, GO_genes):
 	#neg_df.to_csv('%s_negatives.csv'%name)
 	return pos, neg
 
-def make_csv(genelist, first_word, df_name):
+def make_genes_csv(genelist, first_word, df_name):
 	df=pd.DataFrame({'genes': genelist})
 	df.to_csv('%s_%s.csv'%(first_word, df_name))
 	return df
@@ -83,7 +83,7 @@ def find_GO_score_matrix(go_human):
 	sim_df = pd.DataFrame(sim, index=genes, columns=genes)
 	return sim_df
 
-def find_input_gene_GO_scores(positive_genes, negative_genes, go_human, name):
+def find_input_gene_GO_scores(positive_genes, negative_genes, go_human):
 	input_gene_names=list(set(positive_genes+negative_genes))
 	print ('done1')
 	GO_sim=find_GO_score_matrix(go_human)
@@ -92,6 +92,10 @@ def find_input_gene_GO_scores(positive_genes, negative_genes, go_human, name):
 	print ('done2')
 	GO_score_matrix=GO_sim.loc[overlap, overlap]
 	print ('done3')
-	GO_score_matrix.to_csv('%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
 	return GO_score_matrix
+
+def make_mat_csv(mat, name):
+	matrix.to_csv('%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
+	return matrix
+
 
