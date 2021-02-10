@@ -12,7 +12,7 @@ from itertools import combinations, combinations_with_replacement
 from itertools import product
 from collections import defaultdict
 
-from define_gene_objects import define_features, Gene, PairOfGenes, find_input_features, load_feature, create_feature_value_dict, get_feature_value, create_GO_score_dict, create_gene_list, find_pos_genes_in_training, find_gene_objects, find_feature_array, create_input_pair_objects, run_adaboost, run_svm_regressor, run_random_forest, find_new_genes, run_new_rf, find_new_array, find_avg_scores
+from define_gene_objects import define_features, Gene, PairOfGenes, find_input_features, load_feature, create_feature_value_dict, get_feature_value, create_GO_score_dict, create_gene_list, find_pos_genes_in_training, find_gene_objects, find_feature_array, create_input_pair_objects, run_adaboost, run_svm_regressor, run_random_forest, run_new_rf, find_new_array, find_avg_scores
 from load_data_functions import get_gene_names
 from find_training_genes_scores_functions import make_genes_csv, make_mat_csv, random_select, find_pos_neg_input, divide_5fold, find_pos_neg_chunks, define_training_test, find_GO_ont, find_GO_score_matrix, find_input_gene_GO_scores
 from run_train_crossvalidate_pipeline import define_all_training_objects
@@ -38,8 +38,8 @@ def find_new_gene_objects(new_genes):
 	print ('DONE')
 	return new_gene_objects
 
-def find_synapse_new_pairs(all_training, all_training_objects, pos):
-	new_gene_objects=find_new_gene_objects(all_training)
+def find_synapse_new_pairs(new_genes, all_training_objects, pos):
+	new_gene_objects=find_new_gene_objects(new_genes)
 	positive_training_objects=find_gene_objects(all_training_objects, pos)
 	print ('positive_training_objects', len(positive_training_objects))
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
@@ -57,8 +57,8 @@ all_training_objects=define_all_training_objects(big_pool, all_training, go_mat_
 training_pairs=combinations(all_training_objects,2)
 print ('DONE training pairs for final rf')
 
-new_genes=find_new_genes(all_training)
-synapse_new_pairs=find_synapse_new_pairs(all_training, all_training_objects, pos)
+new_genes=list(set(big_pool)-set(all_training))
+synapse_new_pairs=find_synapse_new_pairs(new_genes, all_training_objects, pos)
 
 feature_list=define_features()
 
