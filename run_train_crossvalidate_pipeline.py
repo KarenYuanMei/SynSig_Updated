@@ -149,7 +149,7 @@ def compare_regressors(pos, pos_chunks, neg, neg_chunks):
 
 		sigmoid_df=time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 'sigmoid', i)
 
-	return ada_df, rf_df, poly3_df, poly4_df, svm_df, sigmoid_df
+	return ada_df, rf_df, poly3_df, poly4_df, rbf_df, sigmoid_df
 
 
 if __name__ == '__main__':
