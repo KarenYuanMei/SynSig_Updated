@@ -45,6 +45,9 @@ def find_synapse_new_pairs(all_training, all_training_objects, pos):
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
 	return synapse_new_pairs
 
+
+big_pool=load_big_pool()
+
 go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
 pos, neg, all_training=load_pos_neg_training()
