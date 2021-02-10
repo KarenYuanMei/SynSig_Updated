@@ -436,7 +436,7 @@ def redefine_input(training_feature_array, tt_feature_array, training_score, tt_
 	y_test=tt_score
 	return X_train, X_test, y_train, y_test
 
-def print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit):
+def print_pred_metrics(predictor, X_train, X_test, y_train, y_test, yfit):
 	print ('train score', predictor.score(X_train, y_train))
 	print ('oob_sore', predictor.oob_score_)
 	print ('test score:', predictor.score(X_test, y_test))
@@ -477,7 +477,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 	print ('yfit', yfit)
 
 #metrics:
-	spearmanr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
+	spearmanr_corr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
 	#print ('ytest', y_test)
 	feature_imp=find_feature_importance(forest)
 
