@@ -108,28 +108,28 @@ def time_adaboost(training_gene_pair_objects, training_feature_array, training_s
 	start = time.time()
 	ada_df=run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 	end = time.time()
-	print(end - start)
+	print('adaboost time', end - start)
 	return ada_df
 
 def time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i):
 	start = time.time()
 	svm_df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i)
 	end = time.time()
-	print(end - start)
+	print('svm time', end - start)
 	return svm_df
 
 def time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i):
 	start = time.time()
 	svm_df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
 	end = time.time()
-	print(end - start)
+	print('svm time', end - start)
 	return svm_df
 
 def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
 	start = time.time()
 	rf_df=run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 	end = time.time()
-	print(end - start)
+	print('random forest time', end - start)
 	return rf_df
 
 def compare_regressors(pos, pos_chunks, neg, neg_chunks):

@@ -436,7 +436,7 @@ def redefine_input(training_feature_array, tt_feature_array, training_score, tt_
 	y_test=tt_score
 	return X_train, X_test, y_train, y_test
 
-def print_pred_metrics(predictor, y_test, yfit):
+def print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit):
 	print ('train score', predictor.score(X_train, y_train))
 	print ('oob_sore', predictor.oob_score_)
 	print ('test score:', predictor.score(X_test, y_test))
@@ -477,7 +477,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 	print ('yfit', yfit)
 
 #metrics:
-	spearmanr, p_value=print_pred_metrics(forest, y_test, yfit)
+	spearmanr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
 	#print ('ytest', y_test)
 	feature_imp=find_feature_importance(forest)
 
@@ -528,7 +528,7 @@ def run_svm_regressor(training_gene_pair_objects, training_feature_array, traini
 
 def run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, number):
 	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
-	
+
 	ps = PolynomialCountSketch(degree=poly_number, random_state=0)
 	X_features=ps.fit_transform(X_train)
 	regr = SGDRegressor(tol=1e-3)
