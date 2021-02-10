@@ -548,16 +548,16 @@ def run_svm_poly(training_gene_pair_objects, training_feature_array, training_sc
 
 	df.to_csv('../SynSig_Updated/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
 
-def find_data_genes(training_genes):
+def find_new_genes(training_genes):
 	#new_index=pd.read_csv('/Users/karenmei/Documents/Synapse_Ontology/NetworkClass/Entry_Ontology/synapse_10/no_brain_genes_index.csv')
 
 	new_index=pd.read_csv('../../SynSig/synsig_random_forest/big_pool_genes_index.csv')
 	all_genes=new_index['genes'].tolist()
-	data_genes=list(set(all_genes)-set(training_genes))
-	return data_genes
+	new_genes=list(set(all_genes)-set(training_genes))
+	return new_genes
 
 
-def find_data_array(gene_pairs, feature_list):
+def find_new_array(gene_pairs, feature_list):
 	#gene_pair_objects=[]
 	gene1_all=[]
 	gene2_all=[]
@@ -582,38 +582,38 @@ def find_data_array(gene_pairs, feature_list):
 	return feature_array, gene1_all, gene2_all
 
 
-def run_new_rf(X_train, y_train, data_test, data_gene1, data_gene2):
+def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2):
 
 	forest = RandomForestRegressor(n_estimators=100, max_depth=50, oob_score=True, random_state=0)
 	#forest = RandomForestRegressor(200)
 	forest.fit(X_train, y_train)
 
 	#------actual new genes-------------------------------------------------------------------------------------------------------------
-	print (data_test.shape)
-	print (data_test)
+	print (new_test.shape)
+	print (new_test)
 
-	print('nan', np.isnan(data_test).any())
-	nan_idx=np.where(np.isnan(data_test))
-	data_test[nan_idx]=0
-	print(np.where(np.isnan(data_test)))
-	print('infinity', np.isfinite(data_test).all())
+	print('nan', np.isnan(new_test).any())
+	nan_idx=np.where(np.isnan(new_test))
+	new_test[nan_idx]=0
+	print(np.where(np.isnan(new_test)))
+	print('infinity', np.isfinite(new_test).all())
 
-	data_fit=forest.predict(data_test)
+	new_fit=forest.predict(new_test)
 
-	print (len(data_fit))
+	print (len(new_fit))
 
-	df=pd.DataFrame({'ypredict':data_fit})
+	df=pd.DataFrame({'ypredict':new_fit})
 
-	df['Gene1']=data_gene1
-	df['Gene2']=data_gene2
+	df['Gene1']=new_gene1
+	df['Gene2']=new_gene2
 
 	df = df[['Gene1', 'Gene2', 'ypredict']]
 	print (df)
-	df.to_csv('new_all_gene_predictions.csv')
+	df.to_csv('updated_new_all_gene_predictions.csv')
 
-def find_avg_scores(data_genes):
+def find_avg_scores(new_genes):
 	
-	print ('data_genes', len(data_genes))
+	print ('new_genes', len(new_genes))
 
 	pred_filename='new_all_gene_predictions.csv'
 	pred=pd.read_csv(pred_filename, index_col=[0])
@@ -623,7 +623,7 @@ def find_avg_scores(data_genes):
 
 	avg_scores=[]
 	novel_genes=[]
-	for gene in data_genes:
+	for gene in new_genes:
 		df1=pred.loc[pred['Gene1'] == gene]
 		
 		df2=pred.loc[pred['Gene2'] == gene]
@@ -639,6 +639,6 @@ def find_avg_scores(data_genes):
 	print ('novel_genes', len(novel_genes), 'all_average_scores', len(avg_scores))
 
 	df=pd.DataFrame({'genes': novel_genes, 'avg_scores': avg_scores})
-	df.to_csv('new_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv')
+	df.to_csv('updated_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv')
 	return df
 
