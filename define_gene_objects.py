@@ -346,7 +346,7 @@ def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_score_mat):
 
 	return gene_list
 
-def create_data_gene_list(gene_names,is_test_gene,feature_value_dict):
+def create_new_gene_list(gene_names,is_test_gene,feature_value_dict):
 	feature_list=define_features()
 	gene_list = []
 	for name in gene_names:
@@ -453,7 +453,7 @@ def print_pred_metrics(predictor, X_train, X_test, y_train, y_test, yfit):
 
 	#print ('ytest', y_test)
 
-def find_feature_importance(predictor):
+def find_feature_importance(predictor, number):
 	performance=predictor.feature_importances_
 	performance=performance.tolist()
 	feature_list=define_features()
@@ -479,7 +479,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 #metrics:
 	spearmanr_corr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
 	#print ('ytest', y_test)
-	feature_imp=find_feature_importance(forest)
+	feature_imp=find_feature_importance(forest, number)
 
 #find the genes in all of the features:
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
