@@ -21,8 +21,6 @@ from find_training_genes_scores_functions import make_genes_csv, make_mat_csv, r
 import time
 
 
-
-
 def define_GO_score_matrix(pos, neg, GO_human):
 	GO_score_matrix=find_input_gene_GO_scores(pos, neg, GO_human)
 	make_mat_csv(GO_score_matrix, 'syngo_GO_training_score_matrix_for_big_pool_genes.csv')
@@ -115,24 +113,24 @@ def time_adaboost(training_gene_pair_objects, training_feature_array, training_s
 
 def time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i):
 	start = time.time()
-	svm__df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i)
+	svm_df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, i)
 	end = time.time()
 	print(end - start)
 	return svm_df
 
 def time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i):
 	start = time.time()
-	svm__df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
+	svm_df=run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
 	end = time.time()
 	print(end - start)
 	return svm_df
 
 def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
 	start = time.time()
-	svm__df=run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	rf_df=run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 	end = time.time()
 	print(end - start)
-	return svm_df
+	return rf_df
 
 def compare_regressors(pos, pos_chunks, neg, neg_chunks):
 	for i in range(5):
