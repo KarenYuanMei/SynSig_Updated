@@ -84,6 +84,11 @@ def define_pos_neg_training(syngo, big_pool, GO_genes):
 	neg_df=make_genes_csv(neg, 'updated', 'negatives')
 	return pos, neg, all_training
 
+def find_pos_genes_in_training(training_genes, positives):
+	overlap=list(set(training_genes)&set(positives))
+	pos_training=list(set(overlap))
+	#print (len(input_genes))
+	return pos_training
 
 #find GO scores for the training gene sets===================================================================
 def find_GO_ont():
@@ -113,5 +118,14 @@ def find_input_gene_GO_scores(positive_genes, negative_genes, go_human):
 def make_mat_csv(mat, name):
 	matrix.to_csv('%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
 	return matrix
+
+def define_GO_score_matrix(pos, neg, GO_human):
+	GO_score_matrix=find_input_gene_GO_scores(pos, neg, GO_human)
+	make_mat_csv(GO_score_matrix, 'syngo_GO_training_score_matrix_for_big_pool_genes.csv')
+	return GO_score_matrix
+
+def load_GO_score_matrix(go_mat_filename):
+	df=pd.read_csv(go_mat_filename, index_col=[0])
+	return df
 
 

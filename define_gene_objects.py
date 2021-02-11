@@ -35,7 +35,7 @@ from sklearn.preprocessing import StandardScaler
 # sys.path.append('../syngo_training')
 
 from load_data_functions import get_gene_names
-from run_train_crossvalidate_pipeline import load_GO_score_matrix
+from find_training_genes_scores_functions import load_GO_score_matrix
 
 import sys
 sys.path.append('../../../Network_propagation/Propagation_Code/')
@@ -358,11 +358,7 @@ def create_new_gene_list(gene_names,is_test_gene,feature_value_dict):
 		gene_list.append(new_gene)
 	return gene_list
 
-def find_pos_genes_in_training(training_genes, positives):
-	overlap=list(set(training_genes)&set(positives))
-	input_genes=list(set(overlap))
-	#print (len(input_genes))
-	return input_genes
+
 
 def find_gene_objects(gene_objects, gene_name_list):
 	sel_objects=[]
