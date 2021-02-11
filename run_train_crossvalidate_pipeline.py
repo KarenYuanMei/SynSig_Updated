@@ -22,14 +22,6 @@ import find_training_genes_scores_functions
 import time
 
 
-def define_GO_score_matrix(pos, neg, GO_human):
-	GO_score_matrix=find_training_genes_scores_functions.find_input_gene_GO_scores(pos, neg, GO_human)
-	find_training_genes_scores_functions.make_mat_csv(GO_score_matrix, 'syngo_GO_training_score_matrix_for_big_pool_genes.csv')
-	return GO_score_matrix
-
-def load_GO_score_matrix(go_mat_filename):
-	df=pd.read_csv(go_mat_filename, index_col=[0])
-	return df
 
 # def find_training_pos_neg(syngo, big_pool, GO_genes):
 # 	pos, neg=find_pos_neg_input(syngo, big_pool, GO_genes)
@@ -79,12 +71,12 @@ def find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i):
 	training_pairs=combinations(training_gene_objects,2)
 	
 	#find the positive training objects:
-	positive_training_genes=find_training_genes_scores_functions.find_pos_genes_in_training(training_gene_names, pos)
-	positive_training_objects=find_training_genes_scores_functions.find_gene_objects(all_training_objects, positive_training_genes)
+	positive_training_genes=find_training_genes_scores_fufind_pos_genes_in_trainingnctions.find_pos_genes_in_training(training_gene_names, pos)
+	positive_training_objects=define_gene_objects.find_gene_objects(all_training_objects, positive_training_genes)
 	print ('positive_training_objects', len(positive_training_objects))
 
 	#find the train_test_object_pairs:
-	test_gene_objects=find_training_genes_scores_functions.find_gene_objects(all_training_objects, test_gene_names)
+	test_gene_objects=define_gene_objects.find_gene_objects(all_training_objects, test_gene_names)
 	train_test_pairs=product(positive_training_objects, test_gene_objects)
 	
 	print ("DONE3")
