@@ -56,9 +56,8 @@ def define_pos_neg_training(syngo, big_pool, GO_genes):
 	return pos, neg, all_training
 
 #define all gene objects with features and GO scores:
-def define_all_training_objects(big_pool, all_training, go_mat_filename):
-	feature_value_dict = create_feature_value_dict(big_pool)
-	print ("DONE1")
+def define_all_training_objects(all_training, go_mat_filename, feature_value_dict):
+	
 	#go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 	go_score_mat=load_GO_score_matrix(go_mat_filename)
 	all_training_objects = create_gene_list(all_training,False,feature_value_dict, go_score_mat)
@@ -162,7 +161,10 @@ if __name__ == '__main__':
 
 	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-	all_training_objects=define_all_training_objects(big_pool, all_training, go_mat_filename)
+	feature_value_dict = create_feature_value_dict(big_pool)
+	print ("DONE1")
+
+	all_training_objects=define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
 
 	pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
 

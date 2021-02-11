@@ -30,7 +30,7 @@ def load_big_pool():
 	big_pool=get_gene_names(index_file)
 	return big_pool
 
-def find_new_gene_objects(new_genes):
+def find_new_gene_objects(new_genes, feature_value_dict):
 	new_genes=sorted(new_genes)
 	print ('new genes', len(new_genes))
 	new_gene_objects=create_new_gene_list(new_genes, False, feature_value_dict)
@@ -38,36 +38,39 @@ def find_new_gene_objects(new_genes):
 	print ('DONE')
 	return new_gene_objects
 
-def find_synapse_new_pairs(new_genes, all_training_objects, pos):
-	new_gene_objects=find_new_gene_objects(new_genes)
+def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos):
+	new_gene_objects=find_new_gene_objects(new_genes, feature_value_dict)
 	positive_training_objects=find_gene_objects(all_training_objects, pos)
 	print ('positive_training_objects', len(positive_training_objects))
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
 	return synapse_new_pairs
 
+if __name__ == '__main__':
 
-big_pool=load_big_pool()
+	big_pool=load_big_pool()
 
-go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-pos, neg, all_training=load_pos_neg_training()
+	pos, neg, all_training=load_pos_neg_training()
 
-all_training_objects=define_all_training_objects(big_pool, all_training, go_mat_filename)
+	feature_value_dict = create_feature_value_dict(big_pool)
 
-training_pairs=combinations(all_training_objects,2)
-print ('DONE training pairs for final rf')
+	all_training_objects=define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
 
-new_genes=list(set(big_pool)-set(all_training))
-synapse_new_pairs=find_synapse_new_pairs(new_genes, all_training_objects, pos)
+	training_pairs=combinations(all_training_objects,2)
+	print ('DONE training pairs for final rf')
 
-feature_list=define_features()
+	new_genes=list(set(big_pool)-set(all_training))
+	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
 
-data_test, data_gene1, data_gene2=find_new_array(synapse_new_pairs, feature_list)
-print (data_test.shape)
-train_pair_objects, X_train, y_train=create_input_pair_objects(training_pairs)
-print (X_train.shape)
+	feature_list=define_features()
 
-run_new_rf(X_train, y_train, data_test, data_gene1, data_gene2)
+	data_test, data_gene1, data_gene2=find_new_array(synapse_new_pairs, feature_list)
+	print (data_test.shape)
+	train_pair_objects, X_train, y_train=create_input_pair_objects(training_pairs)
+	print (X_train.shape)
 
-find_avg_scores(new_genes)
+	run_new_rf(X_train, y_train, data_test, data_gene1, data_gene2)
+
+	find_avg_scores(new_genes)
 
