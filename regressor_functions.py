@@ -26,7 +26,7 @@ from sklearn.svm import SVR
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from define_gene_objects import define_features
+#from define_gene_objects import define_features
 
 def find_gene1_gene2(train_test_gene_pair_objects):
 	genes_1=[]
@@ -72,18 +72,18 @@ def print_pred_metrics(predictor, X_train, X_test, y_train, y_test, yfit):
 	spearmanr_corr=np.round(spearmanr_corr,2)
 	p_value=spearmanr(y_test, yfit)[1]
 	return spearmanr_corr, p_value
-
+find_training_genes_scores_functions
 	#print ('ytest', y_test)
 
-def find_feature_importance(predictor, number):
+def find_feature_importance(predictor, number, feature_list):
 	performance=predictor.feature_importances_
 	performance=performance.tolist()
-	feature_list=define_features()
+	#feature_list=define_features()
 	perf=pd.DataFrame({'Features': feature_list, 'Importance': performance})
 	perf.to_csv('full60_random_forest_Feature_Importance_%s.csv'%number)
 	return perf
 
-def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
+def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, number):
 
 	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 	print ('X_test', len(X_test), 'y_test', len(y_test))
@@ -101,7 +101,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 #metrics:
 	spearmanr_corr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
 	#print ('ytest', y_test)
-	feature_imp=find_feature_importance(forest, number)
+	feature_imp=find_feature_importance(forest, number, feature_list)
 
 #find the genes in all of the features:
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)

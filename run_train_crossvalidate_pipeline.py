@@ -125,21 +125,21 @@ def time_svm_poly(training_gene_pair_objects, training_feature_array, training_s
 	print('svm time', end - start)
 	return svm_df
 
-def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
+def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i):
 	start = time.time()
 	rf_df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 	end = time.time()
 	print('random forest time', end - start)
 	return rf_df
 
-def compare_regressors(pos, pos_chunks, neg, neg_chunks):
+def compare_regressors(pos, pos_chunks, neg, neg_chunks, feature_list):
 	for i in range(5):
 		#define each fold of training and test genes:
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i)
 		
 		ada_df=time_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 
-		rf_df=time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+		rf_df=time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
 
 		poly3_df=time_svm_poly((training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 3, i))
 
@@ -170,7 +170,8 @@ if __name__ == '__main__':
 	pos_chunks, neg_chunks=find_training_genes_scores_functions.find_pos_neg_chunks(pos, neg)
 
 	#df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
-	compare_regressors(pos, pos_chunks, neg, neg_chunks)
+	feature_list=define_gene_objects.define_features()
+	compare_regressors(pos, pos_chunks, neg, neg_chunks, feature_list)
 
 
 
