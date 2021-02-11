@@ -72,8 +72,6 @@ def print_pred_metrics(predictor, X_train, X_test, y_train, y_test, yfit):
 	spearmanr_corr=np.round(spearmanr_corr,2)
 	p_value=spearmanr(y_test, yfit)[1]
 	return spearmanr_corr, p_value
-find_training_genes_scores_functions
-	#print ('ytest', y_test)
 
 def find_feature_importance(predictor, number, feature_list):
 	performance=predictor.feature_importances_
