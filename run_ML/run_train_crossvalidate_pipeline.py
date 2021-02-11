@@ -15,10 +15,10 @@ from itertools import product
 from collections import defaultdict
 
 import sys
-sys.path.append('../SynSig_Updated/read_data_functions/')
+sys.path.append('../read_data_functions/')
 from load_data_functions import get_gene_names
 
-sys.path.append('../SynSig_Updated/ML_functions/')
+sys.path.append('../ML_functions/')
 import define_gene_objects
 import regressor_functions
 import find_training_genes_scores_functions

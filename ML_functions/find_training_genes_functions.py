@@ -9,7 +9,7 @@ import ddot
 from ddot import Ontology
 
 import sys
-sys.path.append('../SynSig_Updated/read_data_functions/')
+sys.path.append('../read_data_functions/')
 from load_data_functions import get_gene_names
 
 

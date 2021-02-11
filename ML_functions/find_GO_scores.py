@@ -8,6 +8,8 @@ import random
 import ddot
 from ddot import Ontology
 
+import sys
+sys.path.append('../read_data_functions/')
 from load_data_functions import get_gene_names
 
 #find GO scores for the training gene sets===================================================================
