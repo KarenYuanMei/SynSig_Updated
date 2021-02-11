@@ -14,10 +14,15 @@ from itertools import combinations, combinations_with_replacement
 from itertools import product
 from collections import defaultdict
 
+import sys
+sys.path.append('../SynSig_Updated/read_data_functions/')
+from load_data_functions import get_gene_names
+
+sys.path.append('../SynSig_Updated/ML_functions/')
 import define_gene_objects
 import regressor_functions
-import load_data_functions
 import find_training_genes_scores_functions
+import find_GO_scores
 
 import time
 
@@ -28,7 +33,7 @@ def load_resource_gene_lists(syngo_file, index_file):
 
 	big_pool=load_data_functions.get_gene_names(index_file)
 
-	GO_human=find_training_genes_scores_functions.find_GO_ont()
+	GO_human=find_GO_scores.find_GO_ont()
 	GO_genes=GO_human.genes
 	return syngo, big_pool, GO_genes
 
@@ -64,7 +69,7 @@ def find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i):
 	return training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score
 
 
-
+#five-fold crossvalidation with only random forest:
 def fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks):
 	for i in range(5):
 		#define each fold of training and test genes:
@@ -72,6 +77,8 @@ def fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks):
 		df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
 	return df
 
+
+#run adaboost and also time each fold of crossvalidation
 def time_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
 	start = time.time()
 	ada_df=regressor_functions.run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
@@ -95,7 +102,7 @@ def time_svm_poly(training_gene_pair_objects, training_feature_array, training_s
 
 def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i):
 	start = time.time()
-	rf_df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i)
+	rf_df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
 	end = time.time()
 	print('random forest time', end - start)
 	return rf_df

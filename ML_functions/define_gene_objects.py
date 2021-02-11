@@ -34,10 +34,14 @@ from sklearn.preprocessing import StandardScaler
 # import sys
 # sys.path.append('../syngo_training')
 
-from load_data_functions import get_gene_names
-from find_training_genes_scores_functions import load_GO_score_matrix
-
 import sys
+sys.path.append('../SynSig_Updated/read_data_functions/')
+from load_data_functions import get_gene_names
+
+sys.path.append('../SynSig_Updated/ML_functions/')
+from find_GO_scores import load_GO_score_matrix
+
+
 sys.path.append('../../../Network_propagation/Propagation_Code/')
 
 
