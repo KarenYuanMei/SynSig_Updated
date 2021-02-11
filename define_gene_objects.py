@@ -35,7 +35,7 @@ from sklearn.preprocessing import StandardScaler
 # sys.path.append('../syngo_training')
 
 from load_data_functions import get_gene_names
-from train_crossvalidate_pipeline import load_GO_score_matrix
+from run_train_crossvalidate_pipeline import load_GO_score_matrix
 
 import sys
 sys.path.append('../../../Network_propagation/Propagation_Code/')
