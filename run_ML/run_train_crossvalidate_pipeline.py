@@ -16,7 +16,7 @@ from collections import defaultdict
 
 import sys
 sys.path.append('../read_data_functions/')
-from load_data_functions import get_gene_names
+import load_data_functions
 
 sys.path.append('../ML_functions/')
 import define_gene_objects
