@@ -128,14 +128,14 @@ def compare_regressors(pos, pos_chunks, neg, neg_chunks, feature_list):
 
 
 if __name__ == '__main__':
-	syngo_file='../correct_db/corr_syngo_cc.csv'
-	index_file='../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	syngo_file='../../correct_db/corr_syngo_cc.csv'
+	index_file='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
 	
 	syngo, big_pool, GO_genes=load_resource_gene_lists(syngo_file, index_file)
 
 	pos, neg, all_training=find_training_genes_scores_functions.define_pos_neg_training(syngo, big_pool, GO_genes)
 
-	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
 	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
 	print ("DONE1")
