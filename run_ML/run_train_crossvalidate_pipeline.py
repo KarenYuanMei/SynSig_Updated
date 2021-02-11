@@ -39,9 +39,9 @@ def load_resource_gene_lists(syngo_file, index_file):
 
 #for each fold in the crossvalidation, find the training genes, featuers, and GO_Scores; and the validation genes, features, and GO_scores
 def find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i):
-	training_gene_names, test_gene_names=find_training_genes_scores_functions.define_training_test(pos, pos_chunks, neg, neg_chunks, i)
-	training_df=find_training_genes_scores_functions.make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
-	test_df=find_training_genes_scores_functions.make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
+	training_gene_names, test_gene_names=find_training_genes_functions.define_training_test(pos, pos_chunks, neg, neg_chunks, i)
+	training_df=find_training_genes_functions.make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
+	test_df=find_training_genes_functions.make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
 
 	#define each fold of training gene objects with features and scores
 	training_gene_objects=define_gene_objects.find_gene_objects(all_training_objects, training_gene_names)
@@ -50,7 +50,7 @@ def find_crossvalidate_input(pos, pos_chunks, neg, neg_chunks, i):
 	training_pairs=combinations(training_gene_objects,2)
 	
 	#find the positive training objects:
-	positive_training_genes=find_training_genes_scores_functions.find_pos_genes_in_training(training_gene_names, pos)
+	positive_training_genes=find_training_genes_functions.find_pos_genes_in_training(training_gene_names, pos)
 	positive_training_objects=define_gene_objects.find_gene_objects(all_training_objects, positive_training_genes)
 	print ('positive_training_objects', len(positive_training_objects))
 
@@ -133,7 +133,7 @@ if __name__ == '__main__':
 	
 	syngo, big_pool, GO_genes=load_resource_gene_lists(syngo_file, index_file)
 
-	pos, neg, all_training=find_training_genes_scores_functions.define_pos_neg_training(syngo, big_pool, GO_genes)
+	pos, neg, all_training=find_training_genes_functions.define_pos_neg_training(syngo, big_pool, GO_genes)
 
 	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
 	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
 
-	pos_chunks, neg_chunks=find_training_genes_scores_functions.find_pos_neg_chunks(pos, neg)
+	pos_chunks, neg_chunks=find_training_genes_functions.find_pos_neg_chunks(pos, neg)
 
 	#df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
 	feature_list=define_gene_objects.define_features()
