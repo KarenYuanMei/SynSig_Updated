@@ -23,7 +23,7 @@ def random_select(genelist, big_pool, GO_genes, no_select):
 
 #find the pos and neg training genes:
 def find_pos_neg_input(syngo, big_pool, GO_genes):
-	#syngo=get_gene_names(syngo_file)
+	#syngo=get_gene_names(syngo_file) 
 	#big_pool=get_gene_names(index_file)
 	pos=random_select(syngo, big_pool, GO_genes, int(len(syngo)/2))
 	#pos_df=pd.DataFrame({'genes': pos})
@@ -68,6 +68,22 @@ def define_training_test(positives, pos_chunks, negatives, neg_chunks, chunk_no)
 	#test_df.to_csv('%s_test_genes_%s.csv'%(name, chunk_no))
 	print ('overlap', len(set(training)&set(test)))
 	return training, test
+
+def find_training_pos_neg(syngo, big_pool, GO_genes):
+	pos, neg=find_pos_neg_input(syngo, big_pool, GO_genes)
+	print ('pos', len(pos), 'neg', len(neg))
+	all_training=list(set(pos+neg))
+	all_training=sorted(all_training)
+	print(len(all_training))
+	return pos, neg, all_training
+	
+#find the pos and neg training genes:
+def define_pos_neg_training(syngo, big_pool, GO_genes):
+	pos, neg, all_training=find_training_pos_neg(syngo, big_pool, GO_genes)
+	pos_df=make_genes_csv(pos, 'updated', 'positives')
+	neg_df=make_genes_csv(neg, 'updated', 'negatives')
+	return pos, neg, all_training
+
 
 #find GO scores for the training gene sets===================================================================
 def find_GO_ont():
