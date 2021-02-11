@@ -209,7 +209,7 @@ def find_input_features(filename, input_genes):
 	kernel_file=['mentha_kernel']
 	gtex_rna_file=['gtex_rna_kernel']
 	if filename in string_files:
-		df = pd.read_csv('../../SynSig/features/normalized_%s.csv'%filename,converters={"Interactors": lambda x: x.strip("[]").split(", ")})
+		df = pd.read_csv('../../../SynSig/features/normalized_%s.csv'%filename,converters={"Interactors": lambda x: x.strip("[]").split(", ")})
 		symbol=df['Norm_Symbol']
 		df.drop(labels=['Norm_Symbol', 'Genes'], axis=1,inplace = True)
 		df.insert(0, 'Genes', symbol)
@@ -217,15 +217,15 @@ def find_input_features(filename, input_genes):
 		df=df.loc[input_genes]
 
 	elif filename in kernel_file:
-		df=pd.read_csv('../../../Network_propagation/propagate_synapse/mentha_kernel.csv', index_col=[0])
+		df=pd.read_csv('../../../../Network_propagation/propagate_synapse/mentha_kernel.csv', index_col=[0])
 		df=df.loc[input_genes]
 
 	elif filename in gtex_rna_file:
-		df=pd.read_csv('../new_features/gtex_rna_kernel/gtex_rna_kernel.csv', index_col=[0])
+		df=pd.read_csv('../../new_features/gtex_rna_kernel/gtex_rna_kernel.csv', index_col=[0])
 		df=df.loc[input_genes]
 
 	else:
-		df=pd.read_csv('../../SynSig/features/normalized_%s.csv'%filename)
+		df=pd.read_csv('../../../SynSig/features/normalized_%s.csv'%filename)
 
 		symbol=df['Norm_Symbol']
 		df.drop(labels=['Norm_Symbol', 'Genes'], axis=1,inplace = True)
