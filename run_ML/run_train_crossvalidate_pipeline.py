@@ -21,7 +21,7 @@ from load_data_functions import get_gene_names
 sys.path.append('../ML_functions/')
 import define_gene_objects
 import regressor_functions
-import find_training_genes_scores_functions
+import find_training_genes_functions
 import find_GO_scores
 
 import time
