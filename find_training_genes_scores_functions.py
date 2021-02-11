@@ -1,4 +1,4 @@
-#Goal: to define the training genes for predicting synapse genes
+#Goal: to define the randomly selected training genes and GO scores for predicting synapse genes
 
 import pandas as pd
 import numpy as np
