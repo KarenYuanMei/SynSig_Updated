@@ -17,7 +17,7 @@ from collections import defaultdict
 import define_gene_objects
 import regressor_functions
 import load_data_functions
-import find_training_gene_scores_functions
+import find_training_genes_scores_functions
 
 import time
 
