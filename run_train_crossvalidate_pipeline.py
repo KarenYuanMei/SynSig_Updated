@@ -158,7 +158,6 @@ if __name__ == '__main__':
 	
 	syngo, big_pool, GO_genes=load_resource_gene_lists(syngo_file, index_file)
 
-	print(dir(find_training_genes_scores_functions))
 	pos, neg, all_training=find_training_genes_scores_functions.define_pos_neg_training(syngo, big_pool, GO_genes)
 
 	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
