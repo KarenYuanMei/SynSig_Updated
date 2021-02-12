@@ -95,14 +95,14 @@ def time_svm_regressor(training_gene_pair_objects, training_feature_array, train
 
 def time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i):
 	start = time.time()
-	svm_df=regressor_functions.run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
+	svm_df=regressor_functions.run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, i)
 	end = time.time()
 	print('svm time', end - start)
 	return svm_df
 
 def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i):
 	start = time.time()
-	rf_df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
+	rf_df=regressor_functions.run_random_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
 	end = time.time()
 	print('random forest time', end - start)
 	return rf_df
