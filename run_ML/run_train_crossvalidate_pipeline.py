@@ -102,7 +102,7 @@ def time_svm_poly(training_gene_pair_objects, training_feature_array, training_s
 
 def time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i):
 	start = time.time()
-	rf_df=regressor_functions.run_random_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
+	rf_df=regressor_functions.run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
 	end = time.time()
 	print('random forest time', end - start)
 	return rf_df
