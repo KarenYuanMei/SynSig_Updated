@@ -12,9 +12,13 @@ from itertools import combinations, combinations_with_replacement
 from itertools import product
 from collections import defaultdict
 
+import sys
+sys.path.append('../read_data_functions/')
+import load_data_functions
+
+sys.path.append('../ML_functions/')
+import find_training_genes_functions 
 import define_gene_objects
-from load_data_functions import get_gene_names
-import find_training_genes_scores_functions 
 
 # #predict new genes=========================================================
 
@@ -33,15 +37,14 @@ def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, 
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
 	return synapse_new_pairs
 
-if __name__ == '__main__':
-
+def define_training_test_pair_objects():
 	big_pool=find_training_genes_functions.load_big_pool()
-
-	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
 	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
 	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
+
+	go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
 	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
 
@@ -50,6 +53,11 @@ if __name__ == '__main__':
 
 	new_genes=list(set(big_pool)-set(all_training))
 	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
+	return training_pairs, synapse_new_pairs
+
+if __name__ == '__main__':
+
+	training_pairs, synapse_new_pairs=define_training_test_pair_objects()
 
 	feature_list=define_gene_objects.define_features()
 
