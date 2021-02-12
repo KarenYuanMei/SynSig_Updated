@@ -116,9 +116,9 @@ def compare_regressors(pos, pos_chunks, neg, neg_chunks, feature_list):
 
 		rf_df=time_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, i)
 
-		poly3_df=time_svm_poly((training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 3, i))
+		poly3_df=time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 3, i)
 
-		poly4_df=time_svm_poly((training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 4, i))
+		poly4_df=time_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 4, i)
 
 		rbf_df=time_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, 'rbf', i)
 
