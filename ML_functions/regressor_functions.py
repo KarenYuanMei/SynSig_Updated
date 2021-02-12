@@ -104,7 +104,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 #find the genes in all of the features:
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 	#df.to_csv('/Users/karenmei/Documents/Synapse_Ontology/NetworkCla/Entry_Ontology/synapse_10/random_forest/ypredict_ytest_%s.csv'%number)
-	df.to_csv('../SynSig_Updated/regressors/full60_random_forest_%s.csv'%number)
+	df.to_csv('../run_ML/ML_output/regressors/full60_random_forest_%s.csv'%number)
 
 	return df
 
@@ -126,7 +126,7 @@ def run_adaboost(training_gene_pair_objects, training_feature_array, training_sc
 	print (pearsonr(y_test, yfit))
 
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
-	df.to_csv('../SynSig_Updated/regressors/full60_adaboost_%s.csv'%number)
+	df.to_csv('../run_ML/ML_output/regressors/full60_adaboost_%s.csv'%number)
 	return df
 
 def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, number):
@@ -143,7 +143,7 @@ def run_svm_regressor(training_gene_pair_objects, training_feature_array, traini
 
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 
-	df.to_csv('../SynSig_Updated/regressors/full60_svregressor_%s_%s.csv'%(kernel, number))
+	df.to_csv('../run_ML/ML_output/regressors/full60_svregressor_%s_%s.csv'%(kernel, number))
 
 
 def run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, number):
@@ -166,7 +166,7 @@ def run_svm_poly(training_gene_pair_objects, training_feature_array, training_sc
 
 	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
 
-	df.to_csv('../SynSig_Updated/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
+	df.to_csv('../run_ML/ML_output/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
 
 
 def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2):
