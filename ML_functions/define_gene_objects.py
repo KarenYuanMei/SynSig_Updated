@@ -42,27 +42,28 @@ sys.path.append('../ML_functions/')
 from find_GO_scores import load_GO_score_matrix
 
 
+
 sys.path.append('../../../../Network_propagation/Propagation_Code/')
 
 
 
-#full 60 features:
-def define_features():
-	feature_list=['cerebral_cortex_hpa_isoform_exp', 'colon_hpa_isoform_exp', 'ovary_hpa_isoform_exp', 'breast_hpa_isoform_exp', 'lung_hpa_isoform_exp', 'salivary gland_hpa_isoform_exp', 'seminal vesicle_hpa_isoform_exp', 
-		'lymph node_hpa_isoform_exp', 'placenta_hpa_isoform_exp', 'kidney_hpa_isoform_exp', 'cervix, uterine_hpa_isoform_exp', 'adrenal gland_hpa_isoform_exp', 'thyroid gland_hpa_isoform_exp', 
-		'stomach 1_hpa_isoform_exp', 'gallbladder_hpa_isoform_exp', 'duodenum_hpa_isoform_exp', 'fallopian tube_hpa_isoform_exp','endometrium 1_hpa_isoform_exp', 'skin 1_hpa_isoform_exp', 
-		'spleen_hpa_isoform_exp', 'gtex_rna_tissue_expression', 'appendix_hpa_isoform_exp', 'heart muscle_hpa_isoform_exp', 'small intestine_hpa_isoform_exp', 'epididymis_hpa_isoform_exp', 'testis_hpa_isoform_exp', 
-		'liver_hpa_isoform_exp', 'esophagus_hpa_isoform_exp', 'urinary bladder_hpa_isoform_exp', 'skeletal muscle_hpa_isoform_exp', 'tonsil_hpa_isoform_exp', 'prostate_hpa_isoform_exp', 
-		'parathyroid gland_hpa_isoform_exp','adipose tissue_hpa_isoform_exp', 'smooth muscle_hpa_isoform_exp', 'rectum_hpa_isoform_exp', 'bone marrow_hpa_isoform_exp', 'mentha_source_feature', 
-		'chr_no_source_feature', 'qPhos_site_number', 'Phosphosite_hu_no', 'pFAM_domain_number', 'pFAM_domain', 'protein_mass', 'Ensembl_aa_length', 'Ensembl_isoform_no', 
-		'trans_count', 'gc_content', 'trans_len', 'gene_length', 'exon_no', 'cds_length']
+# #full 60 features:
+# def define_features():
+# 	feature_list=['cerebral_cortex_hpa_isoform_exp', 'colon_hpa_isoform_exp', 'ovary_hpa_isoform_exp', 'breast_hpa_isoform_exp', 'lung_hpa_isoform_exp', 'salivary gland_hpa_isoform_exp', 'seminal vesicle_hpa_isoform_exp', 
+# 		'lymph node_hpa_isoform_exp', 'placenta_hpa_isoform_exp', 'kidney_hpa_isoform_exp', 'cervix, uterine_hpa_isoform_exp', 'adrenal gland_hpa_isoform_exp', 'thyroid gland_hpa_isoform_exp', 
+# 		'stomach 1_hpa_isoform_exp', 'gallbladder_hpa_isoform_exp', 'duodenum_hpa_isoform_exp', 'fallopian tube_hpa_isoform_exp','endometrium 1_hpa_isoform_exp', 'skin 1_hpa_isoform_exp', 
+# 		'spleen_hpa_isoform_exp', 'gtex_rna_tissue_expression', 'appendix_hpa_isoform_exp', 'heart muscle_hpa_isoform_exp', 'small intestine_hpa_isoform_exp', 'epididymis_hpa_isoform_exp', 'testis_hpa_isoform_exp', 
+# 		'liver_hpa_isoform_exp', 'esophagus_hpa_isoform_exp', 'urinary bladder_hpa_isoform_exp', 'skeletal muscle_hpa_isoform_exp', 'tonsil_hpa_isoform_exp', 'prostate_hpa_isoform_exp', 
+# 		'parathyroid gland_hpa_isoform_exp','adipose tissue_hpa_isoform_exp', 'smooth muscle_hpa_isoform_exp', 'rectum_hpa_isoform_exp', 'bone marrow_hpa_isoform_exp', 'mentha_source_feature', 
+# 		'chr_no_source_feature', 'qPhos_site_number', 'Phosphosite_hu_no', 'pFAM_domain_number', 'pFAM_domain', 'protein_mass', 'Ensembl_aa_length', 'Ensembl_isoform_no', 
+# 		'trans_count', 'gc_content', 'trans_len', 'gene_length', 'exon_no', 'cds_length']
 
-	brain_features=['HIP_RNA', 'DFC_RNA', 'V1C_RNA', 'AMY_RNA', 'MD_RNA', 'STR_RNA', 'CBC_RNA']
+# 	brain_features=['HIP_RNA', 'DFC_RNA', 'V1C_RNA', 'AMY_RNA', 'MD_RNA', 'STR_RNA', 'CBC_RNA']
 
-	kernel_feature=['mentha_kernel']
-	feature_list=feature_list+brain_features+kernel_feature
-	#print (len(list(set(feature_list))))
-	return feature_list
+# 	kernel_feature=['mentha_kernel']
+# 	feature_list=feature_list+brain_features+kernel_feature
+# 	#print (len(list(set(feature_list))))
+# 	return feature_list
 
 
 # def define_features():
@@ -116,14 +117,14 @@ class Gene:
 		self.go_scores = GO_scores
 
 class PairOfGenes:
-	def __init__(self,gene1,gene2,include_GO=True):
+	def __init__(self,gene1,gene2, feature_list, include_GO=True):
 		assert isinstance(gene1,Gene), "You screwed up! gene1 needs to be a Gene!"
 		assert isinstance(gene2,Gene), "You screwed up! gene2 needs to be a Gene!"
 
 		self.gene1_name = gene1.name
 		self.gene2_name = gene2.name
 
-		feature_list=define_features()
+		#feature_list=define_features()
 #find the genes in all of the features:
 
 		for feature_name in feature_list:
@@ -329,11 +330,11 @@ def create_GO_score_dict(go_score_mat):
 	#print (master_dict['STX4'])
 	return master_dict
 
-def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_score_mat):
+def create_gene_list(gene_names,is_test_gene,feature_value_dict, feature_list, go_score_mat):
 	#returns a list of Gene objects, corresponding to the names in gene_names
 	#feature_value_dict is a dictionary containing all feature values for all genes
 
-	feature_list=define_features()
+	#feature_list=define_features()
 	gene_list = []
 	for name in gene_names:
 		new_gene = Gene(name, is_test_gene)
@@ -351,8 +352,8 @@ def create_gene_list(gene_names,is_test_gene,feature_value_dict, go_score_mat):
 
 	return gene_list
 
-def create_new_gene_list(gene_names,is_test_gene,feature_value_dict):
-	feature_list=define_features()
+def create_new_gene_list(gene_names,is_test_gene,feature_value_dict, feature_list):
+	#feature_list=define_features()
 	gene_list = []
 	for name in gene_names:
 		new_gene = Gene(name, is_test_gene)
@@ -383,8 +384,8 @@ def find_feature_array(feature_list, pair_object):
 		pair_feature_array.append(pair_feature_values)
 	return pair_feature_array
 
-def create_input_pair_objects(gene_pairs):
-	feature_list=define_features()
+def create_input_pair_objects(gene_pairs, feature_list):
+	#feature_list=define_features()
 	#feature_list.pop(idx)
 
 	gene_pair_objects=[]
@@ -393,7 +394,7 @@ def create_input_pair_objects(gene_pairs):
 	for item in gene_pairs:
 		gene1=item[0]
 		gene2=item[1]
-		pair_object=PairOfGenes(gene1, gene2)
+		pair_object=PairOfGenes(gene1, gene2, feature_list)
 		
 		pair_feature_array=find_feature_array(feature_list, pair_object)
 		feature_array.append(pair_feature_array)
@@ -415,7 +416,7 @@ def find_new_array(gene_pairs, feature_list):
 	for item in gene_pairs:
 		gene1=item[0]
 		gene2=item[1]
-		pair_object=PairOfGenes(gene1, gene2, include_GO=False)
+		pair_object=PairOfGenes(gene1, gene2, feature_list, include_GO=False)
 		
 		pair_feature_array=find_feature_array(feature_list, pair_object)
 		feature_array.append(pair_feature_array)
@@ -432,11 +433,11 @@ def find_new_array(gene_pairs, feature_list):
 	return feature_array, gene1_all, gene2_all
 
 #define all gene objects with features and GO scores:
-def define_all_training_objects(all_training, go_mat_filename, feature_value_dict):
+def define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list):
 	
 	#go_mat_filename='../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 	go_score_mat=load_GO_score_matrix(go_mat_filename)
-	all_training_objects = create_gene_list(all_training,False,feature_value_dict, go_score_mat)
+	all_training_objects = create_gene_list(all_training,False,feature_value_dict, feature_list, go_score_mat)
 	print (len(all_training_objects))
 	print ("DONE2")
 	return all_training_objects
