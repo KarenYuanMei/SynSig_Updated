@@ -81,9 +81,9 @@ def find_feature_importance(predictor, number, feature_list):
 	perf.to_csv('full60_random_forest_Feature_Importance_%s.csv'%number)
 	return perf
 
-def run_random_forest(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, feature_list, number):
+def run_random_forest(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, feature_list, number):
 
-	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+	#X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 	print ('X_test', len(X_test), 'y_test', len(y_test))
 
 	#forest = RandomForestRegressor(n_estimators=100, max_depth=50, oob_score=True, random_state=0)
@@ -108,7 +108,7 @@ def run_random_forest(training_gene_pair_objects, training_feature_array, traini
 
 	return df
 
-def run_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, number):
+def run_adaboost(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, number):
 	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 
 	regr = AdaBoostRegressor(random_state=0, n_estimators=100)
@@ -129,7 +129,7 @@ def run_adaboost(training_gene_pair_objects, training_feature_array, training_sc
 	df.to_csv('../run_ML/ML_output/regressors/full60_adaboost_%s.csv'%number)
 	return df
 
-def run_svm_regressor(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, kernel, number):
+def run_svm_regressor(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, kernel, number):
 
 	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 
@@ -146,7 +146,7 @@ def run_svm_regressor(training_gene_pair_objects, training_feature_array, traini
 	df.to_csv('../run_ML/ML_output/regressors/full60_svregressor_%s_%s.csv'%(kernel, number))
 
 
-def run_svm_poly(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, poly_number, number):
+def run_svm_poly(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, poly_number, number):
 	X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 
 	ps = PolynomialCountSketch(degree=poly_number, random_state=0)
@@ -169,9 +169,11 @@ def run_svm_poly(training_gene_pair_objects, training_feature_array, training_sc
 	df.to_csv('../run_ML/ML_output/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
 
 
-def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2):
 
-	forest = RandomForestRegressor(n_estimators=100, max_depth=50, oob_score=True, random_state=0)
+#optimal parameters: n_estimators=100, max_depth=50
+def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split):
+
+	forest = RandomForestRegressor(n_estimators=tree_no, max_depth=depth, min_samples_split=split, oob_score=True, random_state=0)
 	#forest = RandomForestRegressor(200)
 	forest.fit(X_train, y_train)
 
@@ -196,7 +198,8 @@ def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2):
 
 	df = df[['Gene1', 'Gene2', 'ypredict']]
 	print (df)
-	df.to_csv('updated_new_all_gene_predictions.csv')
+	#df.to_csv('updated_new_all_gene_predictions.csv')
+	return df
 
 def find_avg_scores(new_genes):
 	

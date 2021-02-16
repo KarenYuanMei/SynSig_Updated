@@ -103,4 +103,19 @@ def load_big_pool():
 	big_pool=get_gene_names(index_file)
 	return big_pool
 
+def define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks):
+	for i in range(5):
+		training_gene_names, test_gene_names=find_training_genes_functions.define_training_test(pos, pos_chunks, neg, neg_chunks, i)
+		training_df=find_training_genes_functions.make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
+		test_df=find_training_genes_functions.make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
+	return training_gene_names, test_gene_names
+
+
+def load_crossvalidation_genes(i):
+	training=get_gene_names('updated_training_genes_%s.csv'%i)
+	test=get_gene_names('updated_test_genes_%s.csv'%i)
+	return training, test
+
+
+
 

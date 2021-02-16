@@ -34,25 +34,34 @@ def define_final_features():
 	#gtex_kernel_feature=['gtex_rna_kernel']
 	feature_list=feature_list+brain_features+kernel_feature
 	#feature_list.pop(idx)
-
 	return feature_list
+
+
+def sweep_parameters(all_training_objects, pos, tree_no, depth, split, name):	
+	for i in range(5):
+		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, pos, i)
+		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+		df=regressor_functions.run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split)
+		df.to_csv('sweep_rf_%s_%s.csv')
 
 
 big_pool=find_training_genes_functions.load_big_pool()
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
-pos_chunks, neg_chunks=find_training_genes_functions.find_pos_neg_chunks(pos, neg)
+feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
 
-for i in range(5):
-	training_gene_names, test_gene_names=find_training_genes_functions.define_training_test(pos, pos_chunks, neg, neg_chunks, i)
-	training_df=find_training_genes_functions.make_genes_csv(training_gene_names, 'new', 'training_genes_%s'%i)
-	test_df=find_training_genes_functions.make_genes_csv(test_gene_names, 'new', 'test_genes_%s'%i)
-
-feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
 print ("DONE1")
 
+go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+
 all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
+
+tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
+for item in tree_no:
+	sweep_parameters(all_training_objects, pos, item, None, 2, 'treeno')
+
+
 
 feature_list=define_final_features()
 

@@ -66,7 +66,8 @@ if __name__ == '__main__':
 	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs)
 	print (X_train.shape)
 
-	define_gene_objects.run_new_rf(X_train, y_train, data_test, data_gene1, data_gene2)
+	df=define_gene_objects.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
+	df.to_csv('updated_new_all_gene_predictions.csv')
 
 	define_gene_objects.find_avg_scores(new_genes)
 

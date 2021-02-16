@@ -287,8 +287,8 @@ def load_feature(filename, input_genes):
 		#print (feature_dict['KCNMA1'])
 	return feature_dict
 
-def create_feature_value_dict(input_genes):
-	feature_list=define_features()
+def create_feature_value_dict(input_genes, feature_list):
+	#feature_list=define_features()
 #find the genes in all of the features:
 
 	all_feature_values=[]
