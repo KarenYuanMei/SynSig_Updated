@@ -25,16 +25,7 @@ import find_GO_scores
 
 import time
 
-#few_plus_one_features
-def define_final_features():
-	feature_list=['cerebral_cortex_hpa_isoform_exp', 'gtex_rna_tissue_expression','Phosphosite_hu_no', 'pFAM_domain_number', 'pFAM_domain', 'protein_mass', 'Ensembl_aa_length', 'Ensembl_isoform_no', 'trans_count', 'gc_content', 'trans_len', 'gene_length', 'exon_no', 'cds_length']
-
-	brain_features=['HIP_RNA', 'DFC_RNA', 'V1C_RNA', 'AMY_RNA', 'MD_RNA', 'STR_RNA', 'CBC_RNA']
-	kernel_feature=['mentha_kernel']
-	#gtex_kernel_feature=['gtex_rna_kernel']
-	feature_list=feature_list+brain_features+kernel_feature
-	#feature_list.pop(idx)
-	return feature_list
+import define_features
 
 
 def sweep_parameters(all_training_objects, pos, tree_no, depth, split, name):	
@@ -42,12 +33,15 @@ def sweep_parameters(all_training_objects, pos, tree_no, depth, split, name):
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, pos, i)
 		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 		df=regressor_functions.run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split)
-		df.to_csv('sweep_rf_%s_%s.csv')
+		df.to_csv('sweep_rf_%s_%s.csv'%s)
 
 
 big_pool=find_training_genes_functions.load_big_pool()
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+
+feature_list=define_features.load_all_features()
+print (len(feature_list))
 
 feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
 
@@ -63,5 +57,4 @@ for item in tree_no:
 
 
 
-feature_list=define_final_features()
 
