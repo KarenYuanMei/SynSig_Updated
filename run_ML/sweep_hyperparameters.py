@@ -40,7 +40,7 @@ big_pool=find_training_genes_functions.load_big_pool()
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
-feature_list=define_features.load_all_features()
+feature_list=define_features.load_filtered_features()
 print (len(feature_list))
 
 feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
