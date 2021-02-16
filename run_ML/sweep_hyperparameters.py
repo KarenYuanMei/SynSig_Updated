@@ -28,12 +28,12 @@ import time
 import define_features
 
 
-def sweep_parameters(all_training_objects, pos, tree_no, depth, split, name):	
+def sweep_parameters(all_training_objects, pos, tree_no, depth, split, name, param):	
 	for i in range(5):
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, pos, i)
 		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
 		df=regressor_functions.run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split)
-		df.to_csv('sweep_rf_%s_%s.csv'%s)
+		df.to_csv('sweep_rf_%s_%s_%s.csv'%(name, param, i))
 
 
 big_pool=find_training_genes_functions.load_big_pool()
@@ -49,11 +49,11 @@ print ("DONE1")
 
 go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
+all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
 
 tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
 for item in tree_no:
-	sweep_parameters(all_training_objects, pos, item, None, 2, 'treeno')
+	sweep_parameters(all_training_objects, pos, item, None, 2, 'treeno', item)
 
 
 
