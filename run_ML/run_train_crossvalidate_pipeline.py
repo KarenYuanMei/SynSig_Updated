@@ -23,7 +23,7 @@ import define_gene_objects
 import regressor_functions
 import find_training_genes_functions
 import find_GO_scores
-
+import define_features
 import time
 
 
@@ -59,10 +59,10 @@ def find_crossvalidate_input(all_training_objects, pos, i):
 	
 	print ("DONE3")
 
-	training_gene_pair_objects, training_feature_array, training_score=define_gene_objects.create_input_pair_objects(training_pairs)
+	training_gene_pair_objects, training_feature_array, training_score=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
 
 	print ('DONE')
-	train_test_gene_pair_objects, tt_feature_array, tt_score=define_gene_objects.create_input_pair_objects(train_test_pairs)
+	train_test_gene_pair_objects, tt_feature_array, tt_score=define_gene_objects.create_input_pair_objects(train_test_pairs, feature_list)
 	print ('DONE')
 
 	return training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score
