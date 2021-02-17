@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
 	pos_chunks, neg_chunks=find_training_genes_functions.find_pos_neg_chunks(pos, neg)
 
-	training_genes, test_genes=find_training_genes_function.define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks)
+	training_genes, test_genes=find_training_genes_functions.define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks)
 
 	# #df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
 	# feature_list=define_gene_objects.define_features()
