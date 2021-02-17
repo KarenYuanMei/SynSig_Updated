@@ -56,6 +56,11 @@ tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
 for item in tree_no:
 	sweep_parameters(all_training_objects, feature_list, pos, item, None, 2, 'treeno', item)
 
+max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
+for item in max_depth:
+	sweep_parameters(all_training_objects, feature_list, pos, 100, item, 2, 'max_depth', item)
 
-
+min_samples_split=[2, 3, 4, 5, 10]
+for item in min_samples_split:
+	sweep_parameters(all_training_objects, feature_list, pos, 100, 50, item, 'split', item)
 
