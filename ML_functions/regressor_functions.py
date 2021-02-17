@@ -169,6 +169,33 @@ def run_svm_poly(training_gene_pair_objects, X_train, y_train, train_test_gene_p
 	df.to_csv('../run_ML/ML_output/regressors/full60_svregressor_%s_%s.csv'%(poly_number, number))
 
 
+def sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, tree_no, depth, split):
+
+	#X_train, X_test, y_train, y_test=redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+	print ('X_test', len(X_test), 'y_test', len(y_test))
+
+	#forest = RandomForestRegressor(n_estimators=100, max_depth=50, oob_score=True, random_state=0)
+	forest = RandomForestRegressor(n_estimators=tree_no, max_depth=depth, min_samples_split=split, oob_score=True, random_state=0)
+	#forest = RandomForestRegressor(200)
+	forest.fit(X_train, y_train)
+	#depth=[(est.get_depth(), est.tree_.max_depth, est.max_depth) for est in forest.estimators_]
+	#print (depth)
+	yfit=forest.predict(X_test)
+	yfit=np.array(yfit)
+	print ('yfit', yfit)
+
+#metrics:
+	#spearmanr_corr, p_value=print_pred_metrics(forest, X_train, X_test, y_train, y_test, yfit)
+	#print ('ytest', y_test)
+	#feature_imp=find_feature_importance(forest, number, feature_list)
+
+#find the genes in all of the features:
+	df=make_pred_df(yfit, y_test, train_test_gene_pair_objects)
+	#df.to_csv('/Users/karenmei/Documents/Synapse_Ontology/NetworkCla/Entry_Ontology/synapse_10/random_forest/ypredict_ytest_%s.csv'%number)
+	#df.to_csv('../run_ML/ML_output/regressors/full60_random_forest_%s.csv'%number)
+
+	return df
+
 
 #optimal parameters: n_estimators=100, max_depth=50
 def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split):

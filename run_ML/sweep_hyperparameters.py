@@ -33,7 +33,7 @@ def sweep_parameters(all_training_objects, feature_list, pos, tree_no, depth, sp
 	for i in range(5):
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, feature_list, pos, i)
 		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
-		df=regressor_functions.run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth, split)
+		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, tree_no, depth, split)
 		df.to_csv('sweep_rf_%s_%s_%s.csv'%(name, param, i))
 
 
