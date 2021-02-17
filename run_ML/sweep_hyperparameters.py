@@ -54,7 +54,7 @@ all_training_objects=define_gene_objects.define_all_training_objects(all_trainin
 
 tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
 for item in tree_no:
-	sweep_parameters(all_training_objects, pos, item, None, 2, 'treeno', item)
+	sweep_parameters(all_training_objects, feature_list, pos, item, None, 2, 'treeno', item)
 
 
 
