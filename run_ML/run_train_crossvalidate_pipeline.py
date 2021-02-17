@@ -38,7 +38,7 @@ def load_resource_gene_lists(syngo_file, index_file):
 	return syngo, big_pool, GO_genes
 
 #for each fold in the crossvalidation, find the training genes, featuers, and GO_Scores; and the validation genes, features, and GO_scores
-def find_crossvalidate_input(all_training_objects, pos, i):
+def find_crossvalidate_input(all_training_objects, feature_list, pos, i):
 
 	training_gene_names, test_gene_names=find_training_genes_functions.load_crossvalidation_genes(i)
 
