@@ -6,7 +6,6 @@ from sklearn.metrics import auc
 
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
-matplotlib.rcParams.update({'font.size': 14})
 
 import sys
 sys.path.append('../read_data_functions/')
