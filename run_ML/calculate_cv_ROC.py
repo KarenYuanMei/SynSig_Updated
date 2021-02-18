@@ -43,7 +43,7 @@ def find_5fold_roc(filename):
 	return tprs, mean_fpr, auc_list
 
 if __name__ == '__main__':
-	filename='sweep_rf_treeno_100'
+	filename='../run_ML/sweep_param_results/sweep_rf_treeno_100'
 	tprs, mean_fpr, auc_list=find_5fold_roc(filename)
 	print (np.mean(auc_list))
 	graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
