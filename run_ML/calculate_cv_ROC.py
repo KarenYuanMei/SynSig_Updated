@@ -33,7 +33,7 @@ def load_resource_genes(i):
 
 	negative_filename='../updated_negatives.csv'
 	negatives=load_data_functions.get_gene_names(negative_filename)
-	return training, test, pos, neg
+	return training_genes, test_genes, pos, neg
 
 def make_score_table(data, training_positives):
 	gene1=data['Gene1'].tolist()
