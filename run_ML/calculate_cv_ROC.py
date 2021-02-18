@@ -84,7 +84,7 @@ def find_all_auc_tprs(filename,i):
 
 
 filename='sweep_rf_treeno_100'
-mean_fpr = np.linspace(0, 1, 80)
+mean_fpr = np.linspace(0, 1, 100)
 print ('mean fpr', mean_fpr)
 tprs=[]
 auc_list=[]
@@ -97,3 +97,4 @@ for i in range(5):
 print (tprs)
 print (auc_list)
 
+graph_functions.plot_mean_ROC(label,tprs, mean_fpr, auc_list)
