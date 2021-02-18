@@ -84,11 +84,14 @@ def find_all_auc_tprs(filename,i):
 
 
 filename='sweep_rf_treeno_100'
+mean_fpr = np.linspace(0, 1, 80)
+print ('mean fpr', mean_fpr)
 tprs=[]
 auc_list=[]
 for i in range(5):
 	tpr, fpr, thresholds, auc=find_all_auc_tprs(filename,i)
-	tprs.append(tpr)
+	tprs.append(np.interp(mean_fpr, fpr, tpr))
+	tprs[-1][0] = 0.0
 	auc_list.append(auc)
 
 print (tprs)
