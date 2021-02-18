@@ -56,7 +56,7 @@ def make_input_ROC_df(data, training_positives, pos, neg, test):
 	table=make_score_table(data, training_positives)
 	pos_df=find_group_df(table, pos, test, 1)
 	neg_df=find_group_df(table, neg, test, 0)
-	input_df=pd.concat([pos_df, neg_df], axis=1)
+	input_df=pd.concat([pos_df, neg_df])
 	print ('input', input_df)
 	avg_score=input_df['mean'].tolist()
 	label=input_df['group'].tolist()
