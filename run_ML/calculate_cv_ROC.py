@@ -79,7 +79,7 @@ def find_all_auc_tprs(filename,i):
 	training_positives=list(set(training)&set(pos))
 	label, avg_score=make_input_ROC_df(data, training_positives, pos, neg, test)
 	fpr, tpr, thresholds, auc=calculate_roc(label, avg_score)
-	ROC_df=save_roc_df(thresholds, tpr, fpr)
+	ROC_df=save_roc_df(thresholds, tpr, fpr, i)
 	return tpr, fpr, thresholds, auc
 
 
