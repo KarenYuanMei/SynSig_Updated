@@ -100,4 +100,4 @@ for i in range(5):
 print (tprs)
 print (auc_list)
 
-graph_functions.plot_mean_ROC(label,tprs, mean_fpr, auc_list)
+graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
