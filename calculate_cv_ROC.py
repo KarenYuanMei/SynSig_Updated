@@ -23,16 +23,16 @@ import load_data_functions
 
 def load_resource_genes(i):
 	test_genes_file='../updated_test_genes_%s.csv'%i
-	test_genes=find_genes(test_genes_file)
+	test_genes=load_data_functions.get_gene_names(test_genes_file)
 
 	training_genes_file='../updated_training_genes_%s.csv'%i
-	training_genes=find_genes(training_genes_file)
+	training_genes=load_data_functions.get_gene_names(training_genes_file)
 
 	positive_filename='../updated_positives.csv'
-	positives=find_genes(positive_filename)
+	positives=load_data_functions.get_gene_names(positive_filename)
 
 	negative_filename='../updated_negatives.csv'
-	negatives=find_genes(negative_filename)
+	negatives=load_data_functions.get_gene_names(negative_filename)
 	return training, test, pos, neg
 
 def make_score_table(data, training_positives):
