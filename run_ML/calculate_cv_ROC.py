@@ -18,8 +18,11 @@ matplotlib.rcParams.update({'font.size': 14})
 
 import sys
 sys.path.append('../read_data_functions/')
-
 import load_data_functions
+
+sys.path.append('../graph_functions/')
+import graph_functions
+
 
 def load_resource_genes(i):
 	test_genes_file='../updated_test_genes_%s.csv'%i
