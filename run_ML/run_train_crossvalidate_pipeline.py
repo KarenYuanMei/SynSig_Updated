@@ -128,20 +128,20 @@ if __name__ == '__main__':
 
 	pos, neg, all_training=find_training_genes_functions.define_pos_neg_training(syngo, big_pool, GO_genes)
 
-	# go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-	# feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
-	# print ("DONE1")
+	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
+	print ("DONE1")
 
-	# all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
+	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
 
 	pos_chunks, neg_chunks=find_training_genes_functions.find_pos_neg_chunks(pos, neg)
 
 	training_genes, test_genes=find_training_genes_functions.define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks)
 
-	# #df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
-	# feature_list=define_gene_objects.define_features()
-	# compare_regressors(all_training_objects, pos, feature_list)
+	df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
+	feature_list=define_gene_objects.define_features()
+	compare_regressors(all_training_objects, pos, feature_list)
 
 
 

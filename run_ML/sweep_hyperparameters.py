@@ -11,7 +11,6 @@ from ddot import Ontology
 
 from itertools import combinations, combinations_with_replacement
 from itertools import product
-from collections import defaultdict
 
 import sys
 sys.path.append('../read_data_functions/')
@@ -36,31 +35,34 @@ def sweep_parameters(all_training_objects, feature_list, pos, tree_no, depth, sp
 		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, tree_no, depth, split)
 		df.to_csv('sweep_rf_%s_%s_%s.csv'%(name, param, i))
 
+def sweep_tree_no(all_training_objects, feature_list, pos):
+	tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
+	for item in tree_no:
+		sweep_parameters(all_training_objects, feature_list, pos, item, None, 2, 'treeno', item)
 
-big_pool=find_training_genes_functions.load_big_pool()
+def sweep_max_depth(all_training_objects, feature_list, pos):
+	max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
+	for item in max_depth:
+		sweep_parameters(all_training_objects, feature_list, pos, 100, item, 2, 'max_depth', item)
 
-pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+def sweep_split(all_training_objects, feature_list, pos):
+	min_samples_split=[2, 3, 4, 5, 10]
+	for item in min_samples_split:
+		sweep_parameters(all_training_objects, feature_list, pos, 100, 50, item, 'split', item)
 
-feature_list=define_features.load_filtered_features()
-print (len(feature_list))
+if __name__ == '__main__':
+	
+	big_pool=find_training_genes_functions.load_big_pool()
 
-feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
+	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
-print ("DONE1")
+	feature_list=define_features.load_filtered_features()
+	print (len(feature_list))
 
-go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
 
-all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
+	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
-for item in tree_no:
-	sweep_parameters(all_training_objects, feature_list, pos, item, None, 2, 'treeno', item)
+	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
 
-max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
-for item in max_depth:
-	sweep_parameters(all_training_objects, feature_list, pos, 100, item, 2, 'max_depth', item)
-
-min_samples_split=[2, 3, 4, 5, 10]
-for item in min_samples_split:
-	sweep_parameters(all_training_objects, feature_list, pos, 100, 50, item, 'split', item)
 
