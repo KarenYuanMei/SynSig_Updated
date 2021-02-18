@@ -30,7 +30,7 @@ import ROC_functions
 def find_5fold_roc(filename):
 	
 	mean_fpr = np.linspace(0, 1, 100)
-	print ('mean fpr', mean_fpr)
+	#print ('mean fpr', mean_fpr)
 	tprs=[]
 	auc_list=[]
 	for i in range(5):
@@ -45,4 +45,5 @@ def find_5fold_roc(filename):
 if __name__ == '__main__':
 	filename='sweep_rf_treeno_100'
 	tprs, mean_fpr, auc_list=find_5fold_roc(filename)
+	print (np.mean(auc_list))
 	graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
