@@ -79,8 +79,8 @@ if __name__ == '__main__':
 
 	mean_times=[]
 	time_sems=[]
-	for item in regressors:
-		times=d[item]
+	for key in d:
+		times=d[key]
 		mean_time=np.mean(times)
 		mean_times.append(mean_time)
 		time_sem=stats.sem(times)
