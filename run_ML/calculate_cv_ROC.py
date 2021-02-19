@@ -46,13 +46,16 @@ def find_5fold_roc(filename):
 
 def compare_regressor_roc():
 	regressors=['adaboost', 'random_forest', 'svregressor_3', 'svregressor_4', 'svregressor_rbf', 'svregressor_sigmoid']
-	reg_aucs=[]
+	mean_aucs=[]
+	reg_sem=[]
 	for item in regressors:
 		filename='../run_ML/ML_output/regressors/full60_'+item
 		tprs, mean_fpr, auc_list=find_5fold_roc(filename)
-		print (np.mean(auc_list))
-		reg_aucs.append(auc_list)
-	return regressors, reg_aucs
+		mean_auc=np.mean(auc_list)
+		sem=stats.sem(auc_list)
+		mean_aucs.append(mean_auc)
+		reg_sem.append(sem)
+	return regressors, mean_aucs, reg_sem
 
 
 if __name__ == '__main__':
@@ -61,6 +64,8 @@ if __name__ == '__main__':
 	# print (np.mean(auc_list))
 	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
 
-	regressors, reg_aucs=compare_regressor_roc()
-	for i in range(len(regressors)):
-		print (regressors[i], reg_aucs[i], stats.sem(reg_aucs[i]))
+	regressors, mean_aucs, reg_sem=compare_regressor_roc()
+
+	df=pd.DataFrame({'regressors': regressors, 'mean': mean_aucs, 'sem': reg_sem })
+	print (df)
+	

@@ -35,7 +35,6 @@ matplotlib.rcParams.update({'font.size': 14})
 
 
 def plot_mean_ROC(tprs, mean_fpr, auc_list):
-
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 	mean_auc=np.mean(auc_list)
@@ -61,3 +60,21 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list):
 		# show the plot
 	#plt.show()
 	plt.savefig('updated_val_5fold_ROC.svg', format="svg")
+
+
+def plot_bargraph_with_errorbar(df, xlabel, ylabel, title, name):
+	f = plt.figure()
+	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
+
+	plt.xlabel(xlabel)
+	plt.ylabel(ylabel)
+	plt.title (title, fontweight='bold')
+	x_ticks = np.arange(0, 1,0.1)
+	plt.xticks(x_ticks)
+
+	y_ticks = np.arange(0, 1, 0.1)
+	plt.yticks(y_ticks)
+	plt.ylim(0, 1)
+	plt.show()
+	plt.close()
+	f.savefig(name+".pdf", bbox_inches='tight')
