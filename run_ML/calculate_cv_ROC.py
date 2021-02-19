@@ -68,6 +68,6 @@ if __name__ == '__main__':
 	#labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
 	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
 
-	df=pd.read_csv('regressor_time.txt')
+	df=pd.read_csv('../run_ML/ML_output/regressors/regressor_time.txt')
 	print (df)
 
