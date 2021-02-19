@@ -17,8 +17,7 @@ from collections import defaultdict
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 
-matplotlib.rcParams.update({'font.size': 14})
-
+from scipy import stats
 
 import sys
 sys.path.append('../read_data_functions/')
