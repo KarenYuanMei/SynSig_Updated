@@ -62,19 +62,17 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list):
 	plt.savefig('updated_val_5fold_ROC.svg', format="svg")
 
 
-def plot_bargraph_with_errorbar(df, xlabel, ylabel, title, name):
-	f = plt.figure()
-	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
+def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel):
+		# Set position of bar on X axis
+	#labels=['SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)','Adaboost',  'Random Forest']
+	x_pos=np.arange(len(labels))
+	plt.bar(labels, mean_values, yerr=sem, color=['silver', 'dimgray', '#7f6d5f', '#557f2d','#2d7f5e'], align='center', ecolor='black', capsize=10)
 
-	plt.xlabel(xlabel)
-	plt.ylabel(ylabel)
-	plt.title (title, fontweight='bold')
-	x_ticks = np.arange(0, 1,0.1)
-	plt.xticks(x_ticks)
-
-	y_ticks = np.arange(0, 1, 0.1)
-	plt.yticks(y_ticks)
 	plt.ylim(0, 1)
-	plt.show()
-	plt.close()
-	f.savefig(name+".pdf", bbox_inches='tight')
+	 
+	# Create legend & Show graphic
+	#plt.legend()
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	plt.xticks(rotation=45)
+	plt.savefig('compare_regressor_roc.svg', format="svg")
