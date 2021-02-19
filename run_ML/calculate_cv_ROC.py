@@ -40,8 +40,7 @@ def find_5fold_roc(filename):
 		tprs.append(np.interp(mean_fpr, fpr, tpr))
 		tprs[-1][0] = 0.0
 		auc_list.append(auc)
-
-	print (auc_list)
+	#print (auc_list)
 	return tprs, mean_fpr, auc_list
 
 def compare_regressor_roc():
@@ -57,23 +56,6 @@ def compare_regressor_roc():
 		reg_sem.append(sem)
 	return regressors, mean_aucs, reg_sem
 
-def plot_bargraph_with_errorbar(df, xlabel, ylabel, title, name):
-	f = plt.figure()
-	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
-
-	plt.xlabel(xlabel)
-	plt.ylabel(ylabel)
-	plt.title (title, fontweight='bold')
-	#x_ticks = np.arange(0, 1,0.1)
-	#plt.xticks(x_ticks)
-
-	#y_ticks = np.arange(0, 1, 0.1)
-	#plt.yticks(y_ticks)
-	plt.ylim(0, 1)
-	plt.show()
-	plt.close()
-	f.savefig(name+".pdf", bbox_inches='tight')
-
 
 
 if __name__ == '__main__':
@@ -82,8 +64,9 @@ if __name__ == '__main__':
 	# print (np.mean(auc_list))
 	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
 
-	regressors, mean_aucs, reg_sem=compare_regressor_roc()
+	#regressors, mean_aucs, reg_sem=compare_regressor_roc()
+	#labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
+	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
 
-	labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
-	graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
+	df=pd.read_csv('regressor_time')
 
