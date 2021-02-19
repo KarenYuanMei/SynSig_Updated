@@ -65,8 +65,8 @@ if __name__ == '__main__':
 	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
 
 	#regressors, mean_aucs, reg_sem=compare_regressor_roc()
-	#labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
-	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
+	labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
+	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC', 'compare_regressor_roc')
 
 	df=pd.read_csv('../run_ML/ML_output/regressors/regressor_time.csv', sep=',')
 	regressors=df['regressor'].tolist()
@@ -76,3 +76,14 @@ if __name__ == '__main__':
 	for regressor, time in reg_time:
 		d[regressor].append(time)
 	print (d['adaboost'])
+
+	mean_times=[]
+	time_sems=[]
+	for item in regressors:
+		times=d[item]
+		mean_time=np.mean(times)
+		mean_times.append(mean_time)
+		time_sem=stats.sem(times)
+		time_sems.append(time_sem)
+
+	graph_functions.plot_bargraph_with_errorbar(labels, mean_times, time_sems, 'Cross-Validation', 'Time(s)', 'regressor_time')

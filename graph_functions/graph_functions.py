@@ -62,7 +62,7 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list):
 	plt.savefig('updated_val_5fold_ROC.svg', format="svg")
 
 
-def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel):
+def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
 
@@ -72,4 +72,4 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel):
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
 	plt.xticks(rotation=45)
-	plt.savefig('compare_regressor_roc.svg', format="svg")
+	plt.savefig(name+'.svg', format="svg")
