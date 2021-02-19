@@ -70,4 +70,6 @@ if __name__ == '__main__':
 
 	df=pd.read_csv('../run_ML/ML_output/regressors/regressor_time.txt', sep='\t')
 	print (df)
+	print (df[0])
+	print (df[0][0])
 
