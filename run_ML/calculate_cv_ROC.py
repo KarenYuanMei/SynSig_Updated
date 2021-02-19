@@ -69,4 +69,5 @@ if __name__ == '__main__':
 	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
 
 	df=pd.read_csv('regressor_time')
+	print (df)
 
