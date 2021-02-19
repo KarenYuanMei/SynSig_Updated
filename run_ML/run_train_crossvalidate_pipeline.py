@@ -67,8 +67,6 @@ def find_crossvalidate_input(all_training_objects, feature_list, pos, i):
 
 	return training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score
 
-
-
 #run adaboost and also time each fold of crossvalidation
 def time_adaboost(training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score, i):
 	start = time.time()
@@ -99,6 +97,7 @@ def time_random_forest(training_gene_pair_objects, training_feature_array, train
 	return rf_df
 
 def compare_regressors(all_training_objects, pos, feature_list):
+
 	for i in range(5):
 		#define each fold of training and test genes:
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=find_crossvalidate_input(all_training_objects, pos, i)
@@ -118,6 +117,14 @@ def compare_regressors(all_training_objects, pos, feature_list):
 		sigmoid_df=time_svm_regressor(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 'sigmoid', i)
 
 	return ada_df, rf_df, poly3_df, poly4_df, rbf_df, sigmoid_df
+
+
+def run_cv_opt_rf(all_training_objects, pos, feature_list):
+	
+	for i in range(5):
+		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=find_crossvalidate_input(all_training_objects, pos, i)
+		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+		regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, 50, 2)
 
 
 if __name__ == '__main__':
@@ -140,9 +147,9 @@ if __name__ == '__main__':
 	training_genes, test_genes=find_training_genes_functions.define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks)
 
 	df=fivefold_crossvalidate_rf(pos, pos_chunks, neg, neg_chunks)
-	feature_list=define_gene_objects.define_features()
-	compare_regressors(all_training_objects, pos, feature_list)
+	#feature_list=define_features.load_all_features()
+	#compare_regressors(all_training_objects, pos, feature_list)
 
-
-
+	feature_list=define_features.load_filtered_features()
+	run_cv_opt_rf(all_training_objects, pos, feature_list)
 
