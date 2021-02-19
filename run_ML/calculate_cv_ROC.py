@@ -7,14 +7,18 @@ import pandas as pd
 import matplotlib
 #matplotlib.use("TKAgg")
 from matplotlib import pyplot as plt
+matplotlib.rcParams.update({'font.size': 14})
+
 
 from sklearn.metrics import auc
-from itertools import combinations
+#from itertools import combinations
 from collections import defaultdict
 
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
+
 matplotlib.rcParams.update({'font.size': 14})
+
 
 import sys
 sys.path.append('../read_data_functions/')
@@ -60,4 +64,4 @@ if __name__ == '__main__':
 
 	regressors, reg_aucs=compare_regressor_roc()
 	for i in range(len(regressors)):
-		print (regressors[i], reg_aucs[i])
+		print (regressors[i], reg_aucs[i], stats.sem(reg_aucs[i]))
