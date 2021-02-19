@@ -69,7 +69,10 @@ if __name__ == '__main__':
 	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC')
 
 	df=pd.read_csv('../run_ML/ML_output/regressors/regressor_time.csv', sep=',')
-	print (df)
-	print (df.iloc[0])
-	print (df[0][0])
-
+	regressors=df['regressor'].tolist()
+	time=df['time'].tolist()
+	reg_time=list(zip(regressors, time))
+	d=defaultdict(list)
+	for regressor, time in reg_time:
+		d[regressor].append(time)
+	print (d['adaboost'])
