@@ -56,18 +56,7 @@ def compare_regressor_roc():
 		reg_sem.append(sem)
 	return regressors, mean_aucs, reg_sem
 
-
-
-if __name__ == '__main__':
-	# filename='../run_ML/sweep_param_results/sweep_rf_tree_100'
-	# tprs, mean_fpr, auc_list=find_5fold_roc(filename)
-	# print (np.mean(auc_list))
-	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
-
-	#regressors, mean_aucs, reg_sem=compare_regressor_roc()
-	labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
-	#graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC', 'compare_regressor_roc')
-
+def compare_regressor_time():
 	df=pd.read_csv('../run_ML/ML_output/regressors/regressor_time.csv', sep=',')
 	regressors=df['regressor'].tolist()
 	time=df['time'].tolist()
@@ -86,4 +75,27 @@ if __name__ == '__main__':
 		time_sem=stats.sem(times)
 		time_sems.append(time_sem)
 
-	graph_functions.plot_bargraph_with_errorbar(labels, mean_times, time_sems, 'Cross-Validation', 'Time(s)', 'regressor_time')
+	return mean_times, time_sems
+
+
+
+if __name__ == '__main__':
+	# filename='../run_ML/sweep_param_results/sweep_rf_tree_100'
+	# tprs, mean_fpr, auc_list=find_5fold_roc(filename)
+	# print (np.mean(auc_list))
+	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
+
+	# regressors, mean_aucs, reg_sem=compare_regressor_roc()
+	# labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
+	# graph_functions.plot_bargraph_with_errorbar(labels, mean_aucs, reg_sem, 'Cross-Validation', 'Synapse Recovery ROC', 'compare_regressor_roc')
+
+	# mean_times, time_sems=compare_regressor_time()
+	# graph_functions.plot_bargraph_with_errorbar(labels, mean_times, time_sems, 'Cross-Validation', 'Time(s)', 'regressor_time')
+
+	tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
+	
+	for item in tree_no:
+		filename='../run_ML/sweep_param_results/sweep_rf_tree_%s'%item
+		tprs, mean_fpr, auc_list=find_5fold_roc(filename)
+		print (np.mean(auc_list))
+		#graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
