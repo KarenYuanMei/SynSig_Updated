@@ -104,7 +104,7 @@ if __name__ == '__main__':
 	# graph_functions.plot_bargraph_with_errorbar(labels, mean_times, time_sems, 'Cross-Validation', 'Time(s)', 'regressor_time')
 
 	tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
-	calc_sweep_sweep('tree', tree_no)
+	calc_sweep_param('tree', tree_no)
 
 	# for item in tree_no:
 	# 	filename='../run_ML/ML_output/sweep_param_results/sweep_rf_tree_%s'%item
