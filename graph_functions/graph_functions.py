@@ -80,6 +80,6 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 def plot_linegraph(x_values, y_values, xlabel, ylabel, name):
 	plt.plot(x_values, y_values)
 	plt.ylabel(ylabel)
-	plt.ylim(0.75, 0.9)
+	plt.ylim(0.5, 0.9)
 	plt.xlabel(xlabel)
 	plt.savefig(name+'.svg', format="svg")
