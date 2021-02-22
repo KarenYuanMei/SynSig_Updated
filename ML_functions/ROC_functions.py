@@ -15,16 +15,16 @@ sys.path.append('../graph_functions/')
 import graph_functions
 
 def load_resource_genes(i):
-	test_genes_file='../updated_test_genes_%s.csv'%i
+	test_genes_file='../run_ML/ML_output/training_genes/updated_test_genes_%s.csv'%i
 	test_genes=load_data_functions.get_gene_names(test_genes_file)
 
-	training_genes_file='../updated_training_genes_%s.csv'%i
+	training_genes_file='../run_ML/ML_output/training_genes/updated_training_genes_%s.csv'%i
 	training_genes=load_data_functions.get_gene_names(training_genes_file)
 
-	positive_filename='../updated_positives.csv'
+	positive_filename='../run_ML/ML_output/training_genes/updated_positives.csv'
 	positives=load_data_functions.get_gene_names(positive_filename)
 
-	negative_filename='../updated_negatives.csv'
+	negative_filename='../run_ML/ML_output/training_genes/updated_negatives.csv'
 	negatives=load_data_functions.get_gene_names(negative_filename)
 	return training_genes, test_genes, positives, negatives
 
