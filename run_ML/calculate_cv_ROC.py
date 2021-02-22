@@ -87,9 +87,6 @@ def calc_sweep_param(param_name, param_values):
 		#graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
 	return mean_aucs
 
-
-
-
 if __name__ == '__main__':
 	# filename='../run_ML/sweep_param_results/sweep_rf_tree_100'
 	# tprs, mean_fpr, auc_list=find_5fold_roc(filename)
@@ -104,7 +101,8 @@ if __name__ == '__main__':
 	# graph_functions.plot_bargraph_with_errorbar(labels, mean_times, time_sems, 'Cross-Validation', 'Time(s)', 'regressor_time')
 
 	tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
-	calc_sweep_param('tree', tree_no)
+	tree_mean_aucs=calc_sweep_param('tree', tree_no)
+	graph_functions.plot_linegraph(tree_no, tree_mean_aucs, 'Number of Trees', 'Synapse Recovery ROC', 'tree_no')
 
 	# for item in tree_no:
 	# 	filename='../run_ML/ML_output/sweep_param_results/sweep_rf_tree_%s'%item
