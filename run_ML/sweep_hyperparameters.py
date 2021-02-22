@@ -65,4 +65,20 @@ if __name__ == '__main__':
 
 	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
 
+	for i in range(5):
+		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, feature_list, pos, i)
+		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
+
+		max_depth=[40, 50, 60, 70, 80, 90, 100]
+		for item in max_depth:
+			df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, item, 2)
+			df.to_csv('sweep_rf_%s_%s_%s.csv'%('max_depth', item, i))
+
+		min_samples_split=[2, 3, 4, 5, 10]
+		for item in min_samples_split:
+			df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, 50, item)
+			df.to_csv('sweep_rf_%s_%s_%s.csv'%('split', item, i))
+
+
+
 

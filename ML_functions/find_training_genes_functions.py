@@ -112,8 +112,8 @@ def define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks):
 
 
 def load_crossvalidation_genes(i):
-	training=get_gene_names('updated_training_genes_%s.csv'%i)
-	test=get_gene_names('updated_test_genes_%s.csv'%i)
+	training=get_gene_names('../run_ML/ML_output/training_genes/updated_training_genes_%s.csv'%i)
+	test=get_gene_names('../run_ML/ML_output/training_genes/updated_test_genes_%s.csv'%i)
 	return training, test
 
 
