@@ -93,8 +93,8 @@ def find_pos_genes_in_training(training_genes, positives):
 	return pos_training
 
 def load_pos_neg_training():
-	pos=get_gene_names('updated_positives.csv')
-	neg=get_gene_names('updated_negatives.csv')
+	pos=get_gene_names('../run_ML/ML_output/training_genes/updated_positives.csv')
+	neg=get_gene_names('../run_ML/ML_output/training_genes/updated_negatives.csv')
 	all_training=pos+neg
 	return pos, neg, all_training
 
