@@ -32,23 +32,29 @@ def sweep_parameters(all_training_objects, feature_list, pos, tree_no, depth, sp
 	for i in range(5):
 		training_gene_pair_objects, training_feature_array, training_score, train_test_gene_pair_objects, tt_feature_array, tt_score=run_train_crossvalidate_pipeline.find_crossvalidate_input(all_training_objects, feature_list, pos, i)
 		X_train, X_test, y_train, y_test=regressor_functions.redefine_input(training_feature_array, tt_feature_array, training_score, tt_score)
-		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, tree_no, depth, split)
-		df.to_csv('sweep_rf_%s_%s_%s.csv'%(name, param, i))
+		
+		sweep_tree_no(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, i)
+		sweep_max_depth(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, i)
+		sweep_split(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, i)
 
-def sweep_tree_no(all_training_objects, feature_list, pos):
+
+def sweep_tree_no(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test):
 	tree_no=[100, 125, 150, 175, 200, 225, 250, 275, 300]
 	for item in tree_no:
-		sweep_parameters(all_training_objects, feature_list, pos, item, None, 2, 'treeno', item)
+		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, item, None, 2)
+		df.to_csv('sweep_rf_%s_%s_%s.csv'%('tree', item, i))
 
-def sweep_max_depth(all_training_objects, feature_list, pos):
+def sweep_max_depth(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, i):
 	max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
 	for item in max_depth:
-		sweep_parameters(all_training_objects, feature_list, pos, 100, item, 2, 'max_depth', item)
+		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, item, 2)
+		df.to_csv('sweep_rf_%s_%s_%s.csv'%('max_depth', item, i))
 
-def sweep_split(all_training_objects, feature_list, pos):
+def sweep_split(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, i):
 	min_samples_split=[2, 3, 4, 5, 10]
 	for item in min_samples_split:
-		sweep_parameters(all_training_objects, feature_list, pos, 100, 50, item, 'split', item)
+		df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, 50, item)
+		df.to_csv('sweep_rf_%s_%s_%s.csv'%('split', item, i))
 
 if __name__ == '__main__':
 	
@@ -72,12 +78,12 @@ if __name__ == '__main__':
 		max_depth=[40, 50, 60, 70, 80, 90, 100]
 		for item in max_depth:
 			df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, item, 2)
-			df.to_csv('sweep_rf_%s_%s_%s.csv'%('max_depth', item, i))
+			df.to_csv('../run_ML/ML_output/sweep_param_results/sweep_rf_%s_%s_%s.csv'%('max_depth', item, i))
 
 		min_samples_split=[2, 3, 4, 5, 10]
 		for item in min_samples_split:
 			df=regressor_functions.sweep_param_rf(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, 100, 50, item)
-			df.to_csv('sweep_rf_%s_%s_%s.csv'%('split', item, i))
+			df.to_csv('../run_ML/ML_output/sweep_param_results/sweep_rf_%s_%s_%s.csv'%('split', item, i))
 
 
 
