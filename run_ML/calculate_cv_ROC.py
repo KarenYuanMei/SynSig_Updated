@@ -97,5 +97,5 @@ if __name__ == '__main__':
 	for item in tree_no:
 		filename='../run_ML/ML_output/sweep_param_results/sweep_rf_tree_%s'%item
 		tprs, mean_fpr, auc_list=find_5fold_roc(filename)
-		print (np.mean(auc_list))
+		print (item, np.mean(auc_list))
 		#graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
