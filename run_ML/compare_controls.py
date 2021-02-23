@@ -126,6 +126,31 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 
 	return conf_intervals
 
+def load_synapse_db_genes(big_pool, go_genes):
+	hk=find_hk(big_pool)
+	golgi=find_golgi(big_pool)
+	mem=find_mem(big_pool)
+	syngo=find_syngo(big_pool, go_genes)
+	syndb=find_SynDB(big_pool)
+	synsysnet=find_synsysnet(big_pool)
+	return hk, golgi, mem, syngo, syndb, synsysnet
+
+def compute_syn_control_ci(genelists, genelist_names, all_training):
+	final_dfs=[]
+	for item in genelists:
+		final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+		#print (final)
+		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
+		print (auc)
+		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+		final_dfs.append(final_df)
+
+	genelist_diff_ci={}
+	for i in range(1, len(genelists)):
+		conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
+		print (conf_interval)
+		genelist_diff_ci[genelist_names[i]]=conf_interval
+	return genelist_diff_ci
 
 big_pool=find_training_genes_functions.load_big_pool()
 
@@ -134,32 +159,13 @@ pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 human_ont=find_GO_scores.find_GO_ont()
 go_genes=human_ont.genes
 
-hk=find_hk(big_pool)
-golgi=find_golgi(big_pool)
-mem=find_mem(big_pool)
-syngo=find_syngo(big_pool, go_genes)
-syndb=find_SynDB(big_pool)
-synsysnet=find_synsysnet(big_pool)
+hk, golgi, mem, syngo, syndb, synsysnet=load_synapse_db_genes(big_pool, go_genes)
 
 syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-print (len(hk))
-print (len(golgi))
-print (len(mem))
-print (len(syngo))
-
 genelists=[syn, syngo, hk, golgi, mem]
+genelist_names=['syn', 'syngo', 'hk', 'golgi', 'mem']
+genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
+print (genelist_diff_ci)
 
 
-final_dfs=[]
-for item in genelists:
-	final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
-	#print (final)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
-	print (auc)
-	final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
-	final_dfs.append(final_df)
-
-for i in range(1, len(genelists)):
-	conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
-	print (conf_interval)
