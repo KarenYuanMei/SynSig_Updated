@@ -86,5 +86,6 @@ print (len(mem))
 print (len(syngo))
 
 final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
+print (final)
 fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 print (auc)
