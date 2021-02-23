@@ -74,3 +74,27 @@ def find_all_auc_tprs(filename,i):
 	fpr, tpr, thresholds, auc=calculate_roc(label, avg_score)
 	ROC_df=save_roc_df(thresholds, tpr, fpr, i)
 	return tpr, fpr, thresholds, auc
+
+#compare the control gene lists to predicted synapse genes
+def load_predicted_df():
+	df=pd.read_csv('../run_ML/ML_output/new_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv', index_col=[0])
+	return df
+
+def find_pred_labels_scores(genelist, training_genes):
+	df=load_predicted_df()
+	no_train=list(set(genelist)-set(training_genes))
+	avg_scores=df['avg_scores'].tolist()
+
+	pred_genes=list(df.index)
+	y_list=[]
+	for item in pred_genes:
+		if item in no_train:
+			group=1
+		else:
+			group=0
+		y_list.append(group)
+
+	final=pd.DataFrame({'genes': pred_genes, 'avg_scores': avg_scores , 'label': y_list})
+	label=final['union'].tolist()
+	avg_score=final['avg_scores'].tolist()
+	return final, label, avg_score

@@ -83,3 +83,7 @@ print (len(hk))
 print (len(golgi))
 print (len(mem))
 print (len(syngo))
+
+final, label, avg_scores=ROC_functions.find_pred_labels_scores(hk, training_genes)
+fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+print (auc)
