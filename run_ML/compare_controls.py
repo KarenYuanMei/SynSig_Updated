@@ -79,7 +79,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 
 	bootstrapped_auc_diffs = []
 	for i in range(num_bootstrap_samples):
-		indices = random.randint(0,len(scores),len(scores))
+		indices = random.randint(0,len(scores))
 
 		set1_auc = compute_auc(set1_labels[indices],scores[indices])
 		set2_auc = compute_auc(set2_labels[indices],scores[indices])
