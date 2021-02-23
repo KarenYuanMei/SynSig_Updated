@@ -36,7 +36,7 @@ import define_features
 
 #find housekeeping:==============
 def find_hk(big_pool):
-	hk=pd.read_csv('Human_Mouse_Common.csv', sep=';')
+	hk=pd.read_csv('../gene_lists/Human_Mouse_Common.csv', sep=';')
 	#print (hk)
 	hk=hk['Human'].tolist()
 	hk=list(set(hk)&set(big_pool))
@@ -44,13 +44,13 @@ def find_hk(big_pool):
 
 #find golgi:===================
 def find_golgi(big_pool):
-	golgi=get_gene_names('golgi_genes.csv')
+	golgi=load_data_functions.get_gene_names('../gene_lists/golgi_genes.csv')
 	golgi=list(set(golgi)&set(big_pool))
 	return golgi
 
 #find transmembrane:==============
 def find_mem(big_pool):
-	transm=pd.read_csv('Uniprot_transmembrane.csv')
+	transm=pd.read_csv('../gene_lists/Uniprot_transmembrane.csv')
 	transm=transm['Gene names'].tolist()
 	transm=[str(x) for x in transm]
 	mem=[]
@@ -60,13 +60,11 @@ def find_mem(big_pool):
 	mem=list(set(mem)&set(big_pool))
 	return mem
 
-def find_syngo(big_pool):
+def find_syngo(big_pool, go_genes):
 	syngo_file='../correct_db/corr_syngo_cc.csv'
-	syngo=get_gene_names(syngo_file)
-	GO_genes=find_GO_genes()
-	syngo=list(set(syngo)&set(big_pool)&set(GO_genes))
+	syngo=load_data_functions.get_gene_names(syngo_file)
+	syngo=list(set(syngo)&set(big_pool)&set(go_genes))
 	return syngo
-
 
 
 big_pool=find_training_genes_functions.load_big_pool()
@@ -75,3 +73,13 @@ pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
 human_ont=find_training_genes_functions.find_GO_ont()
 go_genes=human.ont.genes
+
+hk=find_hk(big_pool)
+golgi=find_golgi(big_pool)
+mem=find_mem(big_pool)
+syngo=find_syngo(big_pool)
+
+print (len(hk))
+print (len(golgi))
+print (len(mem))
+print (len(syngo))
