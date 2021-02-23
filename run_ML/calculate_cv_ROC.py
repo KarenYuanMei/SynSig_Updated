@@ -64,8 +64,7 @@ def compare_regressor_time():
 	d=defaultdict(list)
 	for regressor, time in reg_time:
 		d[regressor].append(time)
-	print (d['adaboost'])
-
+	
 	mean_times=[]
 	time_sems=[]
 	for key in d:
@@ -88,10 +87,6 @@ def calc_sweep_param(param_name, param_values):
 	return mean_aucs
 
 if __name__ == '__main__':
-	# filename='../run_ML/sweep_param_results/sweep_rf_tree_100'
-	# tprs, mean_fpr, auc_list=find_5fold_roc(filename)
-	# print (np.mean(auc_list))
-	# graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
 
 	# regressors, mean_aucs, reg_sem=compare_regressor_roc()
 	# labels=['Adaboost',  'Random Forest', 'SVM (poly deg=3)', 'SVM (poly deg=4)', 'SVM (rbf)', 'SVM (Sigmoid)']
@@ -104,8 +99,10 @@ if __name__ == '__main__':
 	tree_mean_aucs=calc_sweep_param('tree', tree_no)
 	graph_functions.plot_linegraph(tree_no, tree_mean_aucs, 'Number of Trees', 'Synapse Recovery ROC', 'tree_no')
 
-	# for item in tree_no:
-	# 	filename='../run_ML/ML_output/sweep_param_results/sweep_rf_tree_%s'%item
-	# 	tprs, mean_fpr, auc_list=find_5fold_roc(filename)
-	# 	print (item, np.mean(auc_list))
-		#graph_functions.plot_mean_ROC(tprs, mean_fpr, auc_list)
+	max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
+	depth_mean_aucs=calc_sweep_param('depth', max_depth)
+	graph_functions.plot_linegraph(max_depth, depth_mean_aucs, 'Maximum Tree Depth', 'Synapse Recovery ROC', 'depth')
+
+	min_samples_split=[2, 3, 4, 5, 10]
+	split_mean_aucs=calc_sweep_param('split', split_mean_aucs)
+	graph_functions.plot_linegraph(min_samples_split, split_mean_aucs, 'Minimum Samples Split', 'Synapse Recovery ROC', 'split')
