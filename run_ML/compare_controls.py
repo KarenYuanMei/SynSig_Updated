@@ -150,14 +150,16 @@ print (len(syngo))
 
 genelists=[syn, syngo, hk, golgi, mem]
 
+
+final_dfs=[]
 for item in genelists:
 	final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
 	#print (final)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 	print (auc)
+	final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+	final_dfs.append(final_df)
 
-
-syn_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syn, all_training)
-hk_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
-conf_interval=compare_auc_bootstrap(syn_final, hk_final)
-print (conf_interval)
+for i in range(1, len(genelists)):
+	conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
+	print (conf_interval)
