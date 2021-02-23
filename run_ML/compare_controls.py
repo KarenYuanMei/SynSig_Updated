@@ -63,25 +63,6 @@ def find_mem(big_pool):
 	mem=list(set(mem)&set(big_pool))
 	return mem
 
-def find_syngo(big_pool, go_genes):
-	syngo_file='../correct_db/corr_syngo_cc.csv'
-	syngo=load_data_functions.get_gene_names(syngo_file)
-	syngo=list(set(syngo)&set(big_pool)&set(go_genes))
-	return syngo
-
-def find_SynDB(big_pool):
-	synDB_file='../correct_db/SynDB.csv'
-	syndb=load_data_functions.get_gene_names(synDB_file)
-	syndb=list(set(syndb)&set(big_pool))
-	return syndb
-
-def find_synsysnet(big_pool):
-	synsysnet_file='../correct_db/synsysnet.csv'
-	synsysnet=load_data_functions.get_gene_names(synsysnet_file)
-	synsysnet=list(set(synsysnet)&set(big_pool))
-	return synsysnet
-
-
 def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	#set1_predictions and set2_predictions should be the output from find_true_y
 	#returns a confidence interval for the difference between the auc scores for the two sets
@@ -126,15 +107,6 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 
 	return conf_intervals
 
-def load_synapse_db_genes(big_pool, go_genes):
-	hk=find_hk(big_pool)
-	golgi=find_golgi(big_pool)
-	mem=find_mem(big_pool)
-	syngo=find_syngo(big_pool, go_genes)
-	syndb=find_SynDB(big_pool)
-	synsysnet=find_synsysnet(big_pool)
-	return hk, golgi, mem, syngo, syndb, synsysnet
-
 def compute_syn_control_ci(genelists, genelist_names, all_training):
 	final_dfs=[]
 	for item in genelists:
@@ -148,24 +120,26 @@ def compute_syn_control_ci(genelists, genelist_names, all_training):
 	genelist_diff_ci={}
 	for i in range(1, len(genelists)):
 		conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
-		print (conf_interval)
+		#print (conf_interval)
 		genelist_diff_ci[genelist_names[i]]=conf_interval
 	return genelist_diff_ci
 
-big_pool=find_training_genes_functions.load_big_pool()
+if __name__ == '__main__':
+	
+	big_pool=find_training_genes_functions.load_big_pool()
 
-pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
-human_ont=find_GO_scores.find_GO_ont()
-go_genes=human_ont.genes
+	human_ont=find_GO_scores.find_GO_ont()
+	go_genes=human_ont.genes
 
-hk, golgi, mem, syngo, syndb, synsysnet=load_synapse_db_genes(big_pool, go_genes)
+	hk, golgi, mem, syngo, syndb, synsysnet=load_data_functions.load_synapse_db_genes(big_pool, go_genes)
 
-syn=list(set(syngo)&set(syndb)&set(synsysnet))
+	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-genelists=[syn, syngo, hk, golgi, mem]
-genelist_names=['syn', 'syngo', 'hk', 'golgi', 'mem']
-genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
-print (genelist_diff_ci)
+	genelists=[syn, syngo, hk, golgi, mem]
+	genelist_names=['syn', 'syngo', 'hk', 'golgi', 'mem']
+	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
+	print (genelist_diff_ci)
 
 
