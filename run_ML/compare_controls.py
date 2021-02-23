@@ -81,8 +81,8 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	for i in range(num_bootstrap_samples):
 		indices = random.randint(0,len(scores))
 
-		set1_auc = compute_auc(set1_labels[indices],scores[indices])
-		set2_auc = compute_auc(set2_labels[indices],scores[indices])
+		fpr1, tpr1, thresholds1, set1_auc = ROC_functions.calculate_roc(set1_labels[indices],scores[indices])
+		fpr2, tpr2, thresholds2, set2_auc = ROC_functions.calculate_roc(set2_labels[indices],scores[indices])
 
 		diff = set1_auc - set2_auc
 
