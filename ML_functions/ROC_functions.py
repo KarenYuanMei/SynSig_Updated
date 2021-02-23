@@ -95,6 +95,6 @@ def find_pred_labels_scores(genelist, training_genes):
 		y_list.append(group)
 
 	final=pd.DataFrame({'genes': pred_genes, 'avg_scores': avg_scores , 'label': y_list})
-	label=final['union'].tolist()
+	label=final['label'].tolist()
 	avg_score=final['avg_scores'].tolist()
 	return final, label, avg_score
