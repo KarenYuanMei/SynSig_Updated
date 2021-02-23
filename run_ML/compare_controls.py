@@ -80,7 +80,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	set1_labels = set1_predictions['label']
 	set2_labels = set2_predictions['label']
 
-	num_bootstrap_samples = 1000
+	num_bootstrap_samples = 10000
 
 	bootstrapped_auc_diffs = []
 	for i in range(num_bootstrap_samples):
@@ -96,7 +96,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 		bootstrapped_auc_diffs.append(diff) 
 
 
-	conf_interval_sizes = [0.95,0.99]
+	conf_interval_sizes = [0.95,0.99, 0.999]
 	conf_intervals = {}
 
 	bootstrapped_auc_diffs.sort()
@@ -116,16 +116,59 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 
 	return conf_intervals
 
-def compute_syn_control_ci(genelists, genelist_names, all_training):
+
+def auc_bootstrap_errorbars(set1_predictions):
+	#set1_predictions should be the output from find_true_y
+	#returns a confidence interval for the auc score for the set
+	scores = set1_predictions['avg_scores']
+
+	set1_labels = set1_predictions['label']
+
+	num_bootstrap_samples = 1000
+
+	bootstrapped_auc= []
+	for i in range(num_bootstrap_samples):
+		#indices = random.randint(0,len(scores))
+		indices=list(np.random.randint(low = 0,high=len(scores),size=len(scores)))
+		#print (indices)
+
+		set1_auc = roc_auc_score(set1_labels[indices],scores[indices])
+
+
+		bootstrapped_auc.append(set1_auc) 
+
+
+	conf_interval_sizes = [0.95]
+	conf_intervals = {}
+
+	bootstrapped_auc.sort()
+
+	for interval_size in conf_interval_sizes:
+		print (interval_size)
+		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
+		print (lower_bound_index)
+
+		lower_bound = bootstrapped_auc[lower_bound_index]
+
+		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
+		print (upper_bound_index)
+		upper_bound = bootstrapped_auc[upper_bound_index]
+
+		conf_intervals[interval_size] = (lower_bound,upper_bound)
+
+	return conf_intervals
+
+def compute_final_dfs(genelists, all_training):
 	final_dfs=[]
 	for item in genelists:
-		final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
 		#print (final)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 		print (auc)
-		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
 		final_dfs.append(final_df)
+	return final_dfs
 
+def compute_syn_control_ci(genelists, genelist_names, all_training):
 	genelist_diff_ci={}
 	for i in range(1, len(genelists)):
 		conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
@@ -148,7 +191,12 @@ if __name__ == '__main__':
 
 	genelists=[syn, syngo, hk, golgi, mem]
 	genelist_names=['syn', 'syngo', 'hk', 'golgi', 'mem']
-	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
-	print (genelist_diff_ci)
+	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
+	#print (genelist_diff_ci)
+
+	final_dfs=copute_final_dfs(genelists, all_training)
+	for item in final_dfs:
+		errorbars=auc_bootstrap_errorbars(item)
+		print (errorbars)
 
 
