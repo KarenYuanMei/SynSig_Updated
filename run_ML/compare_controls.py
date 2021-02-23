@@ -168,7 +168,7 @@ def compute_final_dfs(genelists, all_training):
 		final_dfs.append(final_df)
 	return final_dfs
 
-def compute_syn_control_ci(genelists, genelist_names, all_training):
+def compute_syn_control_ci(genelists, genelist_names, final_dfs):
 	genelist_diff_ci={}
 	for i in range(1, len(genelists)):
 		conf_interval=compare_auc_bootstrap(final_dfs[0], final_dfs[i])
@@ -198,5 +198,8 @@ if __name__ == '__main__':
 	for item in final_dfs:
 		errorbars=auc_bootstrap_errorbars(item)
 		print (errorbars)
+
+	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, final_dfs)
+	print (genelist_diff_ci)
 
 
