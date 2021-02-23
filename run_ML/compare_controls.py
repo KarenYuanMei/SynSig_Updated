@@ -67,6 +67,44 @@ def find_syngo(big_pool, go_genes):
 	syngo=list(set(syngo)&set(big_pool)&set(go_genes))
 	return syngo
 
+def compare_auc_bootstrap(set1_predictions,set2_predictions):
+	#set1_predictions and set2_predictions should be the output from find_true_y
+	#returns a confidence interval for the difference between the auc scores for the two sets
+	scores = set1_predictions['avg_scores']
+
+	set1_labels = set1_predictions['label']
+	set2_labels = set2_predictions['label']
+
+	num_bootstrap_samples = 1000
+
+	bootstrapped_auc_diffs = []
+	for i in range(num_bootstrap_samples):
+		indices = random.randint(0,len(scores),len(scores))
+
+		set1_auc = compute_auc(set1_labels[indices],scores[indices])
+		set2_auc = compute_auc(set2_labels[indices],scores[indices])
+
+		diff = set1_auc - set2_auc
+
+		bootstrapped_auc_diffs.append(diff)
+
+
+	conf_interval_sizes = [0.95,0.99]
+	conf_intervals = {}
+
+	bootstrapped_auc_diffs.sort()
+
+	for interval_size in conf_interval_sizes:
+		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
+		lower_bound = bootstrapped_auc_diffs[lower_bound_index]
+
+		upper_bound_index = int(num_bootstrap_samples*(interval_size+(1-interval_size/2)))
+		upper_bound = bootstrapped_auc_diffs[upper_bound_index]
+
+		conf_intervals[interval_size] = (lower_bound,upper_bound)
+
+	return conf_intervals
+
 
 big_pool=find_training_genes_functions.load_big_pool()
 
@@ -94,5 +132,7 @@ for item in genelists:
 	print (auc)
 
 
-
-
+hk_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
+syngo_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syngo, all_training)
+conf_interval=compare_auc_bootstrap(hk_final,syngo_final)
+print (conf_interval)
