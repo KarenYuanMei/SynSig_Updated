@@ -28,11 +28,12 @@ import load_data_functions
 
 sys.path.append('../ML_functions/')
 import define_gene_objects
-import regressor_functions
+#import regressor_functions
 import find_training_genes_functions
 import find_GO_scores
-import run_train_crossvalidate_pipeline
-import define_features
+#import run_train_crossvalidate_pipeline
+#import define_features
+import ROC_functions
 
 #find housekeeping:==============
 def find_hk(big_pool):
