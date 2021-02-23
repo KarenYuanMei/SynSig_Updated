@@ -157,7 +157,7 @@ for item in genelists:
 	print (auc)
 
 
+syn_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syn, all_training)
 hk_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
-syngo_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syn, all_training)
-conf_interval=compare_auc_bootstrap(syngo, hk_final)
+conf_interval=compare_auc_bootstrap(syn_final, hk_final)
 print (conf_interval)
