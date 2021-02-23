@@ -63,6 +63,15 @@ def find_mem(big_pool):
 	mem=list(set(mem)&set(big_pool))
 	return mem
 
+def load_control_and_synapse_genes(big_pool, go_genes):
+	hk=find_hk(big_pool)
+	golgi=find_golgi(big_pool)
+	mem=find_mem(big_pool)
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syndb=load_data_functions.find_SynDB(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
+	return hk, golgi, mem, syngo, syndb, synsysnet
+
 def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	#set1_predictions and set2_predictions should be the output from find_true_y
 	#returns a confidence interval for the difference between the auc scores for the two sets
@@ -133,7 +142,7 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	hk, golgi, mem, syngo, syndb, synsysnet=load_data_functions.load_synapse_db_genes(big_pool, go_genes)
+	hk, golgi, mem, syngo, syndb, synsysnet=load_control_and_synapse_genes(big_pool, go_genes)
 
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
