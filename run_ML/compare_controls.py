@@ -80,7 +80,7 @@ golgi=find_golgi(big_pool)
 mem=find_mem(big_pool)
 syngo=find_syngo(big_pool, go_genes)
 
-print (len(hk))
+print (len(hk), hk[:5])
 print (len(golgi))
 print (len(mem))
 print (len(syngo))
