@@ -77,7 +77,7 @@ go_genes=human_ont.genes
 hk=find_hk(big_pool)
 golgi=find_golgi(big_pool)
 mem=find_mem(big_pool)
-syngo=find_syngo(big_pool)
+syngo=find_syngo(big_pool, go_genes)
 
 print (len(hk))
 print (len(golgi))
