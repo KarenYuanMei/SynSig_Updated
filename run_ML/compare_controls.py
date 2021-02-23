@@ -69,6 +69,19 @@ def find_syngo(big_pool, go_genes):
 	syngo=list(set(syngo)&set(big_pool)&set(go_genes))
 	return syngo
 
+def find_SynDB(big_pool):
+	synDB_file='../correct_db/SynDB.csv'
+	syndb=load_data_functions.get_gene_names(synDB_file)
+	syndb=list(set(syndb)&set(big_pool))
+	return syndb
+
+def find_synsysnet(big_pool):
+	synsysnet_file='../correct_db/synsysnet.csv'
+	synsysnet=load_data_functions.get_gene_names(synsysnet_file)
+	synsysnet=list(set(synsysnet)&set(big_pool))
+	return synsysnet
+
+
 def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	#set1_predictions and set2_predictions should be the output from find_true_y
 	#returns a confidence interval for the difference between the auc scores for the two sets
@@ -125,6 +138,10 @@ hk=find_hk(big_pool)
 golgi=find_golgi(big_pool)
 mem=find_mem(big_pool)
 syngo=find_syngo(big_pool, go_genes)
+syndb=find_SynDB(big_pool)
+synsysnet=find_synsysnet(big_pool)
+
+syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
 print (len(hk))
 print (len(golgi))
@@ -141,6 +158,6 @@ for item in genelists:
 
 
 hk_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
-syngo_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syngo, all_training)
-conf_interval=compare_auc_bootstrap(syngo_final, hk_final)
+syngo_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syn, all_training)
+conf_interval=compare_auc_bootstrap(syngo, hk_final)
 print (conf_interval)
