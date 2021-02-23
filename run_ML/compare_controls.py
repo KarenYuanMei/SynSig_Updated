@@ -83,7 +83,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	for i in range(num_bootstrap_samples):
 		#indices = random.randint(0,len(scores))
 		indices=list(np.random.randint(low = 0,high=len(scores),size=len(scores)))
-		print (indices)
+		#print (indices)
 
 		set1_auc = roc_auc_score(set1_labels[indices],scores[indices])
 		set2_auc = roc_auc_score(set2_labels[indices],scores[indices])
