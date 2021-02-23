@@ -148,7 +148,7 @@ print (len(golgi))
 print (len(mem))
 print (len(syngo))
 
-genelists=[syngo, hk, golgi, mem]
+genelists=[syn, syngo, hk, golgi, mem]
 
 for item in genelists:
 	final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
