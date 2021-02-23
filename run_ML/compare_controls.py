@@ -105,7 +105,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 
 		lower_bound = bootstrapped_auc_diffs[lower_bound_index]
 
-		upper_bound_index = int(num_bootstrap_samples*(interval_size+(1-interval_size/2)))
+		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
 		print (upper_bound_index)
 		upper_bound = bootstrapped_auc_diffs[upper_bound_index]
 
