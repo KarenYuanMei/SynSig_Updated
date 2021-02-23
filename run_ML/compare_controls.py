@@ -80,12 +80,19 @@ golgi=find_golgi(big_pool)
 mem=find_mem(big_pool)
 syngo=find_syngo(big_pool, go_genes)
 
-print (len(hk), hk[:5])
+print (len(hk))
 print (len(golgi))
 print (len(mem))
 print (len(syngo))
 
-final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
-print (final)
-fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
-print (auc)
+genelists=[syngo, hk, golgi, mem]
+
+for item in genelists:
+	final, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+	#print (final)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
+	print (auc)
+
+
+
+
