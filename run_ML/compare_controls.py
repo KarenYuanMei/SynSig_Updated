@@ -99,6 +99,7 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	bootstrapped_auc_diffs.sort()
 
 	for interval_size in conf_interval_sizes:
+		print (interval_size)
 		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
 		lower_bound = bootstrapped_auc_diffs[lower_bound_index]
 
