@@ -194,7 +194,7 @@ if __name__ == '__main__':
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
-	final_dfs=copute_final_dfs(genelists, all_training)
+	final_dfs=compute_final_dfs(genelists, all_training)
 	for item in final_dfs:
 		errorbars=auc_bootstrap_errorbars(item)
 		print (errorbars)
