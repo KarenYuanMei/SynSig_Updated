@@ -82,13 +82,14 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	bootstrapped_auc_diffs = []
 	for i in range(num_bootstrap_samples):
 		indices = random.randint(0,len(scores))
+		print (indices)
 
 		set1_auc = roc_auc_score(set1_labels[indices],scores[indices])
 		set2_auc = roc_auc_score(set2_labels[indices],scores[indices])
 
 		diff = set1_auc - set2_auc
 
-		bootstrapped_auc_diffs.append(diff)
+		bootstrapped_auc_diffs.append(diff) 
 
 
 	conf_interval_sizes = [0.95,0.99]
@@ -136,5 +137,5 @@ for item in genelists:
 
 hk_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(hk, all_training)
 syngo_final, labels, avg_scores=ROC_functions.find_pred_labels_scores(syngo, all_training)
-conf_interval=compare_auc_bootstrap(hk_final,syngo_final)
+conf_interval=compare_auc_bootstrap(syngo_final, hk_final)
 print (conf_interval)
