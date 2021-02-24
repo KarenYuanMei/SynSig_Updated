@@ -195,7 +195,7 @@ if __name__ == '__main__':
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
 	genelists=[syn, syngo, hk, golgi, mem]
-	genelist_names=['syn', 'syngo', 'hk', 'golgi', 'mem']
+	genelist_names=['syn', 'hk', 'golgi', 'mem']
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
