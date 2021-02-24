@@ -156,17 +156,21 @@ def auc_bootstrap_errorbars(set1_predictions):
 
 		conf_intervals[interval_size] = (lower_bound,upper_bound)
 
-	return conf_intervals
+		errorbars=(upper_bound-lower_bound)/2
 
-def compute_final_dfs(genelists, all_training):
-	final_dfs=[]
+	return conf_intervals, errorbars
+
+def compute_pred_df(genelists, all_training):
+	pred_dfs=[]
+	aucs=[]
 	for item in genelists:
-		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+		pred_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
 		#print (final)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
+		aucs.append(auc)
 		print (auc)
-		final_dfs.append(final_df)
-	return final_dfs
+		pred_dfs.append(pred_df)
+	return pred_dfs, aucs
 
 def compute_syn_control_ci(genelists, genelist_names, final_dfs):
 	genelist_diff_ci={}
@@ -194,12 +198,17 @@ if __name__ == '__main__':
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
-	final_dfs=compute_final_dfs(genelists, all_training)
-	for item in final_dfs:
-		errorbars=auc_bootstrap_errorbars(item)
+	pred_dfs, aucs=compute_pred_dfs(genelists, all_training)
+	ebs=[]
+	for item in pred_dfs:
+		ci, errorbars=auc_bootstrap_errorbars(item)
 		print (errorbars)
+		ebs.append(errorbars)
 
-	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, final_dfs)
+	labels=['Synapse', 'Housekeeping', 'Golgi App', 'Transmem']
+	graph_functions.plot_bargraph_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
+
+	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	print (genelist_diff_ci)
 
 
