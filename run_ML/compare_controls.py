@@ -160,7 +160,7 @@ def auc_bootstrap_errorbars(set1_predictions):
 
 	return conf_intervals, errorbars
 
-def compute_pred_df(genelists, all_training):
+def compute_pred_dfs_aucs(genelists, all_training):
 	pred_dfs=[]
 	aucs=[]
 	for item in genelists:
@@ -198,7 +198,7 @@ if __name__ == '__main__':
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
-	pred_dfs, aucs=compute_pred_dfs(genelists, all_training)
+	pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
 	ebs=[]
 	for item in pred_dfs:
 		ci, errorbars=auc_bootstrap_errorbars(item)
