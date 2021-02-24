@@ -103,14 +103,14 @@ def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	bootstrapped_auc_diffs.sort()
 
 	for interval_size in conf_interval_sizes:
-		print (interval_size)
+		#print (interval_size)
 		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
-		print (lower_bound_index)
+		#print (lower_bound_index)
 
 		lower_bound = bootstrapped_auc_diffs[lower_bound_index]
 
 		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
-		print (upper_bound_index)
+		#print (upper_bound_index)
 		upper_bound = bootstrapped_auc_diffs[upper_bound_index]
 
 		conf_intervals[interval_size] = (lower_bound,upper_bound)
@@ -145,14 +145,14 @@ def auc_bootstrap_errorbars(set1_predictions):
 	bootstrapped_auc.sort()
 
 	for interval_size in conf_interval_sizes:
-		print (interval_size)
+		#print (interval_size)
 		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
-		print (lower_bound_index)
+		#print (lower_bound_index)
 
 		lower_bound = bootstrapped_auc[lower_bound_index]
 
 		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
-		print (upper_bound_index)
+		#print (upper_bound_index)
 		upper_bound = bootstrapped_auc[upper_bound_index]
 
 		conf_intervals[interval_size] = (lower_bound,upper_bound)
@@ -169,7 +169,7 @@ def compute_pred_dfs_aucs(genelists, all_training):
 		#print (final)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 		aucs.append(auc)
-		print (auc)
+		#print (auc)
 		pred_dfs.append(pred_df)
 	return pred_dfs, aucs
 
@@ -203,10 +203,14 @@ if __name__ == '__main__':
 	ebs=[]
 	for item in pred_dfs:
 		ci, errorbars=auc_bootstrap_errorbars(item)
-		print (errorbars)
+		#print (errorbars)
 		ebs.append(errorbars)
 
 	labels=['Synapse', 'Housekeeping', 'Golgi App', 'Transmem']
+
+	print (aucs)
+	print (ebs)
+
 	graph_functions.plot_bargraph_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
 
 	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
