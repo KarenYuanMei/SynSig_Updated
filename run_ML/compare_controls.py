@@ -36,6 +36,7 @@ import find_GO_scores
 #import run_train_crossvalidate_pipeline
 #import define_features
 import ROC_functions
+import graph_functions
 
 #find housekeeping:==============
 def find_hk(big_pool):
