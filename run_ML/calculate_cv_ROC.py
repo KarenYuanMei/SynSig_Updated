@@ -100,7 +100,7 @@ if __name__ == '__main__':
 	graph_functions.plot_linegraph(tree_no, tree_mean_aucs, 'Number of Trees', 'Synapse Recovery ROC', 'tree_no')
 
 	max_depth=[10, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
-	depth_mean_aucs=calc_sweep_param('depth', max_depth)
+	depth_mean_aucs=calc_sweep_param('max_depth', max_depth)
 	graph_functions.plot_linegraph(max_depth, depth_mean_aucs, 'Maximum Tree Depth', 'Synapse Recovery ROC', 'depth')
 
 	min_samples_split=[2, 3, 4, 5, 10]
