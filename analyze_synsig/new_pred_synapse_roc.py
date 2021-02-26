@@ -27,8 +27,13 @@ go_genes=human_ont.genes
 syngo=load_data_functions.find_syngo(big_pool, go_genes)
 syndb=load_data_functions.find_SynDB(big_pool)
 synsysnet=load_data_functions.find_synsysnet(big_pool)
+syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
-fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
-print (auc)
-ROC_functions.save_roc_df(thresholds, tpr, fpr, 'pred')
+db_list=[syngo, syndb, synsysnet, syn]
+db_labels=['syngo', 'syndb', 'synsysnet', 'syn']
+
+for i in range(len(db_list)):
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(db_list[i], all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+	print (auc)
+	ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i])
