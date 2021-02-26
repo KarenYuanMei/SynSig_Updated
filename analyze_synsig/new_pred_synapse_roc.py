@@ -14,6 +14,7 @@ import load_data_functions
 sys.path.append('../ML_functions/')
 import find_training_genes_functions
 import find_GO_scores
+import ROC_functions
 
 
 big_pool=find_training_genes_functions.load_big_pool()
