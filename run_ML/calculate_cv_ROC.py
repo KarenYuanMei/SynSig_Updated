@@ -104,5 +104,5 @@ if __name__ == '__main__':
 	graph_functions.plot_linegraph(max_depth, depth_mean_aucs, 'Maximum Tree Depth', 'Synapse Recovery ROC', 'depth')
 
 	min_samples_split=[2, 3, 4, 5, 10]
-	split_mean_aucs=calc_sweep_param('split', split_mean_aucs)
-	graph_functions.plot_linegraph(min_samples_split, split_mean_aucs, 'Minimum Samples Split', 'Synapse Recovery ROC', 'split')
+	split_mean_aucs=calc_sweep_param('split', min_samples_split)
+	graph_functions.plot_linegraph(min_samples_split, min_samples_split, 'Minimum Samples Split', 'Synapse Recovery ROC', 'split')
