@@ -84,3 +84,4 @@ def plot_linegraph(x_values, y_values, xlabel, ylabel, name):
 	plt.ylim(0.5, 0.9)
 	plt.xlabel(xlabel)
 	plt.savefig(name+'.svg', format="svg")
+	plt.close()
