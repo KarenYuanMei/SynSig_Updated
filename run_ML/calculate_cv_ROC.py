@@ -105,4 +105,4 @@ if __name__ == '__main__':
 
 	min_samples_split=[2, 3, 4, 5, 10]
 	split_mean_aucs=calc_sweep_param('split', min_samples_split)
-	graph_functions.plot_linegraph(min_samples_split, min_samples_split, 'Minimum Samples Split', 'Synapse Recovery ROC', 'split')
+	graph_functions.plot_linegraph(min_samples_split, split_mean_aucs, 'Minimum Samples Split', 'Synapse Recovery ROC', 'split')
