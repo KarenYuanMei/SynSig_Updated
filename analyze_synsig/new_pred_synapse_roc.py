@@ -28,7 +28,7 @@ syngo=load_data_functions.find_syngo(big_pool, go_genes)
 syndb=load_data_functions.find_SynDB(big_pool)
 synsysnet=load_data_functions.find_synsysnet(big_pool)
 
-final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, training_genes)
+final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
 fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 print (auc)
 save_roc_df(thresholds, tpr, fpr, 'pred')
