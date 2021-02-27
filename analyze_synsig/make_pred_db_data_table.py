@@ -65,3 +65,9 @@ print (count_df)
 
 count_df['Lit Sum']=count_df[['syngo', 'syndb', 'synsysnet']].sum(axis=1)
 print (count_df)
+
+count_df['Exp Sum']=count_df[['cortex', 'striatum', 'fetal', 'ngn2']].sum(axis=1)
+print (count_df)
+
+count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
+print (count_df)
