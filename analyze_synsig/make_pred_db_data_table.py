@@ -29,6 +29,8 @@ syngo=load_data_functions.find_syngo(big_pool, go_genes)
 syndb=load_data_functions.find_SynDB(big_pool)
 synsysnet=load_data_functions.find_synsysnet(big_pool)
 
+cortex=load_data_functions.find_adult_cortex(big_pool)
+
 def count_in_genelist(pred_genes, genelist):
 	count=[]
 	for gene in pred_genes:
@@ -42,8 +44,9 @@ def count_in_genelist(pred_genes, genelist):
 syngo_count=count_in_genelist(pred_genes, syngo)
 syndb_count=count_in_genelist(pred_genes, syndb)
 synsysnet_count=count_in_genelist(pred_genes, synsysnet)
+cortex_count=count_in_genelist(pred_genes, cortex)
 
-count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, 'SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count})
+count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, 'SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count, 'Cortex': cortex_count})
 print (count_df)
 
 count_df=count_df.sort_values(by='synapse_sim_score', ascending=True)
