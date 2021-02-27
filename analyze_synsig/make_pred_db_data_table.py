@@ -62,3 +62,6 @@ for i in range(len(all_counts)):
 
 count_df=pred.sort_values(by='avg_scores', ascending=True)
 print (count_df)
+
+count_df['Lit Sum']=count_df['syngo', 'syndb', 'synsysnet'].sum(axis=1)
+print (count_df)
