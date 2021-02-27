@@ -239,7 +239,7 @@ if __name__ == '__main__':
 	# genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	# print (genelist_diff_ci)
 
-	ratios=calc_ctrl_tpr_fpr(syn, genelist, big_pool)
+	ratios=calc_ctrl_tpr_fpr(syn, big_pool)
 	print (ratios)
 	
 
