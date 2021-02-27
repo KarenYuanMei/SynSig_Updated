@@ -82,6 +82,39 @@ def plot_single_ROC(tpr, fpr, auc, name):
 	#plt.show()
 	plt.savefig('%s_ROC.svg'%name, format="svg")
 
+def plot_compare_ROC(tpr, fpr, auc):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+	plt.plot(fpr, tpr, color='maroon',
+	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         lw=2, alpha=.8)
+
+	plt.plot(0.11, 0.7755, color='purple', marker='o', markersize=10)
+	plt.annotate('SynSig', color='purple', xy=(0.11, 0.7755), xytext=(0.11+0.05, 0.7755), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
+
+	plt.plot(0.08, 0.125, color='#7f6d5f', marker='o', markersize=10)
+	plt.annotate('Housekeeping', color='#7f6d5f', xy=(0.08, 0.125), xytext=(0.08+0.05, 0.125), arrowprops=dict(facecolor='#7f6d5f', lw=2, arrowstyle='->'))
+
+	plt.plot(0.09, 0.23, color='#557f2d', marker='o', markersize=10)
+	plt.annotate('Golgi App.', color='#557f2d', xy=(0.09, 0.23), xytext=(0.09+0.05, 0.23), arrowprops=dict(facecolor='#557f2d', lw=2, arrowstyle='->'))
+
+	plt.plot(0.14, 0.23, color='silver', marker='o', markersize=10)
+	plt.annotate('Transmem.', color='silver', xy=(0.14, 0.23), xytext=(0.14+0.05, 0.23), arrowprops=dict(facecolor='silver', lw=2, arrowstyle='->'))
+
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+
+
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+	plt.savefig('annotate_ROC_controls.svg'%name, format="svg")
+
+
+
 def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
