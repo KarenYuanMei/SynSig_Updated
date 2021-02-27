@@ -43,8 +43,8 @@ syngo_count=count_in_genelist(pred_genes, syngo)
 syndb_count=count_in_genelist(pred_genes, syndb)
 synsysnet_count=count_in_genelist(pred_genes, synsysnet)
 
-count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count'})
+count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, 'SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count})
 print (count_df)
 
-count_df=count_df.sort_values(by='synapse_sim_score')
+count_df=count_df.sort_values(by='synapse_sim_score', ascending=True)
 print (count_df)
