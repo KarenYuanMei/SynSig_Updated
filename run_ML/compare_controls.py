@@ -191,7 +191,7 @@ def calc_syn_tpr_fpr(syn, genelist, big_pool):
 	fpr=float(len(fp)/(len(fp)+len(tn)))
 	return tpr, fpr
 
-def calc_ctrl_tpr_fpr(syn, genelist, big_pool):
+def calc_ctrl_tpr_fpr(syn, big_pool):
 
 	ratios={}
 	controls=[hk, golgi, mem]
