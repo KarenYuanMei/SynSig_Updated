@@ -30,6 +30,9 @@ syndb=load_data_functions.find_SynDB(big_pool)
 synsysnet=load_data_functions.find_synsysnet(big_pool)
 
 cortex=load_data_functions.find_adult_cortex(big_pool)
+striatum=load_data_functions.find_adult_striatum(big_pool)
+fetal=load_data_functions.find_fetal(big_pool)
+ngn2=load_data_functions.find_ngn2(big_pool)
 
 def count_in_genelist(pred_genes, genelist):
 	count=[]
@@ -46,8 +49,16 @@ syndb_count=count_in_genelist(pred_genes, syndb)
 synsysnet_count=count_in_genelist(pred_genes, synsysnet)
 cortex_count=count_in_genelist(pred_genes, cortex)
 
-count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, 'SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count, 'Cortex': cortex_count})
-print (count_df)
+all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
+all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 
-count_df=count_df.sort_values(by='synapse_sim_score', ascending=True)
+all_counts=[]
+for item in all_gl:
+	gl_count=count_in_genelist(pred_genes, item)
+	all_counts.append(gl_count)
+
+for i in len(range(all_counts)):
+	pred[all_gl_names[i]]=all_counts[i]
+
+count_df=pred.sort_values(by='avg_scores', ascending=True)
 print (count_df)
