@@ -227,7 +227,9 @@ if __name__ == '__main__':
 	# genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	# print (genelist_diff_ci)
 
-	tpr, fpr=calc_syn_tpr_fpr(syn, hk, big_pool)
-	print (tpr, fpr)
+	controls=[hk, golgi, mem]
+	for item in controls:
+		tpr, fpr=calc_syn_tpr_fpr(syn, item, big_pool)
+		print (tpr, fpr)
 
 
