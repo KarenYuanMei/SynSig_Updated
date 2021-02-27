@@ -25,3 +25,40 @@ def find_synsysnet(big_pool):
 	synsysnet=list(set(synsysnet)&set(big_pool))
 	return synsysnet
 
+def find_adult_cortex(big_pool):
+	ctx_file='../../SynSig/experimental_validation/weijun_ctx_uniprot.csv'
+	ctx_genes=pd.read_csv(ctx_file, sep='\t')
+	ctx_genes=ctx_genes['To'].tolist()
+	ctx_genes=[x.upper() for x in ctx_genes]
+	#print (ctx_genes)
+	overlap_ctx=list(set(ctx_genes)&set(big_pool))
+	return overlap_ctx
+
+def find_adult_striatum(big_pool):
+	str_file='../../SynSig/experimental_validation/weijun_str_uniprot.csv'
+	str_genes=pd.read_csv(str_file, sep='\t')
+	str_genes=str_genes['To'].tolist()
+	str_genes=[x.upper() for x in str_genes]
+	#print (ctx_genes)
+	overlap_str=list(set(str_genes)&set(big_pool))
+	return overlap_str
+
+def find_fetal(big_pool):
+	fetal_file='../../SynSig/experimental_validation/coba_fetal_brain.csv'
+	fetal_genes=pd.read_csv(fetal_file)
+	fetal_genes=fetal_genes['Norm_Symbol'].tolist()
+	fetal_genes=[x.upper() for x in fetal_genes]
+	#print (ctx_genes)
+	overlap_fetal=list(set(fetal_genes)&set(big_pool))
+	return overlap_fetal
+
+def find_ngn2(big_pool):
+	ngn2_file='../../SynSig/experimental_validation/Coba_NGN2.csv'
+	ngn2_genes=pd.read_csv(ngn2_file)
+	ngn2_genes=ngn2_genes['Norm_Symbol'].tolist()
+	ngn2_genes=[x.upper() for x in ngn2_genes]
+	#print (ctx_genes)
+	overlap_ngn2=list(set(ngn2_genes)&set(big_pool))
+	return overlap_ngn2
+
+
