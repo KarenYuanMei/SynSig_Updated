@@ -51,6 +51,8 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list, name):
 	plt.fill_between(mean_fpr, tprs_lower, tprs_upper, color='grey', alpha=.2,
 	                 label=r'$\pm$ 1 std. dev.')
 	#plt.title('Avg ROC Curve for Predicting Synapse Genes \n 5-Fold Cross-Validation', fontweight = 'bold')
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
 
 	plt.xlabel('1-Specificity', fontweight='bold')
 	plt.ylabel('Sensitivity', fontweight='bold')
@@ -65,8 +67,8 @@ def plot_single_ROC(tpr, fpr, auc, name):
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 
-	plt.plot(fpr, tpr, color='b',
-	         label=r'ROC (AUC = %0.3f)' % (auc),
+	plt.plot(fpr, tpr, color='red',
+	         label=r'ROC (AUC = %0.2f)' % (auc),
 	         lw=2, alpha=.8)
 
 	plt.xlabel('1-Specificity', fontweight='bold')
@@ -74,6 +76,8 @@ def plot_single_ROC(tpr, fpr, auc, name):
 	plt.grid(False)
 	# show the legend
 	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
 		# show the plot
 	#plt.show()
 	plt.savefig('%s_ROC.svg'%name, format="svg")
