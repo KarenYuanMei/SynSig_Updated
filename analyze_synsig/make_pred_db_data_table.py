@@ -18,6 +18,7 @@ import find_GO_scores
 pred=ROC_functions.load_predicted_df()
 print (pred)
 pred_genes=pred['genes'].tolist()
+pred_scores=pred['avg_scores'].tolist()
 
 big_pool=find_training_genes_functions.load_big_pool()
 
@@ -42,5 +43,8 @@ syngo_count=count_in_genelist(pred_genes, syngo)
 syndb_count=count_in_genelist(pred_genes, syndb)
 synsysnet_count=count_in_genelist(pred_genes, synsysnet)
 
-count_df=pd.DataFrame({'genes': pred_genes, 'SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count})
+count_df=pd.DataFrame({'genes': pred_genes, 'synapse_sim_score': pred_scores, SynGO': syngo_count, 'SynDB': syndb_count, 'SynSysNet': synsysnet_count'})
+print (count_df)
+
+count_df=count_df.sort_values(by='synapse_sim_score')
 print (count_df)
