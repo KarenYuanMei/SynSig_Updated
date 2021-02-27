@@ -59,8 +59,24 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list, name):
 	plt.legend()
 		# show the plot
 	#plt.show()
-	plt.savefig('%s_ROC.svg'%name, format="svg")
+	plt.savefig('%s_5fold_ROC.svg'%name, format="svg")
 
+def plot_single_ROC(tpr, fpr, auc, name):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+
+	plt.plot(fpr, tpr, color='b',
+	         label=r'ROC (AUC = %0.3f)' % (auc),
+	         lw=2, alpha=.8)
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+		# show the plot
+	#plt.show()
+	plt.savefig('%s_ROC.svg'%name, format="svg")
 
 def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
