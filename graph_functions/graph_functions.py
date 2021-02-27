@@ -111,7 +111,7 @@ def plot_annotate_ROC_controls(tpr, fpr, auc):
 	plt.legend()
 	plt.xlim([0, 1])
 	plt.ylim([0, 1])
-	plt.savefig('annotate_ROC_controls.svg'%name, format="svg")
+	plt.savefig('annotate_ROC_controls.svg', format="svg")
 
 
 
