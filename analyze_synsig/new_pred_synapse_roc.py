@@ -12,6 +12,10 @@ import sys
 sys.path.append('../read_data_functions/')
 import load_data_functions
 
+import sys
+sys.path.append('../read_data_functions/')
+import graph_functions
+
 sys.path.append('../ML_functions/')
 import find_training_genes_functions
 import find_GO_scores
@@ -39,3 +43,8 @@ if __name__ == '__main__':
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 		print (auc)
 		ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i])
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+
+	graph_functions.plot_mean_ROC(tpr, fpr, auc, 'syn')

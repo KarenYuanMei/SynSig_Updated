@@ -34,7 +34,7 @@ from sklearn.metrics import roc_auc_score
 matplotlib.rcParams.update({'font.size': 14})
 
 
-def plot_mean_ROC(tprs, mean_fpr, auc_list):
+def plot_mean_ROC(tprs, mean_fpr, auc_list, name):
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 	mean_auc=np.mean(auc_list)
@@ -59,7 +59,7 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list):
 	plt.legend()
 		# show the plot
 	#plt.show()
-	plt.savefig('updated_val_5fold_ROC.svg', format="svg")
+	plt.savefig('%s_ROC.svg'%name, format="svg")
 
 
 def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
