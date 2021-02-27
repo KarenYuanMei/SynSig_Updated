@@ -13,7 +13,7 @@ sys.path.append('../read_data_functions/')
 import load_data_functions
 
 import sys
-sys.path.append('../read_data_functions/')
+sys.path.append('../graph_functions/')
 import graph_functions
 
 sys.path.append('../ML_functions/')

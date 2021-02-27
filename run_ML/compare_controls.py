@@ -217,27 +217,27 @@ if __name__ == '__main__':
 
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-	# genelists=[syn, hk, golgi, mem]
-	# genelist_names=['syn', 'hk', 'golgi', 'mem']
-	# #genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
-	# #print (genelist_diff_ci)
+	genelists=[syn, hk, golgi, mem]
+	genelist_names=['syn', 'hk', 'golgi', 'mem']
+	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
+	#print (genelist_diff_ci)
 
-	# pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
-	# ebs=[]
-	# for item in pred_dfs:
-	# 	ci, errorbars=auc_bootstrap_errorbars(item)
-	# 	#print (errorbars)
-	# 	ebs.append(errorbars)
+	pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
+	ebs=[]
+	for item in pred_dfs:
+		ci, errorbars=auc_bootstrap_errorbars(item)
+		#print (errorbars)
+		ebs.append(errorbars)
 
-	# labels=['Synapse', 'Housekeeping', 'Golgi App', 'Transmem']
+	labels=['Synapse', 'Housekeeping', 'Golgi App', 'Transmem']
 
-	# print (aucs)
-	# print (ebs)
+	print (aucs)
+	print (ebs)
 
-	# graph_functions.plot_bargraph_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
+	graph_functions.plot_bargraph_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
 
-	# genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
-	# print (genelist_diff_ci)
+	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
+	print (genelist_diff_ci)
 
 	ratios=calc_ctrl_tpr_fpr(syn, big_pool)
 	print (ratios)
