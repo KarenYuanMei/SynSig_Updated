@@ -191,6 +191,18 @@ def calc_syn_tpr_fpr(syn, genelist, big_pool):
 	fpr=float(len(fp)/(len(fp)+len(tn)))
 	return tpr, fpr
 
+def calc_ctrl_tpr_fpr(syn, genelist, big_pool):
+
+	ratios={}
+	controls=[hk, golgi, mem]
+	control_names=['hk', 'golgi', 'mem']
+	for i in range(len(controls)):
+		tpr, fpr=calc_syn_tpr_fpr(syn, controls[i], big_pool)
+		print (tpr, fpr)
+
+		ratios[control_names[i]]=(tpr, fpr)
+	return ratios
+
 
 if __name__ == '__main__':
 	
@@ -227,9 +239,8 @@ if __name__ == '__main__':
 	# genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	# print (genelist_diff_ci)
 
-	controls=[hk, golgi, mem]
-	for item in controls:
-		tpr, fpr=calc_syn_tpr_fpr(syn, item, big_pool)
-		print (tpr, fpr)
+	ratios=calc_ctrl_tpr_fpr(syn, genelist, big_pool)
+	print (ratios)
+	
 
 
