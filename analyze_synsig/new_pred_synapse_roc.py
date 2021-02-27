@@ -48,3 +48,7 @@ if __name__ == '__main__':
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn')
+
+	graph_functions.plot_annotate_ROC_controls(tpr, fpr, auc)
+
+

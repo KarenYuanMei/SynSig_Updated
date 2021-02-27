@@ -82,7 +82,7 @@ def plot_single_ROC(tpr, fpr, auc, name):
 	#plt.show()
 	plt.savefig('%s_ROC.svg'%name, format="svg")
 
-def plot_compare_ROC(tpr, fpr, auc):
+def plot_annotate_ROC_controls(tpr, fpr, auc):
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 	plt.plot(fpr, tpr, color='maroon',
