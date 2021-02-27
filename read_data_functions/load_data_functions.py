@@ -25,11 +25,3 @@ def find_synsysnet(big_pool):
 	synsysnet=list(set(synsysnet)&set(big_pool))
 	return synsysnet
 
-def load_synapse_db_genes(big_pool, go_genes):
-	hk=find_hk(big_pool)
-	golgi=find_golgi(big_pool)
-	mem=find_mem(big_pool)
-	syngo=find_syngo(big_pool, go_genes)
-	syndb=find_SynDB(big_pool)
-	synsysnet=find_synsysnet(big_pool)
-	return hk, golgi, mem, syngo, syndb, synsysnet
