@@ -57,7 +57,7 @@ for item in all_gl:
 	gl_count=count_in_genelist(pred_genes, item)
 	all_counts.append(gl_count)
 
-for i in len(range(all_counts)):
+for i in range(len(all_counts)):
 	pred[all_gl_names[i]]=all_counts[i]
 
 count_df=pred.sort_values(by='avg_scores', ascending=True)
