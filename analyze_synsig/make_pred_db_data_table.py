@@ -74,4 +74,6 @@ print (count_df)
 
 count_df['SynSig']=1
 
+count_df[count_df['avg_scores']<=4.45]==0
+
 print (count_df)
