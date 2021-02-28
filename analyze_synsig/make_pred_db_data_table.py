@@ -71,3 +71,7 @@ print (count_df)
 
 count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
 print (count_df)
+
+count_df['SynSig']=1
+
+print (count_df)
