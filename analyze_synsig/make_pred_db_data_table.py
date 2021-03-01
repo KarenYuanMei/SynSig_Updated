@@ -73,5 +73,8 @@ count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
 print (count_df)
 
 count_df['SynSig'] = np.where(count_df['avg_scores']>4.45, 'yes', 'no')
+count_df['Synapse_Status'] = np.where(count_df['avg_scores']>4.45, 'yes', 'no')
+count_df['Synapse Status']=np.where((count_df['SynSig']=='yes')&(count_df['Lit Sum']>0),'old','new')
+
 
 print (count_df)
