@@ -64,7 +64,7 @@ def find_synapse_perc(count_df):
 
 	perc=[]
 	for item in scores:
-		percentile = percentileofscore(item, 3)
+		percentile = percentileofscore(scores, item)
 		perc.append(percentile)
 	return perc
 
