@@ -72,8 +72,6 @@ print (count_df)
 count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
 print (count_df)
 
-count_df['SynSig']=1
-
-count_df[count_df['avg_scores']<=4.45]['SynSig']=0
+count_df['SynSig'] = np.where(count_df['SynSig']>4.45, 'yes', 'no')
 
 print (count_df)
