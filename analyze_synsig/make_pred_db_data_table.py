@@ -69,6 +69,7 @@ def find_synapse_perc(count_df):
 	return perc
 
 def format_count_df(pred, all_gl, all_gl_names):
+	pred_genes=pred['genes'].tolist()
 	all_counts=[]
 	for item in all_gl:
 		gl_count=count_in_genelist(pred_genes, item)
