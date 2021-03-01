@@ -101,7 +101,7 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2=find_synapse_lists(big_pool, go_genes)
+	syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2=load_synapse_lists(big_pool, go_genes)
 	all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
 	all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 	count_df=format_count_df(pred, all_gl, all_gl_names)
