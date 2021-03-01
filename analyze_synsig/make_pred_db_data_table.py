@@ -90,3 +90,5 @@ for i in range(len(synsig)):
 
 count_df['Synapse_Status']=status
 print (count_df)
+
+count_df.to_csv('update_web_table.csv')
