@@ -88,6 +88,8 @@ def format_count_df(pred, all_gl, all_gl_names):
 
 	count_df['SynSig'] = np.where(count_df['avg_scores']>4.45, 'yes', 'no')
 
+	count_df=find_synapse_stat(count_df)
+
 	perc=find_synapse_perc(count_df)
 	count_df['Synapse Percentile']=perc
 	count_df.to_csv('update_web_table.csv')
