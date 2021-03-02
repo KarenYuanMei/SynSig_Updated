@@ -105,7 +105,8 @@ if __name__ == '__main__':
 	#find_synsig_all_support()
 	#plot is done in R
 
-	table=pd.read_csv('../run_ML/update_web_table.csv')
+	#table=pd.read_csv('../run_ML/update_web_table.csv')
+	table=pd.read_csv('update_web_table.csv')
 
 	synsig_df=table[table['avg_scores']>4.45]
 	synsig=synsig_df['genes'].tolist()
