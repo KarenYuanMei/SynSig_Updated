@@ -132,7 +132,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
-	plt.bar(labels, mean_values, align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
 
 	#plt.ylim(1, 10**5)
 	#plt.yscale('log')
