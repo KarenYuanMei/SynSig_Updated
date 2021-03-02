@@ -21,7 +21,8 @@ sys.path.append('../graph_functions/')
 #import find_GO_scores
 import graph_functions
 
-table=pd.read_csv('../run_ML/update_web_table.csv')
+#table=pd.read_csv('../run_ML/update_web_table.csv')
+table=pd.read_csv('update_web_table.csv')
 
 all_syn=table[table['Lit Sum']==3]
 print (all_syn)
