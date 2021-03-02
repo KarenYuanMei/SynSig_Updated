@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 import csv
 
+from scipy import stats
+
 from scipy.stats import percentileofscore
 
 import sys
@@ -29,7 +31,7 @@ for i in range(8):
 	scores=df['avg_scores'].tolist()
 	mean=np.mean(scores)
 	all_means.append(mean)
-	sem=stat.sem(scores)
+	sem=stats.sem(scores)
 	all_sems.append(sem)
 
 print (all_means)
