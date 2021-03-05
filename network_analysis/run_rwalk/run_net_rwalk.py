@@ -62,7 +62,7 @@ print (kernel)
 frames=[]
 for key in list(nodesets.keys()):
 	genesets={key: nodesets.get(key)}
-	print ('genesets', genesets)
+	#print ('genesets', genesets)
 	genesets_p=net_random_walk_functions.set_p(genesets)
 	#scores=run_propagation(G, genesets, alpha)
 	scores= net_random_walk_functions.get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
@@ -70,3 +70,21 @@ for key in list(nodesets.keys()):
 	frames.append(scores)
 df=pd.concat(frames, axis=1)
 print (df)
+
+mean_fpr = np.linspace(0, 1, 100)
+tprs = []
+aucs = []
+for j in np.arange(0,14,3):
+	print ('j', j)
+	subdf=df.iloc[:, j:j+3]
+	subdf.columns=['Sub-Sample', 'Non-Sample', 'Prop Score']
+	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg_eval)
+	final=pd.DataFrame({'Threshold': threshold, 'TPR': tpr, 'FPR': fpr})
+	print (df)
+	#final.to_csv('../propagate_synapse/results/ROC_df_%s.csv'%j)
+	print ('actual', roc_auc)
+	tprs.append(np.interp(mean_fpr, fpr, tpr))
+	tprs[-1][0] = 0.
+	aucs.append(roc_auc)
+
+print (aucs)
