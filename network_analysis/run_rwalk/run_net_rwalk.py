@@ -66,6 +66,42 @@ def calculate_p(nodesets):
 nodesets_p=calculate_p(nodesets)
 print (nodesets_p)
 
+# Wrapper for random walk propagation of full network by subgraphs
+def closed_form_network_propagation(network, binary_matrix, network_alpha, symmetric_norm=False,  verbose=False, save_path=None):
+	starttime=time.time()
+	if verbose:
+		print ('Alpha:', network_alpha)
+	# Separate network into connected components and calculate propagation values of each sub-sample on each connected component
+	subgraphs = list(nx.connected_component_subgraphs(network))
+	#subgraphs=list(nx.subgraph(c) for c in connected_components(G))
+	#subgraphs=list(G.subgraph(c) for c in nx.connected_components(G))
+	# Initialize propagation results by propagating first subgraph
+	subgraph = subgraphs[0]
+	subgraph_nodes = list(subgraph.nodes)
+	prop_data_node_order = list(subgraph_nodes)
+	binary_matrix_filt = np.array(binary_matrix.T.loc[subgraph_nodes].fillna(0).T)
+	subgraph_norm = normalize_network(subgraph, symmetric_norm=symmetric_norm)
+	prop_data_empty = np.zeros((binary_matrix_filt.shape[0], 1))
+	prop_data = fast_random_walk(network_alpha, binary_matrix_filt, subgraph_norm, prop_data_empty)
+	# Get propagated results for remaining subgraphs
+	for subgraph in subgraphs[1:]:
+		subgraph_nodes = list(subgraph.nodes)
+		prop_data_node_order = prop_data_node_order + subgraph_nodes
+		binary_matrix_filt = np.array(binary_matrix.T.loc[subgraph_nodes].fillna(0).T)
+		subgraph_norm = normalize_network(subgraph, symmetric_norm=symmetric_norm)
+		prop_data = fast_random_walk(network_alpha, binary_matrix_filt, subgraph_norm, prop_data)
+	# Return propagated result as dataframe
+	prop_data_df = pd.DataFrame(data=prop_data[:,1:], index = binary_matrix.index, columns=prop_data_node_order)
+	if save_path is None:
+		if verbose:
+			print ('Network Propagation Complete:', time.time()-starttime, 'seconds')		
+		return prop_data_df
+	else:
+		prop_data_df.to_csv(save_path)
+		if verbose:
+			print ('Network Propagation Complete:', time.time()-starttime, 'seconds')				
+		return prop_data_df
+
 def construct_prop_kernel(network, alpha, m=-0.02935302, b=0.74842057, verbose=False, save_path=None):
 	network_Fo = pd.DataFrame(data=np.identity(len(network.nodes())), index=network.nodes(), columns=network.nodes())
 	alpha_val = alpha
