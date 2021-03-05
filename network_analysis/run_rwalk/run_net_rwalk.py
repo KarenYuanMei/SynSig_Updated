@@ -52,3 +52,16 @@ neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/up
 print (len(neg))
 neg=list(set(neg)&set(nodes))
 print (len(neg))
+
+def calculate_p(nodesets):
+	#network_nodes = [str(gene) for gene in network.nodes()]
+	nodesets_p = {}
+	for nodeset in nodesets:
+		#nodesets_coverage = len([node for node in nodesets[nodeset] if node in network_nodes])
+		#print (nodesets_coverage)
+		nodesets_p[nodeset] = 0.2
+	print (nodesets_p)
+	return nodesets_p
+
+nodesets_p=calculate_p(nodesets)
+print (nodesets_p)
