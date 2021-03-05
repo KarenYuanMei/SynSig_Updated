@@ -6,6 +6,8 @@ import pandas as pd
 
 import numpy as np
 import time
+import scipy.stats as stats
+import sklearn.metrics as metrics
 #import matplotlib.pyplot as plt
 import sys
 sys.path.append('../rwalk_functions/')
@@ -70,6 +72,36 @@ for key in list(nodesets.keys()):
 	frames.append(scores)
 df=pd.concat(frames, axis=1)
 print (df)
+
+def find_scores_df(df):
+	cols=df.columns
+	to_delete=[]
+	for item in cols:
+		if "Prop" not in item:
+			to_delete.append(item)
+	final=df.drop(to_delete, axis=1)
+	return final
+
+def find_val_df(df, neg_eval):
+	pos=df[df['Non-Sample']==1]
+	neg=df.loc[neg_eval]
+	final=pd.concat([pos, neg])
+	return final
+
+def calculate_roc(df, neg_eval):
+	final=find_val_df(df, neg_eval)
+	#print (final)
+	y_test=final['Non-Sample'].tolist()
+	final=find_scores_df(final)
+	#print (final)
+	final['mean']=final.mean(axis=1)
+	# calculate the fpr and tpr for all thresholds of the classification
+	preds=final['mean'].tolist()
+	fpr, tpr, threshold = metrics.roc_curve(y_test, preds)
+	roc_auc = metrics.auc(fpr, tpr)
+	return fpr, tpr, threshold, roc_auc
+
+
 
 mean_fpr = np.linspace(0, 1, 100)
 tprs = []
