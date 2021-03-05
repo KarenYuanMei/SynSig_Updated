@@ -22,8 +22,12 @@ df=make_network_graph_functions.make_mentha_df(filename)
 
 G=make_network_graph_functions.make_network_G(df)
 print (G.number_of_edges())
+nodes=list(G.nodes())
 
-seeds=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
+pos=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
+print (len(pos))
+
+seeds=list(set(pos)&set(nodes))
 print (len(seeds))
 
 def find_nodesets(G, seeds):
