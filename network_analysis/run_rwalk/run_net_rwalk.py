@@ -119,3 +119,4 @@ for j in np.arange(0,14,3):
 	aucs.append(roc_auc)
 
 print (aucs)
+print (np.mean(aucs))
