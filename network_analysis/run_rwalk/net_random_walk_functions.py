@@ -12,7 +12,7 @@ def set_p(nodesets):
 		#nodesets_coverage = len([node for node in nodesets[nodeset] if node in network_nodes])
 		#print (nodesets_coverage)
 		nodesets_p[nodeset] = 0.2
-	print (nodesets_p)
+	#print (nodesets_p)
 	return nodesets_p
 
 # Normalize network (or network subgraph) for random walk propagation
@@ -24,7 +24,7 @@ def normalize_network(network, symmetric_norm=False):
 		adj_array_norm = np.dot(np.dot(D, adj_array), D)
 	else:
 		degree_norm_array = np.diag(1/sum(adj_array).astype(float))
-		print (degree_norm_array)
+		#print (degree_norm_array)
 		sparse_degree_norm_array = sp.sparse.csr_matrix(degree_norm_array)
 		adj_array_norm = sparse_degree_norm_array.dot(adj_mat).toarray()
 	return adj_array_norm
@@ -88,3 +88,51 @@ def construct_prop_kernel(network, alpha, verbose=False, save_path=None):
 		else:
 			network_Fn.to_csv(save_path)
 	return network_Fn
+
+# Wrapper to calculate AUPRC of multiple node sets' recovery for large networks (>=250k edges)
+def get_propagated_scores(net_kernel, genesets, genesets_p, n=1, cores=1, bg=None, verbose=True):
+	starttime = time.time()
+	# Construct binary gene set sub-sample matrix
+	geneset_list = genesets.keys()
+	m, c = len(geneset_list), net_kernel.shape[0]
+	subsample_mat = np.zeros((n*m, c))
+	y_actual_mat = np.zeros((n*m, c))
+	# Each block of length n rows is a sub-sampled binary vector of the corresponding gene set
+	for i in range(m):
+		geneset = geneset_list[i]
+		# Get indices of gene set genes in kernel
+		intersect = [gene for gene in genesets[geneset] if gene in net_kernel.index]
+		index_dict = dict((gene, idx) for idx, gene in enumerate(net_kernel.index))
+		intersect_idx = [index_dict[gene] for gene in intersect]
+		
+		# Sub-sample gene set indices
+		sample_size = int(round(genesets_p[geneset]*len(intersect)))
+		#sample_idx = random.sample(intersect_idx, sample_size)
+		sample_idx=intersect_idx[:sample_size]
+		non_sample_idx = [idx for idx in intersect_idx if idx not in sample_idx]
+		# Set sub-sampled list to 1
+		row = i
+
+		subsample_mat[row, sample_idx] = 1
+		y_actual_mat[row, non_sample_idx] = 1
+	if verbose:
+		print ('Binary gene set sub-sample matrix constructed')
+	# Propagate sub-samples
+	prop_subsamples = np.dot(subsample_mat, net_kernel)
+	if verbose:
+		print ('Binary gene set sub-sample matrix propagated')
+	# Construct parameter list to be passed
+	
+	final_scores=[]
+	for i in range(len(geneset_list)):
+		
+		row = i
+		prop_result_full = pd.DataFrame(np.array((subsample_mat[row], y_actual_mat[row], prop_subsamples[row])), 
+								   		index=['Sub-Sample', 'Non-Sample', 'Prop Score'], columns=net_kernel.columns).T
+		#prop_result_full.to_csv('%s_prop_result_full_%s.csv'%(name, row))
+		final_scores.append(prop_result_full)
+
+	all_scores=pd.concat(final_scores, axis=1)
+
+	return all_scores
+
