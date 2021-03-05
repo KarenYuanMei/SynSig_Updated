@@ -11,7 +11,7 @@ def set_p(nodesets):
 	for nodeset in nodesets:
 		#nodesets_coverage = len([node for node in nodesets[nodeset] if node in network_nodes])
 		#print (nodesets_coverage)
-		nodesets_p[nodeset] = 0.2
+		nodesets_p[nodeset] = 0.5
 	#print (nodesets_p)
 	return nodesets_p
 
