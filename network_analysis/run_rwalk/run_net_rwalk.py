@@ -67,6 +67,30 @@ def calculate_p(nodesets):
 nodesets_p=calculate_p(nodesets)
 print (nodesets_p)
 
+# Normalize network (or network subgraph) for random walk propagation
+def normalize_network(network, symmetric_norm=False):
+	adj_mat = nx.adjacency_matrix(network)
+	adj_array = np.array(adj_mat.todense())
+	if symmetric_norm:
+		D = np.diag(1/np.sqrt(sum(adj_array)))
+		adj_array_norm = np.dot(np.dot(D, adj_array), D)
+	else:
+		degree_norm_array = np.diag(1/sum(adj_array).astype(float))
+		print (degree_norm_array)
+		sparse_degree_norm_array = sp.sparse.csr_matrix(degree_norm_array)
+		adj_array_norm = sparse_degree_norm_array.dot(adj_mat).toarray()
+	return adj_array_norm
+
+# Closed form random-walk propagation (as seen in HotNet2) for each subgraph: Ft = (1-alpha)*Fo * (I-alpha*norm_adj_mat)^-1
+# Concatenate to previous set of subgraphs
+def fast_random_walk(alpha, binary_mat, subgraph_norm, prop_data):
+	term1=(1-alpha)*binary_mat
+	term2=np.identity(binary_mat.shape[1])-alpha*subgraph_norm
+	term2_inv = np.linalg.inv(term2)
+	subgraph_prop = np.dot(term1, term2_inv)
+	return np.concatenate((prop_data, subgraph_prop), axis=1)
+
+
 # Wrapper for random walk propagation of full network by subgraphs
 def closed_form_network_propagation(network, binary_matrix, network_alpha, symmetric_norm=False,  verbose=False, save_path=None):
 	starttime=time.time()
