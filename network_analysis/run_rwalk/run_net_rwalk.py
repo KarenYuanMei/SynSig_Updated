@@ -46,4 +46,9 @@ def find_nodesets(G, seeds):
 	return nodesets
 
 nodesets=find_nodesets(G, seeds)
-print (nodesets)
+#print (nodesets)
+
+neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
+print (len(neg))
+neg=list(set(neg)&set(nodes))
+print (len(neg))
