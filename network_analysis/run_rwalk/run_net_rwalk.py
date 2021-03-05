@@ -18,10 +18,28 @@ sys.path.append('../ppi_files/')
 
 filename='../ppi_files/Human_Mentha_converted.csv'
 df=make_network_graph_functions.make_mentha_df(filename)
-print (df)
+#print (df)
 
 G=make_network_graph_functions.make_network_G(df)
 print (G.number_of_edges())
 
 seeds=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
 print (len(seeds))
+
+def find_nodesets(G, seeds):
+	no_per_fold=len(seeds)/5
+	keys=['first', 'second', 'third', 'fourth', 'fifth']
+	seed_lists = [seeds[x:x+no_per_fold] for x in range(0, len(seeds), no_per_fold)]
+	val_lists=[]
+	for item in seed_lists:
+		val_list=list(set(seeds)-set(item))
+		val_lists.append(val_list)
+	ordered=[]
+	for i in range(len(seed_lists)):
+		each=seed_lists[i]+val_lists[i]
+		ordered.append(each)
+	nodesets=dict(zip(keys, ordered))
+	return nodesets
+
+nodesets=find_nodesets(G, seeds)
+print (nodesets)
