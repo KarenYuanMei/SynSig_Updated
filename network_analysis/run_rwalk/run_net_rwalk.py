@@ -65,3 +65,20 @@ def calculate_p(nodesets):
 
 nodesets_p=calculate_p(nodesets)
 print (nodesets_p)
+
+def construct_prop_kernel(network, alpha, m=-0.02935302, b=0.74842057, verbose=False, save_path=None):
+	network_Fo = pd.DataFrame(data=np.identity(len(network.nodes())), index=network.nodes(), columns=network.nodes())
+	alpha_val = alpha
+	network_Fn = closed_form_network_propagation(network, network_Fo, alpha_val, verbose=verbose)
+	network_Fn = network_Fn.loc[network_Fn.columns]
+	if verbose:
+		print ('Propagated network kernel constructed')
+	if save_path is not None:
+		if save_path.endswith('.hdf'):
+			network_Fn.to_hdf(save_path, key='Kernel', mode='w')
+		else:
+			network_Fn.to_csv(save_path)
+	return network_Fn
+
+network_fn=construct_prop_kernel(G, 0.4)
+print (network_fn)
