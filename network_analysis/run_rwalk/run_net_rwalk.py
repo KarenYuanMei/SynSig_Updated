@@ -102,7 +102,6 @@ def calculate_roc(df, neg_eval):
 	return fpr, tpr, threshold, roc_auc
 
 
-
 mean_fpr = np.linspace(0, 1, 100)
 tprs = []
 aucs = []
@@ -110,7 +109,7 @@ for j in np.arange(0,14,3):
 	print ('j', j)
 	subdf=df.iloc[:, j:j+3]
 	subdf.columns=['Sub-Sample', 'Non-Sample', 'Prop Score']
-	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg_eval)
+	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 	final=pd.DataFrame({'Threshold': threshold, 'TPR': tpr, 'FPR': fpr})
 	print (df)
 	#final.to_csv('../propagate_synapse/results/ROC_df_%s.csv'%j)
