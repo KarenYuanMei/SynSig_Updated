@@ -5,13 +5,13 @@ import pandas as pd
 import numpy as np
 import time
 
-def set_p(nodesets):
+def set_p(nodeset, fraction):
 	#network_nodes = [str(gene) for gene in network.nodes()]
 	nodesets_p = {}
 	for nodeset in nodesets:
 		#nodesets_coverage = len([node for node in nodesets[nodeset] if node in network_nodes])
 		#print (nodesets_coverage)
-		nodesets_p[nodeset] = 0.8
+		nodesets_p[nodeset] = fraction
 	#print (nodesets_p)
 	return nodesets_p
 
