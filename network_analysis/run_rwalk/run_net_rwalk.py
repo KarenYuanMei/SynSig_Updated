@@ -120,7 +120,7 @@ neg=list(set(neg)&set(nodes))
 #print (len(neg))
 
 
-alphas=np.arange(0.1, 1, 0.1):
+alphas=np.arange(0.1, 1, 0.1)
 
 all_alpha_aucs=[]
 for alpha in alphas:
