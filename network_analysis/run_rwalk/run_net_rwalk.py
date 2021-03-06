@@ -97,7 +97,7 @@ def calc_prop_aucs(df):
 	return mean_fpr, tprs, aucs
 
 filename='../ppi_files/Human_Mentha_converted.csv'
-filename='../Data/BioPlex 3 - HEK293T default edge.csv'
+filename='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
 df=make_network_graph_functions.make_mentha_df(filename)
 #print (df)
 
