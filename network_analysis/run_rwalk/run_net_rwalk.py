@@ -147,7 +147,9 @@ neg=list(set(neg)&set(nodes))
 alpha=0.3
 kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
 df=find_prop_scores_df(kernel, nodesets, 0.6)
+print (df)
 mean_fpr, tprs, aucs=calc_prop_aucs(df)
 print (aucs)
+print (np.mean(aucs))
 
 
