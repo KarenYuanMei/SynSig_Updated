@@ -122,26 +122,32 @@ neg=list(set(neg)&set(nodes))
 #print (len(neg))
 
 
-alphas=np.arange(0.1, 1, 0.1)
+# alphas=np.arange(0.1, 1, 0.1)
 
-all_alpha_aucs=[]
-for alpha in alphas:
-	kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
-	#print (kernel)
-	fractions=np.arange(0.1, 1, 0.1)
+# all_alpha_aucs=[]
+# for alpha in alphas:
+# 	kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
+# 	#print (kernel)
+# 	fractions=np.arange(0.1, 1, 0.1)
 
-	mean_aucs=[]
-	for item in fractions:
-		print (item)
-		df=find_prop_scores_df(kernel, nodesets, item)
+# 	mean_aucs=[]
+# 	for item in fractions:
+# 		print (item)
+# 		df=find_prop_scores_df(kernel, nodesets, item)
 
-		mean_fpr, tprs, aucs=calc_prop_aucs(df)
+# 		mean_fpr, tprs, aucs=calc_prop_aucs(df)
 
-		#print (aucs)
-		mean_auc=np.mean(aucs)
-		print (mean_auc)
-		mean_aucs.append(mean_auc)
-	all_alpha_aucs.append(mean_aucs)
+# 		#print (aucs)
+# 		mean_auc=np.mean(aucs)
+# 		print (mean_auc)
+# 		mean_aucs.append(mean_auc)
+# 	all_alpha_aucs.append(mean_aucs)
 
-print (all_alpha_aucs)
+# print (all_alpha_aucs)
+alpha=0.3
+kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
+df=find_prop_scores_df(kernel, nodesets, 0.6)
+mean_fpr, tprs, aucs=calc_prop_aucs(df)
+print (aucs)
+
 
