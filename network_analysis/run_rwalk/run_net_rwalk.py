@@ -83,7 +83,7 @@ def calc_prop_aucs(df):
 	tprs = []
 	aucs = []
 	for j in np.arange(0,14,3):
-		print ('j', j)
+		#=print ('j', j)
 		subdf=df.iloc[:, j:j+3]
 		subdf.columns=['Sub-Sample', 'Non-Sample', 'Prop Score']
 		fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
@@ -120,15 +120,26 @@ neg=list(set(neg)&set(nodes))
 #print (len(neg))
 
 
-kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
-#print (kernel)
+alphas=np.arange(0.1, 1, 0.1):
 
-fractions=np.arange(0.1, 0.9, 0.1)
-for item in fractions:
-	print (item)
-	df=find_prop_scores_df(kernel, nodesets, item)
+all_alpha_aucs=[]
+for alpha in alphas:
+	kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
+	#print (kernel)
+	fractions=np.arange(0.1, 1, 0.1)
 
-	mean_fpr, tprs, aucs=calc_prop_aucs(df)
+	mean_aucs=[]
+	for item in fractions:
+		print (item)
+		df=find_prop_scores_df(kernel, nodesets, item)
 
-	print (aucs)
-	print (np.mean(aucs))
+		mean_fpr, tprs, aucs=calc_prop_aucs(df)
+
+		#print (aucs)
+		mean_auc=np.mean(aucs)
+		print (mean_auc)
+		mean_aucs.append(mean_auc)
+	all_alpha_aucs.append(mean_aucs)
+
+print (all_alpha_aucs)
+
