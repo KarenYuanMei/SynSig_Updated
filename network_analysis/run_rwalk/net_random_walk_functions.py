@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import time
 
-def set_p(nodeset, fraction):
+def set_p(nodesets, fraction):
 	#network_nodes = [str(gene) for gene in network.nodes()]
 	nodesets_p = {}
 	for nodeset in nodesets:
