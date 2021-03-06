@@ -75,7 +75,7 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 		#print (scores)
 		frames.append(scores)
 	df=pd.concat(frames, axis=1)
-	print (df)
+	#print (df)
 	return df
 
 def calc_prop_aucs(df):
@@ -88,9 +88,9 @@ def calc_prop_aucs(df):
 		subdf.columns=['Sub-Sample', 'Non-Sample', 'Prop Score']
 		fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 		final=pd.DataFrame({'Threshold': threshold, 'TPR': tpr, 'FPR': fpr})
-		print (df)
+		#print (df)
 		#final.to_csv('../propagate_synapse/results/ROC_df_%s.csv'%j)
-		print ('actual', roc_auc)
+		#print ('actual', roc_auc)
 		tprs.append(np.interp(mean_fpr, fpr, tpr))
 		tprs[-1][0] = 0.
 		aucs.append(roc_auc)
