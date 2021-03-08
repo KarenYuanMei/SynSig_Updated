@@ -8,6 +8,9 @@ import numpy as np
 import time
 import scipy.stats as stats
 import sklearn.metrics as metrics
+
+import ddot
+from ddot import Ontology
 #import matplotlib.pyplot as plt
 import sys
 sys.path.append('../rwalk_functions/')
