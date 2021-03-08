@@ -144,12 +144,13 @@ neg=list(set(neg)&set(nodes))
 # 	all_alpha_aucs.append(mean_aucs)
 
 # print (all_alpha_aucs)
-alpha=0.3
-kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
-df=find_prop_scores_df(kernel, nodesets, 0.6)
-print (df)
-mean_fpr, tprs, aucs=calc_prop_aucs(df)
-print (aucs)
-print (np.mean(aucs))
+alphas=np.arange(0.1, 1, 0.1)
+for item in alphas:
+	kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
+	df=find_prop_scores_df(kernel, nodesets, 0.8)
+	print (df)
+	mean_fpr, tprs, aucs=calc_prop_aucs(df)
+	print (aucs)
+	print (np.mean(aucs))
 
 
