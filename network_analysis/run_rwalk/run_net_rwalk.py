@@ -119,8 +119,7 @@ def opt_alpha(G, neg):
 #syngo=find_syngo(big_pool, go_genes)
 #print (len(seeds)/len(syngo))
 
-syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
-print (len(syngo))
+
 
 
 filename='../ppi_files/Human_Mentha_converted.csv'
@@ -145,6 +144,9 @@ neg=list(set(nodes)-set(seeds))
 #print (np.mean(all_mean_aucs))
 
 
+syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
+print (len(syngo))
+print (len(seeds)/len(syngo))
 
 
 
