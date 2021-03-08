@@ -7,6 +7,11 @@ def get_gene_names(filename):
 	genes=df['genes'].tolist()
 	return genes
 
+def load_big_pool():
+	index_file='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	big_pool=get_gene_names(index_file)
+	return big_pool
+
 def find_syngo(big_pool, go_genes):
 	syngo_file='../correct_db/corr_syngo_cc.csv'
 	syngo=get_gene_names(syngo_file)

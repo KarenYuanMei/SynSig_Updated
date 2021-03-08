@@ -17,6 +17,9 @@ import net_random_walk_functions
 sys.path.append('../../read_data_functions')
 import load_data_functions
 
+sys.path.append('../ML_functions/')
+import find_GO_scores
+
 
 sys.path.append('../ppi_files/')
 
@@ -122,22 +125,21 @@ nodes=list(G.nodes())
 
 pos=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
 #print (len(pos))
-
 seeds=list(set(pos)&set(nodes))
 #print (len(seeds))
-
 nodesets=find_nodesets(G, seeds)
 #print (nodesets)
-
-#neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
-#print (len(neg))
-#neg=list(set(neg)&set(nodes))
-#print (len(neg))
-
 neg=list(set(nodes)-set(seeds))
+#all_mean_aucs=opt_alpha(G, neg)
+#print (all_mean_aucs)
+#print (np.mean(all_mean_aucs))
 
-all_mean_aucs=opt_alpha(G, neg)
-print (all_mean_aucs)
+big_pool=load_data_functions.load_big_pool()
 
+GO_human=find_GO_scores.find_GO_ont()
+GO_genes=GO_human.genes
 
+syngo=find_syngo(big_pool, go_genes)
+
+print (len(seeds)/len(syngo))
 

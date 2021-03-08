@@ -98,10 +98,7 @@ def load_pos_neg_training():
 	all_training=pos+neg
 	return pos, neg, all_training
 
-def load_big_pool():
-	index_file='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
-	big_pool=get_gene_names(index_file)
-	return big_pool
+
 
 def define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks):
 	for i in range(5):
