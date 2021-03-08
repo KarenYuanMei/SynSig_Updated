@@ -113,11 +113,14 @@ def opt_alpha(G, neg):
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
 
-big_pool=load_data_functions.load_big_pool()
-GO_human=find_GO_scores.find_GO_ont()
-GO_genes=GO_human.genes
-syngo=find_syngo(big_pool, go_genes)
-print (len(seeds)/len(syngo))
+##big_pool=load_data_functions.load_big_pool()
+#GO_human=find_GO_scores.find_GO_ont()
+#GO_genes=GO_human.genes
+#syngo=find_syngo(big_pool, go_genes)
+#print (len(seeds)/len(syngo))
+
+syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
+print (len(syngo))
 
 
 filename='../ppi_files/Human_Mentha_converted.csv'
