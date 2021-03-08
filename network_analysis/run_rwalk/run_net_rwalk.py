@@ -110,12 +110,25 @@ def opt_alpha(G, neg):
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
 
-##big_pool=load_data_functions.load_big_pool()
-#GO_human=find_GO_scores.find_GO_ont()
-#GO_genes=GO_human.genes
-#syngo=find_syngo(big_pool, go_genes)
-#print (len(seeds)/len(syngo))
-
+def find_shuff_scores(G, nodesets, alpha, genesets_p):
+	for i in range(10):
+		shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
+		shuffNet_kernel = construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
+		shuff_frames=[]
+		for key in list(nodesets.keys()):
+			genesets={key: nodesets.get(key)}
+			#select_keys=['first']
+			genesets_p=calculate_p(genesets)
+		
+			shuff_scores= get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+			#shuff_scores=run_propagation(shuffNet, genesets, alpha)
+			print (shuff_scores)
+			shuff_frames.append(shuff_scores)
+			print ('shuffNet', 'AUPRCs calculated')
+		#shuff=pd.concat(shuff_frames, axis=1)
+		#print (shuff)
+		#shuff.to_csv('../propagate_synapse/results/%s_shuff_prop_result_%s.csv'%(alpha, i))
+		return shuff_frames
 
 
 
@@ -145,6 +158,9 @@ syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 print (len(syngo))
 print (len(seeds)/float(len(syngo)))
 
+overlap=list(set(nodes)&set(syngo))
+print ('overlap', len(overlap))
+
 non_seeds=list(set(syngo)-set(seeds))
 ordered_test=seeds+non_seeds
 ordered_set={'syngo': ordered_test}
@@ -159,6 +175,15 @@ cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
 subdf=df[cols]
 fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 print (roc_auc)
+
+shuff=find_shuff_scores(G, ordered_set, 0.4)
+
+for i in range(10):
+	df=shuff[i]
+	cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
+	subdf=df[cols]
+	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
+	print (roc_auc)
 
 
 
