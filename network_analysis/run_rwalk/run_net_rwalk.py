@@ -143,7 +143,7 @@ neg=list(set(nodes)-set(seeds))
 
 syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 print (len(syngo))
-print (len(seeds)/len(syngo))
+print (float(len(seeds)/len(syngo)))
 
 
 
