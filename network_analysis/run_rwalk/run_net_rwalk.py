@@ -78,7 +78,7 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	#print (df)
 	return df
 
-def calc_prop_aucs(df):
+def calc_prop_aucs(df, neg):
 	mean_fpr = np.linspace(0, 1, 100)
 	tprs = []
 	aucs = []
@@ -96,7 +96,7 @@ def calc_prop_aucs(df):
 		aucs.append(roc_auc)
 	return mean_fpr, tprs, aucs
 
-def opt_alpha(G):
+def opt_alpha(G, neg):
 	alphas=np.arange(0.1, 1, 0.1)
 
 	all_mean_aucs=[]
@@ -104,7 +104,7 @@ def opt_alpha(G):
 		kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
 		df=find_prop_scores_df(kernel, nodesets, 0.8)
 		#print (df)
-		mean_fpr, tprs, aucs=calc_prop_aucs(df)
+		mean_fpr, tprs, aucs=calc_prop_aucs(df, neg)
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
@@ -129,12 +129,14 @@ seeds=list(set(pos)&set(nodes))
 nodesets=find_nodesets(G, seeds)
 #print (nodesets)
 
-neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
+#neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
 #print (len(neg))
-neg=list(set(neg)&set(nodes))
+#neg=list(set(neg)&set(nodes))
 #print (len(neg))
 
-all_mean_aucs=opt_alpha(G)
+neg=list(set(nodes)-set(seeds))
+
+all_mean_aucs=opt_alpha(G, neg)
 print (all_mean_aucs)
 
 
