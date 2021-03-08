@@ -152,7 +152,7 @@ ordered_set={'syngo': ordered_test}
 neg=list(set(nodes)-set(syngo))
 
 kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
-df=find_prop_scores_df(kernel, nodesets, 0.5)
+df=find_prop_scores_df(kernel, ordered_set, 0.5)
 		#print (df)
 mean_fpr, tprs, aucs=calc_prop_aucs(df, neg)
 print (aucs)
