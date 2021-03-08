@@ -17,7 +17,7 @@ import net_random_walk_functions
 sys.path.append('../../read_data_functions')
 import load_data_functions
 
-sys.path.append('../ML_functions/')
+sys.path.append('../../ML_functions/')
 import find_GO_scores
 
 
