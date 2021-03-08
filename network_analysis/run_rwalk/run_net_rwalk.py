@@ -155,9 +155,9 @@ kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
 df=find_prop_scores_df(kernel, ordered_set, 0.5)
 print (df)
 		#print (df)
-mean_fpr, tprs, aucs=calc_prop_aucs(df, neg)
-print (aucs)
-
+subdf.columns=['Sub-Sample', 'Non-Sample', 'Prop Score']
+fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
+print (roc_auc)
 
 
 
