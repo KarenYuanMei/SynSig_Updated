@@ -96,54 +96,6 @@ def calc_prop_aucs(df):
 		aucs.append(roc_auc)
 	return mean_fpr, tprs, aucs
 
-filename='../ppi_files/Human_Mentha_converted.csv'
-filename='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
-#df=make_network_graph_functions.make_mentha_df(filename)
-df=make_network_graph_functions.make_bioplex_df(filename)
-#print (df)
-
-G=make_network_graph_functions.make_network_G(df)
-#print (G.number_of_edges())
-nodes=list(G.nodes())
-
-pos=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
-#print (len(pos))
-
-seeds=list(set(pos)&set(nodes))
-#print (len(seeds))
-
-
-nodesets=find_nodesets(G, seeds)
-#print (nodesets)
-
-neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
-#print (len(neg))
-neg=list(set(neg)&set(nodes))
-#print (len(neg))
-
-
-# alphas=np.arange(0.1, 1, 0.1)
-
-# all_alpha_aucs=[]
-# for alpha in alphas:
-# 	kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
-# 	#print (kernel)
-# 	fractions=np.arange(0.1, 1, 0.1)
-
-# 	mean_aucs=[]
-# 	for item in fractions:
-# 		print (item)
-# 		df=find_prop_scores_df(kernel, nodesets, item)
-
-# 		mean_fpr, tprs, aucs=calc_prop_aucs(df)
-
-# 		#print (aucs)
-# 		mean_auc=np.mean(aucs)
-# 		print (mean_auc)
-# 		mean_aucs.append(mean_auc)
-# 	all_alpha_aucs.append(mean_aucs)
-
-# print (all_alpha_aucs)
 def opt_alpha(G):
 	alphas=np.arange(0.1, 1, 0.1)
 
@@ -156,6 +108,31 @@ def opt_alpha(G):
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
+
+
+filename='../ppi_files/Human_Mentha_converted.csv'
+#filename='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
+df=make_network_graph_functions.make_mentha_df(filename)
+#df=make_network_graph_functions.make_bioplex_df(filename)
+#print (df)
+
+G=make_network_graph_functions.make_network_G(df)
+#print (G.number_of_edges())
+nodes=list(G.nodes())
+
+pos=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
+#print (len(pos))
+
+seeds=list(set(pos)&set(nodes))
+#print (len(seeds))
+
+nodesets=find_nodesets(G, seeds)
+#print (nodesets)
+
+neg=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_negatives.csv')
+#print (len(neg))
+neg=list(set(neg)&set(nodes))
+#print (len(neg))
 
 all_mean_aucs=opt_alpha(G)
 print (all_mean_aucs)
