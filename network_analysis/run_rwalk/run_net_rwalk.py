@@ -9,8 +9,6 @@ import time
 import scipy.stats as stats
 import sklearn.metrics as metrics
 
-import ddot
-from ddot import Ontology
 #import matplotlib.pyplot as plt
 import sys
 sys.path.append('../rwalk_functions/')
@@ -115,6 +113,12 @@ def opt_alpha(G, neg):
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
 
+big_pool=load_data_functions.load_big_pool()
+GO_human=find_GO_scores.find_GO_ont()
+GO_genes=GO_human.genes
+syngo=find_syngo(big_pool, go_genes)
+print (len(seeds)/len(syngo))
+
 
 filename='../ppi_files/Human_Mentha_converted.csv'
 #filename='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
@@ -137,12 +141,9 @@ neg=list(set(nodes)-set(seeds))
 #print (all_mean_aucs)
 #print (np.mean(all_mean_aucs))
 
-big_pool=load_data_functions.load_big_pool()
 
-GO_human=find_GO_scores.find_GO_ont()
-GO_genes=GO_human.genes
 
-syngo=find_syngo(big_pool, go_genes)
 
-print (len(seeds)/len(syngo))
+
+
 
