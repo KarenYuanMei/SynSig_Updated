@@ -18,7 +18,6 @@ import net_random_walk_functions
 sys.path.append('../../read_data_functions')
 import load_data_functions
 
-
 sys.path.append('../ppi_files/')
 
 
@@ -110,17 +109,36 @@ def opt_alpha(G, neg):
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
 
-def find_shuff_scores(G, nodesets, alpha, genesets_p):
+# Shuffle network in degree-preserving manner
+# Input: network - networkx formatted network
+# For large networks this can be slow: may need to be sped up to prevent bottlenecking
+def shuffle_network(network, max_tries_n=10, verbose=False):
+	# Shuffle Network
+	shuff_time = time.time()
+	edge_len=len(network.edges())
+	shuff_net=network.copy()
+	try:
+		nx.double_edge_swap(shuff_net, nswap=edge_len, max_tries=edge_len*max_tries_n)
+	except:
+		if verbose:
+			print 'Note: Maximum number of swap attempts ('+repr(edge_len*max_tries_n)+') exceeded before desired swaps achieved ('+repr(edge_len)+').'
+	if verbose:
+		# Evaluate Network Similarity
+		shared_edges = len(set(network.edges()).intersection(set(shuff_net.edges())))
+		print 'Network shuffled:', time.time()-shuff_time, 'seconds. Edge similarity:', shared_edges/float(edge_len)
+	return shuff_net
+
+def find_shuff_scores(G, nodesets, alpha, fraction):
 	for i in range(10):
 		shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
-		shuffNet_kernel = construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
+		shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
 		shuff_frames=[]
 		for key in list(nodesets.keys()):
 			genesets={key: nodesets.get(key)}
 			#select_keys=['first']
-			genesets_p=calculate_p(genesets)
+			genesets_p=net_random_walk_functions.set_p(genesets, fraction)
 		
-			shuff_scores= get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+			shuff_scores= net_random_walk_functions.get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
 			#shuff_scores=run_propagation(shuffNet, genesets, alpha)
 			print (shuff_scores)
 			shuff_frames.append(shuff_scores)
@@ -128,7 +146,7 @@ def find_shuff_scores(G, nodesets, alpha, genesets_p):
 		#shuff=pd.concat(shuff_frames, axis=1)
 		#print (shuff)
 		#shuff.to_csv('../propagate_synapse/results/%s_shuff_prop_result_%s.csv'%(alpha, i))
-		return shuff_frames
+	return shuff_frames
 
 
 
@@ -156,10 +174,13 @@ neg=list(set(nodes)-set(seeds))
 
 syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 print (len(syngo))
-print (len(seeds)/float(len(syngo)))
+
 
 overlap=list(set(nodes)&set(syngo))
 print ('overlap', len(overlap))
+
+fraction=len(seeds)/float(len(overlap))
+print (len(seeds)/float(len(overlap)))
 
 non_seeds=list(set(syngo)-set(seeds))
 ordered_test=seeds+non_seeds
@@ -168,7 +189,7 @@ ordered_set={'syngo': ordered_test}
 neg=list(set(nodes)-set(syngo))
 
 kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
-df=find_prop_scores_df(kernel, ordered_set, 0.5)
+df=find_prop_scores_df(kernel, ordered_set, fraction)
 print (df)
 		#print (df)
 cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
@@ -176,7 +197,7 @@ subdf=df[cols]
 fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 print (roc_auc)
 
-shuff=find_shuff_scores(G, ordered_set, 0.4)
+shuff=find_shuff_scores(G, ordered_set, 0.4, fraction)
 
 for i in range(10):
 	df=shuff[i]
