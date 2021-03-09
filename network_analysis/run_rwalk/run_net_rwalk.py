@@ -129,6 +129,9 @@ def shuffle_network(network, max_tries_n=10, verbose=False):
 	return shuff_net
 
 def find_shuff_scores(G, nodesets, alpha, fraction):
+
+	shuffled_rocs=[]
+
 	for i in range(10):
 		shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
 		shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
@@ -140,13 +143,18 @@ def find_shuff_scores(G, nodesets, alpha, fraction):
 		
 			shuff_scores= net_random_walk_functions.get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
 			#shuff_scores=run_propagation(shuffNet, genesets, alpha)
-			print (shuff_scores)
+			#print (shuff_scores)
 			shuff_frames.append(shuff_scores)
 			print ('shuffNet', 'AUPRCs calculated')
-		#shuff=pd.concat(shuff_frames, axis=1)
-		#print (shuff)
-		#shuff.to_csv('../propagate_synapse/results/%s_shuff_prop_result_%s.csv'%(alpha, i))
-	return shuff_frames
+
+		df=shuff_frames[i]
+		cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
+		subdf=df[cols]
+		fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
+		print (roc_auc)
+		shuffled_rocs.append(roc_auc)
+
+	return shuffled_rocs
 
 
 
@@ -190,23 +198,15 @@ neg=list(set(nodes)-set(syngo))
 
 kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
 df=find_prop_scores_df(kernel, ordered_set, fraction)
-print (df)
+#print (df)
 		#print (df)
 cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
 subdf=df[cols]
 fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 print (roc_auc)
 
-shuff=find_shuff_scores(G, ordered_set, 0.4, fraction)
-
-for i in range(10):
-	df=shuff[i]
-	cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
-	subdf=df[cols]
-	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
-	print (roc_auc)
-
-
+shuff_rocs=find_shuff_scores(G, ordered_set, 0.4, fraction)
+print (shuff_rocs)
 
 
 
