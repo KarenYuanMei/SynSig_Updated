@@ -52,6 +52,20 @@ def find_cv_nodesets(G, seeds):
 	nodesets=dict(zip(keys, ordered))
 	return nodesets
 
+def sweep_alpha_aucs(G, nodesets, neg):
+	alphas=np.arange(0.1, 1, 0.1)
+
+	all_mean_aucs=[]
+	for item in alphas:
+		kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
+		df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
+		#print (df)
+		mean_fpr, tprs, aucs=net_roc_functions.calc_prop_aucs(df, neg)
+		mean_aucs=np.mean(aucs)
+		all_mean_aucs.append(mean_aucs)
+	return all_mean_aucs
+
+
 def find_opt_alpha(all_mean_aucs):
 	alphas=np.arange(0.1, 1, 0.1)
 	max_auc=max(all_mean_aucs)
@@ -71,7 +85,7 @@ cv_seedsets=find_cv_nodesets(G, cv_seeds)
 
 neg=list(set(nodes)-set(cv_seeds))
 
-all_mean_aucs=net_roc_functions.sweep_alpha_aucs(G, cv_seedsets, neg)
+all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 
 print (all_mean_aucs)
 print (np.mean(all_mean_aucs))
