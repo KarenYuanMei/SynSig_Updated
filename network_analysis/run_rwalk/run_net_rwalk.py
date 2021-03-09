@@ -57,9 +57,9 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	for key in list(nodesets.keys()):
 		genesets={key: nodesets.get(key)}
 		#print ('genesets', genesets)
-		genesets_p=set_p(genesets, fraction)
+		genesets_p=net_random_walk_functions.set_p(genesets, fraction)
 		#scores=run_propagation(G, genesets, alpha)
-		scores= get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+		scores= net_random_walk_functions.get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
 		#print (scores)
 		frames.append(scores)
 	df=pd.concat(frames, axis=1)
