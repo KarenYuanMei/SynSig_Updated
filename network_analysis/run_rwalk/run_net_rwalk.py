@@ -82,6 +82,7 @@ nodes=list(G.nodes())
 cv_seeds=find_cv_seeds(nodes)
 
 cv_seedsets=find_cv_nodesets(G, cv_seeds)
+print (cv_seedsets)
 
 neg=list(set(nodes)-set(cv_seeds))
 
