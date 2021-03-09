@@ -74,7 +74,7 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
 		df=find_prop_scores_df(kernel, nodesets, 0.8)
 		#print (df)
-		mean_fpr, tprs, aucs=net_roc_functions.calc_prop_aucs(df, neg)
+		mean_fpr, tprs, aucs=net_roc_functions.calc_cv_prop_aucs(df, neg)
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
 	return all_mean_aucs
