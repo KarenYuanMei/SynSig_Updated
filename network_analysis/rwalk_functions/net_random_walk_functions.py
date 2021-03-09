@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 import time
 
+import net_roc_functions
+
 def set_p(nodesets, fraction):
 	#network_nodes = [str(gene) for gene in network.nodes()]
 	nodesets_p = {}
