@@ -128,33 +128,36 @@ def shuffle_network(network, max_tries_n=10, verbose=False):
 		print 'Network shuffled:', time.time()-shuff_time, 'seconds. Edge similarity:', shared_edges/float(edge_len)
 	return shuff_net
 
-def find_shuff_scores(G, nodesets, alpha, fraction):
 
-	shuffled_rocs=[]
+def calc_net_test_roc(df):
+	cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
+	subdf=df[cols]
+	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
+	return roc_auc
 
-	for i in range(10):
-		shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
-		shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
-		shuff_frames=[]
-		for key in list(nodesets.keys()):
-			genesets={key: nodesets.get(key)}
-			#select_keys=['first']
-			genesets_p=net_random_walk_functions.set_p(genesets, fraction)
-		
-			shuff_scores= net_random_walk_functions.get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
-			#shuff_scores=run_propagation(shuffNet, genesets, alpha)
-			#print (shuff_scores)
-			shuff_frames.append(shuff_scores)
-			print ('shuffNet', 'AUPRCs calculated')
+def find_shuff_scores_df(G, nodesets, alpha, fraction):
 
-		df=shuff_frames[0]
-		cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
-		subdf=df[cols]
-		fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
-		print (roc_auc)
-		shuffled_rocs.append(roc_auc)
+	shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
+	shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
 
-	return shuffled_rocs
+	genesets=nodesets.values()
+	#select_keys=['first']
+	genesets_p=net_random_walk_functions.set_p(genesets, fraction)
+
+	shuff_score_df= net_random_walk_functions.get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+	#shuff_scores=run_propagation(shuffNet, genesets, alpha)
+	#print (shuff_scores)
+	print ('shuffNet', 'AUPRCs calculated')
+
+	return shuff_score_df
+
+def find_shuff_scores(G, nodesets, alpha, fraction, iterations):
+	shuff_scores=[]
+	for i in range(iterations):
+		shuff=find_shuff_scores_df(G, nodesets, alpha, fraction)
+		roc_auc=calc_net_test_roc(shuff)
+		shuff_scores.append(roc_auc)
+	return shuff_scores
 
 
 
@@ -205,7 +208,7 @@ subdf=df[cols]
 fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
 print (roc_auc)
 
-shuff_rocs=find_shuff_scores(G, ordered_set, 0.4, fraction)
+shuff_rocs=find_shuff_scores(G, ordered_set, 0.4, fraction, 10)
 print (shuff_rocs)
 
 
