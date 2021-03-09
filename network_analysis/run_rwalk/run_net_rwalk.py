@@ -147,7 +147,7 @@ def find_shuff_scores(G, nodesets, alpha, fraction):
 			shuff_frames.append(shuff_scores)
 			print ('shuffNet', 'AUPRCs calculated')
 
-		df=shuff_frames[i]
+		df=shuff_frames[0]
 		cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
 		subdf=df[cols]
 		fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
