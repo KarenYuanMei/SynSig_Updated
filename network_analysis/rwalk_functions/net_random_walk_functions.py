@@ -136,3 +136,57 @@ def get_propagated_scores(net_kernel, genesets, genesets_p, n=1, cores=1, bg=Non
 
 	return all_scores
 
+def find_prop_scores_df(kernel, nodesets, fraction):
+	frames=[]
+	for key in list(nodesets.keys()):
+		genesets={key: nodesets.get(key)}
+		#print ('genesets', genesets)
+		genesets_p=set_p(genesets, fraction)
+		#scores=run_propagation(G, genesets, alpha)
+		scores= get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+		#print (scores)
+		frames.append(scores)
+	df=pd.concat(frames, axis=1)
+	#print (df)
+	return df
+
+
+
+# Shuffle network in degree-preserving manner
+# Input: network - networkx formatted network
+# For large networks this can be slow: may need to be sped up to prevent bottlenecking
+def shuffle_network(network, max_tries_n=10, verbose=False):
+	# Shuffle Network
+	shuff_time = time.time()
+	edge_len=len(network.edges())
+	shuff_net=network.copy()
+	try:
+		nx.double_edge_swap(shuff_net, nswap=edge_len, max_tries=edge_len*max_tries_n)
+	except:
+		if verbose:
+			print 'Note: Maximum number of swap attempts ('+repr(edge_len*max_tries_n)+') exceeded before desired swaps achieved ('+repr(edge_len)+').'
+	if verbose:
+		# Evaluate Network Similarity
+		shared_edges = len(set(network.edges()).intersection(set(shuff_net.edges())))
+		print 'Network shuffled:', time.time()-shuff_time, 'seconds. Edge similarity:', shared_edges/float(edge_len)
+	return shuff_net
+
+def find_shuff_scores_df(G, nodesets, alpha, fraction):
+
+	shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
+	shuffNet_kernel = construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
+
+	#print (nodesets)
+	#print (nodesets['syngo'])
+	#genesets=set(nodesets['syngo'])
+	#select_keys=['first']
+	genesets=nodesets
+	genesets_p=set_p(genesets, fraction)
+
+	shuff_score_df= get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
+	#shuff_scores=run_propagation(shuffNet, genesets, alpha)
+	#print (shuff_scores)
+	print ('shuffNet')
+
+	return shuff_score_df
+
