@@ -141,6 +141,7 @@ def find_shuff_scores_df(G, nodesets, alpha, fraction):
 	shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
 
 	genesets=set(nodesets.values())
+	print (genesets)
 	#select_keys=['first']
 	genesets_p=net_random_walk_functions.set_p(genesets, fraction)
 
