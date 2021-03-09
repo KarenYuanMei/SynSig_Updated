@@ -140,10 +140,11 @@ def find_shuff_scores_df(G, nodesets, alpha, fraction):
 	shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
 	shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
 
-	print (nodesets)
-	print (nodesets['syngo'])
-	genesets=nodesets['syngo']
+	#print (nodesets)
+	#print (nodesets['syngo'])
+	#genesets=set(nodesets['syngo'])
 	#select_keys=['first']
+	genesets=nodesets
 	genesets_p=net_random_walk_functions.set_p(genesets, fraction)
 
 	shuff_score_df= net_random_walk_functions.get_propagated_scores(shuffNet_kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
