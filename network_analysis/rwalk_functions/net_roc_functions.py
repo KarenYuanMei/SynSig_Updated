@@ -10,20 +10,7 @@ import sklearn.metrics as metrics
 import net_random_walk_functions
 
 #calculate 5fold crossvalidation
-def find_cv_nodesets(G, seeds):
-	no_per_fold=len(seeds)/5
-	keys=['first', 'second', 'third', 'fourth', 'fifth']
-	seed_lists = [seeds[x:x+no_per_fold] for x in range(0, len(seeds), no_per_fold)]
-	val_lists=[]
-	for item in seed_lists:
-		val_list=list(set(seeds)-set(item))
-		val_lists.append(val_list)
-	ordered=[]
-	for i in range(len(seed_lists)):
-		each=seed_lists[i]+val_lists[i]
-		ordered.append(each)
-	nodesets=dict(zip(keys, ordered))
-	return nodesets
+
 
 def find_scores_df(df):
 	cols=df.columns
@@ -89,7 +76,7 @@ def find_shuff_aucs(G, nodesets, alpha, fraction, iterations):
 
 #sweep alpha:
 
-def sweep_alpha_aucs(G, neg):
+def sweep_alpha_aucs(G, nodesets, neg):
 	alphas=np.arange(0.1, 1, 0.1)
 
 	all_mean_aucs=[]

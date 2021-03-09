@@ -151,7 +151,6 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	return df
 
 
-
 # Shuffle network in degree-preserving manner
 # Input: network - networkx formatted network
 # For large networks this can be slow: may need to be sped up to prevent bottlenecking
