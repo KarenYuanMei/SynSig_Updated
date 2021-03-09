@@ -140,7 +140,7 @@ def find_shuff_scores_df(G, nodesets, alpha, fraction):
 	shuffNet = shuffle_network(G, max_tries_n=10, verbose=True)
 	shuffNet_kernel = net_random_walk_functions.construct_prop_kernel(shuffNet, alpha=alpha, verbose=False)
 
-	genesets=nodesets.values()
+	genesets=set(nodesets.values())
 	#select_keys=['first']
 	genesets_p=net_random_walk_functions.set_p(genesets, fraction)
 
