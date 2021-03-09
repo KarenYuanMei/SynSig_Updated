@@ -71,7 +71,7 @@ cv_seedsets=find_cv_nodesets(G, cv_seeds)
 
 neg=list(set(nodes)-set(cv_seeds))
 
-all_mean_aucs=net_roc_functions.sweep_alpha(G, neg)
+all_mean_aucs=net_roc_functions.sweep_alpha_aucs(G, neg)
 
 print (all_mean_aucs)
 print (np.mean(all_mean_aucs))
