@@ -64,8 +64,9 @@ def find_hek_genes():
 
 def filter_by_hek_genes(G, hek_genes):
 	network_nodes=list(G.nodes())
-	hek_genes_in_network=list(set(hek_genes)&set(network_nodes))
-	G.remove_nodes_from(hek_genes_in_network)
+	#hek_genes_in_network=list(set(hek_genes)&set(network_nodes))
+	non_hek=list(set(network_nodes)-set(hek_genes))
+	G.remove_nodes_from(non_hek)
 	return G
 
 
