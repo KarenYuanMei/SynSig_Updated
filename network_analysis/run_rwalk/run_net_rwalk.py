@@ -75,9 +75,6 @@ def find_opt_alpha(all_mean_aucs):
 	opt_alpha=alphas[max_index]
 	return opt_alpha	
 
-big_pool=load_data_functions.load_big_pool()
-print (len(big_pool))
-
 net_df=load_bioplex_df()
 
 G=make_network_graph_functions.make_network_G(net_df)
