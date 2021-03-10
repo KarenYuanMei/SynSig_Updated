@@ -82,7 +82,7 @@ def find_net_syngo_test_auc(G, opt_alpha):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=list(set(nodes)&set(syngo))
-	seed_fraction=len(cv_seeds)/float(len(overlap))
+	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
 	print (seed_fraction)
 
 	non_seed_pos=list(set(syngo)-set(cv_seeds))
@@ -92,9 +92,14 @@ def find_net_syngo_test_auc(G, opt_alpha):
 	neg=list(set(nodes)-set(syngo))
 
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
-	df=find_prop_scores_df(kernel, ordered_set, fraction)
+	df=find_prop_scores_df(kernel, ordered_set, seed_fraction)
 	roc_auc=calc_net_test_roc(df)
 	return roc_auc
+
+
+exp_df=pd.read_csv('../expression_file/rna_cellline.tsv')
+print (exp_df)
+
 
 net_df=load_bioplex_df()
 
