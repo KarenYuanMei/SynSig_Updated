@@ -1,6 +1,8 @@
 #Goal: to load different files into pandas
 
 import pandas as pd
+import pathlib
+
 
 def get_gene_names(filename):
 	df=pd.read_csv(filename)
@@ -8,7 +10,9 @@ def get_gene_names(filename):
 	return genes
 
 def load_big_pool():
-	index_file='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	p = pathlib.Path(__file__).parents[3].absolute()
+	p = str(p)
+	index_file= p + '/SynSig/synsig_random_forest/big_pool_genes_index.csv'
 	big_pool=get_gene_names(index_file)
 	return big_pool
 
