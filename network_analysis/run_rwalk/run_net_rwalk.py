@@ -102,8 +102,10 @@ hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 net_df=load_bioplex_df()
 
 G=make_network_graph_functions.make_network_G(net_df)
+print ('orig', len(list(G.nodes())))
 
 G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
+print ('filtered', len(list(G.nodes())))
 
 nodes=list(G.nodes())
 
