@@ -49,3 +49,28 @@ def make_network_G(new):
 	graph= nx.from_pandas_edgelist(new, 'Node1', 'Node2')
 	G=graph.to_undirected()
 	return G
+
+def find_hek_genes():
+	exp_df=pd.read_csv('../expression_file/rna_celline.tsv', sep='\t')
+	print (exp_df)
+	hek=exp_df[exp_df['Cell line']=='HEK 293']
+	print (hek)
+	hek_nonzero=hek[hek['TPM']>0]
+	print (hek_nonzero)
+	hek_genes=hek_nonzero['Gene name'].tolist()
+	df=pd.DataFrame({'genes': hek_genes})
+	df.to_csv('hek_genes.csv')
+	return hek_genes
+
+def filter_by_hek_genes(G, hek_genes):
+	network_nodes=list(G.nodes())
+	hek_genes_in_network=list(set(hek_genes)&set(network_nodes))
+	G.remove_nodes_from(hek_genes_in_network)
+	return G
+
+hek_genes=find_hek_genes()
+
+
+
+
+
