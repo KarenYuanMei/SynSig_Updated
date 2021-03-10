@@ -66,7 +66,7 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		alpha_cvs[item]=(aucs)
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
-	return alpha_csvs, all_mean_aucs
+	return alpha_cvs, all_mean_aucs
 
 
 def find_opt_alpha(all_mean_aucs):
