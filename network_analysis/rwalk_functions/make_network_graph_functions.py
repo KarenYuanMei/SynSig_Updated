@@ -68,7 +68,6 @@ def filter_by_hek_genes(G, hek_genes):
 	G.remove_nodes_from(hek_genes_in_network)
 	return G
 
-hek_genes=find_hek_genes()
 
 
 

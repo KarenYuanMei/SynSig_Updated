@@ -96,14 +96,14 @@ def find_net_syngo_test_auc(G, opt_alpha):
 	roc_auc=calc_net_test_roc(df)
 	return roc_auc
 
-
-exp_df=pd.read_csv('../expression_file/rna_celline.tsv')
-print (exp_df)
+hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 
 
 net_df=load_bioplex_df()
 
 G=make_network_graph_functions.make_network_G(net_df)
+
+G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
 
 nodes=list(G.nodes())
 
