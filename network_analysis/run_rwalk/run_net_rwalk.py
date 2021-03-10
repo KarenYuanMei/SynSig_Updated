@@ -52,10 +52,10 @@ def find_cv_nodesets(G, seeds):
 	nodesets=dict(zip(keys, ordered))
 	return nodesets
 
-
-
 def sweep_alpha_aucs(G, nodesets, neg):
 	alphas=np.arange(0.1, 1, 0.1)
+
+	alpha_cvs={}
 
 	all_mean_aucs=[]
 	for item in alphas:
@@ -63,9 +63,10 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
 		#print (df)
 		mean_fpr, tprs, aucs=net_roc_functions.calc_cv_prop_aucs(df, neg)
+		alpha_cvs[item]=(aucs)
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
-	return all_mean_aucs
+	return alpha_csvs, all_mean_aucs
 
 
 def find_opt_alpha(all_mean_aucs):
@@ -74,6 +75,26 @@ def find_opt_alpha(all_mean_aucs):
 	max_index=all_mean_aucs.index(max_auc)
 	opt_alpha=alphas[max_index]
 	return opt_alpha	
+
+
+def find_net_syngo_test_auc(G, opt_alpha):
+	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
+	nodes=list(G.nodes())
+	cv_seeds=find_cv_seeds(nodes)
+	syngo_nodes=list(set(nodes)&set(syngo))
+	seed_fraction=len(cv_seeds)/float(len(overlap))
+	print (seed_fraction)
+
+	non_seed_pos=list(set(syngo)-set(cv_seeds))
+	ordered_test=cv_seeds+non_seed_pos
+	ordered_set={'syngo': ordered_test}
+
+	neg=list(set(nodes)-set(syngo))
+
+	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+	df=find_prop_scores_df(kernel, ordered_set, fraction)
+	roc_auc=calc_net_test_roc(df)
+	return roc_auc
 
 net_df=load_bioplex_df()
 
@@ -88,65 +109,15 @@ cv_seedsets=find_cv_nodesets(G, cv_seeds)
 
 neg=list(set(nodes)-set(cv_seeds))
 
-all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 
+print (alpha_cvs)
 print (all_mean_aucs)
-print (np.mean(all_mean_aucs))
 
 opt_alpha=find_opt_alpha(all_mean_aucs)
 print (opt_alpha)
 
-# syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
-
-
-# #
-
-# #
-
-# #print (df)
-
-
-# #print (G.number_of_edges())
-
-
-
-# #print (len(pos))
-
-# #print (len(seeds))
-
-# #print (nodesets)
-
-# #
-# #
-
-
-
-# print (len(syngo))
-
-
-# overlap=list(set(nodes)&set(syngo))
-# print ('overlap', len(overlap))
-
-# fraction=len(seeds)/float(len(overlap))
-# print (len(seeds)/float(len(overlap)))
-
-# non_seeds=list(set(syngo)-set(seeds))
-# ordered_test=seeds+non_seeds
-# ordered_set={'syngo': ordered_test}
-
-# neg=list(set(nodes)-set(syngo))
-
-# kernel=net_random_walk_functions.construct_prop_kernel(G, 0.4, verbose=True)
-# df=find_prop_scores_df(kernel, ordered_set, fraction)
-# #print (df)
-# 		#print (df)
-# cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
-# subdf=df[cols]
-# fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
-# print (roc_auc)
-
-# shuff_rocs=find_shuff_scores(G, ordered_set, 0.4, fraction, 10)
-# print (shuff_rocs)
-
-
+roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
+print (shuff_rocs)
 
