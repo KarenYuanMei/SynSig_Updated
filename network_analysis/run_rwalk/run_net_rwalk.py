@@ -52,19 +52,7 @@ def find_cv_nodesets(G, seeds):
 	nodesets=dict(zip(keys, ordered))
 	return nodesets
 
-def find_prop_scores_df(kernel, nodesets, fraction):
-	frames=[]
-	for key in list(nodesets.keys()):
-		genesets={key: nodesets.get(key)}
-		#print ('genesets', genesets)
-		genesets_p=net_random_walk_functions.set_p(genesets, fraction)
-		#scores=run_propagation(G, genesets, alpha)
-		scores= net_random_walk_functions.get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
-		#print (scores)
-		frames.append(scores)
-	df=pd.concat(frames, axis=1)
-	#print (df)
-	return df
+
 
 def sweep_alpha_aucs(G, nodesets, neg):
 	alphas=np.arange(0.1, 1, 0.1)
@@ -72,7 +60,7 @@ def sweep_alpha_aucs(G, nodesets, neg):
 	all_mean_aucs=[]
 	for item in alphas:
 		kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
-		df=find_prop_scores_df(kernel, nodesets, 0.8)
+		df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
 		#print (df)
 		mean_fpr, tprs, aucs=net_roc_functions.calc_cv_prop_aucs(df, neg)
 		mean_aucs=np.mean(aucs)
