@@ -82,18 +82,19 @@ def find_net_syngo_test_auc(G, opt_alpha):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=list(set(nodes)&set(syngo))
+	print ('syngo nodes', len(syngo_nodes))
 	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
 	print (seed_fraction)
 
-	non_seed_pos=list(set(syngo)-set(cv_seeds))
+	non_seed_pos=list(set(syngo_nodes)-set(cv_seeds))
 	ordered_test=cv_seeds+non_seed_pos
 	ordered_set={'syngo': ordered_test}
 
 	neg=list(set(nodes)-set(syngo))
 
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
-	df=find_prop_scores_df(kernel, ordered_set, seed_fraction)
-	roc_auc=calc_net_test_roc(df)
+	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
+	roc_auc=net_roc_functions.calc_net_test_roc(df)
 	return roc_auc
 
 hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
