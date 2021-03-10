@@ -192,17 +192,3 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	df=pd.concat(frames, axis=1)
 	#print (df)
 	return df
-
-def find_prop_scores_df(kernel, nodesets, fraction):
-	frames=[]
-	for key in list(nodesets.keys()):
-		genesets={key: nodesets.get(key)}
-		#print ('genesets', genesets)
-		genesets_p=set_p(genesets, fraction)
-		#scores=run_propagation(G, genesets, alpha)
-		scores= get_propagated_scores(kernel, genesets, genesets_p, n=1, cores=1, verbose=False)
-		#print (scores)
-		frames.append(scores)
-	df=pd.concat(frames, axis=1)
-	#print (df)
-	return df
