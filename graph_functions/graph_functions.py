@@ -1,7 +1,7 @@
 #Goal: make graphs
 
 import numpy as np
-from igraph import *
+#from igraph import *
 import pandas as pd
 import sys
 import os
