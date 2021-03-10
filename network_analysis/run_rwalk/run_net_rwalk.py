@@ -97,7 +97,7 @@ def find_net_syngo_test_auc(G, opt_alpha):
 	return roc_auc
 
 
-exp_df=pd.read_csv('../expression_file/rna_cellline.tsv')
+exp_df=pd.read_csv('../expression_file/rna_celline.tsv')
 print (exp_df)
 
 
