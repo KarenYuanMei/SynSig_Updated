@@ -9,6 +9,10 @@ import time
 import scipy.stats as stats
 import sklearn.metrics as metrics
 
+import matplotlib
+#matplotlib.use("TKAgg")
+from matplotlib import pyplot as plt
+
 #import matplotlib.pyplot as plt
 import sys
 sys.path.append('../rwalk_functions/')
@@ -18,6 +22,9 @@ import net_roc_functions
 
 sys.path.append('../../read_data_functions')
 import load_data_functions
+
+sys.path.append('../../graph_functions')
+import graph_functions
 
 sys.path.append('../ppi_files/')
 
@@ -63,7 +70,7 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
 		#print (df)
 		mean_fpr, tprs, aucs=net_roc_functions.calc_cv_prop_aucs(df, neg)
-		alpha_cvs[item]=(aucs)
+		alpha_cvs[item]=(tprs, mean_fpr, aucs)
 		mean_aucs=np.mean(aucs)
 		all_mean_aucs.append(mean_aucs)
 	return alpha_cvs, all_mean_aucs
@@ -94,11 +101,10 @@ def find_net_syngo_test_auc(G, opt_alpha):
 
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
-	roc_auc=net_roc_functions.calc_net_test_roc(df)
-	return roc_auc
+	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df)
+	return fpr, tpr, threshold, roc_auc
 
 hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
-
 
 net_df=load_bioplex_df()
 
@@ -119,13 +125,17 @@ neg=list(set(nodes)-set(cv_seeds))
 
 alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 
-print (alpha_cvs)
-print (all_mean_aucs)
 
 opt_alpha=find_opt_alpha(all_mean_aucs)
 print (opt_alpha)
 
-roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+graph_functions.plot_mean_ROC(tprs, mean_fpr, aucs, 'bioplex_hek_only_cv')
+
+
+fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+graph_functions.plot_single_ROC(tpr, fpr, auc, 'bioplex_hek_only_test')
+
 shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
 print (shuff_rocs)
 
