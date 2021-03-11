@@ -142,7 +142,7 @@ print (tprs, mean_fpr, aucs)
 
 opt_alpha=0.5
 fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
-graph_functions.plot_single_ROC(tpr, fpr, auc, 'bioplex_hek_only_test')
+graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
 shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
 print (shuff_rocs)
