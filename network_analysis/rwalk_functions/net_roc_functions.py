@@ -63,7 +63,7 @@ def calc_net_test_roc(df):
 	cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
 	subdf=df[cols]
 	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
-	return roc_auc
+	return fpr, tpr, threshold, roc_auc
 
 
 def find_shuff_aucs(G, nodesets, alpha, fraction, iterations):
