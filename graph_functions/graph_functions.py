@@ -13,7 +13,7 @@ os.environ['KMP_DUPLICATE_LIB_OK']='True'
 import networkx as nx
 
 import matplotlib
-#matplotlib.use("TKAgg")
+matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 
 #import seaborn as sns; sns.set()
