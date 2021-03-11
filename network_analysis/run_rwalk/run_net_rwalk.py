@@ -75,6 +75,12 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		all_mean_aucs.append(mean_aucs)
 	return alpha_cvs, all_mean_aucs
 
+def find_single_alpha_auc(G, nodesets, neg):
+	kernel=net_random_walk_functions.construct_prop_kernel(G, item, verbose=True)
+	df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
+		#print (df)
+	mean_fpr, tprs, aucs=net_roc_functions.calc_cv_prop_aucs(df, neg)
+	return mean_fpr, tprs, aucs
 
 def find_opt_alpha(all_mean_aucs):
 	alphas=np.arange(0.1, 1, 0.1)
@@ -123,17 +129,18 @@ cv_seedsets=find_cv_nodesets(G, cv_seeds)
 
 neg=list(set(nodes)-set(cv_seeds))
 
-alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+#alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 
 
-opt_alpha=find_opt_alpha(all_mean_aucs)
-print (opt_alpha)
+#opt_alpha=find_opt_alpha(all_mean_aucs)
+#print (opt_alpha)
 
-tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+tprs, mean_fpr, aucs=find_single_alpha_auc(G, nodesets, neg)
 print (tprs, mean_fpr, aucs)
 graph_functions.plot_mean_ROC(tprs, mean_fpr, aucs, 'bioplex_hek_only_cv')
 
-
+opt_alpha=0.5
 fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 graph_functions.plot_single_ROC(tpr, fpr, auc, 'bioplex_hek_only_test')
 
