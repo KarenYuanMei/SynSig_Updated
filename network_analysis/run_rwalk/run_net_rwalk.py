@@ -118,12 +118,26 @@ def find_net_syngo_test_auc(G,opt_alpha):
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	return fpr, tpr, threshold, roc_auc
 
-hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
+def find_net_syngo_shuffled_auc(G, opt_alpha):
+	cv_seeds=find_cv_seeds(nodes)
+	syngo_nodes=find_syngo_nodes(G)
+	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
+
+	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
+	print (seed_fraction)
+
+	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
+	print (shuff_rocs)
+	return shuff_rocs
+
+
 
 net_df=load_bioplex_df()
 
 G=make_network_graph_functions.make_network_G(net_df)
 print ('orig', len(list(G.nodes())))
+
+hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 
 G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
 print ('filtered', len(list(G.nodes())))
@@ -152,8 +166,6 @@ opt_alpha=0.5
 fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
-syngo_nodes=find_syngo_nodes(G)
-ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
-shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
-print (shuff_rocs)
+shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+
 
