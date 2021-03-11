@@ -136,7 +136,7 @@ neg=list(set(nodes)-set(cv_seeds))
 #print (opt_alpha)
 
 #tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-tprs, mean_fpr, aucs=find_single_alpha_auc(G, nodesets, neg)
+tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, neg)
 print (tprs, mean_fpr, aucs)
 graph_functions.plot_mean_ROC(tprs, mean_fpr, aucs, 'bioplex_hek_only_cv')
 
