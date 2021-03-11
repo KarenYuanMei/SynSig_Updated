@@ -103,6 +103,7 @@ def find_syngo_nodes(G):
 	return syngo_nodes
 
 def find_net_syngo_test_auc(G,opt_alpha):
+	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=find_syngo_nodes(G)
 	print ('syngo nodes', len(syngo_nodes))
@@ -119,6 +120,7 @@ def find_net_syngo_test_auc(G,opt_alpha):
 	return fpr, tpr, threshold, roc_auc
 
 def find_net_syngo_shuffled_auc(G, opt_alpha):
+	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=find_syngo_nodes(G)
 	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
@@ -126,46 +128,49 @@ def find_net_syngo_shuffled_auc(G, opt_alpha):
 	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
 	print (seed_fraction)
 
-	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
+	neg=list(set(nodes)-set(syngo_nodes))
+
+	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, 10)
 	print (shuff_rocs)
 	return shuff_rocs
 
 
+if __name__ == '__main__':
+	
+	net_df=load_bioplex_df()
 
-net_df=load_bioplex_df()
+	G=make_network_graph_functions.make_network_G(net_df)
+	print ('orig', len(list(G.nodes())))
 
-G=make_network_graph_functions.make_network_G(net_df)
-print ('orig', len(list(G.nodes())))
+	hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 
-hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
+	G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
+	print ('filtered', len(list(G.nodes())))
 
-G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
-print ('filtered', len(list(G.nodes())))
+	nodes=list(G.nodes())
 
-nodes=list(G.nodes())
+	cv_seeds=find_cv_seeds(nodes)
 
-cv_seeds=find_cv_seeds(nodes)
+	cv_seedsets=find_cv_nodesets(G, cv_seeds)
+	#print (cv_seedsets)
 
-cv_seedsets=find_cv_nodesets(G, cv_seeds)
-#print (cv_seedsets)
+	neg=list(set(nodes)-set(cv_seeds))
 
-neg=list(set(nodes)-set(cv_seeds))
-
-#alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
-
-
-#opt_alpha=find_opt_alpha(all_mean_aucs)
-#print (opt_alpha)
-
-#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
-print (tprs, mean_fpr, aucs)
+	#alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 
 
-opt_alpha=0.5
-fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
-graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
+	#opt_alpha=find_opt_alpha(all_mean_aucs)
+	#print (opt_alpha)
 
-shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
+	print (tprs, mean_fpr, aucs)
+
+
+	opt_alpha=0.5
+	fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
+
+	shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 
 

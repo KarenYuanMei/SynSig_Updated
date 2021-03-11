@@ -66,11 +66,11 @@ def calc_net_test_roc(df, neg):
 	return fpr, tpr, threshold, roc_auc
 
 
-def find_shuff_aucs(G, nodesets, alpha, fraction, iterations):
+def find_shuff_aucs(G, nodesets, neg, alpha, fraction, iterations):
 	shuff_scores=[]
 	for i in range(iterations):
 		shuff=net_random_walk_functions.find_shuff_scores_df(G, nodesets, alpha, fraction)
-		roc_auc=calc_net_test_roc(shuff)
+		roc_auc=calc_net_test_roc(shuff, neg)
 		shuff_scores.append(roc_auc)
 	return shuff_scores
 
