@@ -59,7 +59,7 @@ def calc_cv_prop_aucs(df, neg):
 	return mean_fpr, tprs, aucs
 
 #-----calculate net test results:
-def calc_net_test_roc(df):
+def calc_net_test_roc(df, neg):
 	cols=['Sub-Sample', 'Non-Sample', 'Prop Score']
 	subdf=df[cols]
 	fpr, tpr, threshold, roc_auc=calculate_roc(subdf, neg)
