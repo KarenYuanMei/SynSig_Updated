@@ -10,7 +10,7 @@ import scipy.stats as stats
 import sklearn.metrics as metrics
 
 import matplotlib
-#matplotlib.use("TKAgg")
+matplotlib.use("TKAgg")
 from matplotlib import pyplot as plt
 
 #import matplotlib.pyplot as plt
