@@ -4,6 +4,7 @@ import pandas as pd
 
 import numpy as np
 import time
+import random
 
 import net_roc_functions
 
@@ -192,3 +193,42 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	df=pd.concat(frames, axis=1)
 	#print (df)
 	return df
+
+def make_seed_bg_buckets(seed_genes, bg_genes):
+	buckets=[]
+	for bg in bg_genes:
+		diff_list=[]
+		for seed in seed_genes:
+			diff=abs(G.degree(seed)-G.degree(bg)) 
+			diff_list.append(diff)
+		min_diff=min(diff_list)
+		print (min_diff)
+		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
+		idx=random.choice(idx)
+		#idx=diff_list.index(min_diff)
+		bucket=seed_genes[idx]
+		print (bucket)
+		buckets.append(bucket)
+	print (len(buckets))
+
+	zipped=list(zip(buckets, bg_genes))
+	#print (zipped)
+	d = defaultdict(list)
+
+	for bucket, bg in zipped:
+		d[bucket].append(bg)
+	return d
+
+def find_rand_samples(seed_genes, d):
+	rand_sample=[]
+	for seed in seed_genes:
+		print (seed)
+		print (G.degree(seed))
+		closest=d[seed]
+		sample=random.choice(closest)
+		print (G.degree(sample))
+		rand_sample.append(sample)
+
+	print (len(rand_sample))
+	return rand_sample
+

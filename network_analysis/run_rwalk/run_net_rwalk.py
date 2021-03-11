@@ -93,13 +93,14 @@ def find_ordered_set(syngo_nodes, cv_seeds):
 	non_seed_pos=list(set(syngo_nodes)-set(cv_seeds))
 	ordered_test=cv_seeds+non_seed_pos
 	ordered_set={'syngo': ordered_test}
-	return ordered_set
+	fraction=len(cv_seeds)/float(len(ordered_test))
+	return ordered_set, fraction
 
 def find_syngo_nodes(G):
 	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 	nodes=list(G.nodes())
 	syngo_nodes=list(set(nodes)&set(syngo))
-	print ('syngo nodes', len(syngo_nodes))
+	#print ('syngo nodes', len(syngo_nodes))
 	return syngo_nodes
 
 def find_net_syngo_test_auc(G,opt_alpha):
@@ -107,10 +108,8 @@ def find_net_syngo_test_auc(G,opt_alpha):
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=find_syngo_nodes(G)
 	print ('syngo nodes', len(syngo_nodes))
-	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
-	print (seed_fraction)
 
-	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
+	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, cv_seeds)
 
 	neg=list(set(nodes)-set(syngo_nodes))
 
@@ -123,16 +122,33 @@ def find_net_syngo_shuffled_auc(G, opt_alpha):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=find_syngo_nodes(G)
-	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
-
-	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
-	print (seed_fraction)
+	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, cv_seeds)
 
 	neg=list(set(nodes)-set(syngo_nodes))
 
 	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, 10)
 	print (shuff_rocs)
 	return shuff_rocs
+
+def find_deg_matched_auc(G, opt_alpha):
+	nodes=list(G.nodes())
+	cv_seeds=find_cv_seeds(nodes)
+	bg=list(set(nodes)-set(cv_seeds))
+
+	buckets=net_random_walk_functions.make_seed_bg_buckets(cv_seeds, bg)
+	rand_seeds=net_random_walk_functions.find_rand_samples(cv_seeds, buckets)
+
+	syngo_nodes=find_syngo_nodes(G)
+	ordered_set=find_ordered_set(syngo_nodes, rand_seeds)
+
+	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, rand_seeds)
+
+	neg=list(set(nodes)-set(syngo_nodes)-set(rand_seeds))
+	
+	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
+	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
+	return roc_auc
 
 
 if __name__ == '__main__':
@@ -166,11 +182,12 @@ if __name__ == '__main__':
 	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
 	print (tprs, mean_fpr, aucs)
 
-
 	opt_alpha=0.5
 	fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
 	shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 
+	rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
 
+	
