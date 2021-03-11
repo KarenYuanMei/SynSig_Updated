@@ -135,8 +135,8 @@ def find_deg_matched_auc(G, opt_alpha):
 	cv_seeds=find_cv_seeds(nodes)
 	bg=list(set(nodes)-set(cv_seeds))
 
-	buckets=net_random_walk_functions.make_seed_bg_buckets(cv_seeds, bg)
-	rand_seeds=net_random_walk_functions.find_rand_samples(cv_seeds, buckets)
+	buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
+	rand_seeds=net_random_walk_functions.find_rand_samples(G, cv_seeds, buckets)
 
 	syngo_nodes=find_syngo_nodes(G)
 	ordered_set=find_ordered_set(syngo_nodes, rand_seeds)
@@ -180,14 +180,16 @@ if __name__ == '__main__':
 
 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
 	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
-	print (tprs, mean_fpr, aucs)
+	print (aucs)
 
 	opt_alpha=0.5
 	fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
-	shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+	#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 
-	rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
+	for i in range(10):
+		rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
+		print (rand_seed_rocs)
 
 	
