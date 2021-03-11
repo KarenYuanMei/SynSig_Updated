@@ -130,6 +130,7 @@ opt_alpha=find_opt_alpha(all_mean_aucs)
 print (opt_alpha)
 
 tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+print (tprs, mean_fpr, aucs)
 graph_functions.plot_mean_ROC(tprs, mean_fpr, aucs, 'bioplex_hek_only_cv')
 
 
