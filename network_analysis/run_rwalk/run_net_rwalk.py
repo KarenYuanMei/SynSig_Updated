@@ -111,7 +111,7 @@ def find_net_syngo_test_auc(G,opt_alpha):
 
 	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
 
-	neg=list(set(nodes)-set(syngo))
+	neg=list(set(nodes)-set(syngo_nodes))
 
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
