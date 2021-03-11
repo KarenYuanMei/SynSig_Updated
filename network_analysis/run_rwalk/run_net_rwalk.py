@@ -179,11 +179,12 @@ if __name__ == '__main__':
 	#print (opt_alpha)
 
 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
-	print (aucs)
+	#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
+	#print (aucs)
 
 	opt_alpha=0.5
 	fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+	print (roc_auc)
 	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
 	#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)

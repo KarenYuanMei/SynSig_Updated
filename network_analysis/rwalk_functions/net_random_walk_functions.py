@@ -202,14 +202,14 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 			diff=abs(G.degree(seed)-G.degree(bg)) 
 			diff_list.append(diff)
 		min_diff=min(diff_list)
-		print (min_diff)
+		#print (min_diff)
 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
 		idx=random.choice(idx)
 		#idx=diff_list.index(min_diff)
 		bucket=seed_genes[idx]
-		print (bucket)
+		#print (bucket)
 		buckets.append(bucket)
-	print (len(buckets))
+	#print (len(buckets))
 
 	zipped=list(zip(buckets, bg_genes))
 	#print (zipped)
@@ -222,13 +222,13 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 def find_rand_samples(G, seed_genes, d):
 	rand_sample=[]
 	for seed in seed_genes:
-		print (seed)
-		print (G.degree(seed))
+		#print (seed)
+		#print (G.degree(seed))
 		closest=d[seed]
 		sample=random.choice(closest)
-		print (G.degree(sample))
+		#print (G.degree(sample))
 		rand_sample.append(sample)
 
-	print (len(rand_sample))
+	#print (len(rand_sample))
 	return rand_sample
 
