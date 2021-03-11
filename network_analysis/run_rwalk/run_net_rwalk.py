@@ -89,19 +89,27 @@ def find_opt_alpha(all_mean_aucs):
 	opt_alpha=alphas[max_index]
 	return opt_alpha	
 
+def find_ordered_set(syngo_nodes, cv_seeds):
+	non_seed_pos=list(set(syngo_nodes)-set(cv_seeds))
+	ordered_test=cv_seeds+non_seed_pos
+	ordered_set={'syngo': ordered_test}
+	return ordered_set
 
-def find_net_syngo_test_auc(G, opt_alpha):
+def find_syngo_nodes(G):
 	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 	nodes=list(G.nodes())
-	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=list(set(nodes)&set(syngo))
+	print ('syngo nodes', len(syngo_nodes))
+	return syngo_nodes
+
+def find_net_syngo_test_auc(G,opt_alpha):
+	cv_seeds=find_cv_seeds(nodes)
+	syngo_nodes=find_syngo_nodes(G)
 	print ('syngo nodes', len(syngo_nodes))
 	seed_fraction=len(cv_seeds)/float(len(syngo_nodes))
 	print (seed_fraction)
 
-	non_seed_pos=list(set(syngo_nodes)-set(cv_seeds))
-	ordered_test=cv_seeds+non_seed_pos
-	ordered_set={'syngo': ordered_test}
+	ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
 
 	neg=list(set(nodes)-set(syngo))
 
@@ -144,6 +152,8 @@ opt_alpha=0.5
 fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
+syngo_nodes=find_syngo_nodes(G)
+ordered_set=find_ordered_set(syngo_nodes, cv_seeds)
 shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, opt_alpha, seed_fraction, 10)
 print (shuff_rocs)
 
