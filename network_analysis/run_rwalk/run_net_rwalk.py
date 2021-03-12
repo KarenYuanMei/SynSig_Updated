@@ -103,11 +103,18 @@ def find_syngo_nodes(G):
 	#print ('syngo nodes', len(syngo_nodes))
 	return syngo_nodes
 
+def find_hk_nodes(G):
+	hk=load_data_functions.get_gene_names('../../gene_lists/House_Mouse_Common.csv')
+	nodes=list(G.nodes())
+	hk_nodes=list(set(nodes)&set(hk))
+	return hk_nodes
+
 def find_net_syngo_test_auc(G,opt_alpha):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
-	syngo_nodes=find_syngo_nodes(G)
-	print ('syngo nodes', len(syngo_nodes))
+	#syngo_nodes=find_syngo_nodes(G)
+	#print ('syngo nodes', len(syngo_nodes))
+	syngo_nodes=find_hk_nodes(G)
 
 	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, cv_seeds)
 
@@ -179,18 +186,22 @@ if __name__ == '__main__':
 	#print (opt_alpha)
 
 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-	#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
-	#print (aucs)
+	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
+	#print (aucs) #0.6708522690436207
 
 	opt_alpha=0.5
-	fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
-	print (roc_auc)
+	for i in range(10):
+		fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+		print (roc_auc)
 	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
 
 	#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+	#[0.5727682062515527, 0.5565968562656953, 0.5786683737253715, 0.5644656586873242, 0.5735674218383795, 0.5515552861541781, 0.5731787150472272, 0.5642616951976495, 0.5783615678854178, 0.5725117458299364]
 
 	for i in range(10):
 		rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
 		print (rand_seed_rocs)
+
+	#[0.5633969110804465, 0.539907829900075, 0.553555791667886, 0.547315431027054, 0.5596714041066664, 0.5569557925772646, 0.5325950565454453, 0.5513386429351921, 0.5593669257034042, 0.5523000393229651]
 
 	
