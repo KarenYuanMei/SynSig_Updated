@@ -131,13 +131,14 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 
 def plot_alpha(df, name):
 	f = plt.figure()
+	x=np.arange(0,10,1)
 	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
 
 	plt.xlabel('Alpha')
 	plt.ylabel('Avg Cross-Validation ROC AUC')
 	plt.title ("Optimizing Propagation Constant Alpha", fontweight='bold')
-	#x_ticks = list(df.index)
-	#plt.xticks(x_ticks)
+	x_labels = list(df.index)
+	plt.xticks(x, x_ticks)
 
 	#y_ticks = np.arange(0, 1, 0.1)
 	#plt.yticks(y_ticks)
