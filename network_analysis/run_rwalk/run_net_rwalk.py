@@ -202,6 +202,7 @@ if __name__ == '__main__':
 	#print (alpha_df)
 	#alpha_df.to_csv('bioplex_hek_only_alpha_df.csv')
 	alpha_df=pd.read_csv('bioplex_hek_only_alpha_df.csv', index_col=[0])
+	print (alpha_df)
 	graph_functions.plot_alpha(alpha_df, 'bioplex_hek_only')
 
 	print ('done')
