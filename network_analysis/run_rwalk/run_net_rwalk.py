@@ -87,6 +87,7 @@ def make_sweep_alpha_df(alpha_cvs, all_mean_aucs):
 		sems.append(sem)
 
 	df=pd.DataFrame({'alphas': alphas, 'aucs': aucs_list, 'mean': all_mean_aucs, 'sem': sems})
+	df=df.set_index('alphas')
 	return df
 
 def find_single_alpha_auc(G, nodesets, alpha, neg):
@@ -198,6 +199,8 @@ if __name__ == '__main__':
 	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 	print (alpha_cvs)
 	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
+	print (alpha_df)
+	alpha_df.to_csv('bioplex_hek_only_alpha_df.csv')
 	graph_functions.plot_alpha(alpha_df, 'bioplex_hek_only')
 
 	print ('done')

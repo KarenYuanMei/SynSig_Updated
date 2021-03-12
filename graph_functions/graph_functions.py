@@ -144,7 +144,7 @@ def plot_alpha(df, name):
 	plt.ylim(0, 1)
 	plt.show()
 	plt.close()
-	f.savefig("%s_weep_alpha.svg"%name, bbox_inches='tight')
+	f.savefig("%s_sweep_alpha.svg"%name, bbox_inches='tight')
 
 def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
