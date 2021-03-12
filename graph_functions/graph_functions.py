@@ -137,8 +137,8 @@ def plot_alpha(df, name):
 	plt.xlabel('Alpha')
 	plt.ylabel('Avg Cross-Validation ROC AUC')
 	plt.title ("Optimizing Propagation Constant Alpha", fontweight='bold')
-	#x_labels = list(df.index)
-	#plt.xticks(x, x_labels)
+	x_labels = list(df.index)
+	plt.xticks(x, x_labels)
 
 	#y_ticks = np.arange(0, 1, 0.1)
 	#plt.yticks(y_ticks)
