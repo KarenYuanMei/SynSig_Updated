@@ -195,7 +195,7 @@ if __name__ == '__main__':
 
 	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
-	graph_functions.plot_alpha(alpha_df)
+	graph_functions.plot_alpha(alpha_df, 'bioplex_hek_only')
 
 	print ('done')
 

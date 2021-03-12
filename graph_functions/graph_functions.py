@@ -129,7 +129,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	plt.xticks(rotation=45)
 	plt.savefig(name+'.svg', format="svg")
 
-def plot_alpha(df):
+def plot_alpha(df, name):
 	f = plt.figure()
 	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
 
@@ -144,7 +144,7 @@ def plot_alpha(df):
 	plt.ylim(0, 1)
 	plt.show()
 	plt.close()
-	f.savefig("sweep_alpha.svg", bbox_inches='tight')
+	f.savefig("%s_weep_alpha.svg"%name, bbox_inches='tight')
 
 def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
