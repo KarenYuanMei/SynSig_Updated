@@ -6,6 +6,8 @@ import numpy as np
 import time
 import random
 
+from collections import defaultdict
+
 import net_roc_functions
 
 def set_p(nodesets, fraction):
