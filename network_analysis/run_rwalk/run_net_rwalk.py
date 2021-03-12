@@ -75,6 +75,18 @@ def sweep_alpha_aucs(G, nodesets, neg):
 		all_mean_aucs.append(mean_aucs)
 	return alpha_cvs, all_mean_aucs
 
+def make_sweep_alpha_df(alpha_cvs, all_mean_aucs):
+	alphas=np.arange(0.1, 1, 0.1)
+
+	sems=[]
+	for key in alpha_cvs:
+		aucs=alpha_cvs[key]
+		sem=stats.sem(aucs)
+		sems.append(sem)
+
+	df=pd.DataFrame({'alphas': alphas, 'aucs': alpha_cvs.values(), 'mean': all_mean_aucs, 'sem': sems})
+	return df
+
 def find_single_alpha_auc(G, nodesets, alpha, neg):
 	kernel=net_random_walk_functions.construct_prop_kernel(G, alpha, verbose=True)
 	df=net_random_walk_functions.find_prop_scores_df(kernel, nodesets, 0.8)
@@ -181,7 +193,11 @@ if __name__ == '__main__':
 
 	neg=list(set(nodes)-set(cv_seeds))
 
-	#alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
+	graph_functions.plot_alpha(alpha_df)
+
+	print ('done')
 
 
 	#opt_alpha=find_opt_alpha(all_mean_aucs)

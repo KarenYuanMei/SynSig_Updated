@@ -129,6 +129,23 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	plt.xticks(rotation=45)
 	plt.savefig(name+'.svg', format="svg")
 
+def plot_alpha(df):
+	f = plt.figure()
+	plt.errorbar(list(df.index), df['mean'].tolist(), yerr=df['sem'].tolist())
+
+	plt.xlabel('Alpha')
+	plt.ylabel('Avg Cross-Validation ROC AUC')
+	plt.title ("Optimizing Propagation Constant Alpha", fontweight='bold')
+	x_ticks = np.arange(0, 1,0.1)
+	plt.xticks(x_ticks)
+
+	y_ticks = np.arange(0, 1, 0.1)
+	plt.yticks(y_ticks)
+	plt.ylim(0, 1)
+	plt.show()
+	plt.close()
+	f.savefig("sweep_alpha.svg", bbox_inches='tight')
+
 def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
