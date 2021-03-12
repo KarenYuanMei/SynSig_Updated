@@ -28,7 +28,8 @@ def normalize_network(network, symmetric_norm=False):
 		D = np.diag(1/np.sqrt(sum(adj_array)))
 		adj_array_norm = np.dot(np.dot(D, adj_array), D)
 	else:
-		degree_norm_array = np.diag(1/sum(adj_array).astype(float))
+		epsilon = 0.0000001
+		degree_norm_array = np.diag(1/(sum(adj_array)+epsilon).astype(float))
 		#print (degree_norm_array)
 		sparse_degree_norm_array = sp.sparse.csr_matrix(degree_norm_array)
 		adj_array_norm = sparse_degree_norm_array.dot(adj_mat).toarray()
