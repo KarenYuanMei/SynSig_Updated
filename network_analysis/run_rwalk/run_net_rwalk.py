@@ -104,7 +104,7 @@ def find_syngo_nodes(G):
 	return syngo_nodes
 
 def find_hk_nodes(G):
-	hk=pd.read_csv('../../gene_lists/Human_Mouse_Common.csv', sep='\t')
+	hk=pd.read_csv('../../gene_lists/Human_Mouse_Common.csv', sep=';')
 	print (hk)
 	hk=hk['Human'].tolist()
 	nodes=list(G.nodes())
