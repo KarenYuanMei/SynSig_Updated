@@ -104,7 +104,7 @@ def find_syngo_nodes(G):
 	return syngo_nodes
 
 def find_hk_nodes(G):
-	hk=load_data_functions.get_gene_names('../../gene_lists/House_Mouse_Common.csv')
+	hk=load_data_functions.get_gene_names('../../gene_lists/Human_Mouse_Common.csv')
 	nodes=list(G.nodes())
 	hk_nodes=list(set(nodes)&set(hk))
 	return hk_nodes
