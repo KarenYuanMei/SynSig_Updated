@@ -79,12 +79,14 @@ def make_sweep_alpha_df(alpha_cvs, all_mean_aucs):
 	alphas=np.arange(0.1, 1, 0.1)
 
 	sems=[]
+	aucs_list=[]
 	for key in alpha_cvs:
-		aucs=alpha_cvs[key]
+		tprs, mean_fpr, aucs=alpha_cvs[key]
+		aucs_list.append(aucs)
 		sem=stats.sem(aucs)
 		sems.append(sem)
 
-	df=pd.DataFrame({'alphas': alphas, 'aucs': alpha_cvs.values(), 'mean': all_mean_aucs, 'sem': sems})
+	df=pd.DataFrame({'alphas': alphas, 'aucs': aucs_list, 'mean': all_mean_aucs, 'sem': sems})
 	return df
 
 def find_single_alpha_auc(G, nodesets, alpha, neg):
