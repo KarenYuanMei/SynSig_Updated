@@ -177,15 +177,16 @@ def find_deg_matched_auc(G, opt_alpha):
 
 if __name__ == '__main__':
 	
-	net_df=load_bioplex_df()
+	#net_df=load_bioplex_df()
+	net_df=load_mentha_df()
 
 	G=make_network_graph_functions.make_network_G(net_df)
 	print ('orig', len(list(G.nodes())))
 
-	hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
+	#hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 
-	G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
-	print ('filtered', len(list(G.nodes())))
+	#G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
+	#print ('filtered', len(list(G.nodes())))
 
 	nodes=list(G.nodes())
 
@@ -196,14 +197,14 @@ if __name__ == '__main__':
 
 	neg=list(set(nodes)-set(cv_seeds))
 
-	#alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
-	#print (alpha_cvs)
-	#alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
-	#print (alpha_df)
-	#alpha_df.to_csv('bioplex_hek_only_alpha_df.csv')
-	alpha_df=pd.read_csv('bioplex_hek_only_alpha_df.csv', index_col=[0])
+	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+	print (alpha_cvs)
+	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
 	print (alpha_df)
-	graph_functions.plot_alpha(alpha_df, 'bioplex_hek_only')
+	alpha_df.to_csv('mentha_alpha_df.csv')
+	alpha_df=pd.read_csv('mentha_alpha_df.csv', index_col=[0])
+	print (alpha_df)
+	graph_functions.plot_alpha(alpha_df, 'mentha')
 
 	print ('done')
 
