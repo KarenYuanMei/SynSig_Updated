@@ -186,55 +186,62 @@ def df_to_network(name):
 		G=make_network_graph_functions.make_network_G(net_df)
 		print ('orig', len(list(G.nodes())))
 		G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
+		print ('filtered', len(list(G.nodes())))
 	return G
+
+def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
+	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
+	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
+	alpha_df.to_csv('%s_alpha_df.csv'%net)
+	alpha_df=pd.read_csv('%s_alpha_df.csv'%net, index_col=[0])
+	graph_functions.plot_alpha(alpha_df, net)
+	print ('done')
+	opt_alpha=find_opt_alpha(all_mean_aucs)
+	return alpha_cvs, opt_alpha
 
 
 if __name__ == '__main__':
 
-	G=df_to_network('bioplex')
+	net_names=['mentha', 'bioplex']
+	for net in net_names:
 
-	nodes=list(G.nodes())
+		G=df_to_network(net)
 
-	cv_seeds=find_cv_seeds(nodes)
+		nodes=list(G.nodes())
 
-	cv_seedsets=find_cv_nodesets(G, cv_seeds)
-	#print (cv_seedsets)
+		cv_seeds=find_cv_seeds(nodes)
 
-	neg=list(set(nodes)-set(cv_seeds))
+		cv_seedsets=find_cv_nodesets(G, cv_seeds)
+		#print (cv_seedsets)
 
-	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
-	print (alpha_cvs)
-	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
-	print (alpha_df)
-	alpha_df.to_csv('mentha_alpha_df.csv')
-	alpha_df=pd.read_csv('mentha_alpha_df.csv', index_col=[0])
-	print (alpha_df)
-	graph_functions.plot_alpha(alpha_df, 'mentha')
+		neg=list(set(nodes)-set(cv_seeds))
 
+		alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
 
-	print ('done')
+		print ('opt_alpha', opt_alpha)
 
-
-	#opt_alpha=find_opt_alpha(all_mean_aucs)
-	#print (opt_alpha)
-
-	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-	tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, 0.5, neg)
-	#print (aucs) #0.6708522690436207
-
-	opt_alpha=0.5
-	for i in range(10):
+		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
+		#print (aucs) #0.6708522690436207
+		
 		fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 		print (roc_auc)
-	graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'bioplex_hek_only_test')
+		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
-	#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
-	#[0.5727682062515527, 0.5565968562656953, 0.5786683737253715, 0.5644656586873242, 0.5735674218383795, 0.5515552861541781, 0.5731787150472272, 0.5642616951976495, 0.5783615678854178, 0.5725117458299364]
+		all_shuff_rocs=[]
+		for i in range(10000):
+			shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+			all_shuff_rocs.append(shuff_rocs)
+		#[0.5727682062515527, 0.5565968562656953, 0.5786683737253715, 0.5644656586873242, 0.5735674218383795, 0.5515552861541781, 0.5731787150472272, 0.5642616951976495, 0.5783615678854178, 0.5725117458299364]
 
-	for i in range(10):
-		rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
-		print (rand_seed_rocs)
+		all_rand_rocs=[]
+		for i in range(10000):
+			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
+			#print (rand_seed_rocs)
+			all_rand_rocs.append(rand_seed_rocs)
 
-	#[0.5633969110804465, 0.539907829900075, 0.553555791667886, 0.547315431027054, 0.5596714041066664, 0.5569557925772646, 0.5325950565454453, 0.5513386429351921, 0.5593669257034042, 0.5523000393229651]
+		#[0.5633969110804465, 0.539907829900075, 0.553555791667886, 0.547315431027054, 0.5596714041066664, 0.5569557925772646, 0.5325950565454453, 0.5513386429351921, 0.5593669257034042, 0.5523000393229651]
+		control_df=pd.DataFrame('shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs)
+		control_df.to_csv('%s_control.csv'%net)
 
-	
+		
