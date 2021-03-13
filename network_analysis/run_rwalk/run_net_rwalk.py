@@ -241,7 +241,7 @@ if __name__ == '__main__':
 			all_rand_rocs.append(rand_seed_rocs)
 
 		#[0.5633969110804465, 0.539907829900075, 0.553555791667886, 0.547315431027054, 0.5596714041066664, 0.5569557925772646, 0.5325950565454453, 0.5513386429351921, 0.5593669257034042, 0.5523000393229651]
-		control_df=pd.DataFrame('shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs)
+		control_df=pd.DataFrame({'shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs})
 		control_df.to_csv('%s_control.csv'%net)
 
 		
