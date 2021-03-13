@@ -130,7 +130,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	plt.savefig(name+'.svg', format="svg")
 
 def plot_alpha(df, name):
-	f = plt.figure()
+	#f = plt.figure()
 	x=np.arange(1,10,1)
 	plt.errorbar(x, df['mean'].tolist(), yerr=df['sem'].tolist())
 
