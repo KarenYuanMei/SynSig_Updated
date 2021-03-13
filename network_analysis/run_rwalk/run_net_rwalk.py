@@ -154,7 +154,7 @@ def find_net_syngo_shuffled_auc(G, opt_alpha):
 	print (shuff_rocs)
 	return shuff_rocs
 
-def find_deg_matched_auc(G, opt_alpha):
+def find_deg_matched_auc(G, opt_alpha, kernel):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	bg=list(set(nodes)-set(cv_seeds))
@@ -169,7 +169,7 @@ def find_deg_matched_auc(G, opt_alpha):
 
 	neg=list(set(nodes)-set(syngo_nodes)-set(rand_seeds))
 	
-	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+	
 	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	return roc_auc
@@ -233,10 +233,10 @@ if __name__ == '__main__':
 			shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 			all_shuff_rocs.append(shuff_rocs)
 		#[0.5727682062515527, 0.5565968562656953, 0.5786683737253715, 0.5644656586873242, 0.5735674218383795, 0.5515552861541781, 0.5731787150472272, 0.5642616951976495, 0.5783615678854178, 0.5725117458299364]
-
+		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 		all_rand_rocs=[]
 		for i in range(10000):
-			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha)
+			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel)
 			#print (rand_seed_rocs)
 			all_rand_rocs.append(rand_seed_rocs)
 
