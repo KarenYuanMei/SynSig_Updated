@@ -191,8 +191,8 @@ def df_to_network(name):
 
 if __name__ == '__main__':
 
-	G=df_to_network('mentha')
-	
+	G=df_to_network('bioplex')
+
 	nodes=list(G.nodes())
 
 	cv_seeds=find_cv_seeds(nodes)
