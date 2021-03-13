@@ -226,9 +226,9 @@ if __name__ == '__main__':
 		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
 		#print (aucs) #0.6708522690436207
 		
-		fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
-		print (roc_auc)
-		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
+		#fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+		#print (roc_auc)
+		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		all_shuff_rocs=[]
 		for i in range(100):
