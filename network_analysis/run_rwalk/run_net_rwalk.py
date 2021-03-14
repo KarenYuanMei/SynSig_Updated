@@ -160,10 +160,11 @@ def find_deg_matched_auc(G, opt_alpha, kernel):
 	bg=list(set(nodes)-set(cv_seeds))
 
 	buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
+	print ('buckets', buckets)
 	rand_seeds=net_random_walk_functions.find_rand_samples(G, cv_seeds, buckets)
+	print ('rand', rand_seeds)
 
 	syngo_nodes=find_syngo_nodes(G)
-	ordered_set=find_ordered_set(syngo_nodes, rand_seeds)
 
 	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, rand_seeds)
 
@@ -223,16 +224,16 @@ if __name__ == '__main__':
 		print ('opt_alpha', opt_alpha)
 
 		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-		tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
-		print (net, aucs) #0.6708522690436207
+		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
+		#print (net, aucs) #0.6708522690436207
 		
 		#fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
 		#print (roc_auc)
 		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		
-		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
-		print (net, shuff_rocs)
+		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+		#print (net, shuff_rocs)
 			
 		#[0.5727682062515527, 0.5565968562656953, 0.5786683737253715, 0.5644656586873242, 0.5735674218383795, 0.5515552861541781, 0.5731787150472272, 0.5642616951976495, 0.5783615678854178, 0.5725117458299364]
 		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
