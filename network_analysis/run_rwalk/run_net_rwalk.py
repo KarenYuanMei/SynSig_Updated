@@ -240,7 +240,7 @@ if __name__ == '__main__':
 		print ('buckets')
 		all_rand_rocs=[]
 		for i in range(10):
-			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel)
+			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
 			#print (rand_seed_rocs)
 			all_rand_rocs.append(rand_seed_rocs)
 		print (net, all_rand_rocs)
