@@ -273,16 +273,16 @@ if __name__ == '__main__':
 		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 		print (net, shuff_rocs)
 	
-		# kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
-		# bg=list(set(nodes)-set(cv_seeds))
-		# buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
-		# print ('buckets')
-		# all_rand_rocs=[]
-		# for i in range(10):
-		# 	rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
-		# 	#print (rand_seed_rocs)
-		# 	all_rand_rocs.append(rand_seed_rocs)
-		# print (net, all_rand_rocs)
+		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+		bg=list(set(nodes)-set(cv_seeds))
+		buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
+		print ('buckets')
+		all_rand_rocs=[]
+		for i in range(10):
+			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
+			#print (rand_seed_rocs)
+			all_rand_rocs.append(rand_seed_rocs)
+		print (net, all_rand_rocs)
 
 		#control_df=pd.DataFrame({'shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs})
 		#control_df.to_csv('%s_control.csv'%net)
