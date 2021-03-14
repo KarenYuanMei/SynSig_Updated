@@ -243,7 +243,7 @@ def calc_auc_bootstrap(set1_predictions):
 if __name__ == '__main__':
 
 	test=['one', 'two', 'three']
-	for i in range(3):
+	for i in range(20):
 		print (random.choice(test))
 
 	net_names=['mentha', 'bioplex']
