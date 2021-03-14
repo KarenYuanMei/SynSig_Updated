@@ -199,47 +199,6 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 	opt_alpha=find_opt_alpha(all_mean_aucs)
 	return alpha_cvs, opt_alpha
 
-def calc_auc_bootstrap(set1_predictions):
-	#set1_predictions and set2_predictions should be the output from find_true_y
-	#returns a confidence interval for the difference between the auc scores for the two sets
-	scores = set1_predictions['avg_scores']
-
-	set1_labels = set1_predictions['label']
-
-	num_bootstrap_samples = 10000
-
-	bootstrapped_auc = []
-	for i in range(num_bootstrap_samples):
-		#indices = random.randint(0,len(scores))
-		indices=list(np.random.randint(low = 0,high=len(scores),size=len(scores)))
-		#print (indices)
-
-		set1_auc = roc_auc_score(set1_labels[indices],scores[indices])
-
-		bootstrapped_auc_diffs.append(set1_auc) 
-
-
-	conf_interval_sizes = [0.95,0.99, 0.999]
-	conf_intervals = {}
-
-	bootstrapped_auc.sort()
-
-	for interval_size in conf_interval_sizes:
-		#print (interval_size)
-		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
-		#print (lower_bound_index)
-
-		lower_bound = bootstrapped_auc[lower_bound_index]
-
-		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
-		#print (upper_bound_index)
-		upper_bound = bootstrapped_auc[upper_bound_index]
-
-		conf_intervals[interval_size] = (lower_bound,upper_bound)
-
-	return conf_intervals
-
-
 if __name__ == '__main__':
 
 	net_names=['mentha', 'bioplex']

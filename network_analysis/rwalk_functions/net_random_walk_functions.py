@@ -250,7 +250,7 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 	d=defaultdict(list)
 
 	for seed_gene, gene_bucket in zipped:
-		d[seed_gene].append(gene_bucket[0])
+		d[seed_gene].append(gene_bucket)
 	return d
 
 
@@ -260,7 +260,7 @@ def find_rand_samples(G, seed_genes, d):
 		#print (seed)
 		#print (G.degree(seed))
 		closest=d[seed]
-		#print (closest)
+		print ('closest', closest)
 		sample=random.choice(closest)
 		#print (G.degree(sample))
 		rand_sample.append(sample)
