@@ -161,7 +161,7 @@ def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 	
 
 	rand_seeds=net_random_walk_functions.find_rand_samples(G, cv_seeds, buckets)
-	print ('rand', rand_seeds)
+	#print ('rand', rand_seeds)
 
 	syngo_nodes=find_syngo_nodes(G)
 
