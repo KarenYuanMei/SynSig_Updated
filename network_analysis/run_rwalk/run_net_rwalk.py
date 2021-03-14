@@ -161,7 +161,7 @@ def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 	
 
 	rand_seeds=net_random_walk_functions.find_rand_samples(G, cv_seeds, buckets)
-	print ('rand', rand_seeds)
+	print ('newrand', rand_seeds)
 
 	syngo_nodes=find_syngo_nodes(G)
 
@@ -277,7 +277,7 @@ if __name__ == '__main__':
 		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 		bg=list(set(nodes)-set(cv_seeds))
 		buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
-		print ('buckets', buckets)
+		print ('newbuckets', buckets)
 		all_rand_rocs=[]
 		for i in range(10):
 			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)

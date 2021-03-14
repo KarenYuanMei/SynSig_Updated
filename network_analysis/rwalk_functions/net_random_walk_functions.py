@@ -240,7 +240,7 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 		min_diff=min(diff_list)
 
 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
-		print ('idx', idx)
+		#print ('idx', idx)
 		
 		bucket=find_idx_genes(idx, bg_genes)
 		buckets.append(bucket)
@@ -250,7 +250,7 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 	d=defaultdict(list)
 
 	for seed_gene, gene_bucket in zipped:
-		d[seed_gene].append(gene_bucket)
+		d[seed_gene].append(gene_bucket[0])
 	return d
 
 
