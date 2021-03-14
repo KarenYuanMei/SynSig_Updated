@@ -260,6 +260,7 @@ def find_rand_samples(G, seed_genes, d):
 		#print (seed)
 		#print (G.degree(seed))
 		closest=d[seed]
+		closest=closest[0]
 		print ('closest', closest)
 		sample=random.choice(closest)
 		#print (G.degree(sample))
