@@ -198,30 +198,54 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 	#print (df)
 	return df
 
+# def make_seed_bg_buckets(G, seed_genes, bg_genes):
+# 	buckets=[]
+# 	for bg in bg_genes:
+# 		diff_list=[]
+# 		for seed in seed_genes:
+# 			diff=abs(G.degree(seed)-G.degree(bg)) 
+# 			diff_list.append(diff)
+# 		min_diff=min(diff_list)
+# 		#print (min_diff)
+# 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
+# 		idx=random.choice(idx)
+# 		#idx=diff_list.index(min_diff)
+# 		bucket=seed_genes[idx]
+# 		#print (bucket)
+# 		buckets.append(bucket)
+# 	#print (len(buckets))
+
+# 	zipped=list(zip(buckets, bg_genes))
+# 	#print (zipped)
+# 	d = defaultdict(list)
+
+# 	for bucket, bg in zipped:
+# 		d[bucket].append(bg)
+# 	return d
+
 def make_seed_bg_buckets(G, seed_genes, bg_genes):
 	buckets=[]
-	for bg in bg_genes:
+	for seed in seed_genes:
 		diff_list=[]
-		for seed in seed_genes:
+		for bg in bg_genes:
 			diff=abs(G.degree(seed)-G.degree(bg)) 
 			diff_list.append(diff)
 		min_diff=min(diff_list)
-		#print (min_diff)
+
 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
 		idx=random.choice(idx)
-		#idx=diff_list.index(min_diff)
-		bucket=seed_genes[idx]
-		#print (bucket)
+
+		bucket=bg_genes[idx]
 		buckets.append(bucket)
-	#print (len(buckets))
 
-	zipped=list(zip(buckets, bg_genes))
-	#print (zipped)
-	d = defaultdict(list)
+	zipped=list(zip(seed_genes, buckets))
 
-	for bucket, bg in zipped:
-		d[bucket].append(bg)
+	d=defaultdict(list)
+
+	for seed_gene, gene_bucket in zipped:
+		d[seed_gene].append(gene_bucket)
 	return d
+
 
 def find_rand_samples(G, seed_genes, d):
 	rand_sample=[]

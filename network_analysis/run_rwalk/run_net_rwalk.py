@@ -242,10 +242,6 @@ def calc_auc_bootstrap(set1_predictions):
 
 if __name__ == '__main__':
 
-	test=['one', 'two', 'three']
-	for i in range(20):
-		print (random.choice(test))
-
 	net_names=['mentha', 'bioplex']
 	for net in net_names:
 
@@ -270,13 +266,13 @@ if __name__ == '__main__':
 		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
 		#print (net, aucs) #0.6708522690436207
 		
-		fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
-		print (net, 'single threshold', roc_auc)
+		#fpr, tpr, threshold, roc_auc=find_net_syngo_test_auc(G, opt_alpha)
+		#print (net, 'single threshold', roc_auc)
 		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		
-		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
-		print (net, shuff_rocs)
+		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+		#print (net, shuff_rocs)
 	
 		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 		bg=list(set(nodes)-set(cv_seeds))
