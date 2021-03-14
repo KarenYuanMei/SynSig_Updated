@@ -235,7 +235,7 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
 		print ('idx', idx)
 		idx=random.choice(idx)
-		prit ('random idx', idx)
+		print ('random idx', idx)
 
 		bucket=bg_genes[idx]
 		buckets.append(bucket)
