@@ -198,6 +198,46 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 	opt_alpha=find_opt_alpha(all_mean_aucs)
 	return alpha_cvs, opt_alpha
 
+def calc_auc_bootstrap(set1_predictions):
+	#set1_predictions and set2_predictions should be the output from find_true_y
+	#returns a confidence interval for the difference between the auc scores for the two sets
+	scores = set1_predictions['avg_scores']
+
+	set1_labels = set1_predictions['label']
+
+	num_bootstrap_samples = 10000
+
+	bootstrapped_auc = []
+	for i in range(num_bootstrap_samples):
+		#indices = random.randint(0,len(scores))
+		indices=list(np.random.randint(low = 0,high=len(scores),size=len(scores)))
+		#print (indices)
+
+		set1_auc = roc_auc_score(set1_labels[indices],scores[indices])
+
+		bootstrapped_auc_diffs.append(set1_auc) 
+
+
+	conf_interval_sizes = [0.95,0.99, 0.999]
+	conf_intervals = {}
+
+	bootstrapped_auc.sort()
+
+	for interval_size in conf_interval_sizes:
+		#print (interval_size)
+		lower_bound_index = int(num_bootstrap_samples*((1-interval_size)/2))
+		#print (lower_bound_index)
+
+		lower_bound = bootstrapped_auc[lower_bound_index]
+
+		upper_bound_index = int(num_bootstrap_samples*(interval_size+((1-interval_size)/2)))
+		#print (upper_bound_index)
+		upper_bound = bootstrapped_auc[upper_bound_index]
+
+		conf_intervals[interval_size] = (lower_bound,upper_bound)
+
+	return conf_intervals
+
 
 if __name__ == '__main__':
 
@@ -248,6 +288,7 @@ if __name__ == '__main__':
 		#control_df.to_csv('%s_control.csv'%net)
 
 		#mentha:
+		#shuff net:  [0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066])
 		#degree matched: 'mentha', [0.6326565479466931, 0.6250954272000686, 0.6255695090503928, 0.6272859934267048, 0.6310719489691188, 0.6246677285667572, 0.6304887788488471, 0.6288220511562175, 0.6352668877022264, 0.6276963247716165]
 
 		#bioplex:
