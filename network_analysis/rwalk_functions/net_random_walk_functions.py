@@ -226,9 +226,10 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 def find_rand_samples(G, seed_genes, d):
 	rand_sample=[]
 	for seed in seed_genes:
-		#print (seed)
+		print (seed)
 		#print (G.degree(seed))
 		closest=d[seed]
+		print (closest)
 		sample=random.choice(closest)
 		#print (G.degree(sample))
 		rand_sample.append(sample)
