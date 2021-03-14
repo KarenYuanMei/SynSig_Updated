@@ -223,6 +223,13 @@ def find_prop_scores_df(kernel, nodesets, fraction):
 # 		d[bucket].append(bg)
 # 	return d
 
+def find_idx_genes(idx, bg_genes):
+	gene_list=[]
+	for index in idx:
+		gene=bg_genes[index]
+		gene_list.append(gene)
+	return gene_list
+
 def make_seed_bg_buckets(G, seed_genes, bg_genes):
 	buckets=[]
 	for seed in seed_genes:
@@ -234,10 +241,8 @@ def make_seed_bg_buckets(G, seed_genes, bg_genes):
 
 		idx=[i for i, x in enumerate(diff_list) if x == min_diff]
 		print ('idx', idx)
-		idx=random.choice(idx)
-		print ('random idx', idx)
-
-		bucket=bg_genes[idx]
+		
+		bucket=find_idx_genes(idx, bg_genes)
 		buckets.append(bucket)
 
 	zipped=list(zip(seed_genes, buckets))
