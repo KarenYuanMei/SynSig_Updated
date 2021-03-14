@@ -215,13 +215,14 @@ if __name__ == '__main__':
 
 		neg=list(set(nodes)-set(cv_seeds))
 
-		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
+		alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
 
-		opt_alpha=0.5
+		#opt_alpha=0.5
 
 		print ('opt_alpha', opt_alpha)
 
-		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+		tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+		print (net, aucs)
 		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
 		#print (net, aucs) #0.6708522690436207
 		
@@ -230,29 +231,25 @@ if __name__ == '__main__':
 		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		
-		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
-		#print (net, shuff_rocs)
+		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+		print (net, shuff_rocs)
 	
-		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
-		bg=list(set(nodes)-set(cv_seeds))
-		buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
-		print ('newbuckets', buckets)
-		all_rand_rocs=[]
-		for i in range(10):
-			rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
-			#print (rand_seed_rocs)
-			all_rand_rocs.append(rand_seed_rocs)
-		print (net, all_rand_rocs)
+		# kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+		# bg=list(set(nodes)-set(cv_seeds))
+		# buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
+		# print ('newbuckets', buckets)
+		# all_rand_rocs=[]
+		# for i in range(10):
+		# 	rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
+		# 	#print (rand_seed_rocs)
+		# 	all_rand_rocs.append(rand_seed_rocs)
+		# print (net, all_rand_rocs)
 
 		#control_df=pd.DataFrame({'shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs})
 		#control_df.to_csv('%s_control.csv'%net)
 
 		#mentha:
 		#shuff net:  [0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066])
-		#degree matched: 'mentha', [0.6326565479466931, 0.6250954272000686, 0.6255695090503928, 0.6272859934267048, 0.6310719489691188, 0.6246677285667572, 0.6304887788488471, 0.6288220511562175, 0.6352668877022264, 0.6276963247716165]
-
+		#degree matched: 'mentha', [0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
 		#bioplex:
-		#degree matched: 'bioplex', 'bioplex', [0.5461990699275066, 0.5657750669501984, 0.5582950107790665, 0.5438948986230199, 0.5429975923521106, 0.5761597777653801, 0.5619553439315107, 0.5339053373455318, 0.5525482462398235, 0.561227381829396])
-
-
-		
+		#degree matched: 'bioplex', [0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737])
