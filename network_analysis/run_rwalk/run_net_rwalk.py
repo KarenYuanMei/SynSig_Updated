@@ -8,6 +8,7 @@ import numpy as np
 import time
 import scipy.stats as stats
 import sklearn.metrics as metrics
+import random
 
 import matplotlib
 matplotlib.use("Agg")
