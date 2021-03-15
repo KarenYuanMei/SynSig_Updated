@@ -121,7 +121,7 @@ def find_syngo_nodes(G):
 
 def find_synapse_nodes(G):
 	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
-	syndb=load_data_functions.get_gene_names('../..correct_db/SynDB.csv')
+	syndb=load_data_functions.get_gene_names('../../correct_db/SynDB.csv')
 	synsysnet=load_data_functions.get_gene_names('../correct_db/synsysnet.csv')
 
 	synapse=list(set(syngo)&set(syndb)&set(synsysnet))
@@ -145,9 +145,9 @@ def find_net_test_auc(G,opt_alpha, gold_standards):
 	if gold_standards=='syngo':
 		pos_nodes=find_syngo_nodes(G)
 		print ('syngo nodes', len(pos_nodes))
-	if gold_standards=='hk':
+	elif gold_standards=='hk':
 		pos_nodes=find_hk_nodes(G)
-	if gold_standards=='synapse':
+	elif gold_standards=='synapse':
 		pos_nodes=find_synapse_nodes(G)
 
 	#syngo_nodes=find_hk_nodes(G)
