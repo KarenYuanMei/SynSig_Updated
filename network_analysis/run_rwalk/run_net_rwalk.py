@@ -219,45 +219,46 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 
 if __name__ == '__main__':
 
-	# net_names=['mentha', 'bioplex']
-	# for net in net_names:
+	net_names=['bioplex']
+	for net in net_names:
 
-	# 	G=df_to_network(net)
+		G=df_to_network(net)
 
-	# 	nodes=list(G.nodes())
+		nodes=list(G.nodes())
 
-	# 	cv_seeds=find_cv_seeds(nodes)
+		cv_seeds=find_cv_seeds(nodes)
 
-	# 	cv_seedsets=find_cv_nodesets(G, cv_seeds)
-	# 	#print (cv_seedsets)
+		cv_seedsets=find_cv_nodesets(G, cv_seeds)
+		#print (cv_seedsets)
 
-	# 	neg=list(set(nodes)-set(cv_seeds))
+		neg=list(set(nodes)-set(cv_seeds))
 
-	# 	#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
+		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
 
-	# 	opt_alpha=0.4
+		opt_alpha=0.4
 
-	# 	print ('opt_alpha', opt_alpha)
+		print ('opt_alpha', opt_alpha)
 
-	# 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-	# 	#print (net, aucs)
-	# 	#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
-	# 	#print (net, aucs) #0.6708522690436207
+		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+		#print (net, aucs)
+		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
+		#print (net, aucs) #0.6708522690436207
 		
-	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
-	# 	print (net, 'single threshold', roc_auc)
-	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
-	# 	print (net, 'hk', roc_auc)
-	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
-	# 	print (net, 'synapse', roc_auc)
+		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
+		#print (net, 'single threshold', roc_auc)
+		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
+		#print (net, 'hk', roc_auc)
+		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
+		#print (net, 'synapse', roc_auc)
 
-	# 	#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
+		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		
-	# 	shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
-	# 	print (net, shuff_rocs)
+		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+		#print (net, shuff_rocs)
 	
-		# kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+		kernel.to_csv('bioplex_kernel.csv')
 		# bg=list(set(nodes)-set(cv_seeds))
 		# buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
 		# print ('newbuckets', buckets)
