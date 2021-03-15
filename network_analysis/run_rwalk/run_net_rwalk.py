@@ -219,37 +219,37 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 
 if __name__ == '__main__':
 
-	net_names=['mentha', 'bioplex']
-	for net in net_names:
+	# net_names=['mentha', 'bioplex']
+	# for net in net_names:
 
-		G=df_to_network(net)
+	# 	G=df_to_network(net)
 
-		nodes=list(G.nodes())
+	# 	nodes=list(G.nodes())
 
-		cv_seeds=find_cv_seeds(nodes)
+	# 	cv_seeds=find_cv_seeds(nodes)
 
-		cv_seedsets=find_cv_nodesets(G, cv_seeds)
-		#print (cv_seedsets)
+	# 	cv_seedsets=find_cv_nodesets(G, cv_seeds)
+	# 	#print (cv_seedsets)
 
-		neg=list(set(nodes)-set(cv_seeds))
+	# 	neg=list(set(nodes)-set(cv_seeds))
 
-		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
+	# 	#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
 
-		opt_alpha=0.4
+	# 	opt_alpha=0.4
 
-		print ('opt_alpha', opt_alpha)
+	# 	print ('opt_alpha', opt_alpha)
 
-		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-		#print (net, aucs)
-		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
-		#print (net, aucs) #0.6708522690436207
+	# 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+	# 	#print (net, aucs)
+	# 	#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
+	# 	#print (net, aucs) #0.6708522690436207
 		
-		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
-		print (net, 'single threshold', roc_auc)
-		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
-		print (net, 'hk', roc_auc)
-		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
-		print (net, 'synapse', roc_auc)
+	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
+	# 	print (net, 'single threshold', roc_auc)
+	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
+	# 	print (net, 'hk', roc_auc)
+	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
+	# 	print (net, 'synapse', roc_auc)
 
 	# 	#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
@@ -275,6 +275,7 @@ if __name__ == '__main__':
 		#shuff net:  [0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066])
 		#degree matched: 'mentha', [0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
 		#bioplex:
+		#bioplex shuff: [0.5714639587047085, 0.5766757852594352, 0.5793954418893388, 0.5800282737574435, 0.557990750212713, 0.5661015261976903, 0.5654009933681745, 0.5635475361153074, 0.5848518238237388, 0.568124809591046]
 		#degree matched: 'bioplex', [0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737])
 
 	# mentha_shuff=[0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066]
@@ -286,8 +287,17 @@ if __name__ == '__main__':
 
 	# mean_values=[mentha_test, mentha_shuff_mean, mentha_rand_mean]
 
-	# labels=['SynGO', 'Shuff Net', 'Random Seeds']
-	# xlabel='Gene Categories'
-	# ylabel='Recovery ROC'
+	shuff=[0.5714639587047085, 0.5766757852594352, 0.5793954418893388, 0.5800282737574435, 0.557990750212713, 0.5661015261976903, 0.5654009933681745, 0.5635475361153074, 0.5848518238237388, 0.568124809591046]
+	rand=[0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737]
+	test=0.6730235765729429
 
-	# graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'mentha')
+	mean_shuff=np.mean(shuff)
+	mean_rand=np.mean(rand)
+
+	mean_values=[test, mean_shuff, mean_rand]
+
+	labels=['SynGO', 'Shuff Net', 'Random Seeds']
+	xlabel='Gene Categories'
+	ylabel='Recovery ROC'
+
+	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex')
