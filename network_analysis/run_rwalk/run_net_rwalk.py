@@ -286,8 +286,8 @@ if __name__ == '__main__':
 	rand_mean=np.mean(rand)
 	test=0.7405383334461009
 
-	shuff_sem=np.mean(shuff)
-	rand_sem=np.mean(rand)
+	shuff_sem=stats.sem(shuff)
+	rand_sem=stats.sem(rand)
 	sem=[0, shuff_sem, rand_sem]
 
 	mean_values=[test, shuff_mean, rand_mean]
