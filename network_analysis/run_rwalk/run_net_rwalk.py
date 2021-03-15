@@ -122,7 +122,7 @@ def find_syngo_nodes(G):
 def find_synapse_nodes(G):
 	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
 	syndb=load_data_functions.get_gene_names('../../correct_db/SynDB.csv')
-	synsysnet=load_data_functions.get_gene_names('../correct_db/synsysnet.csv')
+	synsysnet=load_data_functions.get_gene_names('../../correct_db/synsysnet.csv')
 
 	synapse=list(set(syngo)&set(syndb)&set(synsysnet))
 
