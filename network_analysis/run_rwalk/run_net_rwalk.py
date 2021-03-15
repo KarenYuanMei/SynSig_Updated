@@ -257,7 +257,7 @@ if __name__ == '__main__':
 		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
 		#print (net, shuff_rocs)
 	
-		kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+		#kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
 		#kernel.to_csv('bioplex_kernel.csv')
 		# bg=list(set(nodes)-set(cv_seeds))
 		# buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
@@ -286,8 +286,8 @@ if __name__ == '__main__':
 	rand_mean=np.mean(rand)
 	test=0.7405383334461009
 
-	mean_shuff=np.mean(shuff)
-	mean_rand=np.mean(rand)
+	shuff_sem=np.mean(shuff)
+	rand_sem=np.mean(rand)
 	sem=[0, shuff_sem, rand_sem]
 
 	mean_values=[test, shuff_mean, rand_mean]
