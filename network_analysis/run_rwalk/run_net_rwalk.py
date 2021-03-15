@@ -298,12 +298,17 @@ if __name__ == '__main__':
 	mean_shuff=np.mean(shuff)
 	mean_rand=np.mean(rand)
 
+	shuff_sem=stats.sem(shuff)
+	rand_sem=stats.sem(rand)
+	sem=[0, shuff_sem, rand_sem]
+
 	mean_values=[test, mean_shuff, mean_rand]
-	mean_values=[synapse, test, hk]
+	#mean_values=[synapse, test, hk]
 
 	labels=['SynGO', 'Shuff Net', 'Random Seeds']
-	labels=['Synapse', 'SynGO', 'Housekeeping']
+	#labels=['Synapse', 'SynGO', 'Housekeeping']
 	xlabel='Gene Categories'
 	ylabel='Recovery ROC'
 
-	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex_test')
+	#graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex_test')
+	graph_functions.plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, 'bioplex_sem')
