@@ -291,13 +291,18 @@ if __name__ == '__main__':
 	rand=[0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737]
 	test=0.6730235765729429
 
+	synapse=0.7185991564296855
+	hk=0.5357603327592209
+
 	mean_shuff=np.mean(shuff)
 	mean_rand=np.mean(rand)
 
 	mean_values=[test, mean_shuff, mean_rand]
+	mean_values=[synapse, test, hk]
 
 	labels=['SynGO', 'Shuff Net', 'Random Seeds']
+	labels=['Synapse', 'SynGO', 'Housekeeping']
 	xlabel='Gene Categories'
 	ylabel='Recovery ROC'
 
-	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex')
+	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex_test')
