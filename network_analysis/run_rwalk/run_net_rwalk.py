@@ -119,6 +119,17 @@ def find_syngo_nodes(G):
 	#print ('syngo nodes', len(syngo_nodes))
 	return syngo_nodes
 
+def find_synapse_nodes(G):
+	syngo=load_data_functions.get_gene_names('../../correct_db/corr_syngo_cc.csv')
+	syndb=load_data_functions.get_gene_names('../..correct_db/SynDB.csv')
+	synsysnet=load_data_functions.get_gene_names('../correct_db/synsysnet.csv')
+
+	synapse=list(set(syngo)&set(syndb)&set(synsysnet))
+
+	nodes=list(G.nodes())
+	synapse_nodes=list(set(nodes)&set(synapse))
+	return synapse_nodes
+
 def find_hk_nodes(G):
 	hk=pd.read_csv('../../gene_lists/Human_Mouse_Common.csv', sep=';')
 	print (hk)
@@ -136,6 +147,8 @@ def find_net_test_auc(G,opt_alpha, gold_standards):
 		print ('syngo nodes', len(pos_nodes))
 	if gold_standards=='hk':
 		pos_nodes=find_hk_nodes(G)
+	if gold_standards=='synapse':
+		pos_nodes=find_synapse_nodes(G)
 
 	#syngo_nodes=find_hk_nodes(G)
 
@@ -206,35 +219,38 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 
 if __name__ == '__main__':
 
-	# net_names=['mentha', 'bioplex']
-	# for net in net_names:
+	net_names=['mentha', 'bioplex']
+	for net in net_names:
 
-	# 	G=df_to_network(net)
+		G=df_to_network(net)
 
-	# 	nodes=list(G.nodes())
+		nodes=list(G.nodes())
 
-	# 	cv_seeds=find_cv_seeds(nodes)
+		cv_seeds=find_cv_seeds(nodes)
 
-	# 	cv_seedsets=find_cv_nodesets(G, cv_seeds)
-	# 	#print (cv_seedsets)
+		cv_seedsets=find_cv_nodesets(G, cv_seeds)
+		#print (cv_seedsets)
 
-	# 	neg=list(set(nodes)-set(cv_seeds))
+		neg=list(set(nodes)-set(cv_seeds))
 
-	# 	alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
+		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
 
-	# 	#opt_alpha=0.5
+		opt_alpha=0.4
 
-	# 	print ('opt_alpha', opt_alpha)
+		print ('opt_alpha', opt_alpha)
 
-	# 	#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-	# 	#print (net, aucs)
-	# 	#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
-	# 	#print (net, aucs) #0.6708522690436207
+		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
+		#print (net, aucs)
+		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
+		#print (net, aucs) #0.6708522690436207
 		
-	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
-	# 	print (net, 'single threshold', roc_auc)
-	# 	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
-	# 	print (net, 'hk', roc_auc)
+		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
+		print (net, 'single threshold', roc_auc)
+		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
+		print (net, 'hk', roc_auc)
+		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
+		print (net, 'synapse', roc_auc)
+
 	# 	#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
 
 		
@@ -261,17 +277,17 @@ if __name__ == '__main__':
 		#bioplex:
 		#degree matched: 'bioplex', [0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737])
 
-	mentha_shuff=[0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066]
-	mentha_rand=[0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
+	# mentha_shuff=[0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066]
+	# mentha_rand=[0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
 
-	mentha_shuff_mean=np.mean(mentha_shuff)
-	mentha_rand_mean=np.mean(mentha_rand)
-	mentha_test=0.7405383334461009
+	# mentha_shuff_mean=np.mean(mentha_shuff)
+	# mentha_rand_mean=np.mean(mentha_rand)
+	# mentha_test=0.7405383334461009
 
-	mean_values=[mentha_test, mentha_shuff_mean, mentha_rand_mean]
+	# mean_values=[mentha_test, mentha_shuff_mean, mentha_rand_mean]
 
-	labels=['SynGO', 'Shuff Net', 'Random Seeds']
-	xlabel='Gene Categories'
-	ylabel='Recovery ROC'
+	# labels=['SynGO', 'Shuff Net', 'Random Seeds']
+	# xlabel='Gene Categories'
+	# ylabel='Recovery ROC'
 
-	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'mentha')
+	# graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'mentha')
