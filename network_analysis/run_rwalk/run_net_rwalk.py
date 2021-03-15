@@ -268,7 +268,7 @@ if __name__ == '__main__':
 	mentha_rand_mean=np.mean(mentha_rand)
 	mentha_test=0.7405383334461009
 
-	mean_value=[mentha_test, mentha_shuff_mean, memtha_rand_mean]
+	mean_value=[mentha_test, mentha_shuff_mean, mentha_rand_mean]
 
 	labels=['SynGO', 'Shuff Net', 'Random Seeds']
 	xlabel='Gene Categories'
