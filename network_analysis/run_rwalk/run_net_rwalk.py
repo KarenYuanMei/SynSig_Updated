@@ -269,7 +269,7 @@ def plot_all_test_aucs(net, auc_list):
 	xlabel='Gene Categories'
 	ylabel='Recovery ROC'
 
-	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, net)
+	graph_functions.plot_bargraph(labels, auc_list, xlabel, ylabel, net)
 
 if __name__ == '__main__':
 
