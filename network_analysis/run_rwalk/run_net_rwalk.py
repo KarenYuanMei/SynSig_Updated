@@ -161,7 +161,7 @@ def find_net_test_auc(G,opt_alpha, gold_standards):
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	return fpr, tpr, threshold, roc_auc
 
-def find_net_syngo_shuffled_auc(G, opt_alpha):
+def find_net_syngo_shuffled_auc(G, opt_alpha, iterations):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
 	syngo_nodes=find_syngo_nodes(G)
@@ -169,8 +169,8 @@ def find_net_syngo_shuffled_auc(G, opt_alpha):
 
 	neg=list(set(nodes)-set(syngo_nodes))
 
-	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, 10)
-	print (shuff_rocs)
+	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, iterations)
+	#print (shuff_rocs)
 	return shuff_rocs
 
 def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
@@ -207,7 +207,12 @@ def df_to_network(name):
 		print ('filtered', len(list(G.nodes())))
 	return G
 
-def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
+def calc_plot_opt_alpha(G, net):
+	nodes=list(G.nodes())
+	#find the syngo seeds for propagating
+	cv_seeds=find_cv_seeds(nodes)
+	cv_seedsets=find_cv_nodesets(G, cv_seeds)
+	neg=list(set(nodes)-set(cv_seeds))
 	alpha_cvs, all_mean_aucs=sweep_alpha_aucs(G, cv_seedsets, neg)
 	alpha_df=make_sweep_alpha_df(alpha_cvs, all_mean_aucs)
 	alpha_df.to_csv('%s_alpha_df.csv'%net)
@@ -217,102 +222,74 @@ def calc_plot_opt_alpha(G, cv_seedsets, neg, net):
 	opt_alpha=find_opt_alpha(all_mean_aucs)
 	return alpha_cvs, opt_alpha
 
+def find_test_auc(net):
+	genelists=['syngo', 'hk', 'synapse']
+
+	auc_list=[]
+	for item in genelists:
+		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, item)
+		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_%s_test'%(net, item))
+		auc_list.append(roc_auc)
+	return auc_list
+
+def find_net_deg_marched_auc_list(G, opt_alpha, iterations):
+	nodes=list(G.nodes())
+	cv_seeds=find_cv_seeds(nodes)
+	bg=list(set(nodes)-set(cv_seeds))
+	buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
+	print ('newbuckets', buckets)
+	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+	all_rand_rocs=[]
+	for i in range(iterations):
+		rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
+		#print (rand_seed_rocs)
+		all_rand_rocs.append(rand_seed_rocs)
+	print (net, all_rand_rocs)
+	return all_rand_rocs
+
+def plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs):
+	shuff_mean=np.mean(shuff_rocs)
+	rand_mean=np.mean(rand_rocs)
+	syngo_auc=auc_list[0]
+
+	mean_values=[syngo_auc, shuff_mean, rand_mean]
+
+	shuff_sem=stats.sem(shuff_rocs)
+	rand_sem=stats.sem(rand_rocs)
+	sem=[0, shuff_sem, rand_sem]
+
+	labels=['SynGO', 'Shuff Net', 'Random Seeds']
+	xlabel='Gene Categories'
+	ylabel='Recovery ROC'
+
+	graph_functions.plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net)
+
+def plot_all_test_aucs(net, auc_list):
+	labels=['SynGO', 'Housekeeping', 'Synapse']
+	xlabel='Gene Categories'
+	ylabel='Recovery ROC'
+
+	graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, net)
+
 if __name__ == '__main__':
 
-	net_names=['bioplex']
+	net_names=['mentha', 'bioplex']
 	for net in net_names:
 
 		G=df_to_network(net)
 
-		nodes=list(G.nodes())
-
-		cv_seeds=find_cv_seeds(nodes)
-
-		cv_seedsets=find_cv_nodesets(G, cv_seeds)
-		#print (cv_seedsets)
-
-		neg=list(set(nodes)-set(cv_seeds))
-
-		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, cv_seedsets, neg, net)
-
-		opt_alpha=0.5
+		alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, net)
 
 		print ('opt_alpha', opt_alpha)
-
-		#tprs, mean_fpr, aucs=alpha_cvs[opt_alpha]
-		#print (net, aucs)
-		#tprs, mean_fpr, aucs=find_single_alpha_auc(G, cv_seedsets, opt_alpha, neg)
-		#print (net, aucs) #0.6708522690436207
 		
-		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'syngo')
-		#print (net, 'single threshold', roc_auc)
-		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'hk')
-		#print (net, 'hk', roc_auc)
-		#fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, 'synapse')
-		#print (net, 'synapse', roc_auc)
-
-		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_test'%net)
-
+		auc_list=find_test_auc(net)
 		
-		#shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha)
+		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
 		#print (net, shuff_rocs)
+		rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
+
+		plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
+
+		plot_all_test_aucs(net, auc_list)
+
 	
-		#kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
-		#kernel.to_csv('bioplex_kernel.csv')
-		# bg=list(set(nodes)-set(cv_seeds))
-		# buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
-		# print ('newbuckets', buckets)
-		# all_rand_rocs=[]
-		# for i in range(10):
-		# 	rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
-		# 	#print (rand_seed_rocs)
-		# 	all_rand_rocs.append(rand_seed_rocs)
-		# print (net, all_rand_rocs)
-
-		#control_df=pd.DataFrame({'shuff': all_shuff_rocs, 'rand_seed': all_rand_rocs})
-		#control_df.to_csv('%s_control.csv'%net)
-
-		#mentha:
-		#shuff net:  [0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066])
-		#degree matched: 'mentha', [0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
-		#bioplex:
-		#bioplex shuff: [0.5714639587047085, 0.5766757852594352, 0.5793954418893388, 0.5800282737574435, 0.557990750212713, 0.5661015261976903, 0.5654009933681745, 0.5635475361153074, 0.5848518238237388, 0.568124809591046]
-		#degree matched: 'bioplex', [0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737])
-
-	shuff=[0.6427267889496402, 0.6303507526964867, 0.6357507069450844, 0.6435493207635116, 0.6303259841115905, 0.6363102487437159, 0.6317246372375604, 0.6395814471619632, 0.6357818522659295, 0.638829126567066]
-	rand=[0.6283560885275978, 0.6244017689465076, 0.6248351011131804, 0.6293435461832171, 0.6243262938019297, 0.6295314493628568, 0.6342623967254398, 0.6315376637131085, 0.6275756534753263, 0.6313102166210875]
-
-	shuff_mean=np.mean(shuff)
-	rand_mean=np.mean(rand)
-	test=0.7405383334461009
-
-	shuff_sem=stats.sem(shuff)
-	rand_sem=stats.sem(rand)
-	sem=[0, shuff_sem, rand_sem]
-
-	mean_values=[test, shuff_mean, rand_mean]
-
-	#shuff=[0.5714639587047085, 0.5766757852594352, 0.5793954418893388, 0.5800282737574435, 0.557990750212713, 0.5661015261976903, 0.5654009933681745, 0.5635475361153074, 0.5848518238237388, 0.568124809591046]
-	#rand=[0.542930613594769, 0.5433958035146171, 0.5407222933384461, 0.5438882347994282, 0.5562655655540507, 0.5563464463939507, 0.5661069268974395, 0.5562119794928597, 0.5665056939490847, 0.5576503436151737]
-	#test=0.6730235765729429
-
-	synapse=0.7185991564296855
-	hk=0.5357603327592209
-
-	#mean_shuff=np.mean(shuff)
-	#mean_rand=np.mean(rand)
-
-	#shuff_sem=stats.sem(shuff)
-	#rand_sem=stats.sem(rand)
-	#sem=[0, shuff_sem, rand_sem]
-
-	#mean_values=[test, mean_shuff, mean_rand]
-	#mean_values=[synapse, test, hk]
-
-	labels=['SynGO', 'Shuff Net', 'Random Seeds']
-	#labels=['Synapse', 'SynGO', 'Housekeeping']
-	xlabel='Gene Categories'
-	ylabel='Recovery ROC'
-
-	#graph_functions.plot_bargraph(labels, mean_values, xlabel, ylabel, 'bioplex_test')
-	graph_functions.plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, 'mentha_sem')
