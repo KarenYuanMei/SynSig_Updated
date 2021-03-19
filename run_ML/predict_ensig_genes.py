@@ -59,5 +59,5 @@ def find_common_pool(filename):
 	return idx
 
 for feature in nonbrain_features:
-	idx=find_common_pool(nonbrain_features)
+	idx=find_common_pool(feature)
 	print (idx[:5])
