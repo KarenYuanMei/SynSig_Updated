@@ -25,7 +25,7 @@ nonbrain_features=define_features.load_nonbrain_features()
 
 print (nonbrain_features)
 
-def find_common_pool(nonbrain_features):
+def find_common_pool(filename):
 	string_files=['pFAM_domain', 'mentha_source_feature','biogrid_source_feature', 'bioplex_source_feature', 'chr_no_source_feature']
 	kernel_file=['mentha_kernel']
 	gtex_rna_file=['gtex_rna_kernel']
