@@ -162,6 +162,7 @@ class PairOfGenes:
 		'HIP_RNA', 'DFC_RNA', 'V1C_RNA', 'AMY_RNA', 'MD_RNA', 'STR_RNA', 'CBC_RNA']
 		subtraction_features=['Phosphosite_hu_no', 'qPhos_site_number', 'Ensembl_isoform_no', 'Ensembl_aa_length', 'pFAM_domain_number', 'protein_mass', "trans_count", 'gc_content', 'trans_len', 'gene_length', 'exon_no', 'cds_length']
 		jaccard_features=['pFAM_domain', 'mentha_source_feature']
+		kernel_features=['mentha_kernel', 'bioplex_kernel']
 	
 		if feature_name in pearson_features:
 			self.__dict__[feature_name] = pearsonr(gene1_feature,gene2_feature)[0]
@@ -182,7 +183,7 @@ class PairOfGenes:
 				result=0
 				self.chr_no_source_feature=result
 
-		elif feature_name == 'mentha_kernel':
+		elif feature_name in kernel_features:
 			row=self.gene1_name
 			col=self.gene2_name
 			value1=gene1_feature[col]
@@ -209,6 +210,7 @@ def find_input_features(filename, input_genes):
 	string_files=['pFAM_domain', 'mentha_source_feature','biogrid_source_feature', 'bioplex_source_feature', 'chr_no_source_feature']
 	kernel_file=['mentha_kernel']
 	gtex_rna_file=['gtex_rna_kernel']
+	bioplex_file=['bioplex_kernel']
 	if filename in string_files:
 		df = pd.read_csv('../../../SynSig/features/normalized_%s.csv'%filename,converters={"Interactors": lambda x: x.strip("[]").split(", ")})
 		symbol=df['Norm_Symbol']
@@ -223,6 +225,10 @@ def find_input_features(filename, input_genes):
 
 	elif filename in gtex_rna_file:
 		df=pd.read_csv('../../new_features/gtex_rna_kernel/gtex_rna_kernel.csv', index_col=[0])
+		df=df.loc[input_genes]
+
+	elif filename in bioplex_file:
+		df=pd.read_csv('../network_analysis/run_rwalk/bioplex_kernel.csv', index_col=[0])
 		df=df.loc[input_genes]
 
 	else:
@@ -240,7 +246,7 @@ def find_input_features(filename, input_genes):
 def load_feature(filename, input_genes):
 	feature=find_input_features(filename, input_genes)
 	string_files=['pFAM_domain', 'mentha_source_feature','biogrid_source_feature', 'bioplex_source_feature', 'chr_no_source_feature']
-	kernel_file=['mentha_kernel']
+	kernel_file=['mentha_kernel', 'bioplex_kernel']
 	gtex_rna_file=['gtex_rna_kernel']
 	feature=feature.fillna(0)
 	idx=list(feature.index)
