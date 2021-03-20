@@ -58,6 +58,11 @@ def find_common_pool(filename):
 		
 	return idx
 
+idx_list=[]
 for feature in nonbrain_features:
 	idx=find_common_pool(feature)
 	print (idx[:5])
+	idx_list.append(idx)
+
+common=set.intersection(*[set(list) for list in idx_list])
+print (common)
