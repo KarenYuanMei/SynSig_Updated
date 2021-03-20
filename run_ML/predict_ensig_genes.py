@@ -65,4 +65,5 @@ for feature in nonbrain_features:
 	idx_list.append(idx)
 
 common=set.intersection(*[set(list) for list in idx_list])
-print (common)
+common=list(set(common))
+print (len(common))
