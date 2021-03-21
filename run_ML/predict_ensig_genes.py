@@ -60,7 +60,7 @@ def find_nonbrain_common_pool():
 
 	idx_list=[]
 	for feature in nonbrain_features:
-		idx=find_common_pool(feature)
+		idx=find_feature_genes(feature)
 		#print (idx[:5])
 		idx_list.append(idx)
 
