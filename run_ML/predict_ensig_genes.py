@@ -72,7 +72,12 @@ def find_nonbrain_common_pool():
 nb_pool=find_nonbrain_common_pool()
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
+
+
 nb_pos=list(set(pos)&set(nb_pool))
 nb_neg=list(set(neg)&set(nb_pool))
 
+print (len(pos), len(neg))
 print (len(nb_pos), len(nb_neg))
+#373, 355
+
