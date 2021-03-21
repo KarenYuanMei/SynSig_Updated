@@ -61,12 +61,12 @@ def find_nonbrain_common_pool():
 	idx_list=[]
 	for feature in nonbrain_features:
 		idx=find_common_pool(feature)
-		print (idx[:5])
+		#print (idx[:5])
 		idx_list.append(idx)
 
 	common=set.intersection(*[set(list) for list in idx_list])
 	common=list(set(common))
-	print (len(common))
+	#print (len(common))
 	return common
 
 nb_pool=find_nonbrain_common_pool()
