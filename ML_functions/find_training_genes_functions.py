@@ -99,12 +99,12 @@ def load_pos_neg_training():
 	return pos, neg, all_training
 
 
-
-def define_crossvalidation_genes(pos, pos_chunks, neg, neg_chunks):
+def define_crossvalidation_genes(pos, neg, name):
+	pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
 	for i in range(5):
 		training_gene_names, test_gene_names=define_training_test(pos, pos_chunks, neg, neg_chunks, i)
-		training_df=make_genes_csv(training_gene_names, 'updated', 'training_genes_%s'%i)
-		test_df=make_genes_csv(test_gene_names, 'updated', 'test_genes_%s'%i)
+		training_df=make_genes_csv(training_gene_names, name, 'training_genes_%s'%i)
+		test_df=make_genes_csv(test_gene_names, name, 'test_genes_%s'%i)
 	return training_gene_names, test_gene_names
 
 

@@ -70,14 +70,14 @@ def find_nonbrain_common_pool():
 	return common
 
 nb_pool=find_nonbrain_common_pool()
-pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+syngo_file='../correct_db/corr_syngo_cc.csv'
+syngo=get_gene_names(syngo_file)
 
+go_human=find_GO_scores.find_GO_ont()
+GO_genes=go_human.genes
 
+pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo, nb_pool, GO_genes)
+nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
+nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-nb_pos=list(set(pos)&set(nb_pool))
-nb_neg=list(set(neg)&set(nb_pool))
-
-print (len(pos), len(neg))
-print (len(nb_pos), len(nb_neg))
-#373, 355
-
+training_gene_names, test_gene_names=find_training_genes_functions.define_crossvalidation_genes(pos, neg, 'nb')
