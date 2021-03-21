@@ -71,7 +71,7 @@ def find_nonbrain_common_pool():
 
 nb_pool=find_nonbrain_common_pool()
 syngo_file='../correct_db/corr_syngo_cc.csv'
-syngo=get_gene_names(syngo_file)
+syngo=load_data_functions.get_gene_names(syngo_file)
 
 go_human=find_GO_scores.find_GO_ont()
 GO_genes=go_human.genes
