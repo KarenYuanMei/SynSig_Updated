@@ -21,11 +21,8 @@ import find_training_genes_functions
 import define_gene_objects
 import define_features
 
-nonbrain_features=define_features.load_nonbrain_features()
 
-print (nonbrain_features)
-
-def find_common_pool(filename):
+def find_feature_genes(filename):
 	string_files=['pFAM_domain', 'mentha_source_feature','biogrid_source_feature', 'bioplex_source_feature', 'chr_no_source_feature']
 	kernel_file=['mentha_kernel']
 	gtex_rna_file=['gtex_rna_kernel']
@@ -58,12 +55,24 @@ def find_common_pool(filename):
 		
 	return idx
 
-idx_list=[]
-for feature in nonbrain_features:
-	idx=find_common_pool(feature)
-	print (idx[:5])
-	idx_list.append(idx)
+def find_nonbrain_common_pool():
+	nonbrain_features=define_features.load_nonbrain_features()
 
-common=set.intersection(*[set(list) for list in idx_list])
-common=list(set(common))
-print (len(common))
+	idx_list=[]
+	for feature in nonbrain_features:
+		idx=find_common_pool(feature)
+		print (idx[:5])
+		idx_list.append(idx)
+
+	common=set.intersection(*[set(list) for list in idx_list])
+	common=list(set(common))
+	print (len(common))
+	return common
+
+nb_pool=find_nonbrain_common_pool()
+pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+
+nb_pos=list(set(pos)&set(nb_pool))
+nb_neg=list(set(neg)&set(nb_pool))
+
+print (len(nb_pos), len(nb_neg))
