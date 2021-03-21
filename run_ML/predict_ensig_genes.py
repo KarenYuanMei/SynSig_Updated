@@ -20,6 +20,7 @@ sys.path.append('../ML_functions/')
 import find_training_genes_functions 
 import define_gene_objects
 import define_features
+import find_GO_scores
 
 
 def find_feature_genes(filename):
