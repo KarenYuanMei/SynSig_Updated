@@ -99,7 +99,7 @@ pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo
 nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
 nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-define_GO_score_matrix(pos, neg, go_human, 'nb')
+find_GO_scores.define_GO_score_matrix(pos, neg, go_human, 'nb')
 
 feature_list=define_features.load_nonbrain_features()
 training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
