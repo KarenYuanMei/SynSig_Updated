@@ -87,7 +87,7 @@ def define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
 	new_genes=list(set(nb_pool)-set(all_training))
 	print ('new genes', len(new_genes))
-	synapse_new_pairs=predict_new_synapse.find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
+	synapse_new_pairs=predict_new_synapse.find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos, feature_list)
 	return training_pairs, synapse_new_pairs
 
 nb_pool=find_nonbrain_common_pool()
