@@ -100,7 +100,7 @@ nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
 training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool)
 
-feature_list=define_gene_objects.define_features()
+feature_list=define_features.load_nonbrain_features()
 
 data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
 print (data_test.shape)
