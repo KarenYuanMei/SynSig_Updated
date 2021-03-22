@@ -70,6 +70,23 @@ def find_nonbrain_common_pool():
 	#print (len(common))
 	return common
 
+def define_nb_training_test_pairs(pos, neg, all_training, nb_pool):
+	training_gene_names, test_gene_names=find_training_genes_functions.define_crossvalidation_genes(pos, neg, 'nb')
+
+	feature_value_dict = define_gene_objects.create_feature_value_dict(nb_pool)
+
+	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+
+	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
+
+	training_pairs=combinations(all_training_objects,2)
+	print ('DONE training pairs for final rf')
+
+	new_genes=list(set(nb_pool)-set(all_training))
+	print ('new genes', len(new_genes))
+	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
+	return training_pairs, synapse_new_pairs
+
 nb_pool=find_nonbrain_common_pool()
 syngo_file='../correct_db/corr_syngo_cc.csv'
 syngo=load_data_functions.get_gene_names(syngo_file)
@@ -81,4 +98,14 @@ pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo
 nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
 nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-training_gene_names, test_gene_names=find_training_genes_functions.define_crossvalidation_genes(pos, neg, 'nb')
+training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool)
+
+feature_list=define_gene_objects.define_features()
+
+data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
+print (data_test.shape)
+train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs)
+print (X_train.shape)
+
+df=define_gene_objects.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
+df.to_csv('../run_ML/ML_output/nb_new_all_gene_predictions.csv')
