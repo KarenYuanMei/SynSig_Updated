@@ -67,6 +67,7 @@ def find_nonbrain_common_pool():
 
 	common=set.intersection(*[set(list) for list in idx_list])
 	common=list(set(common))
+
 	#print (len(common))
 	return common
 
@@ -75,7 +76,7 @@ def define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
 	feature_value_dict = define_gene_objects.create_feature_value_dict(nb_pool, feature_list)
 
-	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
+	go_mat_filename='../run_ML/ML_output/training_genes/nb_GO_training_score_matrix_for_big_pool_genes.csv'
 
 	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
 
@@ -97,6 +98,8 @@ GO_genes=go_human.genes
 pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo, nb_pool, GO_genes)
 nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
 nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
+
+define_GO_score_matrix(pos, neg, go_human, 'nb')
 
 feature_list=define_features.load_nonbrain_features()
 training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
