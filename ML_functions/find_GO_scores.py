@@ -41,9 +41,9 @@ def make_mat_csv(mat, name):
 	matrix.to_csv('%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
 	return matrix
 
-def define_GO_score_matrix(pos, neg, GO_human):
+def define_GO_score_matrix(pos, neg, GO_human, name):
 	GO_score_matrix=find_input_gene_GO_scores(pos, neg, GO_human)
-	make_mat_csv(GO_score_matrix, 'syngo_GO_training_score_matrix_for_big_pool_genes.csv')
+	make_mat_csv(GO_score_matrix, '../run_ML/ML_output/training_genes/%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
 	return GO_score_matrix
 
 def load_GO_score_matrix(go_mat_filename):
