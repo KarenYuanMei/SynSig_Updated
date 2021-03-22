@@ -22,16 +22,16 @@ import define_gene_objects
 
 # #predict new genes=========================================================
 
-def find_new_gene_objects(new_genes, feature_value_dict):
+def find_new_gene_objects(new_genes, feature_value_dict, feature_list):
 	new_genes=sorted(new_genes)
 	print ('new genes', len(new_genes))
-	new_gene_objects=define_gene_objects.create_new_gene_list(new_genes, False, feature_value_dict)
+	new_gene_objects=define_gene_objects.create_new_gene_list(new_genes, False, feature_value_dict, feature_list)
 	print (len(new_gene_objects))
 	print ('DONE')
 	return new_gene_objects
 
-def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos):
-	new_gene_objects=find_new_gene_objects(new_genes, feature_value_dict)
+def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos, feature_list):
+	new_gene_objects=find_new_gene_objects(new_genes, feature_value_dict, feature_list)
 	positive_training_objects=define_gene_objects.find_gene_objects(all_training_objects, pos)
 	print ('positive_training_objects', len(positive_training_objects))
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
