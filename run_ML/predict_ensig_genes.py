@@ -70,10 +70,10 @@ def find_nonbrain_common_pool():
 	#print (len(common))
 	return common
 
-def define_nb_training_test_pairs(pos, neg, all_training, nb_pool):
+def define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list):
 	training_gene_names, test_gene_names=find_training_genes_functions.define_crossvalidation_genes(pos, neg, 'nb')
 
-	feature_value_dict = define_gene_objects.create_feature_value_dict(nb_pool)
+	feature_value_dict = define_gene_objects.create_feature_value_dict(nb_pool, feature_list)
 
 	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
@@ -98,7 +98,7 @@ pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo
 nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
 nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool)
+training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
 feature_list=define_features.load_nonbrain_features()
 
