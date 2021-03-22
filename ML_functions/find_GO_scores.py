@@ -38,8 +38,8 @@ def find_input_gene_GO_scores(positive_genes, negative_genes, go_human):
 	return GO_score_matrix
 
 def make_mat_csv(mat, name):
-	matrix.to_csv('../run_ML/ML_output/training_genes/%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
-	return matrix
+	mat.to_csv('../run_ML/ML_output/training_genes/%s_GO_training_score_matrix_for_big_pool_genes.csv'%name)
+	return mat
 
 def define_GO_score_matrix(pos, neg, GO_human, name):
 	GO_score_matrix=find_input_gene_GO_scores(pos, neg, GO_human)
