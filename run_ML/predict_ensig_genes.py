@@ -12,6 +12,8 @@ from itertools import combinations, combinations_with_replacement
 from itertools import product
 from collections import defaultdict
 
+import predict_new_synapse
+
 import sys
 sys.path.append('../read_data_functions/')
 import load_data_functions
@@ -85,7 +87,7 @@ def define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
 	new_genes=list(set(nb_pool)-set(all_training))
 	print ('new genes', len(new_genes))
-	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
+	synapse_new_pairs=predict_new_synapse.find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
 	return training_pairs, synapse_new_pairs
 
 nb_pool=find_nonbrain_common_pool()
@@ -99,7 +101,7 @@ pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo
 nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
 nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-find_GO_scores.define_GO_score_matrix(pos, neg, go_human, 'nb')
+#find_GO_scores.define_GO_score_matrix(pos, neg, go_human, 'nb')
 
 feature_list=define_features.load_nonbrain_features()
 training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
