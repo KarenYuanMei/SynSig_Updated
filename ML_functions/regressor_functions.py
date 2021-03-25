@@ -228,11 +228,11 @@ def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth,
 	#df.to_csv('updated_new_all_gene_predictions.csv')
 	return df
 
-def find_avg_scores(new_genes):
+def find_avg_scores(pred_filename, new_genes, name):
 	
 	print ('new_genes', len(new_genes))
 
-	pred_filename='new_all_gene_predictions.csv'
+	#pred_filename='new_all_gene_predictions.csv'
 	pred=pd.read_csv(pred_filename, index_col=[0])
 	print (pred)
 	gene1=pred['Gene1'].tolist()
@@ -256,5 +256,5 @@ def find_avg_scores(new_genes):
 	print ('novel_genes', len(novel_genes), 'all_average_scores', len(avg_scores))
 
 	df=pd.DataFrame({'genes': novel_genes, 'avg_scores': avg_scores})
-	df.to_csv('updated_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv')
+	df.to_csv('%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%name)
 	return df

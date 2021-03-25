@@ -94,27 +94,30 @@ def define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
 if __name__ == '__main__':
 	
-	nb_pool=find_nonbrain_common_pool()
-	syngo_file='../correct_db/corr_syngo_cc.csv'
-	syngo=load_data_functions.get_gene_names(syngo_file)
+	# nb_pool=find_nonbrain_common_pool()
+	# syngo_file='../correct_db/corr_syngo_cc.csv'
+	# syngo=load_data_functions.get_gene_names(syngo_file)
 
-	go_human=find_GO_scores.find_GO_ont()
-	GO_genes=go_human.genes
+	# go_human=find_GO_scores.find_GO_ont()
+	# GO_genes=go_human.genes
 
-	pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo, nb_pool, GO_genes)
-	nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
-	nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
+	# pos, neg, all_training=find_training_genes_functions.find_training_pos_neg(syngo, nb_pool, GO_genes)
+	# nb_pos_df=find_training_genes_functions.make_genes_csv(pos, 'nb', 'positives')
+	# nb_neg_df=find_training_genes_functions.make_genes_csv(neg, 'nb', 'negatives')
 
-	#find_GO_scores.define_GO_score_matrix(pos, neg, go_human, 'nb')
+	# #find_GO_scores.define_GO_score_matrix(pos, neg, go_human, 'nb')
 
-	feature_list=define_features.load_nonbrain_features()
-	training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
+	# feature_list=define_features.load_nonbrain_features()
+	# training_pairs, synapse_new_pairs=define_nb_training_test_pairs(pos, neg, all_training, nb_pool, feature_list)
 
-	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
-	print (data_test.shape)
-	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
+	# data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
+	# print (data_test.shape)
+	# train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
 
-	print (X_train.shape)
+	# print (X_train.shape)
 
-	df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
-	df.to_csv('../run_ML/ML_output/nb_new_all_gene_predictions.csv')
+	# df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
+	# df.to_csv('../run_ML/ML_output/nb_new_all_gene_predictions.csv')
+
+	filename='../run_ML/ML_output/nb_new_all_gene_predictions.csv'
+	regressor_functions.find_avg_scores(filename, data_test, 'nb')
