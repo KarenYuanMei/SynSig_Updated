@@ -98,6 +98,13 @@ def load_pos_neg_training():
 	all_training=pos+neg
 	return pos, neg, all_training
 
+def load_ensig_pos_neg_training():
+	pos=get_gene_names('../run_ML/ML_output/training_genes/nb_positives.csv')
+	neg=get_gene_names('../run_ML/ML_output/training_genes/nb_negatives.csv')
+	all_training=pos+neg
+	return pos, neg, all_training
+
+
 
 def define_crossvalidation_genes(pos, neg, name):
 	pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
