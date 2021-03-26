@@ -55,10 +55,10 @@ def make_input_ROC_df(data, training_positives, pos, neg, test):
 	label=input_df['group'].tolist()
 	return label, avg_score
 
-def save_roc_df(thresholds, tpr, fpr, i):
+def save_roc_df(thresholds, tpr, fpr, i, name):
 	ROC=list(zip(thresholds, tpr, fpr))
 	ROC_df=pd.DataFrame({'Threshold': thresholds, "True_Positives": tpr, "False_Positives": fpr})
-	ROC_df.to_csv('cv_roc_df_%s.csv'%i)
+	ROC_df.to_csv('%s_cv_roc_df_%s.csv'%(name, i))
 	return ROC_df
 
 def calculate_roc(label, avg_score):
