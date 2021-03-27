@@ -25,6 +25,8 @@ sys.path.append('../run_ML/')
 import predict_ensig_genes
 
 if __name__ == '__main__':
+
+	big_pool=find_training_genes_functions.load_big_pool()
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 
@@ -33,9 +35,9 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	syngo=load_data_functions.find_syngo(nb_pool, go_genes)
-	syndb=load_data_functions.find_SynDB(nb_pool)
-	synsysnet=load_data_functions.find_synsysnet(nb_pool)
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syndb=load_data_functions.find_SynDB(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
 	db_list=[syngo, syndb, synsysnet, syn]
