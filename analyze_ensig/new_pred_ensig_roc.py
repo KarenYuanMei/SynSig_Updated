@@ -63,7 +63,8 @@ if __name__ == '__main__':
 
 		final, label, avg_score=ROC_functions.find_pred_labels_scores(ensig_hk[i], all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
-
+		print (auc)
+		
 		graph_functions.plot_single_ROC(tpr, fpr, auc, ensig_hk_labels[i])
 
 	#graph_functions.plot_annotate_ROC_controls(tpr, fpr, auc)
