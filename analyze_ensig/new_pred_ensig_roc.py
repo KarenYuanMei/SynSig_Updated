@@ -28,6 +28,10 @@ import compare_controls
 if __name__ == '__main__':
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
+	print (len(nb_pool))
+	big_pool=find_training_genes_functions.load_big_pool()
+	print (len(big_pool))
+
 
 	hk=compare_controls.find_hk(nb_pool)
 
