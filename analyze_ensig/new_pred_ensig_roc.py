@@ -23,12 +23,13 @@ import ROC_functions
 
 sys.path.append('../run_ML/')
 import predict_ensig_genes
+import compare_controls
 
 if __name__ == '__main__':
-
-	big_pool=find_training_genes_functions.load_big_pool()
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
+
+	hk=compare_controls.find_hk(nb_pool)
 
 	pos, neg, all_training=find_training_genes_functions.load_ensig_pos_neg_training()
 
@@ -40,19 +41,30 @@ if __name__ == '__main__':
 	synsysnet=load_data_functions.find_synsysnet(big_pool)
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-	db_list=[syngo, syndb, synsysnet, syn]
-	db_labels=['syngo', 'syndb', 'synsysnet', 'syn']
+	# db_list=[syngo, syndb, synsysnet, syn]
+	# db_labels=['syngo', 'syndb', 'synsysnet', 'syn']
+
+
+	# for i in range(len(db_list)):
+	# 	final, label, avg_score=ROC_functions.find_pred_labels_scores(db_list[i], all_training)
+	# 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+	# 	print (auc)
+	# 	ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i], 'nb')
+
+	# final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
+	# fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+
+	# graph_functions.plot_single_ROC(tpr, fpr, auc, 'nb')
+
+	ensig_hk_labels=['Non-Brain', 'Housekeeping']
+	ensig_hk=[syngo, hk]
 
 	for i in range(len(db_list)):
-		final, label, avg_score=ROC_functions.find_pred_labels_scores(db_list[i], all_training)
-		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
-		print (auc)
-		ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i], 'nb')
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+		final, label, avg_score=ROC_functions.find_pred_labels_scores(ensig_hk[i], all_training)
+		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
-	graph_functions.plot_single_ROC(tpr, fpr, auc, 'nb')
+		graph_functions.plot_single_ROC(tpr, fpr, auc, ensig_hk_labels[i])
 
 	#graph_functions.plot_annotate_ROC_controls(tpr, fpr, auc)
 
