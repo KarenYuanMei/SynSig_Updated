@@ -28,10 +28,14 @@ import compare_controls
 if __name__ == '__main__':
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
-	print (len(nb_pool))
-	big_pool=load_data_functions.load_big_pool()
-	print (len(big_pool))
+	syngo_file='../correct_db/corr_syngo_cc.csv'
+	syngo=load_data_functions.get_gene_names(syngo_file)
+	syngo_nb=list(set(nb_pool)&set(syngo))
+	#print (len(nb_pool))
 
+	big_pool_filename='../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	big_pool=load_data_functions.get_gene_names(big_pool_filename)
+	print (len(big_pool))
 
 	hk=compare_controls.find_hk(nb_pool)
 
