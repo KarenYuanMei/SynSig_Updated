@@ -25,26 +25,21 @@ sys.path.append('../run_ML/')
 import predict_ensig_genes
 import compare_controls
 
-def find_nb_all_syngo():
+def find_nb_all_syngo(go_genes):
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 	syngo_file='../correct_db/corr_syngo_cc.csv'
 	syngo=load_data_functions.get_gene_names(syngo_file)
-	syngo_nb=list(set(nb_pool)&set(syngo))
+	syngo_nb=list(set(nb_pool)&set(syngo)&set(go_genes))
 	print (len(syngo_nb))
 
 	big_pool_filename='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
 	big_pool=load_data_functions.get_gene_names(big_pool_filename)
-	syngo_big_pool=list(set(big_pool)&set(syngo))
+	syngo_big_pool=list(set(big_pool)&set(syngo)&set(go_genes))
 	print (len(syngo_big_pool))
 
 	return syngo_nb, syngo_big_pool
 
 if __name__ == '__main__':
-
-	syngo_nb, syngo_big_pool=find_nb_all_syngo()
-	labels=['Non-Brain SynGO', 'All SynGO']
-	graph_functions.plot_venn2(syngo_nb, syngo_big_pool, labels, 'nb_vs_all_syngo')
-
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 
@@ -54,6 +49,10 @@ if __name__ == '__main__':
 
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
+
+	syngo_nb, syngo_big_pool=find_nb_all_syngo()
+	labels=['Non-Brain SynGO', 'All SynGO']
+	graph_functions.plot_venn2(syngo_nb, syngo_big_pool, labels, 'nb_vs_all_syngo')
 
 	syngo=load_data_functions.find_syngo(nb_pool, go_genes)
 	syndb=load_data_functions.find_SynDB(nb_pool)
