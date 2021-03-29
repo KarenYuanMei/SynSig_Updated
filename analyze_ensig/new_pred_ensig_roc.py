@@ -33,7 +33,7 @@ if __name__ == '__main__':
 	syngo_nb=list(set(nb_pool)&set(syngo))
 	#print (len(nb_pool))
 
-	big_pool_filename='../SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	big_pool_filename='../../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
 	big_pool=load_data_functions.get_gene_names(big_pool_filename)
 	print (len(big_pool))
 
