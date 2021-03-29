@@ -16,6 +16,9 @@ import matplotlib
 matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 
+from matplotlib_venn import venn3, venn3_circles
+from matplotlib_venn import venn2, venn2_circles
+
 #import seaborn as sns; sns.set()
 
 import pylab
@@ -154,10 +157,12 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
 
 	#plt.ylim(1, 10**5)
-	plt.ylim(0.5, 1)
+	#plt.ylim(0.5, 1)
 	#plt.yscale('log')
 	# Create legend & Show graphic
 	#plt.legend()
+	y_ticks = np.arange(0, 25, 5)
+	plt.yticks(y_ticks)
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
 	plt.xticks(rotation=45)
@@ -170,5 +175,10 @@ def plot_linegraph(x_values, y_values, xlabel, ylabel, name):
 	plt.ylabel(ylabel)
 	plt.ylim(0.5, 0.9)
 	plt.xlabel(xlabel)
+	plt.savefig(name+'.svg', format="svg")
+	plt.close()
+
+def plot_venn2(genelist1, genelist2, labels, name):
+	venn2([set(genelist1), set(genelist2)], set_labels = (labels[0], labels[1]))
 	plt.savefig(name+'.svg', format="svg")
 	plt.close()
