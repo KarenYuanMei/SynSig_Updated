@@ -50,7 +50,7 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	syngo_nb, syngo_big_pool=find_nb_all_syngo()
+	syngo_nb, syngo_big_pool=find_nb_all_syngo(go_genes)
 	labels=['Non-Brain SynGO', 'All SynGO']
 	graph_functions.plot_venn2(syngo_nb, syngo_big_pool, labels, 'nb_vs_all_syngo')
 
