@@ -25,20 +25,28 @@ sys.path.append('../run_ML/')
 import predict_ensig_genes
 import compare_controls
 
-if __name__ == '__main__':
-	
+def find_nb_all_syngo():
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 	syngo_file='../correct_db/corr_syngo_cc.csv'
 	syngo=load_data_functions.get_gene_names(syngo_file)
 	syngo_nb=list(set(nb_pool)&set(syngo))
 	print (len(syngo_nb))
-	#print (len(nb_pool))
 
 	big_pool_filename='../../../SynSig/synsig_random_forest/big_pool_genes_index.csv'
 	big_pool=load_data_functions.get_gene_names(big_pool_filename)
 	syngo_big_pool=list(set(big_pool)&set(syngo))
 	print (len(syngo_big_pool))
-	#print (len(big_pool))
+
+	return syngo_nb, syngo_big_pool
+
+if __name__ == '__main__':
+
+	syngo_nb, syngo_big_pool=find_nb_all_syngo()
+	labels=['Non-Brain SynGO', 'All SynGO']
+	graph_functions.plot_venn2(syngo_nb, syngo_big_pool, labels, 'nb_vs_all_syngo')
+
+	
+	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 
 	hk=compare_controls.find_hk(nb_pool)
 
