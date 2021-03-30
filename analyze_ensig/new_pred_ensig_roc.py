@@ -51,8 +51,13 @@ if __name__ == '__main__':
 	go_genes=human_ont.genes
 
 	syngo_nb, syngo_big_pool=find_nb_all_syngo(go_genes)
-	labels=['Non-Brain SynGO', 'All SynGO']
-	graph_functions.plot_venn2(syngo_nb, syngo_big_pool, labels, 'nb_vs_all_syngo')
+	labels=['All_SynGO', 'Non-Brain SynGO']
+	graph_functions.plot_venn2(syngo_big_pool, syngo_nb, labels, 'nb_vs_all_syngo')
+
+	gene_no=[len(syngo_big_pool), len(syngo_nb)]
+	xlabel='Gene Categories'
+	ylabel='Gene No'
+	graph_functions.plot_bargraph(labels, gene_no, xlabel, ylabel, 'bar_nb_all_syngo')
 
 	syngo=load_data_functions.find_syngo(nb_pool, go_genes)
 	syndb=load_data_functions.find_SynDB(nb_pool)
