@@ -8,6 +8,10 @@ import csv
 import ddot
 from ddot import Ontology
 
+import matplotlib
+matplotlib.use("Agg")
+from matplotlib import pyplot as plt
+
 import sys
 sys.path.append('../read_data_functions/')
 import load_data_functions
@@ -39,6 +43,17 @@ def find_nb_all_syngo(go_genes):
 
 	return syngo_nb, syngo_big_pool
 
+def plot_syngo_bargraph(labels, mean_values, xlabel, ylabel, name):
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
+
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	#plt.xticks(rotation=45)
+	plt.savefig(name+'.svg', format="svg")
+	plt.close()
+
 if __name__ == '__main__':
 	
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
@@ -57,7 +72,7 @@ if __name__ == '__main__':
 	gene_no=[len(syngo_big_pool), len(syngo_nb)]
 	xlabel='Gene Categories'
 	ylabel='Gene No'
-	graph_functions.plot_bargraph(labels, gene_no, xlabel, ylabel, 'bar_nb_all_syngo')
+	plot_syngo_bargraph(labels, gene_no, xlabel, ylabel, 'bar_nb_all_syngo')
 
 	syngo=load_data_functions.find_syngo(nb_pool, go_genes)
 	syndb=load_data_functions.find_SynDB(nb_pool)

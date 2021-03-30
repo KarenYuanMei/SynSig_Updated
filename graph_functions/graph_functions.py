@@ -167,8 +167,7 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.ylabel(ylabel, fontweight='bold')
 	#plt.xticks(rotation=45)
 	plt.savefig(name+'.svg', format="svg")
-
-
+	plt.close()
 
 def plot_linegraph(x_values, y_values, xlabel, ylabel, name):
 	plt.plot(x_values, y_values)
