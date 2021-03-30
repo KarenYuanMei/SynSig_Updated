@@ -161,11 +161,11 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	#plt.yscale('log')
 	# Create legend & Show graphic
 	#plt.legend()
-	y_ticks = np.arange(0, 25, 5)
-	plt.yticks(y_ticks)
+	#y_ticks = np.arange(0, 25, 5)
+	#plt.yticks(y_ticks)
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
-	plt.xticks(rotation=45)
+	#plt.xticks(rotation=45)
 	plt.savefig(name+'.svg', format="svg")
 
 
