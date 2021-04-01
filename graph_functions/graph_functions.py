@@ -181,3 +181,13 @@ def plot_venn2(genelist1, genelist2, labels, name):
 	venn2([set(genelist1), set(genelist2)], set_labels = (labels[0], labels[1]))
 	plt.savefig(name+'.svg', format="svg")
 	plt.close()
+
+def make_histogram(lengths, x_label, y_label, gtitle, name):
+	fig = plt.figure()
+	n, bins, patches = plt.hist(x=lengths, bins=40, color='#0504aa',
+	                            alpha=0.7, rwidth=0.85)
+	plt.grid(axis='y', alpha=0.75)
+	plt.xlabel(x_label)
+	plt.ylabel(y_label)
+	plt.title(gtitle)
+	plt.savefig(name+'.pdf', format="pdf")
