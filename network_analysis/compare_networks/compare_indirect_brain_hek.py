@@ -44,6 +44,18 @@ def make_histogram(lengths, x_label, y_label, gtitle, name):
 	plt.title(gtitle)
 	plt.savefig(name+'.pdf', format="pdf")
 
+def find_avg_wts(kernel):
+	genes=list(kernel.index)
+	gene_pairs=list(combinations(genes, 2))
+	print (len(gene_pairs))
+	avg_wts=[]
+	for item in gene_pairs:
+		weight1=kernel.loc[item[0], item[1]]
+		weight2=kernel.loc[item[1], item[0]]
+		avg=mean([weight1, weight2])
+		#print (avg)
+		avg_wts.append(avg)
+	return avg_wts
 
 if __name__=="__main__":
 
@@ -58,18 +70,10 @@ if __name__=="__main__":
 	weights=bio_kernel.values.tolist()
 	print (len(weights))
 
-	genes=list(bio_kernel.index)
-	gene_pairs=list(combinations(genes, 2))
-	print (len(gene_pairs))
-	avg_wts=[]
-	for item in gene_pairs:
-		weight1=bio_kernel.loc[item[0], item[1]]
-		weight2=bio_kernel.loc[item[1], item[0]]
-		avg=mean([weight1, weight2])
-		print (avg)
-		avg_wts.append(avg)
+	
+	#avg_wts=find_avg_wts(kernel)
 
-	make_histogram(avg_wts, 'edge_weights', 'frequency', 'edge weight distr', 'bioplex_kernel_weights')
+	make_histogram(weights, 'edge_weights', 'frequency', 'edge weight distr', 'bioplex_kernel_weights')
 
 	# #load brain ppi:
 	# brain_net=make_brain_ppi_functions.make_brain_network()
