@@ -72,8 +72,11 @@ if __name__=="__main__":
 	bio_fil=run_net_rwalk.make_filtered_bioplex()
 	print (bio_fil)
 	bio_kernel=net_random_walk_functions.construct_prop_kernel(bio_fil, 0.4, verbose=True)
-	gene_pairs, avg_wts=find_avg_wts(bio_kernel)
-	prop_df=find_prop_edges_wt_df(gene_pairs, avg_wts, 'bio_fil')
+	#gene_pairs, avg_wts=find_avg_wts(bio_kernel)
+	#prop_df=find_prop_edges_wt_df(gene_pairs, avg_wts, 'bio_fil')
+
+	new=bio_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
+	new.to_csv('biofil_prop_edge_wts.csv')
 
 
 
