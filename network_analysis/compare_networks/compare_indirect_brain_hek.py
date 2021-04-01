@@ -37,7 +37,7 @@ import graph_functions
 
 def make_histogram(lengths, x_label, y_label, gtitle, name):
 	fig = plt.figure()
-	n, bins, patches = plt.hist(x=lengths, bins=40, alpha=0.7, rwidth=0.85)
+	n, bins, patches = plt.hist(x=lengths, bins=40, alpha=0.7, rwidth=0.85, histtype='step')
 	plt.grid(axis='y', alpha=0.75)
 	plt.xlabel(x_label)
 	plt.ylabel(y_label)
@@ -60,11 +60,13 @@ if __name__=="__main__":
 
 	genes=list(bio_kernel.index)
 	gene_pairs=list(combinations(genes, 2))
+	print (len(gene_pairs))
 	avg_wts=[]
 	for item in gene_pairs:
 		weight1=bio_kernel.loc[item[0], item[1]]
 		weight2=bio_kernel.loc[item[1], item[0]]
 		avg=mean([weight1, weight2])
+		print (avg)
 		avg_wts.append(avg)
 
 	make_histogram(avg_wts, 'edge_weights', 'frequency', 'edge weight distr', 'bioplex_kernel_weights')
