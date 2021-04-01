@@ -44,9 +44,8 @@ def make_histogram(lengths, x_label, y_label, gtitle, name):
 	plt.title(gtitle)
 	plt.savefig(name+'.pdf', format="pdf")
 
-def find_avg_wts(kernel):
-	genes=list(kernel.index)
-	gene_pairs=list(combinations(genes, 2))
+def find_avg_wts(common_nodes, kernel):
+	gene_pairs=list(combinations(common_nodes, 2))
 	print (len(gene_pairs))
 	avg_wts=[]
 	for item in gene_pairs:
@@ -69,28 +68,33 @@ if __name__=="__main__":
 	print (len(big_pool))
 
 	#load the bioplex ppi:
-	#bio_fil=run_net_rwalk.make_filtered_bioplex()
+	bio_fil=run_net_rwalk.make_filtered_bioplex()
 	#print (bio_fil)
-	#bio_kernel=net_random_walk_functions.construct_prop_kernel(bio_fil, 0.4, verbose=True)
+	bio_kernel=net_random_walk_functions.construct_prop_kernel(bio_fil, 0.4, verbose=True)
 	#gene_pairs, avg_wts=find_avg_wts(bio_kernel)
 	#prop_df=find_prop_edges_wt_df(gene_pairs, avg_wts, 'bio_fil')
 
 	#new=bio_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
-	#new.to_csv('biofil_prop_edge_wts.csv')
-
-
-
-
-	
-	#avg_wts=find_avg_wts(kernel)
+	#new.to_csv('biofil_prop_edge_wts.csv'
 
 
 	# #load brain ppi:
 	brain_ppi=pd.read_csv('../../source_data_files/ppi_files/brain_ppi_df.csv')
 	brain_net=make_network_graph_functions.make_network_G(brain_ppi)
 	brain_kernel=net_random_walk_functions.construct_prop_kernel(brain_net, 0.4, verbose=True)
-	brain_prop_df=brain_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
-	brain_prop_df.to_csv('brain_prop_edge_wts.csv')
+	#brain_prop_df=brain_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
+	#brain_prop_df.to_csv('brain_prop_edge_wts.csv')
+
+	common_nodes=list(set(bio_fil.nodes())&set(brain_net.nodes()))
+	print (len(common_nodes))
+	gene_pairs=list(combinations(common_nodes, 2))
+	print (len(gene_pairs))
+
+	gene_pairs, avg_wts=find_avg_wts(common_nodes, bio_kernel)
+	find_prop_edges_wt_df(gene_pairs, avg_wts, 'bio_fil')
+
+	gene_pairs, avg_wts=find_avg_wts(common_nodes, brain_kernel)
+	find_prop_edges_wt_df(gene_pairs, avg_wts, 'brain_net')
 
 
 
