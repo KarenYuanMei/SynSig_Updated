@@ -3,6 +3,12 @@
 import pandas as pd
 import pathlib
 
+import os
+import os.path
+
+import sys
+sys.path.append('../rwalk_functions/')
+import make_network_graph_functions
 
 def get_gene_names(filename):
 	df=pd.read_csv(filename)
@@ -10,11 +16,13 @@ def get_gene_names(filename):
 	return genes
 
 def load_big_pool():
-	p = pathlib.Path(__file__).parents[3].absolute()
+	p = pathlib.Path(__file__).resolve().parents[1]
 	p = str(p)
-	index_file= p + '/SynSig/synsig_random_forest/big_pool_genes_index.csv'
+	index_file= p + '/source_data_files/gene_pools/big_pool_genes_index.csv'
 	big_pool=get_gene_names(index_file)
 	return big_pool
+
+#load synapse DB gene lists=======================================
 
 def find_syngo(big_pool, go_genes):
 	syngo_file='../correct_db/corr_syngo_cc.csv'
@@ -33,6 +41,8 @@ def find_synsysnet(big_pool):
 	synsysnet=get_gene_names(synsysnet_file)
 	synsysnet=list(set(synsysnet)&set(big_pool))
 	return synsysnet
+
+#load synapse mass spec screen lists====================================
 
 def find_adult_cortex(big_pool):
 	ctx_file='../../../SynSig/experimental_validation/weijun_ctx_uniprot.csv'
@@ -70,4 +80,24 @@ def find_ngn2(big_pool):
 	overlap_ngn2=list(set(ngn2_genes)&set(big_pool))
 	return overlap_ngn2
 
+#load hek293 genes==========================================================
+
+def load_hek_genes():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	#print (p)
+	filename=p +'/source_data_files/expression_files/hek_genes.csv'
+	#print (filename)
+	genes=get_gene_names(filename)
+	return genes
+
+
+#load ppi df files=========================================================
+def load_bioplex_file():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	#print (p)
+	filename=p +'/source_data_files/ppi_files/BioPlex 3 - HEK293T default edge.csv'
+	#print (filename)
+	return filename
 

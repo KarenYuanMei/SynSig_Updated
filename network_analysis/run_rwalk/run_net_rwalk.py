@@ -1,8 +1,11 @@
 #Goal: use the environment jh_network to run random walk
+# network propagation on bioplex and mentha
 
 import scipy as sp
 import networkx as nx
 import pandas as pd
+
+import pathlib
 
 import numpy as np
 import time
@@ -30,12 +33,22 @@ import graph_functions
 sys.path.append('../ppi_files/')
 
 
-def load_bioplex_df():
-	filename='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
+
+def make_bioplex_ppi_df():
+	filename=load_data_functions.load_bioplex_file()
 	df=make_network_graph_functions.make_bioplex_df(filename)
 	return df
 
-def load_mentha_df():
+def make_filtered_bioplex():
+	bioplex=make_bioplex_ppi_df()
+	G=make_network_graph_functions.make_network_G(bioplex)
+	hek_genes=load_data_functions.load_hek_genes()
+	#print (hek_genes)
+	bio_fil=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
+	return bio_fil
+
+
+def make_mentha_ppi_df():
 	filename='../ppi_files/Human_Mentha_converted.csv'
 	df=make_network_graph_functions.make_mentha_df(filename)
 	return df
@@ -132,7 +145,7 @@ def find_synapse_nodes(G):
 
 def find_hk_nodes(G):
 	hk=pd.read_csv('../../gene_lists/Human_Mouse_Common.csv', sep=';')
-	print (hk)
+	#print (hk)
 	hk=hk['Human'].tolist()
 	nodes=list(G.nodes())
 	hk_nodes=list(set(nodes)&set(hk))

@@ -7,6 +7,10 @@ import pandas as pd
 import numpy as np
 #import matplotlib.pyplot as plt
 
+import sys
+sys.path.append('../read_data_functions/')
+import load_data_functions
+
 def clean_names(gene_list):
 	entries=[]
 	for item in gene_list:
