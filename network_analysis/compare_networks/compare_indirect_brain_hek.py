@@ -89,7 +89,7 @@ if __name__=="__main__":
 	brain_ppi=pd.read_csv('../../source_data_files/ppi_files/brain_ppi_df.csv')
 	brain_net=make_network_graph_functions.make_network_G(brain_ppi)
 	brain_kernel=net_random_walk_functions.construct_prop_kernel(brain_net, 0.4, verbose=True)
-	brain_prop_df=bio_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
+	brain_prop_df=brain_kernel.stack().reset_index().rename(columns={'level_0':'Source','level_1':'Target', 0:'Weight'})
 	brain_prop_df.to_csv('brain_prop_edge_wts.csv')
 
 
