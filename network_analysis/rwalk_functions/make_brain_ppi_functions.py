@@ -14,7 +14,7 @@ import make_network_graph_functions
 
 
 def make_brain_df(sheetno):
-	df=pd.read_excel('../ppi_files/coba_2017_brain.xlsx', sheetname=sheetno)
+	df=pd.read_excel('../../source_data_files/ppi_files/coba_2017_brain.xlsx', sheetname=sheetno)
 	df=df.apply(lambda x: x.astype(str).str.upper())
 	node1=df['Protein'].tolist()
 	node2=df['Interactor'].tolist()
