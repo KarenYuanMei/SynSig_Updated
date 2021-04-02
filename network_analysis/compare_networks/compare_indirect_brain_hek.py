@@ -58,7 +58,7 @@ def find_avg_wts(common_nodes, kernel):
 
 def find_prop_edges_wt_df(gene_pairs, avg_wts, name):
 	df=pd.DataFrame({'edges': gene_pairs, 'weights': avg_wts})
-	df.to_csv('%s_prop_edge_wts.csv')
+	df.to_csv('%s_prop_edge_wts.csv'%name)
 	return df
 
 if __name__=="__main__":
