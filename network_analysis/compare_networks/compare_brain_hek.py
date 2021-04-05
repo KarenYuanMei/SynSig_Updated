@@ -55,7 +55,10 @@ def find_hypergeometric(genes, pred_no_training):
 
 if __name__ == '__main__':
 	
-	brain_net=make_brain_ppi_functions.make_brain_network()
+	#brain_net=make_brain_ppi_functions.make_brain_network()
+
+	brain_ppi=pd.read_csv('../../source_data_files/ppi_files/brain_ppi_df.csv')
+	brain_net=make_network_graph_functions.make_network_G(brain_ppi)
 	#print (len(brain_net.edges()))
 	brain_nodes=brain_net.nodes()
 
