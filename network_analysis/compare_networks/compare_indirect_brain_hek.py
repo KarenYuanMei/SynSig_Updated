@@ -72,6 +72,7 @@ def threshold_df(df, threshold):
 	weights=df['weights'].tolist()
 	weights=np.array(weights)
 	p=np.percentile (weights, threshold)
+	print (p)
 
 	new=df[df['weights']>p]
 	return new
