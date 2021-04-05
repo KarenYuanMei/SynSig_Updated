@@ -55,7 +55,7 @@ def make_network_G(new):
 	return G
 
 def find_hek_genes():
-	exp_df=pd.read_csv('../expression_file/rna_celline.tsv', sep='\t')
+	exp_df=pd.read_csv('../../source_data_files/expression_file/rna_celline.tsv', sep='\t')
 	print (exp_df)
 	hek=exp_df[exp_df['Cell line']=='HEK 293']
 	print (hek)
