@@ -36,7 +36,6 @@ def find_hypergeometric(genes, pred_no_training):
 	#x=190
 	pval = hypergeom.sf(x-1, M, n, N)
 
-
 	rv = hypergeom(M, n, N)
 	distr = np.arange(0, n+1)
 	#print (x)
@@ -48,7 +47,7 @@ def find_hypergeometric(genes, pred_no_training):
 	#result=result.tolist()
 	result=result[0]
 	#print (result)
-	fold=x/result
+	fold=x/float(result)
 	fold=fold.tolist()
 	print ('Fold Enrichment', fold)
 	print ('hypergeometric p-value', pval)
