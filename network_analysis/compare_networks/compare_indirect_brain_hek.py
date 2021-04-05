@@ -112,13 +112,15 @@ if __name__=="__main__":
 	# find_prop_edges_wt_df(gene_pairs, avg_wts, 'brain_net')
 
 	bio_fil=load_prop_edges_wt_df('bio_fil')
-	print (bio_fil)
+	#print (bio_fil)
 
 	#brain_net=load_prop_edges_wt_df('brain_net')
 	#print (brain_net)
 
-	bio_fil_th=threshold_df(bio_fil, 95)
-	print (bio_fil_th)
+	percentiles=[90, 95, 99]
+	for item in percentiles:
+		bio_fil_th=threshold_df(bio_fil, item)
+		print (bio_fil_th)
 
 
 
