@@ -117,13 +117,13 @@ if __name__=="__main__":
 	brain_net=load_prop_edges_wt_df('brain_net')
 	#print (brain_net)
 
-	percentiles=[90, 95, 99]
+	percentiles=[80, 85, 90, 95, 99]
 	for item in percentiles:
-		#bio_fil_th=threshold_df(bio_fil, item)
-		#print (bio_fil_th)
+		bio_fil_th=threshold_df(bio_fil, item)
+		print (bio_fil_th.shape[0])
 
 		brain_net_th=threshold_df(brain_net, item)
-		print (brain_net_th)
+		print (brain_net_th.shape[0])
 
 
 
