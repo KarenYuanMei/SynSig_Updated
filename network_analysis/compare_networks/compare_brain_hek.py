@@ -82,6 +82,4 @@ if __name__ == '__main__':
 	shared_edges=list(set(filtered_brain_edges)&set(filtered_hek_edges))
 	print (len(shared_edges))
 
-
-
 	find_hypergeometric(filtered_brain_edges, filtered_hek_edges)
