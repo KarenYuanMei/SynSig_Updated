@@ -121,9 +121,16 @@ if __name__=="__main__":
 	for item in percentiles:
 		bio_fil_th=threshold_df(bio_fil, item)
 		print (bio_fil_th.shape[0])
+		new_biofil=make_network_graph_functions.make_network_G(bio_fil_th)
+		new_biofil_edges=list(new_biofil.edges())
 
 		brain_net_th=threshold_df(brain_net, item)
 		print (brain_net_th.shape[0])
+		new_brainnet=make_network_graph_functions.make_network_G(brain_net_th)
+		new_brainnet_edges=list(new_brainnet.edges())
+
+		shared=list(set(new_biofil_edges)&set(new_brainnet_edges))
+		print (len(shared))
 
 
 
