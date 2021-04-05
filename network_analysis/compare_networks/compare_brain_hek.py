@@ -62,7 +62,7 @@ if __name__ == '__main__':
 	#print (len(brain_net.edges()))
 	brain_nodes=brain_net.nodes()
 
-	bioplex_file='../ppi_files/BioPlex 3 - HEK293T default edge.csv'
+	bioplex_file='../../source_data_files/ppi_files/BioPlex 3 - HEK293T default edge.csv'
 
 	bioplex_df=make_network_graph_functions.make_bioplex_df(bioplex_file)
 	bioplex_net=make_network_graph_functions.make_network_G(bioplex_df)
