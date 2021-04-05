@@ -15,6 +15,9 @@ from matplotlib import pyplot as plt
 
 
 from scipy.stats import hypergeom
+
+import compare_brain_hek
+
 import sys
 sys.path.append('../../read_data_functions/')
 import load_data_functions
