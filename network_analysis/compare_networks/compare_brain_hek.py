@@ -48,7 +48,7 @@ def find_hypergeometric(genes, pred_no_training):
 	result=result[0]
 	#print (result)
 	fold=x/float(result)
-	fold=fold.tolist()
+	#fold=fold.tolist()
 	print ('Fold Enrichment', fold)
 	print ('hypergeometric p-value', pval)
 	return fold
