@@ -114,10 +114,10 @@ if __name__=="__main__":
 	bio_fil=load_prop_edges_wt_df('bio_fil')
 	print (bio_fil)
 
-	brain_net=load_prop_edges_wt_df('brain_net')
-	print (brain_net)
+	#brain_net=load_prop_edges_wt_df('brain_net')
+	#print (brain_net)
 
-	bio_fil_th=threshold_df(bio_fil, 90)
+	bio_fil_th=threshold_df(bio_fil, 95)
 	print (bio_fil_th)
 
 
