@@ -62,7 +62,7 @@ def find_prop_edges_wt_df(gene_pairs, avg_wts, name):
 	return df
 
 def load_prop_edges_wt_df(df_name):
-	df=pd.read_csv('%s_prop_edge_wts.csv', col_no=[0])
+	df=pd.read_csv('%s_prop_edge_wts.csv', index_col=[0])
 	return df
 
 if __name__=="__main__":
