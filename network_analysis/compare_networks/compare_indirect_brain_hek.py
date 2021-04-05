@@ -63,8 +63,8 @@ def find_prop_edges_wt_df(gene_pairs, avg_wts, name):
 
 def load_prop_edges_wt_df(df_name):
 	df=pd.read_csv('%s_prop_edge_wts.csv', index_col=[0])
-	new = pd.DataFrame(df['edges'].tolist(), index=df.index)
-	print (new)
+	df['Node1'] = df['edges'].str[0]
+	df['Node2'] = df['edges'].str[1]
 	return df
 
 if __name__=="__main__":
