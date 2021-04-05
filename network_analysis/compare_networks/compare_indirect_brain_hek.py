@@ -68,6 +68,13 @@ def load_prop_edges_wt_df(df_name):
 	df=pd.read_csv('%s_prop_edge_wts.csv'%df_name, index_col=[0])
 	return df
 
+def threshold_df(df, threshold):
+	weights=df['weights'].tolist()
+	weights=np.array(weights)
+	p=np.percentile (weights, threshold)
+
+	new=df[df['weights']>p]
+	return new
 if __name__=="__main__":
 
 	# #load the big gene pool for main random forest:
@@ -108,6 +115,9 @@ if __name__=="__main__":
 
 	brain_net=load_prop_edges_wt_df('brain_net')
 	print (brain_net)
+
+	bio_fil_th=threshold_df(bio_fil, 90)
+	print (bio_fil_th)
 
 
 
