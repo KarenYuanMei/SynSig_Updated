@@ -31,6 +31,10 @@ def make_brain_network():
 
 	brain_ppi=pd.concat(dfs)
 	print (brain_ppi)
+	brain_ppi.to_csv('brain_ppi_df.csv')
 
 	G=make_network_graph_functions.make_network_G(brain_ppi)
 	return G
+
+if __name__ == '__main__':
+	make_brain_network()
