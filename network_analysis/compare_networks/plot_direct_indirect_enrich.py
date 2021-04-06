@@ -25,7 +25,7 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.bar(labels, mean_values, align='center', ecolor='black', capsize=10)
 
 	#plt.ylim(1, 10**5)
-	#plt.ylim(0.5, 1)
+	plt.ylim(0, 4)
 	#plt.yscale('log')
 	# Create legend & Show graphic
 	#plt.legend()
