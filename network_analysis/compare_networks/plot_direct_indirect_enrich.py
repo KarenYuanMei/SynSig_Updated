@@ -38,7 +38,7 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.close()
 
 labels=['Direct', 'Indirect']
-mean_values=[3.75, 2]
+mean_values=[3.75, 2.3]
 xlabel='Shared Edge Type'
 ylabel='Fold Enrichment'
 name='edge_comparison'
