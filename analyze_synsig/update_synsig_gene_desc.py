@@ -119,7 +119,9 @@ terms=go_human.terms
 #print (terms)
 
 child_terms=go_human.parent_2_child['GO:00SUPER']
+print (child_terms)
 mf=child_terms[0]
+print (mf)
 ont2 = go_human.focus(branches=mf)
 print (ont2)
 
