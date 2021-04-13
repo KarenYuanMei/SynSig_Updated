@@ -125,7 +125,19 @@ print (mf)
 ont2 = go_human.focus(branches=mf)
 print (ont2)
 
+terms=ont2.terms
+
+all_term_names=[]
 for gene in no_func_genes:
-	print (ont2.gene_2_term[gene])
+	gene_term_names=[]
+	gene_terms=ont2.gene_2_term[gene]
+	for item in gene_terms:
+		term_desc=terms[item]
+		gene_term_names.append(term_desc)
+	all_term_names.append(gene_term_names)
+
+df=pd.DataFrame({'genes': no_func_genes, 'terms': all_term_names})
+df.to_csv('no_func_mf.csv')
+print (df)
 
 
