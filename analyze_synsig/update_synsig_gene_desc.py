@@ -124,6 +124,6 @@ ont2 = go_human.focus(branches=mf)
 print (ont2)
 
 for gene in no_func_genes:
-	print (ont2.gene_2_term)
+	print (ont2.gene_2_term[gene])
 
 
