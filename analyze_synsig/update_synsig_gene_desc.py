@@ -127,8 +127,11 @@ print (ont2)
 
 terms=ont2.terms
 
+overlap=list(set(no_func_genes)&set(ont2.genes))
+print (len(overlap))
+
 all_term_names=[]
-for gene in no_func_genes:
+for gene in overlap:
 	gene_term_names=[]
 	gene_terms=ont2.gene_2_term[gene]
 	for item in gene_terms:
