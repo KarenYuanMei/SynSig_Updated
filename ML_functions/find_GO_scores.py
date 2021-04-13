@@ -8,16 +8,16 @@ import random
 import ddot
 from ddot import Ontology
 
-import sys
-sys.path.append('../read_data_functions/')
-from load_data_functions import get_gene_names
+#import sys
+#sys.path.append('../read_data_functions/')
+#from load_data_functions import get_gene_names
 
 #find GO scores for the training gene sets===================================================================
 def find_GO_ont():
 	ndex_server ='http://public.ndexbio.org' 
 	ndex_user, ndex_pass = 'ym2', 'Synapse'
 	go_human = Ontology.from_ndex('http://public.ndexbio.org/v2/network/bab8b805-2eb8-11eb-9e72-0ac135e8bacf')
-	print (go_human)
+	#print (go_human)
 	return go_human
 
 def find_GO_score_matrix(go_human):
