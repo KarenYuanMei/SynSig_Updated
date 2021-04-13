@@ -137,9 +137,10 @@ for gene in overlap:
 	for item in gene_terms:
 		term_desc=terms[item]
 		gene_term_names.append(term_desc)
+		print (gene, gene_term_names)
 	all_term_names.append(gene_term_names)
 
-df=pd.DataFrame({'genes': no_func_genes, 'terms': all_term_names})
+df=pd.DataFrame({'genes': overlap, 'terms': all_term_names})
 df.to_csv('no_func_mf.csv')
 print (df)
 
