@@ -14,6 +14,27 @@ import sys
 sys.path.append('../ML_functions/')
 import find_GO_scores
 
+from collections import defaultdict
+
+def make_goID_dict():
+	id_name=pd.read_table('../source_data_files/goID/goID_2_name.tab')
+	print (id_name)
+
+	id_name.columns=['ID', 'name']
+	print (id_name)
+
+	ids=id_name['ID'].tolist()
+	names=id_name['name'].tolist()
+
+	id_name_zip=list(zip(ids, names))
+	d=defaultdict(list)
+
+	for term, name in id_name_zip:
+		d[term].append(name)
+
+	#print (d['GO:0000035'])
+	return d
+
 desc_df=pd.read_csv('../source_data_files/gene_names/gene_name_description.txt')
 #print (desc_df)
 
@@ -130,18 +151,24 @@ terms=ont2.terms
 overlap=list(set(no_func_genes)&set(ont2.genes))
 print (len(overlap))
 
+d=make_goID_dict()
+
 all_term_names=[]
 for gene in overlap:
 	gene_term_names=[]
 	gene_terms=ont2.gene_2_term[gene]
 	for item in gene_terms:
 		term_desc=terms[item]
-		gene_term_names.append(term_desc)
+		term_name=d[term_desc]
+		gene_term_names.append(term_name)
 		print (gene, gene_term_names)
 	all_term_names.append(gene_term_names)
 
 df=pd.DataFrame({'genes': overlap, 'terms': all_term_names})
 df.to_csv('no_func_mf.csv')
 print (df)
+
+
+
 
 
