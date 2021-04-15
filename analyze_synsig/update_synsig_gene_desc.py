@@ -85,9 +85,11 @@ def add_gene_desc_web(names_desc_dict):
 
 	idx=1
 
-	synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
+	#synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
 
-	synsig_df.to_csv('update_web_table_desc.csv')
+	#synsig_df.to_csv('update_web_table_desc.csv')
+	synsig_df=pd.DataFrame{'genes': synsig_genes, 'description': synsig_desc_list}
+	
 	return synsig_df
 
 def find_synsig_only(synsig_df):
@@ -148,17 +150,17 @@ def find_mf_ont():
 	ont2 = go_human.focus(branches=mf)
 	return ont2
 
-def add_mf_function(no_func_genes):
+def add_mf_function(genelist):
 	ont2=find_mf_ont()
 	terms=ont2.terms
 
-	overlap=list(set(no_func_genes)&set(ont2.genes))
+	overlap=list(set(genelist)&set(ont2.genes))
 	print (len(overlap))
 
 	d=make_goID_dict()
 
 	all_term_names=[]
-	for gene in no_func_genes:
+	for gene in genelist:
 		if gene in overlap:
 			gene_term_names=[]
 			gene_terms=ont2.gene_2_term[gene]
@@ -169,20 +171,22 @@ def add_mf_function(no_func_genes):
 				
 		else:
 			gene_term_names='None'
-			all_term_names.append(gene_term_names)
+		all_term_names.append(gene_term_names)
 
-	df=pd.DataFrame({'genes': no_func_genes, 'terms': all_term_names})
-	df.to_csv('no_func_mf.csv')
+	df=pd.DataFrame({'genes': genelist, 'terms': all_term_names})
+	df.to_csv('synsig_add_mf.csv')
 	print (df)
 	return df
 
-synsig_by_desc=annotate_function_by_desc()
+synsig_desc=add_gene_desc_web(names_desc_dict)
+synsig_desc.to_csv('synsig_genes_desc.csv')
+# synsig_by_desc=annotate_function_by_desc()
 
-no_func_genes=find_unannotated_genes(synsig_by_desc)
+# no_func_genes=find_unannotated_genes(synsig_by_desc)
 
-synsig_no_func_mf=add_mf_function(no_func_genes)
+# synsig_no_func_mf=add_mf_function(no_func_genes)
 
-added_func_df=annotate_function('no_func_mf.csv', 'terms', 'synsig_additional_func_mf.csv')
+# added_func_df=annotate_function('no_func_mf.csv', 'terms', 'synsig_additional_func_mf.csv')
 
-no_func=find_unannotated_genes(added_func_df)
+# no_func=find_unannotated_genes(added_func_df)
 
