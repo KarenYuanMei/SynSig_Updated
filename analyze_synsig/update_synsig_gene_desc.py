@@ -172,53 +172,53 @@ df.to_csv('no_func_mf.csv')
 print (df)
 
 
-def find_function_cat(filename, names, col_idx, cat_name):
-	synsig=pd.read_csv(filename, index_col=[0])
-	gene_desc=synsig['terms'].tolist()
+# def find_function_cat(filename, names, col_idx, cat_name):
+# 	synsig=pd.read_csv(filename, index_col=[0])
+# 	gene_desc=synsig['terms'].tolist()
 
-	functions=[]
+# 	functions=[]
 	
-	for item in gene_desc:
-		names_in_desc = any(name in item for name in names)
-		#print (names_in_desc)
-		if names_in_desc==False:
-			function=0
-		else:
-			function=1
+# 	for item in gene_desc:
+# 		names_in_desc = any(name in item for name in names)
+# 		#print (names_in_desc)
+# 		if names_in_desc==False:
+# 			function=0
+# 		else:
+# 			function=1
 
-		functions.append(function)
+# 		functions.append(function)
 
-	num=functions.count(1)
-	print (cat_name, num)
+# 	num=functions.count(1)
+# 	print (cat_name, num)
 
-	synsig.insert(loc=col_idx, column=cat_name, value=functions)
-	#print (synsig)
+# 	synsig.insert(loc=col_idx, column=cat_name, value=functions)
+# 	#print (synsig)
 
-	synsig.to_csv('synsig_no_func_mf.csv')
-	return synsig
+# 	synsig.to_csv('synsig_no_func_mf.csv')
+# 	return synsig
 
-synsig=find_function_cat('no_func_mf.csv', ['receptor', 'channel'], 2, 'receptor/channel')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['kinase'], 3, 'kinase')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['phosphatase'], 4, 'phosphatase')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['ubiquitin', 'E3'], 5, 'ubiquitin/E3')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['membrane', 'transmembrane', 'symporter'], 6, 'membrane')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['heat shock', 'regulator', 'adaptor', 'chaperone'], 12, 'regulators')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['scaffold', 'assembl', 'adaptor'], 12, 'scaffolds/adaptors')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 13, 'cytoskeletal')
-synsig=find_function_cat('synsig_no_func_mf.csv', ['calcium ion', 'calmodulin binding'], 14, 'calcium ion binding')
+# synsig=find_function_cat('no_func_mf.csv', ['receptor', 'channel'], 2, 'receptor/channel')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['kinase'], 3, 'kinase')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['phosphatase'], 4, 'phosphatase')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['ubiquitin', 'E3'], 5, 'ubiquitin/E3')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['membrane', 'transmembrane', 'symporter'], 6, 'membrane')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['heat shock', 'regulator', 'adaptor', 'chaperone'], 12, 'regulators')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['scaffold', 'assembl', 'adaptor'], 12, 'scaffolds/adaptors')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 13, 'cytoskeletal')
+# synsig=find_function_cat('synsig_no_func_mf.csv', ['calcium ion', 'calmodulin binding'], 14, 'calcium ion binding')
 
 
-print (synsig)
+# print (synsig)
 
-synsig['Function Total']= synsig.iloc[:, 2:15].sum(axis=1)
-no_func=synsig[synsig['Function Total']==0]
-print (no_func)
-synsig.to_csv('synsig_no_func_mf_total.csv')
+# synsig['Function Total']= synsig.iloc[:, 2:15].sum(axis=1)
+# no_func=synsig[synsig['Function Total']==0]
+# print (no_func)
+# synsig.to_csv('synsig_no_func_mf_total.csv')
 
-no_func.to_csv('synsig_no_func_manual.csv')
+# no_func.to_csv('synsig_no_func_manual.csv')
 
