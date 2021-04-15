@@ -68,15 +68,12 @@ def make_gene_desc_dict():
 	names_desc_dict=dict(names_desc)
 	return names_desc_dict
 
-def add_gene_desc_web(names_desc_dict):
-	synsig_df=pd.read_csv('../run_ML/update_web_table.csv', index_col=[0])
-
-	synsig_genes=synsig_df['genes'].tolist()
+def add_gene_desc_web(names_desc_dict, genelist):
 
 	names=list(names_desc_dict.keys())
 
 	synsig_desc_list=[]
-	for item in synsig_genes:
+	for item in genelist:
 		if item in names:
 			synsig_desc=names_desc_dict[item]
 		else:
@@ -174,13 +171,36 @@ def add_mf_function(genelist):
 		all_term_names.append(gene_term_names)
 
 	df=pd.DataFrame({'genes': genelist, 'terms': all_term_names})
-	df.to_csv('synsig_add_mf.csv')
-	print (df)
 	return df
-	
-names_desc_dict=make_gene_desc_dict()
-synsig_desc=add_gene_desc_web(names_desc_dict)
+
+def add_desc(synsig_genes):
+	names_desc_dict=make_gene_desc_dict()
+	synsig_desc=add_gene_desc_web(names_desc_dict, synsig_genes)
+	print (synsig_desc)
+	return synsig_desc
+
+#add description to all synsig genes:
+def load_synsig_genes():
+	synsig_df=pd.read_csv('../run_ML/update_web_table.csv', index_col=[0])
+	synsig_genes=synsig_df['genes'].tolist()
+	return synsig_genes
+
+synsig_genes=load_synsig_genes()
+
+synsig_desc=add_desc(synsig_genes)
 synsig_desc.to_csv('synsig_genes_desc.csv')
+
+#add mf to all synsig genes:
+synsig_mf=add_mf_function(synsig_genes)
+synsig_mf.to_csv('synsig_desc_mf.csv')
+print (synsig_mf)
+
+
+
+
+
+
+
 # synsig_by_desc=annotate_function_by_desc()
 
 # no_func_genes=find_unannotated_genes(synsig_by_desc)
