@@ -177,7 +177,8 @@ def add_mf_function(genelist):
 	df.to_csv('synsig_add_mf.csv')
 	print (df)
 	return df
-
+	
+names_desc_dict=make_gene_desc_dict()
 synsig_desc=add_gene_desc_web(names_desc_dict)
 synsig_desc.to_csv('synsig_genes_desc.csv')
 # synsig_by_desc=annotate_function_by_desc()
