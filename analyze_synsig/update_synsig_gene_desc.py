@@ -73,6 +73,8 @@ def add_gene_desc_web(names_desc_dict):
 
 	synsig_genes=synsig_df['genes'].tolist()
 
+	names=list(names_desc_dict.keys())
+
 	synsig_desc_list=[]
 	for item in synsig_genes:
 		if item in names:
