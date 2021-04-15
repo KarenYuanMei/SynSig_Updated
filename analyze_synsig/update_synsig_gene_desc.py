@@ -31,57 +31,11 @@ def make_goID_dict():
 
 	for term, name in id_name_zip:
 		d[term].append(name)
-
-	#print (d['GO:0000035'])
 	return d
 
-desc_df=pd.read_csv('../source_data_files/gene_names/gene_name_description.txt')
-#print (desc_df)
-
-#make gene_name: gene_description dictionary
-names=desc_df['Gene name'].tolist()
-desc=desc_df['Gene description'].tolist()
-names_desc=list(zip(names, desc))
-names_desc_dict=dict(names_desc)
-#print (names_desc_dict['MT-TF'])
-
-synsig_df=pd.read_csv('../run_ML/update_web_table.csv', index_col=[0])
-#print (synsig_df)
-
-synsig_genes=synsig_df['genes'].tolist()
-
-synsig_desc_list=[]
-for item in synsig_genes:
-	if item in names:
-		synsig_desc=names_desc_dict[item]
-	else:
-		synsig_desc='not found'
-	synsig_desc_list.append(synsig_desc)
-
-#print (len(synsig_genes))
-#print (len(synsig_desc_list))
-
-idx=1
-
-synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
-
-#synsig_df['description']=synsig_desc_list
-#print (synsig_df)
-
-synsig_df.to_csv('update_web_table_desc.csv')
-
-synsig=synsig_df[synsig_df['SynSig']=='yes']
-#print (synsig)
-
-synsig.to_csv('synsig_only.csv')
-
-synsig=pd.read_csv('synsig_only.csv', index_col=[0])
-gene_desc=synsig['description'].tolist()
-
-
-def find_function_cat(filename, names, col_idx, cat_name):
+def find_function_cat(filename, variable, names, col_idx, cat_name, csv_filename):
 	synsig=pd.read_csv(filename, index_col=[0])
-	gene_desc=synsig['description'].tolist()
+	gene_desc=synsig[variable].tolist()
 
 	functions=[]
 	
@@ -96,129 +50,137 @@ def find_function_cat(filename, names, col_idx, cat_name):
 		functions.append(function)
 
 	num=functions.count(1)
-	print (num)
+	print (cat_name, num)
 
 	synsig.insert(loc=col_idx, column=cat_name, value=functions)
-	#print (synsig)
-
-	synsig.to_csv('synsig_function.csv')
+	synsig.to_csv('%s'%csv_filename)
 	return synsig
 
 
-synsig=find_function_cat('synsig_only.csv', ['receptor', 'channel'], 2, 'receptor/channel')
-synsig=find_function_cat('synsig_function.csv', ['kinase'], 3, 'kinase')
-synsig=find_function_cat('synsig_function.csv', ['phosphatase'], 4, 'phosphatase')
-synsig=find_function_cat('synsig_function.csv', ['ubiquitin', 'E3'], 5, 'ubiquitin/E3')
-synsig=find_function_cat('synsig_function.csv', ['membrane', 'transmembrane', 'symporter'], 6, 'membrane')
-synsig=find_function_cat('synsig_function.csv', ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators')
-synsig=find_function_cat('synsig_function.csv', ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding')
-synsig=find_function_cat('synsig_function.csv', ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation')
-synsig=find_function_cat('synsig_function.csv', ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport')
-synsig=find_function_cat('synsig_function.csv', ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion')
-synsig=find_function_cat('synsig_function.csv', ['heat shock', 'regulator', 'adaptor', 'chaperone'], 12, 'regulators')
-synsig=find_function_cat('synsig_function.csv', ['scaffold', 'assembl', 'adaptor'], 12, 'scaffolds/adaptors')
-synsig=find_function_cat('synsig_function.csv', ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 13, 'cytoskeletal')
-synsig=find_function_cat('synsig_function.csv', ['calcium ion', 'calmodulin binding'], 14, 'calcium ion binding')
+def make_gene_desc_dict():
+
+	desc_df=pd.read_csv('../source_data_files/gene_names/gene_name_description.txt')
+
+	#make gene_name: gene_description dictionary
+	names=desc_df['Gene name'].tolist()
+	desc=desc_df['Gene description'].tolist()
+	names_desc=list(zip(names, desc))
+	names_desc_dict=dict(names_desc)
+	return names_desc_dict
+
+def add_gene_desc_web(names_desc_dict):
+	synsig_df=pd.read_csv('../run_ML/update_web_table.csv', index_col=[0])
+
+	synsig_genes=synsig_df['genes'].tolist()
+
+	synsig_desc_list=[]
+	for item in synsig_genes:
+		if item in names:
+			synsig_desc=names_desc_dict[item]
+		else:
+			synsig_desc='not found'
+		synsig_desc_list.append(synsig_desc)
+
+	idx=1
+
+	synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
+
+	synsig_df.to_csv('update_web_table_desc.csv')
+	return synsig_df
+
+def find_synsig_only(synsig_df):
+	synsig=synsig_df[synsig_df['SynSig']=='yes']
+	synsig.to_csv('synsig_only.csv')
+	return synsig
+
+def annotate_function(filename1, variable, filename2):
+	synsig=find_function_cat(filename1, variable, ['receptor', 'channel'], 2, 'receptor/channel', filename2)
+	synsig=find_function_cat(filename2, variable, ['kinase'], 3, 'kinase', filename2)
+	synsig=find_function_cat(filename2, variable, ['phosphatase'], 4, 'phosphatase', filename2)
+	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 5, 'ubiquitin/E3', filename2)
+	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter'], 6, 'membrane', filename2)
+	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators', filename2)
+	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding', filename2)
+	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation', filename2)
+	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport', filename2)
+	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion', filename2)
+	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 12, 'regulators', filename2)
+	synsig=find_function_cat(filename2, variable, ['scaffold', 'assembl', 'adaptor'], 13, 'scaffolds/adaptors', filename2)
+	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 14, 'cytoskeletal', filename2)
+	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 15, 'calcium ion binding', filename2)
+
+	synsig['Function Total']= synsig.iloc[:, 2:16].sum(axis=1)
+
+	func_total=synsig['Function Total'].tolist()
+	synsig.pop('Function Total')
+	synsig.insert(loc=16, column='Function Total', value=func_total)
+	#print (synsig)
+	synsig.to_csv(filename2)
+	return synsig
+
+#Annotate function by gene description: first wrapper function:
+def annotate_function_by_desc():
+	names_desc_dict=make_gene_desc_dict()
+	synsig_df=add_gene_desc_web(names_desc_dict)
+	synsig=find_synsig_only(synsig_df)
+
+	filename1='synsig_only.csv'
+	filename2='synsig_function.csv'
+
+	synsig=annotate_function(filename1, filename2)
+	return synsig
 
 
+def find_unannotated_genes(df):
+	no_func=df[df['Function Total']==0]
+	print (no_func)
+	no_func.to_csv('no_func.csv')
+	no_func_genes=no_func['genes'].tolist()
+	print (len(no_func_genes))
+	return no_func_genes
 
-synsig['Function Total']= synsig.iloc[:, 2:15].sum(axis=1)
+def find_mf_ont():
+	go_human=find_GO_scores.find_GO_ont()
+	child_terms=go_human.parent_2_child['GO:00SUPER']
+	mf=child_terms[0]
+	ont2 = go_human.focus(branches=mf)
+	return ont2
 
-func_total=synsig['Function Total'].tolist()
-synsig.pop('Function Total')
-synsig.insert(loc=15, column='Function Total', value=func_total)
-#print (synsig)
-synsig.to_csv('synsig_function.csv')
+def add_mf_function(no_func_genes):
+	ont2=find_mf_ont()
+	terms=ont2.terms
 
-no_func=synsig[synsig['Function Total']==0]
-print (no_func)
-no_func.to_csv('no_func.csv')
-no_func_genes=no_func['genes'].tolist()
-print (len(no_func_genes))
+	overlap=list(set(no_func_genes)&set(ont2.genes))
+	print (len(overlap))
 
-go_human=find_GO_scores.find_GO_ont()
-#print (go_human)
+	d=make_goID_dict()
 
-terms=go_human.terms
-#print (terms)
+	all_term_names=[]
+	for gene in no_func_genes:
+		if gene in overlap:
+			gene_term_names=[]
+			gene_terms=ont2.gene_2_term[gene]
+			for item in gene_terms:
+				term_desc=terms[item]
+				term_name=d[term_desc]
+				gene_term_names.append(term_name)
+				
+		else:
+			gene_term_names='None'
+			all_term_names.append(gene_term_names)
 
-child_terms=go_human.parent_2_child['GO:00SUPER']
-print (child_terms)
-mf=child_terms[0]
-print (mf)
-ont2 = go_human.focus(branches=mf)
-print (ont2)
+	df=pd.DataFrame({'genes': no_func_genes, 'terms': all_term_names})
+	df.to_csv('no_func_mf.csv')
+	print (df)
+	return df
 
-terms=ont2.terms
+synsig_by_desc=annotate_function_by_desc()
 
-overlap=list(set(no_func_genes)&set(ont2.genes))
-print (len(overlap))
+no_func_genes=find_unannotated_genes(synsig_by_desc)
 
-d=make_goID_dict()
+synsig_no_func_mf=add_mf_function(no_func_genes)
 
-all_term_names=[]
-for gene in overlap:
-	gene_term_names=[]
-	gene_terms=ont2.gene_2_term[gene]
-	for item in gene_terms:
-		term_desc=terms[item]
-		term_name=d[term_desc]
-		gene_term_names.append(term_name)
-		print (gene, gene_term_names)
-	all_term_names.append(gene_term_names)
+added_func_df=annotate_function('no_func_mf.csv', 'terms', 'synsig_additional_func_mf.csv')
 
-df=pd.DataFrame({'genes': overlap, 'terms': all_term_names})
-df.to_csv('no_func_mf.csv')
-print (df)
-
-
-# def find_function_cat(filename, names, col_idx, cat_name):
-# 	synsig=pd.read_csv(filename, index_col=[0])
-# 	gene_desc=synsig['terms'].tolist()
-
-# 	functions=[]
-	
-# 	for item in gene_desc:
-# 		names_in_desc = any(name in item for name in names)
-# 		#print (names_in_desc)
-# 		if names_in_desc==False:
-# 			function=0
-# 		else:
-# 			function=1
-
-# 		functions.append(function)
-
-# 	num=functions.count(1)
-# 	print (cat_name, num)
-
-# 	synsig.insert(loc=col_idx, column=cat_name, value=functions)
-# 	#print (synsig)
-
-# 	synsig.to_csv('synsig_no_func_mf.csv')
-# 	return synsig
-
-# synsig=find_function_cat('no_func_mf.csv', ['receptor', 'channel'], 2, 'receptor/channel')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['kinase'], 3, 'kinase')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['phosphatase'], 4, 'phosphatase')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['ubiquitin', 'E3'], 5, 'ubiquitin/E3')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['membrane', 'transmembrane', 'symporter'], 6, 'membrane')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['heat shock', 'regulator', 'adaptor', 'chaperone'], 12, 'regulators')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['scaffold', 'assembl', 'adaptor'], 12, 'scaffolds/adaptors')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 13, 'cytoskeletal')
-# synsig=find_function_cat('synsig_no_func_mf.csv', ['calcium ion', 'calmodulin binding'], 14, 'calcium ion binding')
-
-
-# print (synsig)
-
-# synsig['Function Total']= synsig.iloc[:, 2:15].sum(axis=1)
-# no_func=synsig[synsig['Function Total']==0]
-# print (no_func)
-# synsig.to_csv('synsig_no_func_mf_total.csv')
-
-# no_func.to_csv('synsig_no_func_manual.csv')
+no_func=find_unannotated_genes(added_func_df)
 
