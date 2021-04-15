@@ -129,7 +129,7 @@ def annotate_function_by_desc():
 	filename1='synsig_only.csv'
 	filename2='synsig_function.csv'
 
-	synsig=annotate_function(filename1, filename2)
+	synsig=annotate_function(filename1,'description', filename2)
 	return synsig
 
 
