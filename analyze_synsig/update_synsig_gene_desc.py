@@ -88,7 +88,7 @@ def add_gene_desc_web(names_desc_dict):
 	#synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
 
 	#synsig_df.to_csv('update_web_table_desc.csv')
-	synsig_df=pd.DataFrame{'genes': synsig_genes, 'description': synsig_desc_list}
+	synsig_df=pd.DataFrame({'genes': synsig_genes, 'description': synsig_desc_list})
 	
 	return synsig_df
 
