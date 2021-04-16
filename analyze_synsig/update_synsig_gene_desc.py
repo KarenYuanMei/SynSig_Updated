@@ -147,7 +147,7 @@ def find_mf_ont():
 	ont2 = go_human.focus(branches=mf)
 	return ont2
 
-def add_mf_function(genelist):
+def add_mf_function(genelist, synsig_desc):
 	ont2=find_mf_ont()
 	terms=ont2.terms
 
@@ -170,8 +170,8 @@ def add_mf_function(genelist):
 			gene_term_names='None'
 		all_term_names.append(gene_term_names)
 
-	df=pd.DataFrame({'genes': genelist, 'terms': all_term_names})
-	return df
+	synsig_desc.insert(loc=2, column='MF Terms', value=all_term_names)
+	return synsig_desc
 
 def add_desc(synsig_genes):
 	names_desc_dict=make_gene_desc_dict()
@@ -189,13 +189,16 @@ def load_synsig_genes():
 
 synsig_genes=load_synsig_genes()
 
+#add description all synsig genes:
 synsig_desc=add_desc(synsig_genes)
 synsig_desc.to_csv('synsig_genes_desc.csv')
 
 #add mf to all synsig genes:
-synsig_mf=add_mf_function(synsig_genes)
-synsig_mf.to_csv('synsig_desc_mf.csv')
-print (synsig_mf)
+synsig_desc_mf=add_mf_function(synsig_genes, synsig_desc)
+synsig_desc_mf.to_csv('synsig_desc_mf.csv')
+print (synsig_desc_mf)
+
+#first annotate genes by gene description:
 
 
 
