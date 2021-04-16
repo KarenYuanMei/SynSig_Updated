@@ -199,7 +199,8 @@ synsig_desc_mf.to_csv('synsig_desc_mf.csv')
 print (synsig_desc_mf)
 
 #first annotate genes by gene description:
-
+desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_function.csv')
+print (desc_func)
 
 
 
