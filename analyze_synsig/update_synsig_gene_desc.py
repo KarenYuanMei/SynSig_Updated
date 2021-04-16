@@ -95,26 +95,26 @@ def find_synsig_only(synsig_df):
 	return synsig
 
 def annotate_function(filename1, variable, filename2):
-	synsig=find_function_cat(filename1, variable, ['receptor', 'channel'], 2, 'receptor/channel', filename2)
-	synsig=find_function_cat(filename2, variable, ['kinase'], 3, 'kinase', filename2)
-	synsig=find_function_cat(filename2, variable, ['phosphatase'], 4, 'phosphatase', filename2)
-	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 5, 'ubiquitin/E3', filename2)
-	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter'], 6, 'membrane', filename2)
-	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 7, 'GTP/ATP regulators', filename2)
-	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 8, 'Nucleic Acid Binding', filename2)
-	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 9, 'translation', filename2)
-	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 10, 'transport', filename2)
-	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'catenin'], 11, 'cell adhesion', filename2)
-	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 12, 'regulators', filename2)
-	synsig=find_function_cat(filename2, variable, ['scaffold', 'assembl', 'adaptor'], 13, 'scaffolds/adaptors', filename2)
-	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 14, 'cytoskeletal', filename2)
-	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 15, 'calcium ion binding', filename2)
+	synsig=find_function_cat(filename1, variable, ['receptor', 'channel'], 3, 'receptor/channel', filename2)
+	synsig=find_function_cat(filename2, variable, ['kinase'], 4, 'kinase', filename2)
+	synsig=find_function_cat(filename2, variable, ['phosphatase'], 5, 'phosphatase', filename2)
+	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 6, 'ubiquitin/E3', filename2)
+	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter'], 7, 'membrane', filename2)
+	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 8, 'GTP/ATP regulators', filename2)
+	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 9, 'Nucleic Acid Binding', filename2)
+	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 10, 'translation', filename2)
+	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 11, 'transport', filename2)
+	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'catenin'], 12, 'cell adhesion', filename2)
+	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 13, 'regulators', filename2)
+	synsig=find_function_cat(filename2, variable, ['scaffold', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
+	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
+	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 16, 'calcium ion binding', filename2)
 
-	synsig['Function Total']= synsig.iloc[:, 2:16].sum(axis=1)
+	synsig['Function Total']= synsig.iloc[:, 2:17].sum(axis=1)
 
 	func_total=synsig['Function Total'].tolist()
 	synsig.pop('Function Total')
-	synsig.insert(loc=16, column='Function Total', value=func_total)
+	synsig.insert(loc=17, column='Function Total', value=func_total)
 	#print (synsig)
 	synsig.to_csv(filename2)
 	return synsig
@@ -165,7 +165,8 @@ def add_mf_function(genelist, synsig_desc):
 				term_desc=terms[item]
 				term_name=d[term_desc]
 				gene_term_names.append(term_name)
-				
+			gene_term_names = [item for sublist in gene_term_names for item in sublist]
+
 		else:
 			gene_term_names='None'
 		all_term_names.append(gene_term_names)
@@ -202,6 +203,12 @@ print (synsig_desc_mf)
 desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_function.csv')
 print (desc_func)
 
+#second annotate genes by molecular function:
+mf_func=annotate_function('synsig_function.csv', 'description', 'synsig_function.csv')
+print (mf_func)
+
+#find unannotated genes:
+no_func=find_unannotated_genes(mf_func)
 
 
 
