@@ -207,7 +207,7 @@ print (desc_func)
 no_func=find_unannotated_genes(mf_func)
 #print (no_func)
 
-second annotate genes by molecular function:
+#second annotate genes by molecular function:
 mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
 #print (mf_func)
 
