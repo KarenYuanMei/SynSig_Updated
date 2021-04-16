@@ -203,12 +203,16 @@ print (synsig_desc_mf)
 desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_desc_function.csv')
 print (desc_func)
 
-#second annotate genes by molecular function:
-mf_func=annotate_function('synsig_desc_mf.csv', 'MF Terms', 'synsig_mf_function.csv')
-print (mf_func)
+#find unannotated genes:
+no_func=find_unannotated_genes(mf_func)
+#print (no_func)
 
-##find unannotated genes:
-#no_func=find_unannotated_genes(mf_func)
+second annotate genes by molecular function:
+mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
+#print (mf_func)
+
+#find unannotated genes:
+no_func=find_unannotated_genes(mf_func)
 
 
 
