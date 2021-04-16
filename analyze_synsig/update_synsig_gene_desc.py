@@ -182,8 +182,9 @@ def add_desc(synsig_genes):
 #add description to all synsig genes:
 def load_synsig_genes():
 	synsig_df=pd.read_csv('../run_ML/update_web_table.csv', index_col=[0])
-	print (synsig_df)
-	synsig_genes=synsig_df['genes'].tolist()
+	#print (synsig_df)
+	synsig=synsig_df[synsig_df['SynSig']=='yes']
+	synsig_genes=synsig['genes'].tolist()
 	return synsig_genes
 
 synsig_genes=load_synsig_genes()
