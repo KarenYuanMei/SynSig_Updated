@@ -135,8 +135,13 @@ def annotate_function_by_desc():
 def find_unannotated_genes(df):
 	no_func=df[df['Function Total']==0]
 	print (no_func)
-	no_func.to_csv('no_func.csv')
+	#no_func.to_csv('no_func.csv')
 	no_func_genes=no_func['genes'].tolist()
+	no_func_desc=no_func['description'].tolist()
+	no_func_terms=no_func['MF Terms'].tolist()
+
+	df=pd.DataFrame({'genes': no_func_genes, 'Description': no_func_desc, 'MF Terms': no_func_terms})
+	df.to_csv('no_func.csv')
 	print (len(no_func_genes))
 	return no_func_genes
 
