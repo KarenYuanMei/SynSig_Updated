@@ -99,7 +99,7 @@ def annotate_function(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['kinase'], 4, 'kinase', filename2)
 	synsig=find_function_cat(filename2, variable, ['phosphatase'], 5, 'phosphatase', filename2)
 	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 6, 'ubiquitin/E3', filename2)
-	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter'], 7, 'membrane', filename2)
+	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter', 'vesic', 'dynamin', 'clathrin', 'endoc', 'VAMP', 'SNAP', 'SNARE'], 7, 'membrane/vesicle', filename2)
 	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 8, 'GTP/ATP regulators', filename2)
 	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 9, 'Nucleic Acid Binding', filename2)
 	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 10, 'translation', filename2)
@@ -109,13 +109,12 @@ def annotate_function(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
 	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
 	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 16, 'calcium ion binding', filename2)
-	synsig=find_function_cat(filename2, variable, ['vesic', 'dynamin', 'clathrin', 'endoc', 'VAMP', 'SNAP', 'SNARE'], 17, 'vesicle formation', filename2)
 
-	synsig['Function Total']= synsig.iloc[:, 2:18].sum(axis=1)
+	synsig['Function Total']= synsig.iloc[:, 2:17].sum(axis=1)
 
 	func_total=synsig['Function Total'].tolist()
 	synsig.pop('Function Total')
-	synsig.insert(loc=18, column='Function Total', value=func_total)
+	synsig.insert(loc=17, column='Function Total', value=func_total)
 	#print (synsig)
 	synsig.to_csv(filename2)
 	return synsig
