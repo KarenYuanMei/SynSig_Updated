@@ -109,12 +109,13 @@ def annotate_function(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
 	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
 	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 16, 'calcium ion binding', filename2)
+	synsig=find_function_cat(filename2, variable, ['vesic', 'dynamin', 'clathrin', 'endoc', 'VAMP', 'SNAP', 'SNARE'], 17, 'vesicle formation', filename2)
 
-	synsig['Function Total']= synsig.iloc[:, 2:17].sum(axis=1)
+	synsig['Function Total']= synsig.iloc[:, 2:18].sum(axis=1)
 
 	func_total=synsig['Function Total'].tolist()
 	synsig.pop('Function Total')
-	synsig.insert(loc=17, column='Function Total', value=func_total)
+	synsig.insert(loc=18, column='Function Total', value=func_total)
 	#print (synsig)
 	synsig.to_csv(filename2)
 	return synsig
@@ -219,17 +220,4 @@ mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
 #find unannotated genes:
 no_func=find_unannotated_genes(mf_func)
 
-
-
-
-
-# synsig_by_desc=annotate_function_by_desc()
-
-# no_func_genes=find_unannotated_genes(synsig_by_desc)
-
-# synsig_no_func_mf=add_mf_function(no_func_genes)
-
-# added_func_df=annotate_function('no_func_mf.csv', 'terms', 'synsig_additional_func_mf.csv')
-
-# no_func=find_unannotated_genes(added_func_df)
 
