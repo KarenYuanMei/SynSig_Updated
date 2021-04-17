@@ -106,7 +106,7 @@ def annotate_function(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 11, 'transport', filename2)
 	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'catenin'], 12, 'cell adhesion', filename2)
 	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 13, 'regulators', filename2)
-	synsig=find_function_cat(filename2, variable, ['scaffold', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
+	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
 	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
 	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 16, 'calcium ion binding', filename2)
 
@@ -140,7 +140,7 @@ def find_unannotated_genes(df):
 	no_func_desc=no_func['description'].tolist()
 	no_func_terms=no_func['MF Terms'].tolist()
 
-	df=pd.DataFrame({'genes': no_func_genes, 'Description': no_func_desc, 'MF Terms': no_func_terms})
+	df=pd.DataFrame({'genes': no_func_genes, 'description': no_func_desc, 'MF Terms': no_func_terms})
 	df.to_csv('no_func.csv')
 	print (len(no_func_genes))
 	return no_func_genes
