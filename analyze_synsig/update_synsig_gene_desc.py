@@ -5,7 +5,7 @@ import pandas as pd
 
 import csv
 
-import numpy
+import numpy as np
 
 import ddot
 from ddot import Ontology
@@ -104,7 +104,7 @@ def annotate_function(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 9, 'Nucleic Acid Binding', filename2)
 	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 10, 'translation', filename2)
 	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 11, 'transport', filename2)
-	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'catenin'], 12, 'cell adhesion', filename2)
+	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'junct', 'catenin'], 12, 'cell adhesion', filename2)
 	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 13, 'regulators', filename2)
 	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
 	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
@@ -198,7 +198,8 @@ def annotate_no_func(filename1, variable, filename2):
 	return synsig
 
 def annotate_remaining_func(filename1, variable, filename2):
-	synsig=find_function_cat(filename1, variable, ['protein binding', 'None'], 3, 'Other protein binders/Unknown functions', filename2)
+	synsig=find_function_cat(filename1, variable, ['protein binding'], 3, 'Other protein binders', filename2)
+	synsig=find_function_cat(filename2, variable, ['None'], 4, 'unknown functions', filename2)
 	return synsig
 
 
@@ -232,8 +233,51 @@ met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
 
 unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
 
-cols=np.arange(0, 17)
+desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
+mf_func=pd.read_csv('synsig_mf_function.csv', index_col=[0])
+
+cols=np.arange(3, 17, 1).tolist()
 print (cols)
+
+
+functions={}
+for item in cols:
+	headers=list(desc_func.columns)
+	function_name=headers[item]
+	print (headers[item])
+	sum1=desc_func[desc_func.columns[item]].sum()
+	print (sum1)
+	
+	sum2=mf_func[mf_func.columns[item]].sum()
+	print (sum2)
+	
+	total=sum1+sum2
+	print (total)
+
+	functions[function_name]=(total)
+
+print (functions)
+
+met_func=pd.read_csv('synsig_met_function.csv', index_col=[0])
+met_sum=met_func[met_func.columns[3]].sum()
+print (met_sum)
+
+uk_func=pd.read_csv('synsig_unknown_function.csv', index_col=[0])
+print (uk_func)
+pb_sum=uk_func[uk_func.columns[3]].sum()
+print (pb_sum)
+
+uk_sum=uk_func[uk_func.columns[4]].sum()
+print (uk_sum)
+
+functions['enzymatic/metabolic activity']=met_sum
+functions['Other protein binders']=pb_sum
+functions['Unknown functions']=uk_sum
+
+print (functions)
+
+
+
 
 
 
