@@ -193,6 +193,15 @@ def load_synsig_genes():
 	synsig_genes=synsig['genes'].tolist()
 	return synsig_genes
 
+def annotate_no_func(filename1, variable, filename2):
+	synsig=find_function_cat(filename1, variable, ['enzyme', 'ase activity'], 3, 'enzymatic/metabolic activity', filename2)
+	return synsig
+
+def annotate_remaining_func(filename1, variable, filename2):
+	synsig=find_function_cat(filename1, variable, ['protein binding', 'None'], 3, 'Other protein binders/Unknown functions', filename2)
+	return synsig
+
+
 synsig_genes=load_synsig_genes()
 
 #add description all synsig genes:
@@ -218,5 +227,13 @@ mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
 
 #find unannotated genes:
 no_func=find_unannotated_genes(mf_func)
+
+met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
+
+unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
+
+cols=np.arange(0, 17)
+print (cols)
+
 
 
