@@ -294,7 +294,7 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	#plt.yticks(y_ticks)
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
-	plt.xticks(rotation=45)
+	plt.xticks(rotation=90)
 	plt.savefig(name+'.svg', format="svg")
 	plt.close()
 
