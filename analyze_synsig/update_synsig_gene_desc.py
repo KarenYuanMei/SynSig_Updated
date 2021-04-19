@@ -16,6 +16,10 @@ import find_GO_scores
 
 from collections import defaultdict
 
+import matplotlib
+matplotlib.use("Agg")
+from matplotlib import pyplot as plt
+
 def make_goID_dict():
 	id_name=pd.read_table('../source_data_files/goID/goID_2_name.tab')
 	print (id_name)
