@@ -276,6 +276,33 @@ functions['Unknown functions']=uk_sum
 
 print (functions)
 
+def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
+
+	#plt.ylim(1, 10**5)
+	#plt.ylim(0.5, 1)
+	#plt.yscale('log')
+	# Create legend & Show graphic
+	#plt.legend()
+	#y_ticks = np.arange(0, 25, 5)
+	#plt.yticks(y_ticks)
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	#plt.xticks(rotation=45)
+	plt.savefig(name+'.svg', format="svg")
+	plt.close()
+
+
+labels=list(functions.keys())
+mean_values=list(functions.values())
+xlabel='Protein Categories'
+ylabel='Number of Proteins'
+name='synsig_gene_cat'
+
+plot_bargraph(labels, mean_values, xlabel, ylabel, name)
+
 
 
 
