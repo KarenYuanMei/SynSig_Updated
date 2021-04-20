@@ -114,6 +114,7 @@ for item in branches:
 
 	final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(genelist, genes_remove)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
+	print (auc)
 
 # syngo_genes=ont.genes
 # syngo_terms=ont.terms
