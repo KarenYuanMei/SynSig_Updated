@@ -1,0 +1,1513 @@
+Parent	Child	EdgeType
+ATP metabolic process in the postsynapse	regulation of ATP metabolic process in the postsynapse	Child-Parent
+ATP metabolic process in the presynapse	regulation of ATP metabolic process in the presynapse	Child-Parent
+anterograde axonal transport	anterograde axonal protein transport	Child-Parent
+anterograde axonal transport	anterograde neuronal dense core vesicle transport	Child-Parent
+anterograde dendritic transport	anterograde dendritic transport of neurotransmitter receptor complex	Child-Parent
+anterograde synaptic vesicle transport	regulation of anterograde synaptic vesicle transport	Child-Parent
+axo-dendritic transport	axo-dendritic protein transport	Child-Parent
+axo-dendritic transport	axonal transport	Child-Parent
+axo-dendritic transport	dendritic transport	Child-Parent
+axonal transport	anterograde axonal transport	Child-Parent
+axonal transport	axonal transport of messenger ribonucleoprotein complex	Child-Parent
+axonal transport	axonal transport of mitochondrion	Child-Parent
+axonal transport	retrograde axonal transport	Child-Parent
+axonal transport of messenger ribonucleoprotein complex	anterograde axonal transport of messenger ribonucleoprotein complex	Child-Parent
+axonal transport of mitochondrion	anterograde axonal transport of mitochondrion	Child-Parent
+axonal transport of mitochondrion	retrograde axonal transport of mitochondrion	Child-Parent
+calcium-dependent activation of synaptic vesicle fusion	regulation of calcium-dependent activation of synaptic vesicle fusion	Child-Parent
+chemical synaptic transmission	modulation of chemical synaptic transmission	Child-Parent
+chemical synaptic transmission	presynaptic process involved in chemical synaptic transmission	Child-Parent
+chemical synaptic transmission	postsynaptic process involved in chemical synaptic transmission	Child-Parent
+dendritic transport	anterograde dendritic transport	Child-Parent
+dendritic transport	dendritic transport of mitochondrion	Child-Parent
+dendritic transport	dendritic transport of ribonucleoprotein complex	Child-Parent
+dendritic transport	retrograde dendritic transport	Child-Parent
+dendritic transport of messenger ribonucleoprotein complex	anterograde dendritic transport of messenger ribonucleoprotein complex	Child-Parent
+dendritic transport of mitochondrion	anterograde dendritic transport of mitochondrion	Child-Parent
+dendritic transport of mitochondrion	retrograde dendritic transport of mitochondrion	Child-Parent
+dendritic transport of ribonucleoprotein complex	dendritic transport of messenger ribonucleoprotein complex	Child-Parent
+exocytic insertion of neurotransmitter receptor to postsynaptic membrane	regulation of exocytic insertion of neurotransmitter receptor to postsynaptic membrane	Child-Parent
+maintenance of postsynaptic specialization structure	maintenance of postsynaptic density structure	Child-Parent
+maintenance of synapse structure	maintenance of alignment of postsynaptic density and presynaptic active zone	Child-Parent
+maintenance of synapse structure	maintenance of postsynaptic specialization structure	Child-Parent
+maintenance of synapse structure	maintenance of presynaptic active zone structure	Child-Parent
+metabolism	ATP metabolic process in the presynapse	Child-Parent
+metabolism	ATP metabolic process in the postsynapse	Child-Parent
+metabolism	protein catabolic process, modulating synaptic transmission	Child-Parent
+metabolism	regulation of protein catabolic process at synapse, modulating synaptic transmission	Child-Parent
+metabolism	regulation of translation at synapse, modulating synaptic transmission	Child-Parent
+metabolism	neurotransmitter catabolic process	Child-Parent
+metabolism	protein catabolic process at synapse	Child-Parent
+metabolism	neurotransmitter biosynthetic process	Child-Parent
+metabolism	protein translation at synapse	Child-Parent
+modification of postsynaptic actin cytoskeleton	regulation of modification of postsynaptic actin cytoskeleton	Child-Parent
+modification of postsynaptic structure	regulation of modification of postsynaptic structure	Child-Parent
+modification of postsynaptic structure	modification of postsynaptic actin cytoskeleton	Child-Parent
+modification of synaptic structure	modification of postsynaptic structure	Child-Parent
+modification of synaptic structure	modification of synaptic structure, modulating synaptic transmission	Child-Parent
+modification of synaptic structure	regulation of modification of synaptic structure	Child-Parent
+negative regulation of presynaptic cytosolic calcium concentration	calcium import into the mitochondrion involved in negative regulation of presynaptic cytosolic calcium concentration	Child-Parent
+neurotransmitter receptor activity involved in regulation of postsynaptic cytosolic calcium levels	G-protein coupled neurotransmitter receptor activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential	G-protein coupled neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential	Child-Parent
+neurotransmitter receptor localization to postsynaptic specialization membrane	regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	Child-Parent
+neurotransmitter receptor transport	neurotransmitter receptor transport postsynaptic membrane to endosome	Child-Parent
+neurotransmitter receptor transport	neurotransmitter receptor transport to plasma membrane	Child-Parent
+neurotransmitter receptor transport	neurotransmitter receptor transport, plasma membrane to endosome	Child-Parent
+neurotransmitter receptor transport	neurotransmitter receptor transport, postsynaptic endosome to lysosome	Child-Parent
+neurotransmitter receptor transport to plasma membrane	neurotransmitter receptor transport to postsynaptic membrane	Child-Parent
+neurotransmitter receptor transport to plasma membrane	neurotransmitter receptor transport, endosome to plasma membrane	Child-Parent
+neurotransmitter receptor transport, endosome to plasma membrane	neurotransmitter receptor transport, endosome to postsynaptic membrane	Child-Parent
+neurotransmitter receptor transport, endosome to postsynaptic membrane	regulation of neurotransmitter receptor transport, endosome to postsynaptic membrane	Child-Parent
+neurotransmitter reuptake	regulation of neurotransmitter uptake	Child-Parent
+pathway	presynaptic signaling pathway	Child-Parent
+pathway	postsynaptic signaling pathway	Child-Parent
+positive regulation of postsynaptic cytosolic calcium concentration	release of sequestered calcium ion into postsynaptic cytosol	Child-Parent
+positive regulation of presynaptic cytosolic calcium concentration	release of sequestered calcium ion into presynaptic cytosol	Child-Parent
+postsynapse organization	regulation of postsynapse organization	Child-Parent
+postsynapse organization	postsynaptic specialization organization	Child-Parent
+postsynapse to nucleus signaling pathway	regulation of postsynapse to nucleus signaling pathway	Child-Parent
+postsynaptic cytoskeleton organization	postsynaptic actin cytoskeleton organization	Child-Parent
+postsynaptic cytoskeleton organization	postsynaptic intermediate filament cytoskeleton organization	Child-Parent
+postsynaptic cytoskeleton organization	postsynaptic spectrin-associated cytoskeleton organization	Child-Parent
+postsynaptic dense core vesicle exocytosis	regulation of postsynaptic dense core vesicle exocytosis	Child-Parent
+postsynaptic density assembly	regulation of postsynaptic density assembly	Child-Parent
+postsynaptic neurotransmitter receptor diffusion trapping	regulation of postsynaptic neurotransmitter receptor diffusion trapping	Child-Parent
+postsynaptic neurotransmitter receptor endocytosis	regulation of postsynaptic neurotransmitter receptor endocytosis	Child-Parent
+postsynaptic process involved in chemical synaptic transmission	postsynaptic modulation of chemical synaptic transmission	Child-Parent
+postsynaptic signaling pathway	postsynapse to nucleus signaling pathway	Child-Parent
+postsynaptic specialization assembly	regulation of postsynaptic specialization assembly	Child-Parent
+postsynaptic specialization assembly	postsynaptic density assembly	Child-Parent
+presynapse assembly	presynaptic membrane assembly	Child-Parent
+presynapse organization	regulation of presynapse organization	Child-Parent
+presynaptic cytoskeleton organization	presynaptic actin cytoskeleton organization	Child-Parent
+presynaptic dense core vesicle exocytosis	regulation of presynaptic dense core vesicle exocytosis	Child-Parent
+presynaptic process involved in chemical synaptic transmission	presynaptic modulation of chemical synaptic transmission	Child-Parent
+presynaptic signaling pathway	presynapse to nucleus signaling pathway	Child-Parent
+process in the postsynapse	regulation of postsynaptic cytosolic calcium levels	Child-Parent
+process in the postsynapse	regulation of postsynaptic membrane potential	Child-Parent
+process in the postsynapse	regulation of postsynaptic neurotransmitter receptor activity	Child-Parent
+process in the postsynapse	regulation of postsynaptic membrane neurotransmitter receptor levels	Child-Parent
+process in the postsynapse	postsynaptic dense core vesicle exocytosis	Child-Parent
+process in the postsynapse	postsynaptic chaperone-mediated protein folding	Child-Parent
+process in the presynapse	regulation of presynaptic cytosolic calcium levels	Child-Parent
+process in the presynapse	regulation of presynaptic membrane potential	Child-Parent
+process in the presynapse	synaptic vesicle cycle	Child-Parent
+process in the presynapse	presynaptic dense core vesicle exocytosis	Child-Parent
+process in the presynapse	neurotransmitter uptake	Child-Parent
+process in the presynapse	neurotransmitter reuptake	Child-Parent
+process in the presynapse	presynaptic chaperone-mediated protein folding	Child-Parent
+protein catabolic process at postsynapse	regulation of protein catabolic process at postsynapse	Child-Parent
+protein catabolic process at presynapse	regulation of protein catabolic process at presynapse	Child-Parent
+protein catabolic process at synapse	regulation of protein catabolic process at synapse	Child-Parent
+protein catabolic process at synapse	protein catabolic process at presynapse	Child-Parent
+protein catabolic process at synapse	protein catabolic process at postsynapse	Child-Parent
+protein translation at postsynapse	regulation of protein translation at postsynapse	Child-Parent
+protein translation at presynapse	regulation of protein translation at presynapse	Child-Parent
+protein translation at presynapse	protein translation at presynapse, modulating chemical synaptic transmission	Child-Parent
+protein translation at synapse	regulation of protein translation at synapse	Child-Parent
+protein translation at synapse	protein translation at presynapse	Child-Parent
+protein translation at synapse	protein translation at postsynapse	Child-Parent
+regulation of modification of synaptic structure	regulation of modification of synapse structure, modulating synaptic transmission	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	calcium-induced calcium release activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	ATPase-coupled calcium ion transmembrane transporter activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	calcium ion binding involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	calcium:cation antiporter activity involved in regulation of postsynaptic cytosolic calcium ion levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	inositol 1,4,5-trisphosphate receptor activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	neurotransmitter receptor activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	positive regulation of postsynaptic cytosolic calcium concentration	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	ryanodine-sensitive calcium-release channel activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic cytosolic calcium levels	voltage-gated calcium channel activity involved in regulation of postsynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynaptic membrane neurotransmitter receptor levels	neurotransmitter receptor localization to postsynaptic specialization membrane	Child-Parent
+regulation of postsynaptic membrane neurotransmitter receptor levels	exocytic insertion of neurotransmitter receptor to postsynaptic membrane	Child-Parent
+regulation of postsynaptic membrane neurotransmitter receptor levels	postsynaptic neurotransmitter receptor diffusion trapping	Child-Parent
+regulation of postsynaptic membrane neurotransmitter receptor levels	postsynaptic neurotransmitter receptor endocytosis	Child-Parent
+regulation of postsynaptic membrane potential	ATPase coupled ion transmembrane transporter activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	G-protein coupled receptor activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	G-protein gated potassium channel activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	ion antiporter activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of postsynaptic membrane potential	voltage-gated ion channel activity involved in regulation of postsynaptic membrane potential	Child-Parent
+regulation of presynaptic cytosolic calcium levels	ATPase-coupled calcium ion transmembrane transporter activity involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic cytosolic calcium levels	calcium-induced calcium release activity involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic cytosolic calcium levels	calcium ion antiporter activity involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic cytosolic calcium levels	calcium ion binding involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic cytosolic calcium levels	negative regulation of presynaptic cytosolic calcium concentration	Child-Parent
+regulation of presynaptic cytosolic calcium levels	neurotransmitter receptor activity involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic cytosolic calcium levels	positive regulation of presynaptic cytosolic calcium concentration	Child-Parent
+regulation of presynaptic cytosolic calcium levels	voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of presynaptic membrane potential	ATPase coupled ion transmembrane transporter activity involved in regulation of presynaptic membrane potential	Child-Parent
+regulation of presynaptic membrane potential	ion antiporter activity involved in regulation of presynaptic membrane potential	Child-Parent
+regulation of presynaptic membrane potential	ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	Child-Parent
+regulation of presynaptic membrane potential	voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	Child-Parent
+regulation of presynaptic membrane potential	G-protein coupled neurotransmitter receptor activity involved in regulation of presynaptic membrane potential	Child-Parent
+regulation of protein catabolic process at synapse, modulating synaptic transmission	regulation of protein catabolic process at postsynapse, modulating synaptic transmission	Child-Parent
+regulation of protein catabolic process at synapse, modulating synaptic transmission	regulation of protein catabolic process at presynapse, modulating synaptic transmission	Child-Parent
+regulation of synapse assembly	regulation of presynapse assembly	Child-Parent
+regulation of synapse assembly	regulation of postsynapse assembly	Child-Parent
+regulation of translation at synapse, modulating synaptic transmission	regulation of translation at postsynapse, modulating synaptic transmission	Child-Parent
+regulation of translation at synapse, modulating synaptic transmission	regulation of translation at presynapse, modulating synaptic transmission	Child-Parent
+retrograde axonal transport	retrograde axonal protein transport	Child-Parent
+retrograde axonal transport	retrograde neuronal dense core vesicle transport	Child-Parent
+retrograde trans-synaptic signaling by endocannabinoid	regulation of retrograde trans-synaptic signaling by endocanabinoid	Child-Parent
+retrograde trans-synaptic signaling by trans-synaptic protein complex	regulation of retrograde trans-synaptic signaling by trans-synaptic protein complex	Child-Parent
+structural constituent of postsynapse	structural constituent of postsynaptic actin cytoskeleton	Child-Parent
+structural constituent of postsynapse	structural constituent of postsynaptic intermediate filament cytoskeleton	Child-Parent
+structural constituent of postsynapse	structural constituent of postsynaptic specialization	Child-Parent
+structural constituent of postsynapse	structural constituent of postsynaptic density	Child-Parent
+structural constituent of presynapse	structural constituent of active zone	Child-Parent
+structural constituent of presynapse	structural constituent of presynaptic actin cytoskeleton	Child-Parent
+structural constituent of synapse	structural constituent of presynapse	Child-Parent
+structural constituent of synapse	structural constituent of postsynapse	Child-Parent
+synapse adhesion between pre- and post-synapse	regulation of synaptic membrane adhesion	Child-Parent
+synapse assembly	presynapse assembly	Child-Parent
+synapse assembly	regulation of synapse assembly	Child-Parent
+synapse assembly	postsynaptic specialization assembly	Child-Parent
+synapse assembly	postsynaptic membrane assembly	Child-Parent
+synapse disassembly	regulation of synapse disassembly	Child-Parent
+synapse maturation	regulation of synapse maturation	Child-Parent
+synapse organization	presynapse organization	Child-Parent
+synapse organization	postsynapse organization	Child-Parent
+synapse organization	modification of synaptic structure	Child-Parent
+synapse organization	regulation of synapse organization	Child-Parent
+synapse organization	structural constituent of synapse	Child-Parent
+synapse organization	structural constituent of synapse-associated extracellular matrix	Child-Parent
+synapse organization	synapse adhesion between pre- and post-synapse	Child-Parent
+synapse organization	synaptic target recognition	Child-Parent
+synapse organization	synapse assembly	Child-Parent
+synapse organization	synapse disassembly	Child-Parent
+synapse organization	synapse maturation	Child-Parent
+synapse organization	synaptic membrane adhesion to extracellular matrix	Child-Parent
+synapse organization	maintenance of synapse structure	Child-Parent
+synapse organization	presynaptic cytoskeleton organization	Child-Parent
+synapse organization	postsynaptic cytoskeleton organization	Child-Parent
+synapse process	process in the presynapse	Child-Parent
+synapse process	process in the postsynapse	Child-Parent
+synapse process	synaptic signaling	Child-Parent
+synapse process	synapse organization	Child-Parent
+synapse process	metabolism	Child-Parent
+synapse process	transport	Child-Parent
+synapse process	pathway	Child-Parent
+synaptic signaling	trans-synaptic signaling	Child-Parent
+synaptic signaling	synaptic signaling via neuropeptide	Child-Parent
+synaptic signaling	synaptic signaling by nitric oxide	Child-Parent
+synaptic signaling	regulation of trans-synaptic signaling	Child-Parent
+synaptic signaling by nitric oxide	regulation of synaptic signaling by nitric oxide	Child-Parent
+synaptic vesicle budding from presynaptic endocytic zone membrane	regulation of synaptic vesicle budding from presynaptic endocytic zone membrane	Child-Parent
+synaptic vesicle budding from presynaptic endocytic zone membrane	synaptic vesicle coating	Child-Parent
+synaptic vesicle cycle	regulation of synaptic vesicle cycle	Child-Parent
+synaptic vesicle cycle	synaptic vesicle clustering	Child-Parent
+synaptic vesicle cycle	synaptic vesicle endosomal processing	Child-Parent
+synaptic vesicle cycle	synaptic vesicle exocytosis	Child-Parent
+synaptic vesicle cycle	synaptic vesicle neurotransmitter loading	Child-Parent
+synaptic vesicle cycle	zinc ion import into synaptic vesicle	Child-Parent
+synaptic vesicle cycle	synaptic vesicle proton loading	Child-Parent
+synaptic vesicle cycle	synaptic vesicle endocytosis	Child-Parent
+synaptic vesicle cytoskeletal transport	synaptic vesicle transport along actin filament	Child-Parent
+synaptic vesicle cytoskeletal transport	synaptic vesicle transport along microtubule	Child-Parent
+synaptic vesicle docking	regulation of synaptic vesicle docking	Child-Parent
+synaptic vesicle endocytosis	regulation of synaptic vesicle endocytosis	Child-Parent
+synaptic vesicle endocytosis	synaptic vesicle budding from presynaptic endocytic zone membrane	Child-Parent
+synaptic vesicle endocytosis	synaptic vesicle uncoating	Child-Parent
+synaptic vesicle endosomal processing	synaptic vesicle budding from endosome	Child-Parent
+synaptic vesicle endosomal processing	synaptic vesicle to endosome fusion	Child-Parent
+synaptic vesicle exocytosis	calcium-dependent activation of synaptic vesicle fusion	Child-Parent
+synaptic vesicle exocytosis	regulation of synaptic vesicle exocytosis	Child-Parent
+synaptic vesicle exocytosis	synaptic vesicle docking	Child-Parent
+synaptic vesicle exocytosis	synaptic vesicle fusion to presynaptic active zone membrane	Child-Parent
+synaptic vesicle exocytosis	synaptic vesicle priming	Child-Parent
+synaptic vesicle fusion to presynaptic active zone membrane	regulation of synaptic vesicle fusion to presynaptic active zone membrane	Child-Parent
+synaptic vesicle neurotransmitter loading	regulation of synaptic vesicle neurotransmitter loading	Child-Parent
+synaptic vesicle priming	regulation of synaptic vesicle priming	Child-Parent
+synaptic vesicle recycling via endosome	regulation of recycling endosome localization within postsynapse	Child-Parent
+synaptic vesicle transport along microtubule	anterograde synaptic vesicle transport	Child-Parent
+synaptic vesicle transport along microtubule	retrograde synaptic vesicle transport	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by lipid	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by neuropeptide	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by soluble gas	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by trans-synaptic complex	Child-Parent
+trans-synaptic signaling	trans-synaptic signalling via exosome	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by BDNF	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling by BDNF, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling	trans-synaptic signaling, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling	chemical synaptic transmission	Child-Parent
+trans-synaptic signaling by BDNF, modulating synaptic transmission	regulation of trans-synaptic signaling by BDNF, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by carbon monoxide	trans-synaptic signaling by carbon monoxide, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by endocannabinoid	retrograde trans-synaptic signaling by endocannabinoid	Child-Parent
+trans-synaptic signaling by endocannabinoid	trans-synaptic signaling by endocannabinoid, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by endocannabinoid, modulating synaptic transmission	regulation of trans-synaptic signaling by endocannabinoid, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by lipid	retrograde trans-synaptic signaling by lipid	Child-Parent
+trans-synaptic signaling by lipid	trans-synaptic signaling by endocannabinoid	Child-Parent
+trans-synaptic signaling by lipid	trans-synaptic signaling by lipid, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by neuropeptide	retrograde trans-synaptic signaling by neuropeptide	Child-Parent
+trans-synaptic signaling by neuropeptide	trans-synaptic signaling by neuropeptide, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by neuropeptide, modulating synaptic transmission	retrograde trans-synaptic signaling by neuropeptide, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by nitric oxide	anterograde trans-synaptic signaling by nitric oxide	Child-Parent
+trans-synaptic signaling by nitric oxide	retrograde trans-synaptic signaling by nitric oxide	Child-Parent
+trans-synaptic signaling by nitric oxide	trans-synaptic signaling by nitric oxide, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by nitric oxide, modulating synaptic transmission	retrograde trans-synaptic signaling by nitric oxide, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by soluble gas	retrograde trans-synaptic signaling by soluble gas	Child-Parent
+trans-synaptic signaling by soluble gas	trans-synaptic signaling by carbon monoxide	Child-Parent
+trans-synaptic signaling by soluble gas	trans-synaptic signaling by nitric oxide	Child-Parent
+trans-synaptic signaling by soluble gas	trans-synaptic signaling by soluble gas, modulating synaptic transmission	Child-Parent
+trans-synaptic signaling by trans-synaptic complex	anterograde trans-synaptic signaling by trans-synaptic protein complex	Child-Parent
+trans-synaptic signaling by trans-synaptic complex	retrograde trans-synaptic signaling by trans-synaptic protein complex	Child-Parent
+trans-synaptic signaling by trans-synaptic complex	trans-synaptic signaling by trans-synaptic complex, modulating synaptic transmission	Child-Parent
+transport	axo-dendritic transport	Child-Parent
+transport	synaptic vesicle cytoskeletal transport	Child-Parent
+transport	synaptic vesicle recycling via endosome	Child-Parent
+transport	establishment of endoplasmic reticulum localization to postsynapse	Child-Parent
+transport	neurotransmitter receptor transport	Child-Parent
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels	Child-Parent
+regulation of postsynapse organization	ABHD17A	Gene-Term
+regulation of postsynapse organization	ABHD17B	Gene-Term
+metabolism	ABHD17B	Gene-Term
+regulation of postsynapse organization	ABHD17C	Gene-Term
+regulation of retrograde trans-synaptic signaling by endocanabinoid	ABHD6	Gene-Term
+postsynapse to nucleus signaling pathway	ABI1	Gene-Term
+presynaptic actin cytoskeleton organization	ABI1	Gene-Term
+presynaptic actin cytoskeleton organization	ABI2	Gene-Term
+presynaptic actin cytoskeleton organization	ABI3	Gene-Term
+synaptic vesicle clustering	ABI1	Gene-Term
+synaptic vesicle clustering	ABI2	Gene-Term
+synaptic vesicle clustering	ABI3	Gene-Term
+postsynapse organization	ABI2	Gene-Term
+postsynaptic actin cytoskeleton organization	ABI2	Gene-Term
+regulation of postsynaptic specialization assembly	ABL1	Gene-Term
+synapse maturation	ABL2	Gene-Term
+modulation of chemical synaptic transmission	ABR	Gene-Term
+neurotransmitter catabolic process	ACHE	Gene-Term
+regulation of synaptic vesicle endocytosis	ACTB	Gene-Term
+structural constituent of postsynaptic actin cytoskeleton	ACTB	Gene-Term
+regulation of synaptic vesicle endocytosis	ACTG1	Gene-Term
+structural constituent of postsynaptic actin cytoskeleton	ACTG1	Gene-Term
+structural constituent of postsynapse	ACTN1	Gene-Term
+postsynapse organization	ACTR3	Gene-Term
+postsynaptic actin cytoskeleton organization	ACTR3	Gene-Term
+regulation of postsynapse organization	ADAM10	Gene-Term
+protein catabolic process at postsynapse	ADAM10	Gene-Term
+postsynapse organization	ADAM10	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	ADAM10	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	ADAM22	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADCY1	Gene-Term
+modulation of chemical synaptic transmission	ADCY1	Gene-Term
+modulation of chemical synaptic transmission	ADCY8	Gene-Term
+synapse assembly	ADD2	Gene-Term
+postsynaptic actin cytoskeleton organization	ADGRB1	Gene-Term
+regulation of synapse maturation	ADGRB3	Gene-Term
+regulation of synapse disassembly	ADGRB3	Gene-Term
+synapse organization	ADGRL2	Gene-Term
+synapse organization	ADGRL3	Gene-Term
+regulation of presynaptic cytosolic calcium levels	ADORA1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADORA2A	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADORA2B	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADORA3	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADRA1A	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADRA2A	Gene-Term
+G-protein coupled neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential	ADRB1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	ADRB2	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	AGAP3	Gene-Term
+regulation of synapse organization	AGRN	Gene-Term
+modulation of chemical synaptic transmission	AKAP12	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	AKAP5	Gene-Term
+modulation of chemical synaptic transmission	AKAP7	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	AKAP9	Gene-Term
+trans-synaptic signaling by neuropeptide	ALK	Gene-Term
+synaptic vesicle endocytosis	AMPH	Gene-Term
+postsynapse to nucleus signaling pathway	ANKS1B	Gene-Term
+postsynaptic process involved in chemical synaptic transmission	ANKS1B	Gene-Term
+synaptic vesicle budding from endosome	AP1G1	Gene-Term
+synaptic vesicle endocytosis	AP1G1	Gene-Term
+synaptic vesicle budding from endosome	AP1S2	Gene-Term
+synaptic vesicle endocytosis	AP2B1	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	AP2B1	Gene-Term
+synaptic vesicle endocytosis	AP2M1	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	AP2M1	Gene-Term
+synaptic vesicle budding from endosome	AP3D1	Gene-Term
+neurotransmitter receptor transport, postsynaptic endosome to lysosome	AP3D1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	APBA1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	APBA2	Gene-Term
+synapse organization	APBB1	Gene-Term
+regulation of synapse organization	APOE	Gene-Term
+regulation of presynapse assembly	APP	Gene-Term
+modulation of chemical synaptic transmission	ARC	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	ARC	Gene-Term
+postsynaptic actin cytoskeleton organization	ARF1	Gene-Term
+regulation of postsynapse organization	ARF4	Gene-Term
+regulation of synapse organization	ARF4	Gene-Term
+regulation of presynapse assembly	ARF6	Gene-Term
+synaptic vesicle endocytosis	ARF6	Gene-Term
+maintenance of postsynaptic density structure	ARF6	Gene-Term
+regulation of postsynapse organization	ARHGAP22	Gene-Term
+postsynapse organization	ARHGAP39	Gene-Term
+modification of postsynaptic structure	ARHGAP44	Gene-Term
+modulation of chemical synaptic transmission	ARHGAP44	Gene-Term
+regulation of neurotransmitter receptor transport, endosome to postsynaptic membrane	ARHGAP44	Gene-Term
+regulation of postsynapse assembly	ARHGEF15	Gene-Term
+presynaptic actin cytoskeleton organization	ARHGEF7	Gene-Term
+postsynaptic actin cytoskeleton organization	ARHGEF7	Gene-Term
+regulation of postsynaptic specialization assembly	ARHGEF9	Gene-Term
+regulation of neurotransmitter uptake	ARL6IP5	Gene-Term
+regulation of anterograde synaptic vesicle transport	ARL8B	Gene-Term
+modulation of chemical synaptic transmission	ARRB2	Gene-Term
+postsynaptic signaling pathway	ARRB2	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	ATAD1	Gene-Term
+ATPase-coupled calcium ion transmembrane transporter activity involved in regulation of postsynaptic cytosolic calcium levels	ATP2B2	Gene-Term
+ATPase-coupled calcium ion transmembrane transporter activity involved in regulation of presynaptic cytosolic calcium levels	ATP2B3	Gene-Term
+synaptic vesicle proton loading	ATP6AP1	Gene-Term
+synaptic vesicle proton loading	ATP6V0A1	Gene-Term
+synaptic vesicle proton loading	ATP6V0A4	Gene-Term
+synaptic vesicle proton loading	ATP6V0C	Gene-Term
+synaptic vesicle proton loading	ATP6V0D1	Gene-Term
+synaptic vesicle proton loading	ATP6V1B1	Gene-Term
+synaptic vesicle proton loading	ATP6V1B2	Gene-Term
+synaptic vesicle proton loading	ATP6V1C1	Gene-Term
+synaptic vesicle proton loading	ATP6V1D	Gene-Term
+synaptic vesicle proton loading	ATP6V1E1	Gene-Term
+synaptic vesicle proton loading	ATP6V1F	Gene-Term
+synaptic vesicle proton loading	ATP6V1G1	Gene-Term
+synaptic vesicle proton loading	ATP6V1G2	Gene-Term
+synaptic vesicle proton loading	ATP6V1H	Gene-Term
+presynaptic modulation of chemical synaptic transmission	BACE1	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	BAIAP2	Gene-Term
+regulation of postsynapse organization	BAIAP2	Gene-Term
+modulation of chemical synaptic transmission	BAIAP2	Gene-Term
+modulation of chemical synaptic transmission	BAIAP3	Gene-Term
+synapse maturation	BCAN	Gene-Term
+modulation of chemical synaptic transmission	BCR	Gene-Term
+trans-synaptic signaling by BDNF, modulating synaptic transmission	BDNF	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	BEGAIN	Gene-Term
+synaptic vesicle endocytosis	BIN1	Gene-Term
+regulation of synaptic vesicle cycle	BSN	Gene-Term
+synaptic vesicle clustering	BSN	Gene-Term
+structural constituent of active zone	BSN	Gene-Term
+modulation of chemical synaptic transmission	BTBD9	Gene-Term
+regulation of synapse disassembly	C1QL1	Gene-Term
+postsynaptic density assembly	C1QL2	Gene-Term
+regulation of synapse maturation	C1QL2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	C1QL2	Gene-Term
+postsynaptic density assembly	C1QL3	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	C1QL3	Gene-Term
+modification of postsynaptic actin cytoskeleton	CABP1	Gene-Term
+postsynapse to nucleus signaling pathway	CABP1	Gene-Term
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	CACNA1A	Gene-Term
+voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels	CACNA1B	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	CACNA1B	Gene-Term
+voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels	CACNA1D	Gene-Term
+regulation of synaptic vesicle exocytosis	CACNA1E	Gene-Term
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	CACNA1E	Gene-Term
+voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels	CACNB2	Gene-Term
+voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels	CACNB4	Gene-Term
+regulation of synaptic vesicle exocytosis	CACNB4	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CACNG2	Gene-Term
+postsynaptic neurotransmitter receptor diffusion trapping	CACNG2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	CACNG2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	CACNG3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	CACNG4	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	CACNG5	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	CACNG7	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CACNG8	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	CADM1	Gene-Term
+presynapse assembly	CADM1	Gene-Term
+synapse adhesion between pre- and post-synapse	CADM1	Gene-Term
+synapse assembly	CADM1	Gene-Term
+maintenance of postsynaptic specialization structure	CADM1	Gene-Term
+presynaptic dense core vesicle exocytosis	CADPS	Gene-Term
+synaptic vesicle priming	CADPS	Gene-Term
+synaptic vesicle priming	CADPS2	Gene-Term
+calcium ion binding involved in regulation of postsynaptic cytosolic calcium levels	CALB1	Gene-Term
+calcium ion binding involved in regulation of presynaptic cytosolic calcium levels	CALB1	Gene-Term
+calcium ion binding involved in regulation of presynaptic cytosolic calcium levels	CALB2	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	CALY	Gene-Term
+regulation of synapse organization	CAMK1	Gene-Term
+regulation of synaptic vesicle docking	CAMK2A	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	CAMK2A	Gene-Term
+regulation of synapse maturation	CAMK2B	Gene-Term
+structural constituent of postsynaptic actin cytoskeleton	CAMK2B	Gene-Term
+postsynapse to nucleus signaling pathway	CAMK4	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	CAMK4	Gene-Term
+regulation of modification of postsynaptic structure	CAMKV	Gene-Term
+modulation of chemical synaptic transmission	CAMKV	Gene-Term
+synaptic vesicle endocytosis	CANX	Gene-Term
+regulation of synaptic vesicle exocytosis	CASK	Gene-Term
+regulation of presynapse assembly	CBLN1	Gene-Term
+regulation of postsynaptic density assembly	CBLN1	Gene-Term
+regulation of presynapse assembly	CBLN2	Gene-Term
+regulation of modification of postsynaptic structure	CDC42	Gene-Term
+regulation of postsynapse organization	CDC42	Gene-Term
+regulation of protein catabolic process at postsynapse, modulating synaptic transmission	CDH1	Gene-Term
+synapse adhesion between pre- and post-synapse	CDH10	Gene-Term
+modulation of chemical synaptic transmission	CDH11	Gene-Term
+modulation of chemical synaptic transmission	CDH2	Gene-Term
+synapse adhesion between pre- and post-synapse	CDH6	Gene-Term
+regulation of synapse organization	CDH8	Gene-Term
+synapse assembly	CDH9	Gene-Term
+synapse adhesion between pre- and post-synapse	CDH9	Gene-Term
+regulation of synapse disassembly	CDK5	Gene-Term
+regulation of presynaptic cytosolic calcium levels	CDK5	Gene-Term
+regulation of synaptic vesicle cycle	CDK5R1	Gene-Term
+regulation of postsynapse organization	CDKL5	Gene-Term
+modulation of chemical synaptic transmission	CDKL5	Gene-Term
+modification of postsynaptic actin cytoskeleton	CFL1	Gene-Term
+modulation of chemical synaptic transmission	CFL1	Gene-Term
+regulation of synapse assembly	CHD4	Gene-Term
+regulation of modification of postsynaptic structure	CHMP2B	Gene-Term
+regulation of postsynapse organization	CHMP2B	Gene-Term
+modulation of chemical synaptic transmission	CHMP2B	Gene-Term
+regulation of postsynapse organization	CHMP4BP1	Gene-Term
+regulation of postsynaptic membrane potential	CHRM1	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	CHRM1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRM2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA10	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNA3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA3	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNA4	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA4	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNA5	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNA6	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNA7	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA7	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNA9	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNB1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNB2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNB2	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CHRNB3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNB4	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRND	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNE	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	CHRNG	Gene-Term
+synaptic vesicle proton loading	CLCN3	Gene-Term
+presynapse assembly	CLEC3B	Gene-Term
+presynapse assembly	CLEC3A	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CLPTM1	Gene-Term
+neurotransmitter receptor transport to postsynaptic membrane	CLSTN1	Gene-Term
+regulation of synapse maturation	CLSTN1	Gene-Term
+regulation of presynapse assembly	CLSTN3	Gene-Term
+synaptic vesicle endocytosis	CLTC	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	CNIH2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	CNIH3	Gene-Term
+postsynapse organization	CNKSR2	Gene-Term
+regulation of ATP metabolic process in the presynapse	CNR1	Gene-Term
+retrograde trans-synaptic signaling by endocannabinoid	CNR1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	CNR1	Gene-Term
+presynapse assembly	CNTN5	Gene-Term
+regulation of synapse organization	CNTNAP4	Gene-Term
+modulation of chemical synaptic transmission	CNTNAP4	Gene-Term
+neurotransmitter catabolic process	COMT	Gene-Term
+regulation of translation at synapse, modulating synaptic transmission	CPEB1	Gene-Term
+modulation of chemical synaptic transmission	CPEB1	Gene-Term
+regulation of translation at synapse, modulating synaptic transmission	CPEB2	Gene-Term
+regulation of synaptic vesicle fusion to presynaptic active zone membrane	CPLX1	Gene-Term
+regulation of exocytic insertion of neurotransmitter receptor to postsynaptic membrane	CPLX1	Gene-Term
+regulation of synaptic vesicle fusion to presynaptic active zone membrane	CPLX2	Gene-Term
+regulation of synaptic vesicle fusion to presynaptic active zone membrane	CPLX3	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CPT1C	Gene-Term
+regulation of postsynaptic density assembly	CRIPT	Gene-Term
+postsynaptic specialization assembly	CRK	Gene-Term
+postsynaptic specialization assembly	CRKL	Gene-Term
+postsynapse to nucleus signaling pathway	CRTC1	Gene-Term
+regulation of synapse organization	CSNK2B	Gene-Term
+regulation of synaptic vesicle exocytosis	CSPG5	Gene-Term
+presynapse to nucleus signaling pathway	CTBP1	Gene-Term
+synaptic vesicle docking	CTBP2	Gene-Term
+structural constituent of active zone	CTBP2	Gene-Term
+modification of postsynaptic actin cytoskeleton	CTNNA2	Gene-Term
+synaptic vesicle clustering	CTNNB1	Gene-Term
+regulation of synapse assembly	CTNNB1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CTNND1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	CTNND2	Gene-Term
+structural constituent of postsynaptic density	CTNND2	Gene-Term
+modification of postsynaptic actin cytoskeleton	CTTN	Gene-Term
+modification of postsynaptic structure	CTTN	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	CTTNBP2	Gene-Term
+regulation of synapse organization	CTTNBP2	Gene-Term
+regulation of protein catabolic process at postsynapse	CUL3	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	CYFIP1	Gene-Term
+regulation of translation at postsynapse, modulating synaptic transmission	CYFIP1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	CYTH1	Gene-Term
+regulation of postsynapse organization	DACT1	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	DAG1	Gene-Term
+regulation of synapse organization	DAG1	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	DAG1	Gene-Term
+retrograde trans-synaptic signaling by endocannabinoid	DAGLA	Gene-Term
+postsynaptic actin cytoskeleton organization	DBN1	Gene-Term
+postsynaptic actin cytoskeleton organization	DBNL	Gene-Term
+structural constituent of postsynaptic actin cytoskeleton	DBNL	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	DCC	Gene-Term
+regulation of postsynapse organization	DGKB	Gene-Term
+modulation of chemical synaptic transmission	DGKB	Gene-Term
+modulation of chemical synaptic transmission	DGKE	Gene-Term
+presynaptic modulation of chemical synaptic transmission	DGKI	Gene-Term
+regulation of synaptic vesicle endocytosis	DGKQ	Gene-Term
+maintenance of postsynaptic density structure	DGKZ	Gene-Term
+synaptic vesicle endocytosis	DIAPH1	Gene-Term
+regulation of postsynapse organization	DISC1	Gene-Term
+structural constituent of postsynaptic density	DLG1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	DLG1	Gene-Term
+structural constituent of postsynaptic density	DLG2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	DLG2	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	DLG3	Gene-Term
+structural constituent of postsynaptic density	DLG3	Gene-Term
+structural constituent of postsynaptic density	DLG4	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	DLG4	Gene-Term
+postsynapse organization	DLG5	Gene-Term
+structural constituent of postsynaptic density	DLGAP1	Gene-Term
+modulation of chemical synaptic transmission	DLGAP1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	DLGAP2	Gene-Term
+modulation of chemical synaptic transmission	DLGAP2	Gene-Term
+modulation of chemical synaptic transmission	DLGAP3	Gene-Term
+modification of synaptic structure	DLGAP3	Gene-Term
+regulation of synaptic vesicle cycle	DNAJC5	Gene-Term
+presynaptic chaperone-mediated protein folding	DNAJC5	Gene-Term
+synaptic vesicle uncoating	DNAJC6	Gene-Term
+synaptic vesicle endocytosis	DNM1	Gene-Term
+modulation of chemical synaptic transmission	DNM1	Gene-Term
+synaptic vesicle endocytosis	DNM1L	Gene-Term
+synaptic vesicle endocytosis	DNM2	Gene-Term
+structural constituent of postsynapse	DNM3	Gene-Term
+synaptic vesicle endocytosis	DNM3	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	DOC2A	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	DOC2B	Gene-Term
+synaptic vesicle clustering	DOCK1	Gene-Term
+postsynaptic specialization assembly	DOCK7	Gene-Term
+transport	DPYSL2	Gene-Term
+presynaptic modulation of chemical synaptic transmission	DRD1	Gene-Term
+modification of postsynaptic structure	DRD1	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	DRD1	Gene-Term
+regulation of neurotransmitter uptake	DRD2	Gene-Term
+presynaptic modulation of chemical synaptic transmission	DRD2	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	DRD2	Gene-Term
+regulation of neurotransmitter uptake	DRD3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	DRD3	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	DRD4	Gene-Term
+presynaptic modulation of chemical synaptic transmission	DRD4	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	DRD4	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	DRD5	Gene-Term
+regulation of synaptic vesicle exocytosis	DTNBP1	Gene-Term
+regulation of postsynapse organization	DVL1	Gene-Term
+postsynapse organization	DVL1	Gene-Term
+regulation of synaptic vesicle exocytosis	DVL1	Gene-Term
+presynapse assembly	DVL1	Gene-Term
+protein translation at postsynapse	EEF2	Gene-Term
+regulation of protein translation at postsynapse	EEF2K	Gene-Term
+synapse adhesion between pre- and post-synapse	EFNA5	Gene-Term
+presynapse assembly	EFNB1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	EFNB2	Gene-Term
+presynapse assembly	EFNB2	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	EFNB2	Gene-Term
+trans-synaptic signaling by trans-synaptic complex, modulating synaptic transmission	EFNB3	Gene-Term
+regulation of modification of postsynaptic structure	EGLN1	Gene-Term
+regulation of protein catabolic process at postsynapse	EGLN1	Gene-Term
+synaptic vesicle endocytosis	EHD1	Gene-Term
+regulation of translation at postsynapse, modulating synaptic transmission	EIF4A3	Gene-Term
+trans-synaptic signaling	EIF4E	Gene-Term
+regulation of translation at postsynapse, modulating synaptic transmission	EIF4E	Gene-Term
+regulation of translation at presynapse, modulating synaptic transmission	EIF4EBP1	Gene-Term
+regulation of synapse assembly	ELAVL2	Gene-Term
+regulation of protein translation at postsynapse	ELAVL4	Gene-Term
+synapse adhesion between pre- and post-synapse	EPHA3	Gene-Term
+synapse disassembly	EPHA4	Gene-Term
+regulation of synapse disassembly	EPHA4	Gene-Term
+regulation of postsynapse organization	EPHA7	Gene-Term
+modulation of chemical synaptic transmission	EPHA7	Gene-Term
+modulation of chemical synaptic transmission	EPHB1	Gene-Term
+postsynaptic membrane assembly	EPHB2	Gene-Term
+regulation of synapse assembly	EPHB2	Gene-Term
+synaptic vesicle endocytosis	EPN1	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	EPS15	Gene-Term
+synaptic vesicle endocytosis	EPS15L1	Gene-Term
+synaptic vesicle endocytosis	EPS15	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	EPS8	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	ERBB2	Gene-Term
+synapse assembly	ERBB4	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	ERBB4	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	ERBIN	Gene-Term
+structural constituent of active zone	ERC1	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	ERC1	Gene-Term
+synaptic vesicle priming	ERC1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	ERC1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	ERC2	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	ERC2	Gene-Term
+synaptic vesicle priming	ERC2	Gene-Term
+structural constituent of active zone	ERC2	Gene-Term
+regulation of synapse maturation	EXOC2	Gene-Term
+anterograde axonal protein transport	EXOC2	Gene-Term
+regulation of presynapse assembly	FARP1	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	FARP1	Gene-Term
+postsynaptic actin cytoskeleton organization	FARP1	Gene-Term
+regulation of protein catabolic process at presynapse, modulating synaptic transmission	FBXL20	Gene-Term
+regulation of synaptic vesicle exocytosis	FBXL20	Gene-Term
+regulation of protein catabolic process at postsynapse, modulating synaptic transmission	FBXO2	Gene-Term
+regulation of synaptic vesicle exocytosis	FBXO45	Gene-Term
+anterograde axonal protein transport	FEZ1	Gene-Term
+modification of postsynaptic structure	FILIP1	Gene-Term
+synapse organization	FLNA	Gene-Term
+regulation of neurotransmitter uptake	FLOT1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	FLOT2	Gene-Term
+anterograde dendritic transport	FLOT2	Gene-Term
+synapse adhesion between pre- and post-synapse	FLRT3	Gene-Term
+regulation of translation at presynapse, modulating synaptic transmission	FMR1	Gene-Term
+regulation of translation at postsynapse, modulating synaptic transmission	FMR1	Gene-Term
+postsynaptic actin cytoskeleton organization	FRMPD4	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	FRRS1L	Gene-Term
+modulation of chemical synaptic transmission	FYN	Gene-Term
+regulation of presynapse assembly	FZD1	Gene-Term
+presynapse assembly	FZD5	Gene-Term
+postsynapse organization	FZD9	Gene-Term
+regulation of postsynaptic cytosolic calcium levels	FZD9	Gene-Term
+G-protein coupled neurotransmitter receptor activity involved in regulation of presynaptic membrane potential	GABBR1	Gene-Term
+G-protein coupled neurotransmitter receptor activity involved in regulation of postsynaptic membrane potential	GABBR1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRA1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA2	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRA2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA3	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRA3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA4	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA5	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRA5	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRA6	Gene-Term
+G-protein coupled neurotransmitter receptor activity involved in regulation of presynaptic membrane potential	GABRB1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRB1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRB1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRB2	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GABRB2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRB3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRD	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRE	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRG2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRG3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRR1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GABRR2	Gene-Term
+neurotransmitter biosynthetic process	GAD1	Gene-Term
+neurotransmitter biosynthetic process	GAD2	Gene-Term
+regulation of postsynaptic specialization assembly	GAP43	Gene-Term
+regulation of synaptic vesicle neurotransmitter loading	GAPDH	Gene-Term
+ATP metabolic process in the postsynapse	GAPDH	Gene-Term
+regulation of postsynapse organization	GHRL	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	GHRL	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	GHSR	Gene-Term
+regulation of postsynapse organization	GHSR	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	GHSR	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GIPC1	Gene-Term
+regulation of synaptic vesicle exocytosis	GIT1	Gene-Term
+structural constituent of postsynaptic specialization	GIT1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	GIT1	Gene-Term
+regulation of synaptic vesicle exocytosis	GIT2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GLRA1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GLRA1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GLRA2	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GLRA3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GLRB	Gene-Term
+regulation of presynapse assembly	GPC4	Gene-Term
+synapse adhesion between pre- and post-synapse	GPC4	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	GPC4	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	GPC6	Gene-Term
+modulation of chemical synaptic transmission	GPER1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	GPHN	Gene-Term
+regulation of synapse organization	GPM6A	Gene-Term
+regulation of neurotransmitter receptor transport, endosome to postsynaptic membrane	GRASP	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIA1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIA1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIA2	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIA2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIA3	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIA3	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIA4	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIA4	Gene-Term
+regulation of postsynapse organization	GRID1	Gene-Term
+regulation of presynapse assembly	GRID2	Gene-Term
+regulation of postsynaptic density assembly	GRID2	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIK1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIK1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIK2	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIK2	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIK3	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIK4	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIK5	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIK5	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN1	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIN1	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN2A	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIN2A	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN2B	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIN2B	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN2C	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN2D	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIN2D	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GRIN3A	Gene-Term
+transmitter-gated ion channel activity involved in regulation of postsynaptic membrane potential	GRIN3A	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	GRIN3B	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	GRIP1	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	GRIP2	Gene-Term
+regulation of neurotransmitter receptor transport, endosome to postsynaptic membrane	GRIPAP1	Gene-Term
+regulation of recycling endosome localization within postsynapse	GRIPAP1	Gene-Term
+G-protein coupled neurotransmitter receptor activity involved in regulation of postsynaptic cytosolic calcium levels	GRM1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GRM4	Gene-Term
+modulation of chemical synaptic transmission	GRM5	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GRM7	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GRM8	Gene-Term
+maintenance of synapse structure	GRN	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	GSG1L	Gene-Term
+regulation of modification of postsynaptic structure	GSK3B	Gene-Term
+presynaptic modulation of chemical synaptic transmission	GSK3B	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	GSK3B	Gene-Term
+retrograde trans-synaptic signaling by nitric oxide, modulating synaptic transmission	GUCY1A1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	HAP1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	HIP1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	HIP1	Gene-Term
+postsynapse organization	HIP1R	Gene-Term
+regulation of postsynapse organization	HNRNPK	Gene-Term
+modulation of chemical synaptic transmission	HNRNPK	Gene-Term
+regulation of postsynapse organization	HNRNPM	Gene-Term
+dendritic transport of messenger ribonucleoprotein complex	HNRNPU	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	HOMER1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	HOMER3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	HPCA	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	HRAS	Gene-Term
+regulation of postsynapse organization	HSPA8	Gene-Term
+synaptic vesicle uncoating	HSPA8	Gene-Term
+maintenance of postsynaptic specialization structure	HSPA8	Gene-Term
+presynaptic chaperone-mediated protein folding	HSPA8	Gene-Term
+presynaptic modulation of chemical synaptic transmission	HTR1A	Gene-Term
+presynaptic modulation of chemical synaptic transmission	HTR1B	Gene-Term
+regulation of synaptic vesicle exocytosis	HTR1B	Gene-Term
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	HTR1B	Gene-Term
+presynaptic modulation of chemical synaptic transmission	HTR2A	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	HTR3A	Gene-Term
+presynaptic modulation of chemical synaptic transmission	HTR7	Gene-Term
+postsynapse to nucleus signaling pathway	HTT	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	IGF1	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	IGF1R	Gene-Term
+synapse adhesion between pre- and post-synapse	IGSF9B	Gene-Term
+regulation of presynapse assembly	IL1RAP	Gene-Term
+regulation of postsynaptic density assembly	IL1RAP	Gene-Term
+trans-synaptic signaling by trans-synaptic complex	IL1RAP	Gene-Term
+synapse adhesion between pre- and post-synapse	IL1RAP	Gene-Term
+regulation of presynapse assembly	IL1RAPL1	Gene-Term
+regulation of postsynapse organization	IL1RAPL1	Gene-Term
+trans-synaptic signaling by trans-synaptic complex	IL1RAPL1	Gene-Term
+regulation of presynapse assembly	IL1RAPL2	Gene-Term
+structural constituent of postsynaptic intermediate filament cytoskeleton	INA	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	INA	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	IQSEC1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	IQSEC1	Gene-Term
+modulation of chemical synaptic transmission	IQSEC2	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	IQSEC2	Gene-Term
+postsynapse organization	IQSEC3	Gene-Term
+postsynapse organization	ITGA3	Gene-Term
+synapse adhesion between pre- and post-synapse	ITGA3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor diffusion trapping	ITGB1	Gene-Term
+maintenance of postsynaptic specialization structure	ITGB1	Gene-Term
+modulation of chemical synaptic transmission	ITGB1	Gene-Term
+regulation of synapse disassembly	ITGB1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor diffusion trapping	ITGB3	Gene-Term
+maintenance of postsynaptic specialization structure	ITGB3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	ITGB3	Gene-Term
+modification of postsynaptic actin cytoskeleton	ITPKA	Gene-Term
+inositol 1,4,5-trisphosphate receptor activity involved in regulation of postsynaptic cytosolic calcium levels	ITPR1	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	ITSN1	Gene-Term
+regulation of postsynapse organization	ITSN1	Gene-Term
+synaptic vesicle endocytosis	ITSN1	Gene-Term
+modulation of chemical synaptic transmission	JAK2	Gene-Term
+regulation of postsynapse to nucleus signaling pathway	JAK2	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	KALRN	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	KALRN	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNA1	Gene-Term
+voltage-gated ion channel activity involved in regulation of postsynaptic membrane potential	KCNA1	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNA2	Gene-Term
+voltage-gated ion channel activity involved in regulation of postsynaptic membrane potential	KCNA2	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNA4	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNC1	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNC2	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNC4	Gene-Term
+voltage-gated ion channel activity involved in regulation of postsynaptic membrane potential	KCNC4	Gene-Term
+voltage-gated ion channel activity involved in regulation of postsynaptic membrane potential	KCND2	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNH1	Gene-Term
+regulation of synaptic vesicle exocytosis	KCNH1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	KCNH1	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNJ11	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNJ3	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNJ6	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNJ8	Gene-Term
+regulation of presynaptic membrane potential	KCNJ9	Gene-Term
+ligand-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNMA1	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNMB4	Gene-Term
+modulation of chemical synaptic transmission	KCNN2	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	KCNQ5	Gene-Term
+synaptic vesicle budding from endosome	KIAA1107	Gene-Term
+synaptic vesicle endocytosis	KIAA1107	Gene-Term
+regulation of synaptic vesicle endocytosis	KIAA1109	Gene-Term
+anterograde dendritic transport of neurotransmitter receptor complex	KIF17	Gene-Term
+anterograde dendritic transport of neurotransmitter receptor complex	KIF5A	Gene-Term
+regulation of protein catabolic process at postsynapse	KLHL17	Gene-Term
+postsynapse to nucleus signaling pathway	KPNA1	Gene-Term
+postsynapse to nucleus signaling pathway	KPNA2	Gene-Term
+modulation of chemical synaptic transmission	L1CAM	Gene-Term
+postsynapse organization	LAMA5	Gene-Term
+structural constituent of synapse-associated extracellular matrix	LAMB2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	LGI1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	LHFPL4	Gene-Term
+regulation of synaptic vesicle cycle	LPAR1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	LPAR1	Gene-Term
+regulation of postsynaptic density assembly	LRFN1	Gene-Term
+regulation of postsynapse organization	LRFN2	Gene-Term
+modulation of chemical synaptic transmission	LRFN2	Gene-Term
+regulation of presynapse assembly	LRFN3	Gene-Term
+regulation of synaptic membrane adhesion	LRFN3	Gene-Term
+synapse adhesion between pre- and post-synapse	LRFN3	Gene-Term
+regulation of presynapse assembly	LRFN4	Gene-Term
+regulation of postsynaptic density assembly	LRFN4	Gene-Term
+synapse adhesion between pre- and post-synapse	LRFN4	Gene-Term
+regulation of presynapse assembly	LRFN5	Gene-Term
+synapse adhesion between pre- and post-synapse	LRFN5	Gene-Term
+modulation of chemical synaptic transmission	LRRC4	Gene-Term
+synapse adhesion between pre- and post-synapse	LRRC4	Gene-Term
+regulation of presynapse assembly	LRRC4B	Gene-Term
+regulation of postsynaptic density assembly	LRRC4B	Gene-Term
+synapse adhesion between pre- and post-synapse	LRRC4B	Gene-Term
+modulation of chemical synaptic transmission	LRRC4C	Gene-Term
+synapse adhesion between pre- and post-synapse	LRRC4C	Gene-Term
+regulation of synaptic vesicle endocytosis	LRRK2	Gene-Term
+regulation of presynapse assembly	LRRTM1	Gene-Term
+regulation of postsynaptic density assembly	LRRTM1	Gene-Term
+regulation of postsynaptic density assembly	LRRTM2	Gene-Term
+regulation of presynapse assembly	LRRTM3	Gene-Term
+regulation of synapse assembly	LRRTM4	Gene-Term
+regulation of postsynapse assembly	LZTS1	Gene-Term
+regulation of postsynapse assembly	LZTS3	Gene-Term
+anterograde synaptic vesicle transport	MADD	Gene-Term
+regulation of synaptic membrane adhesion	MAGI2	Gene-Term
+structural constituent of postsynaptic density	MAGI2	Gene-Term
+structural constituent of postsynaptic specialization	MAGI2	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	MAGI2	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	MAP2K1	Gene-Term
+neurotransmitter receptor transport to postsynaptic membrane	MAPK10	Gene-Term
+regulation of synaptic membrane adhesion	MAPK14	Gene-Term
+modulation of chemical synaptic transmission	MAPK3	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	MARCKS	Gene-Term
+regulation of presynaptic cytosolic calcium levels	MARCKSL1	Gene-Term
+regulation of postsynapse organization	MARK2	Gene-Term
+regulation of presynapse assembly	MDGA1	Gene-Term
+regulation of synaptic membrane adhesion	MDGA1	Gene-Term
+regulation of presynapse assembly	MDGA2	Gene-Term
+regulation of synaptic membrane adhesion	MDGA2	Gene-Term
+regulation of synapse organization	MECP2	Gene-Term
+structural constituent of postsynaptic density	MPP2	Gene-Term
+regulation of translation at synapse, modulating synaptic transmission	MTOR	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	MYH10	Gene-Term
+postsynaptic actin cytoskeleton organization	MYH10	Gene-Term
+establishment of endoplasmic reticulum localization to postsynapse	MYO5A	Gene-Term
+transport	MYO5A	Gene-Term
+regulation of postsynaptic cytosolic calcium levels	MYO5A	Gene-Term
+regulation of modification of postsynaptic structure	MYO5B	Gene-Term
+neurotransmitter receptor transport, endosome to plasma membrane	MYO5B	Gene-Term
+synaptic vesicle recycling via endosome	MYO5B	Gene-Term
+modulation of chemical synaptic transmission	MYO5B	Gene-Term
+presynaptic modulation of chemical synaptic transmission	MYO6	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	MYO6	Gene-Term
+postsynaptic specialization organization	MYO9A	Gene-Term
+regulation of synaptic vesicle priming	NAPA	Gene-Term
+synaptic vesicle priming	NAPA	Gene-Term
+regulation of synaptic vesicle priming	NAPB	Gene-Term
+synapse organization	NBEA	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	NBEA	Gene-Term
+modulation of chemical synaptic transmission	NCAM1	Gene-Term
+synapse adhesion between pre- and post-synapse	NCAM1	Gene-Term
+modulation of chemical synaptic transmission	NCAN	Gene-Term
+regulation of synapse organization	NCKAP1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	NCS1	Gene-Term
+postsynapse organization	NDRG1	Gene-Term
+postsynapse organization	NDRG2	Gene-Term
+regulation of synapse organization	NECTIN1	Gene-Term
+regulation of protein catabolic process at postsynapse, modulating synaptic transmission	NEDD4	Gene-Term
+regulation of protein catabolic process at postsynapse	NEDD4	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	NEDD4	Gene-Term
+structural constituent of postsynaptic intermediate filament cytoskeleton	NEFH	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	NEFH	Gene-Term
+regulation of synapse maturation	NEFL	Gene-Term
+structural constituent of postsynaptic intermediate filament cytoskeleton	NEFL	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	NEFL	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	NETO1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NETO1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	NETO2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NETO2	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	NETO2	Gene-Term
+regulation of modification of postsynaptic structure	NF1	Gene-Term
+regulation of postsynapse organization	NF1	Gene-Term
+postsynaptic signaling pathway	NF1	Gene-Term
+regulation of protein translation at postsynapse	NGDN	Gene-Term
+regulation of synapse disassembly	NGEF	Gene-Term
+postsynaptic specialization assembly	NLGN1	Gene-Term
+regulation of presynapse organization	NLGN1	Gene-Term
+synapse adhesion between pre- and post-synapse	NLGN1	Gene-Term
+regulation of presynapse assembly	NLGN2	Gene-Term
+postsynaptic specialization assembly	NLGN2	Gene-Term
+postsynaptic specialization assembly	NLGN3	Gene-Term
+synaptic signaling by nitric oxide	NOS1	Gene-Term
+regulation of postsynaptic membrane potential	NOS1	Gene-Term
+postsynaptic actin cytoskeleton organization	NOS1AP	Gene-Term
+trans-synaptic signaling by trans-synaptic complex, modulating synaptic transmission	NPTN	Gene-Term
+postsynaptic density assembly	NPTX1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	NPTX1	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NPTX1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	NPTX2	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NPTX2	Gene-Term
+regulation of postsynaptic specialization assembly	NPTXR	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	NPTXR	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NPTXR	Gene-Term
+regulation of synaptic vesicle exocytosis	NPY	Gene-Term
+regulation of presynaptic cytosolic calcium levels	NPY	Gene-Term
+regulation of synaptic vesicle exocytosis	NPY1R	Gene-Term
+regulation of presynaptic cytosolic calcium levels	NPY1R	Gene-Term
+presynaptic modulation of chemical synaptic transmission	NR3C2	Gene-Term
+regulation of postsynaptic membrane potential	NR3C2	Gene-Term
+regulation of postsynapse organization	NRCAM	Gene-Term
+regulation of presynapse assembly	NRG1	Gene-Term
+postsynapse to nucleus signaling pathway	NRG1	Gene-Term
+synapse adhesion between pre- and post-synapse	NRG1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	NRG1	Gene-Term
+regulation of synapse maturation	NRG2	Gene-Term
+regulation of synapse assembly	NRG2	Gene-Term
+modulation of chemical synaptic transmission	NRG3	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	NRGN	Gene-Term
+transport	NRN1	Gene-Term
+presynaptic modulation of chemical synaptic transmission	NRN1	Gene-Term
+postsynapse organization	NRP1	Gene-Term
+regulation of postsynapse organization	NRP2	Gene-Term
+regulation of presynapse assembly	NRXN1	Gene-Term
+presynapse assembly	NRXN1	Gene-Term
+synapse adhesion between pre- and post-synapse	NRXN1	Gene-Term
+regulation of synaptic vesicle cycle	NRXN1	Gene-Term
+regulation of trans-synaptic signaling by endocannabinoid, modulating synaptic transmission	NRXN1	Gene-Term
+regulation of postsynaptic density assembly	NRXN1	Gene-Term
+regulation of postsynaptic specialization assembly	NRXN1	Gene-Term
+postsynaptic density assembly	NRXN3	Gene-Term
+trans-synaptic signaling	NRXN3	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	NRXN3	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	NRXN3	Gene-Term
+presynaptic modulation of chemical synaptic transmission	NRXN3	Gene-Term
+synaptic vesicle cycle	NSF	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	NSG1	Gene-Term
+postsynapse to nucleus signaling pathway	NSMF	Gene-Term
+regulation of synapse assembly	NTN1	Gene-Term
+modulation of chemical synaptic transmission	NTNG1	Gene-Term
+synapse adhesion between pre- and post-synapse	NTNG1	Gene-Term
+regulation of presynapse assembly	NTNG2	Gene-Term
+postsynaptic specialization assembly	NTNG2	Gene-Term
+modulation of chemical synaptic transmission	NTNG2	Gene-Term
+synapse adhesion between pre- and post-synapse	NTNG2	Gene-Term
+trans-synaptic signaling by BDNF, modulating synaptic transmission	NTRK2	Gene-Term
+regulation of presynapse assembly	NTRK3	Gene-Term
+postsynaptic density assembly	NTRK3	Gene-Term
+regulation of postsynapse assembly	NUMB	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	NUMB	Gene-Term
+regulation of postsynapse assembly	NUMBL	Gene-Term
+regulation of synaptic vesicle endocytosis	OPHN1	Gene-Term
+maintenance of postsynaptic specialization structure	OPHN1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	OPHN1	Gene-Term
+regulation of synaptic vesicle exocytosis	P2RX1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	P2RX1	Gene-Term
+regulation of synaptic vesicle exocytosis	P2RX2	Gene-Term
+regulation of presynaptic cytosolic calcium levels	P2RX2	Gene-Term
+modulation of chemical synaptic transmission	P2RX3	Gene-Term
+regulation of presynaptic dense core vesicle exocytosis	P2RX7	Gene-Term
+regulation of synaptic vesicle exocytosis	P2RY1	Gene-Term
+regulation of presynaptic cytosolic calcium levels	P2RY1	Gene-Term
+regulation of synaptic vesicle exocytosis	P2RY2	Gene-Term
+regulation of presynaptic cytosolic calcium levels	P2RY2	Gene-Term
+regulation of synaptic vesicle exocytosis	P2RY4	Gene-Term
+regulation of presynaptic cytosolic calcium levels	P2RY4	Gene-Term
+synaptic vesicle endocytosis	PACSIN1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	PACSIN1	Gene-Term
+modulation of chemical synaptic transmission	PACSIN2	Gene-Term
+regulation of postsynapse organization	PAFAH1B1	Gene-Term
+modulation of chemical synaptic transmission	PAFAH1B1	Gene-Term
+regulation of trans-synaptic signaling by endocannabinoid, modulating synaptic transmission	PAK1	Gene-Term
+regulation of synapse maturation	PAK1	Gene-Term
+regulation of synapse maturation	PAK2	Gene-Term
+regulation of synapse maturation	PAK3	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	PAK1	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	PAK2	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	PAK3	Gene-Term
+regulation of postsynapse organization	PAK3	Gene-Term
+synapse adhesion between pre- and post-synapse	PCDH17	Gene-Term
+regulation of synaptic membrane adhesion	PCDH8	Gene-Term
+modulation of chemical synaptic transmission	PCDH8	Gene-Term
+synaptic vesicle clustering	PCLO	Gene-Term
+structural constituent of active zone	PCLO	Gene-Term
+modulation of chemical synaptic transmission	PDE4A	Gene-Term
+synaptic signaling via neuropeptide	PENK	Gene-Term
+modification of postsynaptic actin cytoskeleton	PFN1	Gene-Term
+synapse maturation	PFN1	Gene-Term
+modulation of chemical synaptic transmission	PFN1	Gene-Term
+modification of postsynaptic actin cytoskeleton	PFN2	Gene-Term
+presynaptic modulation of chemical synaptic transmission	PFN2	Gene-Term
+modulation of chemical synaptic transmission	PFN2	Gene-Term
+synaptic vesicle endocytosis	PICALM	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	PICK1	Gene-Term
+regulation of protein catabolic process at postsynapse	PIN1	Gene-Term
+regulation of synaptic vesicle endocytosis	PIP5K1C	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	PIP5K1C	Gene-Term
+trans-synaptic signaling by BDNF, modulating synaptic transmission	PLAT	Gene-Term
+regulation of retrograde trans-synaptic signaling by endocanabinoid	PLCB1	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	PLCB1	Gene-Term
+modulation of chemical synaptic transmission	PLCB4	Gene-Term
+modulation of chemical synaptic transmission	PLCG1	Gene-Term
+regulation of synaptic vesicle cycle	PLD1	Gene-Term
+regulation of protein catabolic process at presynapse	PLEKHG5	Gene-Term
+trans-synaptic signaling by BDNF, modulating synaptic transmission	PLG	Gene-Term
+regulation of synaptic vesicle cycle	PLS3	Gene-Term
+structural constituent of presynaptic actin cytoskeleton	PLS3	Gene-Term
+maintenance of synapse structure	PLXNA4	Gene-Term
+regulation of synapse disassembly	PLXNC1	Gene-Term
+synaptic target recognition	PLXND1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	PORCN	Gene-Term
+presynapse assembly	PPFIA1	Gene-Term
+presynapse assembly	PPFIA2	Gene-Term
+presynapse assembly	PPFIA3	Gene-Term
+presynapse assembly	PPFIA4	Gene-Term
+structural constituent of presynapse	PPFIA2	Gene-Term
+regulation of synaptic vesicle exocytosis	PPFIA2	Gene-Term
+synaptic vesicle exocytosis	PPFIA3	Gene-Term
+synaptic vesicle docking	PPFIA3	Gene-Term
+regulation of synapse assembly	PPFIBP2	Gene-Term
+postsynaptic actin cytoskeleton organization	PPP1R9A	Gene-Term
+modulation of chemical synaptic transmission	PPP1R9A	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	PPP3CA	Gene-Term
+regulation of synaptic vesicle endocytosis	PPP3CB	Gene-Term
+regulation of synaptic vesicle endocytosis	PPP3CC	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	PPP3R1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	PPP3R1	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	PRKACA	Gene-Term
+regulation of synaptic vesicle cycle	PRKAR1B	Gene-Term
+modulation of chemical synaptic transmission	PRKAR1B	Gene-Term
+modulation of chemical synaptic transmission	PRKAR2A	Gene-Term
+modulation of chemical synaptic transmission	PRKAR2B	Gene-Term
+regulation of synaptic vesicle exocytosis	PRKCA	Gene-Term
+regulation of synaptic vesicle exocytosis	PRKCB	Gene-Term
+presynaptic modulation of chemical synaptic transmission	PRKCE	Gene-Term
+regulation of synaptic vesicle exocytosis	PRKCG	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	PRKCI	Gene-Term
+regulation of synaptic vesicle endocytosis	PRKN	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	PRKN	Gene-Term
+regulation of protein catabolic process at presynapse	PRKN	Gene-Term
+postsynapse to nucleus signaling pathway	PRR7	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	PRRT2	Gene-Term
+regulation of postsynapse assembly	PSD	Gene-Term
+regulation of postsynapse organization	PSEN1	Gene-Term
+protein catabolic process at postsynapse	PSEN1	Gene-Term
+regulation of postsynapse organization	PSEN2	Gene-Term
+protein catabolic process at postsynapse	PSEN2	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	PTK2	Gene-Term
+regulation of postsynaptic density assembly	PTK2B	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	PTK2B	Gene-Term
+modulation of chemical synaptic transmission	PTN	Gene-Term
+modulation of chemical synaptic transmission	PTPRA	Gene-Term
+modulation of chemical synaptic transmission	PTPRD	Gene-Term
+presynapse assembly	PTPRD	Gene-Term
+synapse adhesion between pre- and post-synapse	PTPRD	Gene-Term
+regulation of postsynaptic density assembly	PTPRD	Gene-Term
+trans-synaptic signaling by trans-synaptic complex	PTPRD	Gene-Term
+regulation of postsynapse organization	PTPRF	Gene-Term
+synapse adhesion between pre- and post-synapse	PTPRF	Gene-Term
+regulation of synapse organization	PTPRO	Gene-Term
+modulation of chemical synaptic transmission	PTPRS	Gene-Term
+presynapse assembly	PTPRS	Gene-Term
+synapse organization	PTPRS	Gene-Term
+synapse adhesion between pre- and post-synapse	PTPRS	Gene-Term
+regulation of postsynaptic density assembly	PTPRS	Gene-Term
+regulation of synapse organization	PTPRT	Gene-Term
+dendritic transport of messenger ribonucleoprotein complex	PURA	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	RAB11A	Gene-Term
+anterograde axonal transport	RAB21	Gene-Term
+regulation of protein catabolic process at presynapse	RAB26	Gene-Term
+synaptic vesicle endocytosis	RAB27B	Gene-Term
+synaptic vesicle endosomal processing	RAB35	Gene-Term
+regulation of synaptic vesicle fusion to presynaptic active zone membrane	RAB3A	Gene-Term
+regulation of synaptic vesicle cycle	RAB3B	Gene-Term
+synaptic vesicle endocytosis	RAB5A	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	RAB5A	Gene-Term
+neurotransmitter receptor transport to postsynaptic membrane	RAB8A	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	RAB8A	Gene-Term
+postsynaptic actin cytoskeleton organization	RAC3	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	RAP1A	Gene-Term
+modification of postsynaptic structure	RAP1B	Gene-Term
+regulation of postsynapse organization	RAPGEF4	Gene-Term
+regulation of synaptic vesicle cycle	RAPGEF4	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	RAPGEF4	Gene-Term
+presynapse assembly	RAPH1	Gene-Term
+structural constituent of postsynaptic specialization	RAPSN	Gene-Term
+neurotransmitter receptor localization to postsynaptic specialization membrane	RAPSN	Gene-Term
+regulation of postsynapse organization	RBMX	Gene-Term
+postsynapse to nucleus signaling pathway	RELA	Gene-Term
+modulation of chemical synaptic transmission	RGS14	Gene-Term
+regulation of postsynaptic membrane potential	RGS7	Gene-Term
+regulation of postsynaptic membrane potential	RGS7BP	Gene-Term
+regulation of postsynapse organization	RHEB	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	RHOA	Gene-Term
+regulation of modification of postsynaptic structure	RHOA	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	RIMBP2	Gene-Term
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	RIMBP2	Gene-Term
+structural constituent of active zone	RIMBP2	Gene-Term
+synaptic vesicle docking	RIMS1	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	RIMS1	Gene-Term
+synaptic vesicle priming	RIMS1	Gene-Term
+structural constituent of active zone	RIMS1	Gene-Term
+synaptic vesicle docking	RIMS2	Gene-Term
+regulation of calcium-dependent activation of synaptic vesicle fusion	RIMS2	Gene-Term
+synaptic vesicle priming	RIMS2	Gene-Term
+structural constituent of active zone	RIMS2	Gene-Term
+regulation of synapse organization	RIMS3	Gene-Term
+regulation of synapse organization	RIMS4	Gene-Term
+postsynapse to nucleus signaling pathway	RNF10	Gene-Term
+regulation of protein catabolic process at postsynapse, modulating synaptic transmission	RNF19A	Gene-Term
+protein catabolic process, modulating synaptic transmission	RNF216	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	RNF216	Gene-Term
+postsynaptic actin cytoskeleton organization	ROCK2	Gene-Term
+regulation of postsynapse organization	ROR2	Gene-Term
+regulation of synaptic signaling by nitric oxide	ROR2	Gene-Term
+modulation of chemical synaptic transmission	ROR2	Gene-Term
+synaptic vesicle priming	RPH3A	Gene-Term
+protein translation at presynapse	RPL10	Gene-Term
+protein translation at postsynapse	RPL10	Gene-Term
+protein translation at presynapse	RPL10A	Gene-Term
+protein translation at postsynapse	RPL10A	Gene-Term
+protein translation at presynapse	RPL11	Gene-Term
+protein translation at postsynapse	RPL11	Gene-Term
+protein translation at presynapse	RPL12	Gene-Term
+protein translation at postsynapse	RPL12	Gene-Term
+protein translation at presynapse	RPL13	Gene-Term
+protein translation at postsynapse	RPL13	Gene-Term
+protein translation at presynapse	RPL13A	Gene-Term
+protein translation at postsynapse	RPL13A	Gene-Term
+protein translation at presynapse	RPL14	Gene-Term
+protein translation at postsynapse	RPL14	Gene-Term
+protein translation at presynapse	RPL15	Gene-Term
+protein translation at postsynapse	RPL15	Gene-Term
+protein translation at presynapse	RPL17	Gene-Term
+protein translation at postsynapse	RPL17	Gene-Term
+protein translation at presynapse	RPL18	Gene-Term
+protein translation at postsynapse	RPL18	Gene-Term
+protein translation at presynapse	RPL22	Gene-Term
+protein translation at postsynapse	RPL22	Gene-Term
+protein translation at presynapse	RPL23	Gene-Term
+protein translation at postsynapse	RPL23	Gene-Term
+protein translation at presynapse	RPL23A	Gene-Term
+protein translation at postsynapse	RPL23A	Gene-Term
+protein translation at presynapse	RPL24	Gene-Term
+protein translation at postsynapse	RPL24	Gene-Term
+protein translation at presynapse	RPL26	Gene-Term
+protein translation at postsynapse	RPL26	Gene-Term
+protein translation at presynapse	RPL27	Gene-Term
+protein translation at postsynapse	RPL27	Gene-Term
+protein translation at presynapse	RPL27A	Gene-Term
+protein translation at postsynapse	RPL27A	Gene-Term
+protein translation at presynapse	RPL28	Gene-Term
+protein translation at postsynapse	RPL28	Gene-Term
+protein translation at presynapse	RPL29	Gene-Term
+protein translation at postsynapse	RPL29	Gene-Term
+protein translation at presynapse	RPL32	Gene-Term
+protein translation at postsynapse	RPL32	Gene-Term
+protein translation at presynapse	RPL34	Gene-Term
+protein translation at postsynapse	RPL34	Gene-Term
+protein translation at presynapse	RPL35	Gene-Term
+protein translation at postsynapse	RPL35	Gene-Term
+protein translation at presynapse	RPL35A	Gene-Term
+protein translation at postsynapse	RPL35A	Gene-Term
+protein translation at presynapse	RPL36	Gene-Term
+protein translation at postsynapse	RPL36	Gene-Term
+protein translation at presynapse	RPL36A	Gene-Term
+protein translation at postsynapse	RPL36A	Gene-Term
+protein translation at presynapse	RPL37	Gene-Term
+protein translation at postsynapse	RPL37	Gene-Term
+protein translation at presynapse	RPL37A	Gene-Term
+protein translation at postsynapse	RPL37A	Gene-Term
+protein translation at presynapse	RPL38	Gene-Term
+protein translation at postsynapse	RPL38	Gene-Term
+protein translation at presynapse	RPL4	Gene-Term
+protein translation at postsynapse	RPL4	Gene-Term
+protein translation at presynapse	RPL5	Gene-Term
+protein translation at postsynapse	RPL5	Gene-Term
+protein translation at presynapse	RPL6	Gene-Term
+protein translation at postsynapse	RPL6	Gene-Term
+protein translation at presynapse	RPL7	Gene-Term
+protein translation at postsynapse	RPL7	Gene-Term
+protein translation at presynapse	RPL7A	Gene-Term
+protein translation at postsynapse	RPL7A	Gene-Term
+protein translation at presynapse	RPL8	Gene-Term
+protein translation at postsynapse	RPL8	Gene-Term
+protein translation at presynapse	RPL9	Gene-Term
+protein translation at postsynapse	RPL9	Gene-Term
+protein translation at presynapse	RPLP0	Gene-Term
+protein translation at postsynapse	RPLP0	Gene-Term
+protein translation at presynapse	RPLP2	Gene-Term
+protein translation at postsynapse	RPLP2	Gene-Term
+protein translation at presynapse	RPS10	Gene-Term
+protein translation at postsynapse	RPS10	Gene-Term
+protein translation at presynapse	RPS11	Gene-Term
+protein translation at postsynapse	RPS11	Gene-Term
+protein translation at presynapse	RPS12	Gene-Term
+protein translation at postsynapse	RPS12	Gene-Term
+protein translation at presynapse	RPS13	Gene-Term
+protein translation at postsynapse	RPS13	Gene-Term
+protein translation at presynapse	RPS14	Gene-Term
+protein translation at postsynapse	RPS14	Gene-Term
+protein translation at presynapse	RPS15A	Gene-Term
+protein translation at postsynapse	RPS15A	Gene-Term
+protein translation at presynapse	RPS16	Gene-Term
+protein translation at postsynapse	RPS16	Gene-Term
+protein translation at presynapse	RPS24	Gene-Term
+protein translation at postsynapse	RPS24	Gene-Term
+protein translation at presynapse	RPS26	Gene-Term
+protein translation at postsynapse	RPS26	Gene-Term
+protein translation at presynapse	RPS27	Gene-Term
+protein translation at postsynapse	RPS27	Gene-Term
+protein translation at presynapse	RPS27A	Gene-Term
+protein translation at postsynapse	RPS27A	Gene-Term
+protein translation at presynapse	RPS28	Gene-Term
+protein translation at postsynapse	RPS28	Gene-Term
+protein translation at presynapse	RPS5	Gene-Term
+protein translation at postsynapse	RPS5	Gene-Term
+neurotransmitter receptor transport to postsynaptic membrane	SACM1L	Gene-Term
+regulation of synaptic vesicle endocytosis	SCAMP5	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	SCN10A	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	SCN1A	Gene-Term
+voltage-gated ion channel activity involved in regulation of presynaptic membrane potential	SCN2A	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	SCRIB	Gene-Term
+synaptic vesicle endocytosis	SCRIB	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	SCRIB	Gene-Term
+presynapse assembly	SDCBP	Gene-Term
+maintenance of synapse structure	SEMA3A	Gene-Term
+regulation of synapse organization	SEMA3A	Gene-Term
+synaptic target recognition	SEMA3A	Gene-Term
+regulation of postsynapse organization	SEMA3F	Gene-Term
+regulation of synapse organization	SEPT11	Gene-Term
+regulation of synaptic vesicle docking	SEPT5	Gene-Term
+structural constituent of postsynapse	SEPT7	Gene-Term
+postsynapse organization	SEPT7	Gene-Term
+dendritic transport of messenger ribonucleoprotein complex	SFPQ	Gene-Term
+presynaptic chaperone-mediated protein folding	SGTA	Gene-Term
+synaptic vesicle endocytosis	SH3GL2	Gene-Term
+postsynaptic actin cytoskeleton organization	SH3GL2	Gene-Term
+postsynaptic neurotransmitter receptor endocytosis	SH3GLB2	Gene-Term
+structural constituent of postsynaptic density	SHANK1	Gene-Term
+modulation of chemical synaptic transmission	SHANK1	Gene-Term
+regulation of postsynapse organization	SHANK2	Gene-Term
+structural constituent of postsynaptic density	SHANK2	Gene-Term
+regulation of postsynapse organization	SHANK3	Gene-Term
+structural constituent of postsynaptic density	SHANK3	Gene-Term
+modulation of chemical synaptic transmission	SHANK3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	SHISA6	Gene-Term
+postsynaptic neurotransmitter receptor diffusion trapping	SHISA6	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	SHISA7	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	SHISA9	Gene-Term
+postsynaptic actin cytoskeleton organization	SIPA1L1	Gene-Term
+regulation of postsynaptic density assembly	SIPA1L1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	SIRT2	Gene-Term
+regulation of synapse disassembly	SKP1	Gene-Term
+regulation of synaptic vesicle neurotransmitter loading	SLC10A4	Gene-Term
+metabolism	SLC16A3	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC17A6	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC17A7	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC17A8	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC18A2	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC18A3	Gene-Term
+neurotransmitter reuptake	SLC1A2	Gene-Term
+neurotransmitter uptake	SLC1A6	Gene-Term
+regulation of synaptic vesicle budding from presynaptic endocytic zone membrane	SLC2A4	Gene-Term
+zinc ion import into synaptic vesicle	SLC30A3	Gene-Term
+synaptic vesicle neurotransmitter loading	SLC32A1	Gene-Term
+neurotransmitter reuptake	SLC6A1	Gene-Term
+neurotransmitter uptake	SLC6A11	Gene-Term
+metabolism	SLC6A17	Gene-Term
+neurotransmitter reuptake	SLC6A2	Gene-Term
+neurotransmitter uptake	SLC6A3	Gene-Term
+neurotransmitter reuptake	SLC6A4	Gene-Term
+neurotransmitter uptake	SLC6A5	Gene-Term
+neurotransmitter reuptake	SLC6A5	Gene-Term
+transport	SLC6A6	Gene-Term
+modulation of chemical synaptic transmission	SLC6A6	Gene-Term
+metabolism	SLC6A7	Gene-Term
+metabolism	SLC6A8	Gene-Term
+neurotransmitter uptake	SLC6A9	Gene-Term
+calcium:cation antiporter activity involved in regulation of postsynaptic cytosolic calcium ion levels	SLC8A1	Gene-Term
+calcium:cation antiporter activity involved in regulation of postsynaptic cytosolic calcium ion levels	SLC8A2	Gene-Term
+calcium:cation antiporter activity involved in regulation of postsynaptic cytosolic calcium ion levels	SLC8A3	Gene-Term
+regulation of presynapse assembly	SLITRK1	Gene-Term
+regulation of synapse organization	SLITRK1	Gene-Term
+synapse adhesion between pre- and post-synapse	SLITRK1	Gene-Term
+regulation of presynapse assembly	SLITRK2	Gene-Term
+regulation of synapse organization	SLITRK2	Gene-Term
+synapse adhesion between pre- and post-synapse	SLITRK2	Gene-Term
+regulation of presynapse assembly	SLITRK3	Gene-Term
+synapse adhesion between pre- and post-synapse	SLITRK3	Gene-Term
+regulation of synapse organization	SLITRK4	Gene-Term
+exocytic insertion of neurotransmitter receptor to postsynaptic membrane	SNAP23	Gene-Term
+synaptic vesicle exocytosis	SNAP25	Gene-Term
+regulation of synaptic vesicle cycle	SNAP29	Gene-Term
+regulation of synaptic vesicle exocytosis	SNAP29	Gene-Term
+exocytic insertion of neurotransmitter receptor to postsynaptic membrane	SNAP47	Gene-Term
+synaptic vesicle endocytosis	SNAP91	Gene-Term
+regulation of synaptic vesicle exocytosis	SNAPIN	Gene-Term
+synaptic vesicle endocytosis	SNCA	Gene-Term
+synaptic vesicle endocytosis	SNCB	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	SORCS3	Gene-Term
+maintenance of synapse structure	SORT1	Gene-Term
+regulation of synapse organization	SPARC	Gene-Term
+regulation of synapse organization	SPARCL1	Gene-Term
+synapse adhesion between pre- and post-synapse	SPARCL1	Gene-Term
+modification of postsynaptic actin cytoskeleton	SPTB	Gene-Term
+structural constituent of postsynapse	SPTBN2	Gene-Term
+regulation of postsynaptic specialization assembly	SPTBN2	Gene-Term
+postsynapse organization	SPTBN2	Gene-Term
+regulation of postsynaptic neurotransmitter receptor activity	SRC	Gene-Term
+postsynaptic actin cytoskeleton organization	SRCIN1	Gene-Term
+regulation of synapse assembly	SRCIN1	Gene-Term
+regulation of postsynapse organization	SRGN	Gene-Term
+modulation of chemical synaptic transmission	SRGN	Gene-Term
+postsynapse to nucleus signaling pathway	STAT3	Gene-Term
+modulation of chemical synaptic transmission	STAT3	Gene-Term
+modification of postsynaptic structure	STAU1	Gene-Term
+modulation of chemical synaptic transmission	STAU1	Gene-Term
+dendritic transport of messenger ribonucleoprotein complex	STAU1	Gene-Term
+anterograde dendritic transport of messenger ribonucleoprotein complex	STAU2	Gene-Term
+synaptic vesicle endocytosis	STON2	Gene-Term
+synaptic vesicle to endosome fusion	STX12	Gene-Term
+synaptic vesicle exocytosis	STX1A	Gene-Term
+synaptic vesicle exocytosis	STX1B	Gene-Term
+synaptic vesicle fusion to presynaptic active zone membrane	STX1B	Gene-Term
+synaptic vesicle exocytosis	STX3	Gene-Term
+exocytic insertion of neurotransmitter receptor to postsynaptic membrane	STX3	Gene-Term
+modulation of chemical synaptic transmission	STX3	Gene-Term
+exocytic insertion of neurotransmitter receptor to postsynaptic membrane	STX4	Gene-Term
+synaptic vesicle to endosome fusion	STX6	Gene-Term
+synaptic vesicle priming	STXBP1	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	STXBP4	Gene-Term
+regulation of synaptic vesicle docking	STXBP5	Gene-Term
+synaptic vesicle cycle	STXBP5	Gene-Term
+regulation of synaptic vesicle exocytosis	STXBP5	Gene-Term
+regulation of presynaptic dense core vesicle exocytosis	STXBP5	Gene-Term
+regulation of synaptic vesicle priming	STXBP5	Gene-Term
+regulation of synaptic vesicle exocytosis	STXBP5L	Gene-Term
+synaptic vesicle priming	SV2A	Gene-Term
+regulation of synaptic vesicle exocytosis	SV2B	Gene-Term
+regulation of presynaptic cytosolic calcium levels	SV2B	Gene-Term
+regulation of synaptic vesicle exocytosis	SV2C	Gene-Term
+synapse assembly	SYDE1	Gene-Term
+synapse assembly	SYDE2	Gene-Term
+regulation of synaptic vesicle cycle	SYN1	Gene-Term
+synaptic vesicle cycle	SYN1	Gene-Term
+synaptic vesicle cycle	SYN2	Gene-Term
+synaptic vesicle clustering	SYN2	Gene-Term
+synaptic vesicle cycle	SYN3	Gene-Term
+synaptic vesicle clustering	SYN3	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	SYNE1	Gene-Term
+modulation of chemical synaptic transmission	SYNGAP1	Gene-Term
+maintenance of postsynaptic specialization structure	SYNGAP1	Gene-Term
+regulation of synaptic vesicle cycle	SYNGR1	Gene-Term
+regulation of synaptic vesicle cycle	SYNGR2	Gene-Term
+regulation of synaptic vesicle cycle	SYNGR3	Gene-Term
+regulation of synaptic vesicle cycle	SYNGR4	Gene-Term
+regulation of neurotransmitter uptake	SYNGR3	Gene-Term
+synaptic vesicle uncoating	SYNJ1	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	SYNJ1	Gene-Term
+regulation of postsynaptic cytosolic calcium levels	SYNPO	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	SYNPO	Gene-Term
+regulation of synaptic vesicle exocytosis	SYP	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	SYT1	Gene-Term
+presynaptic dense core vesicle exocytosis	SYT10	Gene-Term
+regulation of synaptic vesicle endocytosis	SYT11	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	SYT2	Gene-Term
+regulation of trans-synaptic signaling by BDNF, modulating synaptic transmission	SYT4	Gene-Term
+regulation of postsynaptic dense core vesicle exocytosis	SYT4	Gene-Term
+postsynaptic dense core vesicle exocytosis	SYT6	Gene-Term
+regulation of synaptic vesicle endocytosis	SYT7	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	SYT7	Gene-Term
+calcium-dependent activation of synaptic vesicle fusion	SYT9	Gene-Term
+regulation of postsynapse organization	TANC1	Gene-Term
+regulation of postsynapse organization	TAOK2	Gene-Term
+regulation of synaptic membrane adhesion	TAOK2	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	TENM1	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	TENM2	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	TENM3	Gene-Term
+retrograde trans-synaptic signaling by trans-synaptic protein complex	TENM4	Gene-Term
+postsynaptic spectrin-associated cytoskeleton organization	TENM1	Gene-Term
+postsynaptic spectrin-associated cytoskeleton organization	TENM2	Gene-Term
+postsynaptic spectrin-associated cytoskeleton organization	TENM3	Gene-Term
+postsynaptic spectrin-associated cytoskeleton organization	TENM4	Gene-Term
+maintenance of alignment of postsynaptic density and presynaptic active zone	TENM1	Gene-Term
+maintenance of alignment of postsynaptic density and presynaptic active zone	TENM2	Gene-Term
+maintenance of alignment of postsynaptic density and presynaptic active zone	TENM3	Gene-Term
+maintenance of alignment of postsynaptic density and presynaptic active zone	TENM4	Gene-Term
+regulation of protein translation at postsynapse	TENT2	Gene-Term
+axonal transport of messenger ribonucleoprotein complex	TERF2	Gene-Term
+regulation of modification of postsynaptic actin cytoskeleton	TIAM1	Gene-Term
+regulation of postsynapse organization	TIAM1	Gene-Term
+zinc ion import into synaptic vesicle	TMEM163	Gene-Term
+regulation of neurotransmitter receptor localization to postsynaptic specialization membrane	TNIK	Gene-Term
+modulation of chemical synaptic transmission	TNR	Gene-Term
+regulation of protein catabolic process at postsynapse	TRIM3	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	TRIO	Gene-Term
+regulation of postsynapse organization	TSC2	Gene-Term
+voltage-gated calcium channel activity involved in regulation of presynaptic cytosolic calcium levels	TSPOAP1	Gene-Term
+regulation of synapse organization	TUBA1A	Gene-Term
+regulation of synapse organization	TUBB	Gene-Term
+modulation of chemical synaptic transmission	TUBB2B	Gene-Term
+protein translation at presynapse	UBA52	Gene-Term
+protein translation at postsynapse	UBA52	Gene-Term
+modulation of chemical synaptic transmission	UBE3A	Gene-Term
+synaptic vesicle exocytosis	UNC13A	Gene-Term
+synaptic vesicle exocytosis	UNC13B	Gene-Term
+synaptic vesicle exocytosis	UNC13C	Gene-Term
+regulation of postsynaptic neurotransmitter receptor endocytosis	USP46	Gene-Term
+regulation of protein catabolic process at postsynapse, modulating synaptic transmission	USP8	Gene-Term
+regulation of synaptic vesicle fusion to presynaptic active zone membrane	VAMP1	Gene-Term
+synaptic vesicle priming	VAMP1	Gene-Term
+synaptic vesicle exocytosis	VAMP2	Gene-Term
+synaptic vesicle docking	VAMP2	Gene-Term
+regulation of synaptic vesicle endocytosis	VAMP4	Gene-Term
+synaptic vesicle to endosome fusion	VAMP4	Gene-Term
+regulation of synapse organization	VCP	Gene-Term
+synaptic signaling via neuropeptide	VGF	Gene-Term
+modulation of chemical synaptic transmission	VGF	Gene-Term
+regulation of postsynapse organization	VHL	Gene-Term
+regulation of protein catabolic process at postsynapse	VHL	Gene-Term
+regulation of synaptic vesicle exocytosis	VPS18	Gene-Term
+regulation of synaptic vesicle endocytosis	VPS35	Gene-Term
+regulation of synapse maturation	VPS35	Gene-Term
+regulation of postsynapse assembly	VPS35	Gene-Term
+neurotransmitter receptor transport, endosome to postsynaptic membrane	VPS35	Gene-Term
+synaptic vesicle to endosome fusion	VTI1A	Gene-Term
+modification of postsynaptic actin cytoskeleton	WASF1	Gene-Term
+dendritic transport of mitochondrion	WASF1	Gene-Term
+postsynapse organization	WASF2	Gene-Term
+postsynaptic actin cytoskeleton organization	WASF2	Gene-Term
+modification of postsynaptic actin cytoskeleton	WASF3	Gene-Term
+postsynapse organization	WASL	Gene-Term
+regulation of postsynapse organization	WASL	Gene-Term
+postsynaptic actin cytoskeleton organization	WASL	Gene-Term
+trans-synaptic signaling	WLS	Gene-Term
+trans-synaptic signalling via exosome	WLS	Gene-Term
+modulation of chemical synaptic transmission	WNK1	Gene-Term
+regulation of presynapse assembly	WNT3A	Gene-Term
+regulation of synapse organization	WNT3A	Gene-Term
+modulation of chemical synaptic transmission	WNT3A	Gene-Term
+regulation of postsynapse to nucleus signaling pathway	WNT3A	Gene-Term
+regulation of synapse organization	WNT5A	Gene-Term
+modulation of chemical synaptic transmission	WNT5A	Gene-Term
+regulation of postsynapse organization	WNT5A	Gene-Term
+regulation of postsynaptic cytosolic calcium levels	WNT5A	Gene-Term
+postsynaptic modulation of chemical synaptic transmission	WNT5A	Gene-Term
+regulation of synaptic signaling by nitric oxide	WNT5A	Gene-Term
+regulation of postsynaptic specialization assembly	WNT5A	Gene-Term
+regulation of presynapse assembly	WNT7A	Gene-Term
+regulation of postsynapse organization	WNT7A	Gene-Term
+regulation of synaptic vesicle exocytosis	WNT7A	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	YWHAE	Gene-Term
+presynaptic modulation of chemical synaptic transmission	YWHAH	Gene-Term
+regulation of synapse maturation	YWHAZ	Gene-Term
+synaptic target recognition	YWHAZ	Gene-Term
+regulation of postsynaptic membrane neurotransmitter receptor levels	ZDHHC5	Gene-Term

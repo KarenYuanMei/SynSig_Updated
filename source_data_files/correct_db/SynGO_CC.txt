@@ -1,0 +1,1767 @@
+Parent	Child	EdgeType
+synapse	synaptic membrane	Child-Parent
+synaptic membrane	anchored component of synaptic membrane	Child-Parent
+synaptic membrane	extrinsic component of synaptic membrane	Child-Parent
+synaptic membrane	integral component of synaptic membrane	Child-Parent
+synapse	presynapse	Child-Parent
+presynapse	presynaptic cytosol	Child-Parent
+presynapse	presynaptic cytoskeleton	Child-Parent
+presynaptic cytoskeleton	presynaptic intermediate filament cytoskeleton	Child-Parent
+presynaptic cytoskeleton	presynaptic actin cytoskeleton	Child-Parent
+presynapse	presynaptic active zone	Child-Parent
+presynaptic active zone	presynaptic active zone cytoplasmic component	Child-Parent
+presynaptic active zone	presynaptic active zone membrane	Child-Parent
+presynaptic active zone membrane	anchored component of presynaptic active zone membrane	Child-Parent
+presynaptic active zone membrane	extrinsic component of presynaptic active zone membrane	Child-Parent
+presynaptic active zone membrane	integral component of presynaptic active zone membrane	Child-Parent
+presynapse	presynaptic endocytic zone	Child-Parent
+presynaptic endocytic zone	presynaptic endocytic zone cytoplasmic component	Child-Parent
+presynaptic endocytic zone	presynaptic endocytic zone membrane	Child-Parent
+presynaptic endocytic zone membrane	anchored component of presynaptic endocytic zone membrane	Child-Parent
+presynaptic endocytic zone membrane	extrinsic component of presynaptic endocytic zone membrane	Child-Parent
+presynaptic endocytic zone membrane	integral component of presynaptic endocytic zone membrane	Child-Parent
+presynapse	presynaptic endosome	Child-Parent
+presynaptic endosome	presynaptic endosome membrane	Child-Parent
+presynaptic endosome membrane	anchored component of presynaptic endosome membrane	Child-Parent
+presynaptic endosome membrane	extrinsic component of presynaptic endosome membrane	Child-Parent
+presynaptic endosome membrane	integral component of presynaptic endosome membrane	Child-Parent
+presynapse	synaptic vesicle	Child-Parent
+synaptic vesicle	synaptic vesicle lumen	Child-Parent
+synaptic vesicle	synaptic vesicle membrane	Child-Parent
+synaptic vesicle membrane	anchored component of synaptic vesicle membrane	Child-Parent
+synaptic vesicle membrane	extrinsic component of synaptic vesicle membrane	Child-Parent
+synaptic vesicle membrane	integral component of synaptic vesicle membrane	Child-Parent
+presynapse	neuronal dense core vesicle	Child-Parent
+neuronal dense core vesicle	neuronal dense core vesicle lumen	Child-Parent
+neuronal dense core vesicle	neuronal dense core vesicle membrane	Child-Parent
+neuronal dense core vesicle membrane	anchored component of neuronal dense core vesicle membrane	Child-Parent
+neuronal dense core vesicle membrane	extrinsic component of neuronal dense core vesicle membrane	Child-Parent
+neuronal dense core vesicle membrane	integral component of neuronal dense core vesicle membrane	Child-Parent
+presynapse	presynaptic membrane	Child-Parent
+presynaptic membrane	anchored component of presynaptic membrane	Child-Parent
+presynaptic membrane	extrinsic component of presynaptic membrane	Child-Parent
+presynaptic membrane	integral component of presynaptic membrane	Child-Parent
+presynapse	presynaptic ribosome	Child-Parent
+presynapse	presynaptic mitochondria	Child-Parent
+presynaptic mitochondria	presynaptic mitochondrial matrix	Child-Parent
+presynaptic mitochondria	presynaptic mitochondrial membrane	Child-Parent
+presynaptic mitochondrial membrane	integral component of presynaptic mitochondrial membrane	Child-Parent
+presynapse	presynaptic ER	Child-Parent
+presynaptic ER	presynaptic ER lumen	Child-Parent
+presynaptic ER	presynaptic ER membrane	Child-Parent
+presynaptic ER membrane	anchored component of presynaptic ER membrane	Child-Parent
+presynaptic ER membrane	extrinsic component of presynaptic ER membrane	Child-Parent
+presynaptic ER membrane	integral component of presynaptic ER membrane	Child-Parent
+presynaptic ER	presynaptic SER	Child-Parent
+presynaptic SER	presynaptic SER lumen	Child-Parent
+presynaptic SER	presynaptic SER membrane	Child-Parent
+presynaptic SER membrane	anchored component of presynaptic SER membrane	Child-Parent
+presynaptic SER membrane	extrinsic component of presynaptic SER membrane	Child-Parent
+presynaptic SER membrane	integral component of presynaptic SER membrane	Child-Parent
+presynaptic ER	presynaptic RER	Child-Parent
+presynaptic RER	presynaptic RER lumen	Child-Parent
+presynaptic RER	presynaptic RER membrane	Child-Parent
+presynaptic RER membrane	anchored component of presynaptic RER membrane	Child-Parent
+presynaptic RER membrane	extrinsic component of presynaptic RER membrane	Child-Parent
+presynaptic RER membrane	integral component of presynaptic RER membrane	Child-Parent
+synapse	synaptic cleft	Child-Parent
+synaptic cleft	extracellular matrix of synaptic cleft	Child-Parent
+synapse	postsynapse	Child-Parent
+postsynapse	postsynaptic cytosol	Child-Parent
+postsynapse	postsynaptic cytoskeleton	Child-Parent
+postsynaptic cytoskeleton	postsynaptic intermediate filament cytoskeleton	Child-Parent
+postsynaptic cytoskeleton	postsynaptic actin cytoskeleton	Child-Parent
+postsynaptic cytoskeleton	postsynaptic septin cytoskeleton	Child-Parent
+postsynaptic cytoskeleton	postsynaptic spectrin-associated cytoskeleton	Child-Parent
+postsynapse	spine apparatus	Child-Parent
+spine apparatus	spine apparatus lumen	Child-Parent
+spine apparatus	spine apparatus membrane	Child-Parent
+spine apparatus membrane	anchored component of spine apparatus membrane	Child-Parent
+spine apparatus membrane	extrinsic component of spine apparatus membrane	Child-Parent
+spine apparatus membrane	integral component of spine apparatus membrane	Child-Parent
+postsynapse	postsynaptic Golgi apparatus	Child-Parent
+postsynapse	postsynaptic specialization	Child-Parent
+postsynaptic specialization	postsynaptic specialization, intracellular component	Child-Parent
+postsynaptic specialization	postsynaptic specialization membrane	Child-Parent
+postsynaptic specialization membrane	anchored component of postsynaptic specialization membrane	Child-Parent
+postsynaptic specialization membrane	extrinsic component of postsynaptic specialization membrane	Child-Parent
+postsynaptic specialization membrane	integral component of postsynaptic specialization membrane	Child-Parent
+postsynaptic specialization	postsynaptic density	Child-Parent
+postsynaptic density	postsynaptic density, intracellular component	Child-Parent
+postsynaptic density	postsynaptic density membrane	Child-Parent
+postsynaptic density membrane	anchored component of postsynaptic density membrane	Child-Parent
+postsynaptic density membrane	extrinsic component of postsynaptic density membrane	Child-Parent
+postsynaptic density membrane	integral component of postsynaptic density membrane	Child-Parent
+postsynaptic specialization	postsynaptic specialization of symmetric synapse	Child-Parent
+postsynaptic specialization of symmetric synapse	postsynaptic specialization of symmetric synapse, intracellular component	Child-Parent
+postsynaptic specialization of symmetric synapse	postsynaptic specialization membrane of symmetric synapse	Child-Parent
+postsynaptic specialization membrane of symmetric synapse	anchored component of postsynaptic specialization membrane of symmetric synapse	Child-Parent
+postsynaptic specialization membrane of symmetric synapse	extrinsic component of postsynaptic specialization membrane of symmetric synapse	Child-Parent
+postsynaptic specialization membrane of symmetric synapse	integral component of postsynaptic specialization membrane of symmetric synapse	Child-Parent
+postsynapse	postsynaptic endocytic zone	Child-Parent
+postsynaptic endocytic zone	postsynaptic endocytic zone cytoplasmic component	Child-Parent
+postsynaptic endocytic zone	postsynaptic endocytic zone membrane	Child-Parent
+postsynaptic endocytic zone membrane	anchored component of postynaptic endocytic zone membrane	Child-Parent
+postsynaptic endocytic zone membrane	extrinsic component of postsynaptic endocytic zone	Child-Parent
+postsynaptic endocytic zone membrane	integral component of postsynaptic endocytic zone membrane	Child-Parent
+postsynapse	postsynaptic endosome	Child-Parent
+postsynaptic endosome	postsynaptic endosome membrane	Child-Parent
+postsynaptic endosome membrane	anchored component of postsynaptic endosome membrane	Child-Parent
+postsynaptic endosome membrane	extrinsic component of postsynaptic endosome membrane	Child-Parent
+postsynaptic endosome membrane	integral component of postsynaptic endosome membrane	Child-Parent
+postsynaptic endosome	postsynaptic early endosome	Child-Parent
+postsynaptic early endosome	postsynaptic early endosome membrane	Child-Parent
+postsynaptic early endosome membrane	anchored component of postsynaptic early endosome membrane	Child-Parent
+postsynaptic early endosome membrane	extrinsic component of postsynaptic early endosome membrane	Child-Parent
+postsynaptic early endosome membrane	integral component of postsynaptic early endosome membrane	Child-Parent
+postsynaptic endosome	postsynaptic recycling endosome	Child-Parent
+postsynaptic recycling endosome	postsynaptic recycling endosome membrane	Child-Parent
+postsynaptic recycling endosome membrane	anchored component of postsynaptic recycling endosome membrane	Child-Parent
+postsynaptic recycling endosome membrane	extrinsic component of postsynaptic recycling endosome membrane	Child-Parent
+postsynaptic recycling endosome membrane	integral component of postsynaptic recycling endosome membrane	Child-Parent
+postsynapse	postsynaptic membrane	Child-Parent
+postsynaptic membrane	anchored component of postsynaptic membrane	Child-Parent
+postsynaptic membrane	extrinsic component of postsynaptic membrane	Child-Parent
+postsynaptic membrane	integral component of postsynaptic membrane	Child-Parent
+postsynapse	postsynaptic ribosome	Child-Parent
+postsynapse	postsynaptic mitochondria	Child-Parent
+postsynaptic mitochondria	postsynaptic mitochondrial matrix	Child-Parent
+postsynaptic mitochondria	postsynaptic mitochondrial membrane	Child-Parent
+postsynaptic mitochondrial membrane	integral component of postsynaptic mitochondrial membrane	Child-Parent
+postsynapse	postsynaptic ER	Child-Parent
+postsynaptic ER	postsynaptic ER lumen	Child-Parent
+postsynaptic ER	postsynaptic ER membrane	Child-Parent
+postsynaptic ER membrane	anchored component of postsynaptic ER membrane	Child-Parent
+postsynaptic ER membrane	extrinsic component of postsynaptic ER membrane	Child-Parent
+postsynaptic ER membrane	integral component of postsynaptic ER membrane	Child-Parent
+postsynaptic ER	postsynaptic SER	Child-Parent
+postsynaptic SER	postsynaptic SER lumen	Child-Parent
+postsynaptic SER	postsynaptic SER membrane	Child-Parent
+postsynaptic SER membrane	anchored component of postsynaptic SER membrane	Child-Parent
+postsynaptic SER membrane	extrinsic component of postsynaptic SER membrane	Child-Parent
+postsynaptic SER membrane	integral component of postsynaptic SER membrane	Child-Parent
+postsynaptic ER	postsynaptic RER	Child-Parent
+postsynaptic RER	postsynaptic RER lumen	Child-Parent
+postsynaptic RER	postsynaptic RER membrane	Child-Parent
+postsynaptic RER membrane	anchored component of postsynaptic RER membrane	Child-Parent
+postsynaptic RER membrane	extrinsic component of postsynaptic RER membrane	Child-Parent
+postsynaptic RER membrane	integral component of postsynaptic RER membrane	Child-Parent
+synapse	extrasynaptic space	Child-Parent
+perisynaptic space	perisynaptic extracellular matrix	Child-Parent
+integral component of presynaptic membrane	KCNH1	Gene-Term
+integral component of presynaptic membrane	KCNA4	Gene-Term
+integral component of postsynaptic membrane	KCNA4	Gene-Term
+integral component of presynaptic membrane	KCNC1	Gene-Term
+integral component of postsynaptic membrane	KCNC3	Gene-Term
+integral component of presynaptic membrane	KCNC3	Gene-Term
+presynaptic cytoskeleton	VAPA	Gene-Term
+integral component of postsynaptic density membrane	NPTN	Gene-Term
+integral component of presynaptic active zone membrane	NPTN	Gene-Term
+synaptic membrane	NPTN	Gene-Term
+presynapse	FBXO45	Gene-Term
+presynapse	FBXO45	Gene-Term
+presynaptic active zone membrane	NAPA	Gene-Term
+postsynapse	SNAP23	Gene-Term
+extrinsic component of presynaptic membrane	SNAP25	Gene-Term
+synaptic vesicle	SNAPIN	Gene-Term
+anchored component of synaptic vesicle membrane	RAB26	Gene-Term
+anchored component of synaptic vesicle membrane	RAB27B	Gene-Term
+anchored component of synaptic vesicle membrane	RAB3A	Gene-Term
+anchored component of synaptic vesicle membrane	RAB3A	Gene-Term
+anchored component of synaptic vesicle membrane	RAB3B	Gene-Term
+anchored component of synaptic vesicle membrane	RAB3C	Gene-Term
+presynaptic active zone cytoplasmic component	RIMS1	Gene-Term
+synapse	PPM1H	Gene-Term
+presynaptic cytosol	PRKCG	Gene-Term
+presynaptic cytosol	PRKCA	Gene-Term
+presynaptic cytosol	PRKCB	Gene-Term
+presynaptic active zone cytoplasmic component	RIMS1	Gene-Term
+presynaptic cytosol	CTBP2	Gene-Term
+presynaptic active zone cytoplasmic component	CTBP2	Gene-Term
+postsynaptic cytosol	RIMS3	Gene-Term
+synapse	PLD1	Gene-Term
+integral component of postsynaptic density membrane	ATP2B2	Gene-Term
+integral component of postsynaptic membrane	ATP2B2	Gene-Term
+integral component of presynaptic membrane	ATP2B3	Gene-Term
+integral component of presynaptic active zone membrane	ATP2B2	Gene-Term
+integral component of presynaptic active zone membrane	ATP2B1	Gene-Term
+integral component of presynaptic active zone membrane	ATP2B4	Gene-Term
+presynaptic active zone cytoplasmic component	BSN	Gene-Term
+presynaptic active zone cytoplasmic component	RIMS1	Gene-Term
+presynaptic active zone cytoplasmic component	BSN	Gene-Term
+presynaptic cytosol	PRKCE	Gene-Term
+presynaptic active zone cytoplasmic component	PCLO	Gene-Term
+postsynaptic density, intracellular component	CABP1	Gene-Term
+presynaptic active zone cytoplasmic component	RIMBP2	Gene-Term
+presynaptic active zone cytoplasmic component	RIMS2	Gene-Term
+postsynaptic cytosol	FBXO45	Gene-Term
+presynaptic active zone cytoplasmic component	BSN	Gene-Term
+anchored component of synaptic vesicle membrane	DNAJC5	Gene-Term
+anchored component of synaptic vesicle membrane	RAB5A	Gene-Term
+anchored component of synaptic vesicle membrane	RAB5B	Gene-Term
+presynaptic cytosol	PNKD	Gene-Term
+anchored component of synaptic vesicle membrane	RAB5C	Gene-Term
+anchored component of synaptic vesicle membrane	RAB35	Gene-Term
+anchored component of synaptic vesicle membrane	RAB11B	Gene-Term
+postsynaptic cytosol	PRKCD	Gene-Term
+postsynaptic specialization	ARHGEF9	Gene-Term
+integral component of presynaptic ER membrane	ITPR3	Gene-Term
+integral component of postsynaptic SER membrane	ITPR1	Gene-Term
+integral component of presynaptic SER membrane	ITPR1	Gene-Term
+presynaptic membrane	EXOC3	Gene-Term
+presynaptic cytosol	PPP3CC	Gene-Term
+integral component of presynaptic membrane	KCNC2	Gene-Term
+integral component of presynaptic membrane	KCNC4	Gene-Term
+integral component of postsynaptic membrane	KCNC4	Gene-Term
+integral component of presynaptic membrane	KCNC4	Gene-Term
+integral component of presynaptic membrane	KCNC1	Gene-Term
+integral component of presynaptic membrane	KCNA1	Gene-Term
+integral component of postsynaptic membrane	KCNA1	Gene-Term
+integral component of postsynaptic membrane	KCNC1	Gene-Term
+integral component of presynaptic membrane	KCNA2	Gene-Term
+integral component of postsynaptic membrane	KCNA2	Gene-Term
+integral component of presynaptic membrane	KCNA3	Gene-Term
+integral component of postsynaptic membrane	KCNA3	Gene-Term
+integral component of postsynaptic membrane	KCNC4	Gene-Term
+anchored component of synaptic vesicle membrane	RAB10	Gene-Term
+anchored component of synaptic vesicle membrane	RAB4B	Gene-Term
+anchored component of synaptic vesicle membrane	RAB4A	Gene-Term
+anchored component of synaptic vesicle membrane	RAB14	Gene-Term
+postsynaptic cytosol	FMR1	Gene-Term
+presynaptic cytosol	FMR1	Gene-Term
+synapse	FLOT1	Gene-Term
+extrinsic component of postsynaptic endosome membrane	SNX1	Gene-Term
+anchored component of synaptic vesicle membrane	RAB7A	Gene-Term
+presynapse	RAB8B	Gene-Term
+synapse	RAB8A	Gene-Term
+synapse	RAB1B	Gene-Term
+presynapse	RAB1A	Gene-Term
+presynapse	RAB6A	Gene-Term
+presynapse	RAB6B	Gene-Term
+integral component of postsynaptic density membrane	GRM1	Gene-Term
+postsynapse	GRIP1	Gene-Term
+integral component of postsynaptic membrane	GRM5	Gene-Term
+postsynapse	FLNA	Gene-Term
+postsynaptic density	HOMER1	Gene-Term
+postsynaptic density	HOMER2	Gene-Term
+postsynaptic density	HOMER3	Gene-Term
+postsynaptic actin cytoskeleton	FILIP1	Gene-Term
+postsynaptic actin cytoskeleton	CTTN	Gene-Term
+postsynaptic actin cytoskeleton	CTTNBP2	Gene-Term
+extrinsic component of postsynaptic early endosome membrane	GRIPAP1	Gene-Term
+postsynaptic actin cytoskeleton	DBN1	Gene-Term
+integral component of postsynaptic membrane	CADM1	Gene-Term
+presynapse	CASK	Gene-Term
+extrinsic component of postsynaptic specialization membrane	NPTX2	Gene-Term
+integral component of presynaptic membrane	CADM3	Gene-Term
+postsynaptic cytosol	HOMER1	Gene-Term
+anchored component of synaptic vesicle membrane	RAB2A	Gene-Term
+synapse	RAB21	Gene-Term
+presynapse	RAB33B	Gene-Term
+synapse	RAB18	Gene-Term
+postsynapse	ADAM10	Gene-Term
+postsynaptic cytosol	PRKCG	Gene-Term
+integral component of postsynaptic membrane	EPHB2	Gene-Term
+integral component of presynaptic membrane	EPHB2	Gene-Term
+integral component of presynaptic membrane	EPHA4	Gene-Term
+integral component of postsynaptic membrane	EPHA4	Gene-Term
+presynaptic active zone	FLOT1	Gene-Term
+anchored component of presynaptic active zone membrane	FLOT2	Gene-Term
+synapse	FLOT2	Gene-Term
+spine apparatus	SYNPO	Gene-Term
+extrinsic component of postsynaptic membrane	CRKL	Gene-Term
+synapse	PPP3R1	Gene-Term
+presynaptic cytosol	NSF	Gene-Term
+anchored component of presynaptic membrane	SNAP25	Gene-Term
+integral component of synaptic vesicle membrane	VAMP1	Gene-Term
+integral component of presynaptic membrane	KCNQ5	Gene-Term
+integral component of presynaptic membrane	KCNJ3	Gene-Term
+integral component of presynaptic membrane	KCNJ6	Gene-Term
+integral component of presynaptic membrane	KCNJ9	Gene-Term
+integral component of synaptic vesicle membrane	VAMP2	Gene-Term
+integral component of presynaptic endosome membrane	VAMP4	Gene-Term
+integral component of presynaptic active zone membrane	CANX	Gene-Term
+integral component of postsynaptic membrane	CANX	Gene-Term
+extrinsic component of presynaptic active zone membrane	PHB	Gene-Term
+presynaptic active zone	PHB2	Gene-Term
+postsynaptic density	PHB	Gene-Term
+postsynaptic density	PHB2	Gene-Term
+integral component of synaptic vesicle membrane	SCAMP1	Gene-Term
+presynapse	SLC2A4	Gene-Term
+presynaptic active zone cytoplasmic component	TSPOAP1	Gene-Term
+presynaptic active zone cytoplasmic component	RIMBP3	Gene-Term
+presynaptic active zone cytoplasmic component	RIMBP2	Gene-Term
+presynaptic active zone cytoplasmic component	RIMBP3B	Gene-Term
+presynaptic active zone cytoplasmic component	RIMBP3C	Gene-Term
+integral component of presynaptic membrane	CADM1	Gene-Term
+presynaptic active zone cytoplasmic component	PCLO	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN1	Gene-Term
+integral component of synaptic vesicle membrane	VAMP7	Gene-Term
+integral component of postsynaptic density membrane	ADCY1	Gene-Term
+integral component of presynaptic membrane	ADCY8	Gene-Term
+synapse	RIMS4	Gene-Term
+presynaptic active zone cytoplasmic component	ERC1	Gene-Term
+presynaptic active zone cytoplasmic component	ERC2	Gene-Term
+integral component of presynaptic membrane	SLC6A5	Gene-Term
+presynapse	CACNB4	Gene-Term
+postsynaptic cytosol	BAIAP2	Gene-Term
+presynaptic cytosol	BAIAP2	Gene-Term
+presynaptic mitochondria	C1QBP	Gene-Term
+presynaptic active zone	C1QBP	Gene-Term
+presynapse	ROGDI	Gene-Term
+anchored component of presynaptic active zone membrane	CACNA2D1	Gene-Term
+presynapse	DPYSL2	Gene-Term
+synapse	STX2	Gene-Term
+integral component of synaptic vesicle membrane	MAL2	Gene-Term
+integral component of synaptic vesicle membrane	SLC10A4	Gene-Term
+presynaptic active zone cytoplasmic component	SYDE1	Gene-Term
+presynaptic active zone cytoplasmic component	SYDE2	Gene-Term
+presynapse	CACNB1	Gene-Term
+integral component of synaptic vesicle membrane	CLCN3	Gene-Term
+postsynaptic specialization, intracellular component	GPHN	Gene-Term
+postsynaptic specialization, intracellular component	GPHN	Gene-Term
+integral component of presynaptic membrane	EFNB1	Gene-Term
+presynaptic active zone cytoplasmic component	CTBP1	Gene-Term
+presynaptic active zone cytoplasmic component	CTBP2	Gene-Term
+integral component of postsynaptic membrane	CLCN3	Gene-Term
+integral component of presynaptic membrane	CACNA1B	Gene-Term
+integral component of presynaptic active zone membrane	CACNA1A	Gene-Term
+integral component of postsynaptic membrane	CACNA1C	Gene-Term
+integral component of presynaptic membrane	CACNA1E	Gene-Term
+integral component of presynaptic active zone membrane	CACNA1H	Gene-Term
+integral component of presynaptic membrane	ATP1A3	Gene-Term
+integral component of presynaptic membrane	EFNB2	Gene-Term
+integral component of postsynaptic density membrane	EFNB2	Gene-Term
+integral component of postsynaptic density membrane	EFNB3	Gene-Term
+integral component of presynaptic membrane	EFNB3	Gene-Term
+integral component of postsynaptic density membrane	ADAM22	Gene-Term
+postsynaptic density, intracellular component	AKAP5	Gene-Term
+synapse	FUBP1	Gene-Term
+synaptic cleft	APOE	Gene-Term
+presynapse	BACE1	Gene-Term
+integral component of presynaptic active zone membrane	GPM6A	Gene-Term
+presynapse	RPS27	Gene-Term
+synapse	VCPIP1	Gene-Term
+postsynapse	BEGAIN	Gene-Term
+presynaptic actin cytoskeleton	ACTG1	Gene-Term
+postsynaptic density, intracellular component	CDKL5	Gene-Term
+integral component of presynaptic membrane	CNTNAP4	Gene-Term
+postsynaptic density, intracellular component	SHANK3	Gene-Term
+postsynaptic density	DRP2	Gene-Term
+postsynapse	CPEB3	Gene-Term
+presynaptic cytosol	HNRNPAB	Gene-Term
+synapse	CYFIP2	Gene-Term
+postsynapse	FXR2	Gene-Term
+postsynapse	CYFIP1	Gene-Term
+postsynapse	PRKAR2B	Gene-Term
+synapse	PRKAR1A	Gene-Term
+synapse	PRKAR1B	Gene-Term
+synapse	PRKAR2A	Gene-Term
+presynapse	EPHA3	Gene-Term
+integral component of postsynaptic specialization membrane	EPHA7	Gene-Term
+presynapse	UNC13C	Gene-Term
+integral component of postsynaptic membrane	CACNA1E	Gene-Term
+integral component of postsynaptic membrane	CACNA1H	Gene-Term
+anchored component of postsynaptic membrane	CACNA2D1	Gene-Term
+postsynaptic density	ABI1	Gene-Term
+postsynapse	ELAVL1	Gene-Term
+presynaptic cytosol	HAP1	Gene-Term
+synapse	SLC18A1	Gene-Term
+integral component of synaptic vesicle membrane	SLC18A2	Gene-Term
+postsynapse	SLC18A2	Gene-Term
+synaptic vesicle	DMXL2	Gene-Term
+neuronal dense core vesicle	DMXL2	Gene-Term
+postsynaptic cytosol	PLCB3	Gene-Term
+postsynapse	NCKAP1	Gene-Term
+synapse	ELAVL2	Gene-Term
+synapse	VCP	Gene-Term
+synapse	VCP	Gene-Term
+extracellular matrix of synaptic cleft	AGRN	Gene-Term
+synapse	AGRN	Gene-Term
+presynapse	CADPS	Gene-Term
+presynapse	CADPS2	Gene-Term
+postsynaptic cytosol	PTEN	Gene-Term
+synapse	PAK5	Gene-Term
+postsynaptic density	PAK1	Gene-Term
+postsynaptic density	PAK2	Gene-Term
+postsynaptic density	PAK3	Gene-Term
+postsynapse	FXR1	Gene-Term
+postsynapse	APC2	Gene-Term
+postsynapse	TRIM3	Gene-Term
+postsynaptic density, intracellular component	SYNGAP1	Gene-Term
+integral component of presynaptic membrane	SCN11A	Gene-Term
+postsynaptic density	SHANK2	Gene-Term
+presynaptic cytosol	HTT	Gene-Term
+postsynaptic cytosol	HTT	Gene-Term
+integral component of postsynaptic membrane	NRP1	Gene-Term
+postsynaptic cytosol	PIN1	Gene-Term
+postsynaptic density	SHANK3	Gene-Term
+integral component of presynaptic membrane	SCN2A	Gene-Term
+postsynaptic density	SHANK1	Gene-Term
+integral component of presynaptic membrane	SCN10A	Gene-Term
+integral component of presynaptic membrane	SCN10A	Gene-Term
+integral component of presynaptic membrane	SCN11A	Gene-Term
+postsynaptic cytosol	NEDD4	Gene-Term
+synapse	MAGI3	Gene-Term
+postsynaptic density	MAGI2	Gene-Term
+extrinsic component of postsynaptic membrane	MAGI2	Gene-Term
+presynapse	MAGI1	Gene-Term
+integral component of postsynaptic density membrane	LRRTM4	Gene-Term
+integral component of postsynaptic density membrane	LRRTM2	Gene-Term
+integral component of presynaptic active zone membrane	SCN8A	Gene-Term
+integral component of postsynaptic density membrane	SCN8A	Gene-Term
+postsynaptic actin cytoskeleton	ABI2	Gene-Term
+postsynaptic density, intracellular component	BAIAP2	Gene-Term
+synapse	NUFIP1	Gene-Term
+presynapse	UNC13B	Gene-Term
+presynaptic active zone	UNC13A	Gene-Term
+extrinsic component of neuronal dense core vesicle membrane	CADPS	Gene-Term
+synaptic vesicle membrane	SLC17A7	Gene-Term
+synapse	PABPC1	Gene-Term
+postsynapse	WASF1	Gene-Term
+synapse	WASF2	Gene-Term
+postsynapse	WASF3	Gene-Term
+integral component of synaptic vesicle membrane	SCAMP1	Gene-Term
+integral component of synaptic vesicle membrane	SCAMP5	Gene-Term
+postsynapse	CPLX1	Gene-Term
+presynapse	CPLX2	Gene-Term
+presynapse	CPLX1	Gene-Term
+presynapse	CPLX2	Gene-Term
+postsynapse	CPLX1	Gene-Term
+presynapse	CPLX1	Gene-Term
+postsynapse	CPLX2	Gene-Term
+synapse	RPS6KB1	Gene-Term
+postsynapse	EIF4E	Gene-Term
+integral component of synaptic vesicle membrane	TMEM163	Gene-Term
+synapse	TUFM	Gene-Term
+synapse	EIF5A	Gene-Term
+synapse	EEF1D	Gene-Term
+synapse	EIF3B	Gene-Term
+synapse	EEF2	Gene-Term
+synapse	EIF2S1	Gene-Term
+synapse	RPLP2	Gene-Term
+synapse	RPSA	Gene-Term
+synapse	RPS3A	Gene-Term
+synapse	RPL29	Gene-Term
+synapse	RPL17	Gene-Term
+synapse	RPL5	Gene-Term
+synapse	RPL6	Gene-Term
+synapse	UBA52	Gene-Term
+synapse	RPL37	Gene-Term
+synapse	RPS15	Gene-Term
+synapse	RPS7	Gene-Term
+synapse	RPL3	Gene-Term
+synapse	RPS13	Gene-Term
+synapse	RPS18	Gene-Term
+synapse	RPS3	Gene-Term
+synapse	RPL18A	Gene-Term
+synapse	RPLP0	Gene-Term
+synapse	RPL18	Gene-Term
+synapse	RPL19	Gene-Term
+synapse	RPL11	Gene-Term
+synapse	RPS4X	Gene-Term
+synapse	RPS21	Gene-Term
+synapse	RPS19	Gene-Term
+synapse	RPL24	Gene-Term
+synapse	RPL8	Gene-Term
+synapse	RPS2	Gene-Term
+synapse	RPS25	Gene-Term
+synapse	RPL7	Gene-Term
+synapse	RPL7A	Gene-Term
+synapse	RPL36	Gene-Term
+synapse	RPL10	Gene-Term
+synapse	RPL10A	Gene-Term
+synapse	RPL31	Gene-Term
+synapse	RPL38	Gene-Term
+synapse	RPL9	Gene-Term
+synapse	RPS17	Gene-Term
+synapse	RPS20	Gene-Term
+synapse	RPS9	Gene-Term
+integral component of synaptic vesicle membrane	SLC17A6	Gene-Term
+perisynaptic extracellular matrix	BCAN	Gene-Term
+synapse	MAP1LC3A	Gene-Term
+synapse	TTYH1	Gene-Term
+synapse	SLC6A11	Gene-Term
+extrinsic component of synaptic vesicle membrane	AMPH	Gene-Term
+synapse	BIN1	Gene-Term
+presynaptic cytosol	FBXO45	Gene-Term
+synapse	SLC16A1	Gene-Term
+synapse	FKBP1A	Gene-Term
+synapse	HNRNPD	Gene-Term
+integral component of synaptic vesicle membrane	SLC32A1	Gene-Term
+presynapse	CPEB2	Gene-Term
+extrinsic component of synaptic vesicle membrane	CLTC	Gene-Term
+postsynapse	CPEB2	Gene-Term
+integral component of synaptic vesicle membrane	SLC6A17	Gene-Term
+integral component of synaptic vesicle membrane	SLC17A8	Gene-Term
+presynaptic endocytic zone membrane	CLTC	Gene-Term
+synapse	FBXL20	Gene-Term
+anchored component of synaptic vesicle membrane	DNAJC5	Gene-Term
+extrinsic component of postsynaptic density membrane	AKAP9	Gene-Term
+postsynaptic endocytic zone	RNF216	Gene-Term
+presynapse	RNF216	Gene-Term
+postsynaptic density	KPNA1	Gene-Term
+postsynaptic density	KPNA2	Gene-Term
+postsynaptic density	CHMP4BP1	Gene-Term
+presynapse	SYNJ1	Gene-Term
+presynaptic cytosol	NCS1	Gene-Term
+postsynaptic cytosol	NCS1	Gene-Term
+postsynapse	NCS1	Gene-Term
+postsynaptic density	GRASP	Gene-Term
+presynapse	NAPA	Gene-Term
+presynapse	NAPB	Gene-Term
+synapse	NAPG	Gene-Term
+integral component of postsynaptic density membrane	IL1RAPL1	Gene-Term
+postsynapse	NAPB	Gene-Term
+postsynapse	NAPA	Gene-Term
+integral component of presynaptic membrane	FXYD6	Gene-Term
+integral component of postsynaptic membrane	FXYD6	Gene-Term
+synapse	TPD52	Gene-Term
+presynaptic endocytic zone membrane	PIP5K1C	Gene-Term
+integral component of postsynaptic density membrane	LRRTM3	Gene-Term
+integral component of postsynaptic membrane	LRRTM1	Gene-Term
+integral component of presynaptic membrane	SLC6A5	Gene-Term
+integral component of postsynaptic membrane	SLC6A9	Gene-Term
+anchored component of presynaptic active zone membrane	CPLX3	Gene-Term
+integral component of synaptic vesicle membrane	SLC6A9	Gene-Term
+anchored component of synaptic vesicle membrane	CPLX3	Gene-Term
+presynapse	SYNJ2	Gene-Term
+postsynaptic density	ANKS1B	Gene-Term
+presynaptic cytosol	ANKS1B	Gene-Term
+postsynaptic density	CRTC1	Gene-Term
+integral component of presynaptic membrane	SLC6A1	Gene-Term
+integral component of postsynaptic membrane	SLC6A1	Gene-Term
+integral component of presynaptic membrane	SLC6A11	Gene-Term
+integral component of postsynaptic membrane	SLC6A11	Gene-Term
+postsynaptic density	ABI1	Gene-Term
+integral component of postsynaptic membrane	SLC1A6	Gene-Term
+integral component of postsynaptic membrane	SLC6A8	Gene-Term
+perisynaptic extracellular matrix	ACAN	Gene-Term
+perisynaptic extracellular matrix	TNC	Gene-Term
+perisynaptic extracellular matrix	TNR	Gene-Term
+integral component of synaptic vesicle membrane	SLC6A7	Gene-Term
+integral component of presynaptic membrane	SLC6A7	Gene-Term
+synapse	NCAN	Gene-Term
+synapse	VCAN	Gene-Term
+synapse	PTPRZ1	Gene-Term
+integral component of presynaptic membrane	SLC1A6	Gene-Term
+integral component of postsynaptic membrane	SLC1A7	Gene-Term
+integral component of presynaptic membrane	SLC1A7	Gene-Term
+integral component of presynaptic mitochondrial membrane	CNR1	Gene-Term
+integral component of postsynaptic membrane	P2RX1	Gene-Term
+integral component of presynaptic membrane	P2RX3	Gene-Term
+postsynapse	PFN2	Gene-Term
+synapse	ACTBL2	Gene-Term
+synapse	ACTC1	Gene-Term
+synapse	ARPC2	Gene-Term
+synapse	ARPC5L	Gene-Term
+synaptic membrane	ANXA1	Gene-Term
+integral component of presynaptic membrane	CNR1	Gene-Term
+integral component of presynaptic membrane	CACNA1C	Gene-Term
+postsynaptic actin cytoskeleton	ACTB	Gene-Term
+postsynaptic actin cytoskeleton	ACTG1	Gene-Term
+integral component of postsynaptic membrane	SLC6A6	Gene-Term
+integral component of presynaptic membrane	SLC6A4	Gene-Term
+integral component of postsynaptic membrane	SLC6A4	Gene-Term
+presynapse	PFN2	Gene-Term
+synaptic cleft	LGI1	Gene-Term
+integral component of presynaptic membrane	ADAM23	Gene-Term
+postsynaptic cytoskeleton	MARCKS	Gene-Term
+presynaptic cytosol	MARCKS	Gene-Term
+anchored component of presynaptic membrane	MARCKS	Gene-Term
+anchored component of postsynaptic membrane	MARCKS	Gene-Term
+anchored component of presynaptic membrane	MARCKSL1	Gene-Term
+synaptic vesicle	MARCKSL1	Gene-Term
+presynaptic cytosol	MARCKSL1	Gene-Term
+integral component of postsynaptic membrane	SLC6A3	Gene-Term
+integral component of presynaptic membrane	SLC6A3	Gene-Term
+postsynaptic density	STAT3	Gene-Term
+extrinsic component of postsynaptic density membrane	RNF10	Gene-Term
+integral component of postsynaptic membrane	SLC8A1	Gene-Term
+integral component of postsynaptic membrane	SLC8A2	Gene-Term
+integral component of postsynaptic membrane	SLC8A3	Gene-Term
+integral component of presynaptic membrane	PTPRS	Gene-Term
+postsynaptic intermediate filament cytoskeleton	INA	Gene-Term
+postsynaptic cytosol	HAP1	Gene-Term
+integral component of presynaptic membrane	SLC6A2	Gene-Term
+integral component of synaptic vesicle membrane	SLC6A2	Gene-Term
+integral component of synaptic vesicle membrane	SLC18A3	Gene-Term
+extrinsic component of presynaptic membrane	CYTH1	Gene-Term
+extrinsic component of postsynaptic specialization membrane	CYTH2	Gene-Term
+integral component of presynaptic membrane	OPRK1	Gene-Term
+integral component of synaptic vesicle membrane	OPRK1	Gene-Term
+integral component of postsynaptic membrane	OPRK1	Gene-Term
+integral component of presynaptic membrane	OPRM1	Gene-Term
+synaptic vesicle membrane	DTNBP1	Gene-Term
+postsynaptic density	DTNBP1	Gene-Term
+presynaptic active zone membrane	APBA1	Gene-Term
+integral component of postsynaptic membrane	OPRM1	Gene-Term
+spine apparatus	OPRM1	Gene-Term
+spine apparatus	OPRD1	Gene-Term
+integral component of postsynaptic density membrane	OPRD1	Gene-Term
+integral component of synaptic vesicle membrane	OPRD1	Gene-Term
+neuronal dense core vesicle	OPRD1	Gene-Term
+integral component of presynaptic membrane	OPRD1	Gene-Term
+presynapse	APBB1	Gene-Term
+postsynaptic cytosol	CALB1	Gene-Term
+presynaptic cytosol	CALB1	Gene-Term
+presynaptic cytosol	CAMK2A	Gene-Term
+postsynaptic cytosol	CAMK2A	Gene-Term
+postsynaptic density	CAMK2B	Gene-Term
+postsynaptic density	CAMK2A	Gene-Term
+presynapse	PFN1	Gene-Term
+postsynapse	PFN1	Gene-Term
+postsynaptic density	CHMP2B	Gene-Term
+postsynaptic specialization	ERBIN	Gene-Term
+integral component of presynaptic membrane	NRXN1	Gene-Term
+presynaptic active zone	CNTNAP1	Gene-Term
+integral component of presynaptic membrane	NRXN1	Gene-Term
+presynapse	DOCK1	Gene-Term
+integral component of presynaptic membrane	ATP1A3	Gene-Term
+postsynapse	ATP1A3	Gene-Term
+synapse	CAPRIN1	Gene-Term
+synapse	TSC2	Gene-Term
+synapse	QKI	Gene-Term
+presynapse	PPP1R9A	Gene-Term
+postsynaptic density	PPP1R9A	Gene-Term
+postsynaptic density	PPP1R9B	Gene-Term
+postsynaptic density	PLCB4	Gene-Term
+postsynaptic SER	PLCB4	Gene-Term
+integral component of postsynaptic specialization membrane	P2RX6	Gene-Term
+integral component of synaptic vesicle membrane	SYPL1	Gene-Term
+synaptic vesicle	ATG9A	Gene-Term
+presynaptic active zone cytoplasmic component	CTBP1	Gene-Term
+postsynapse	CAMK4	Gene-Term
+postsynaptic density	EPS8	Gene-Term
+synapse	PPFIA2	Gene-Term
+synapse	PPFIA3	Gene-Term
+synapse	PPFIA4	Gene-Term
+anchored component of postsynaptic membrane	CNTN2	Gene-Term
+presynapse	PPFIBP2	Gene-Term
+extrinsic component of postsynaptic membrane	TENM2	Gene-Term
+anchored component of presynaptic membrane	CNTN1	Gene-Term
+anchored component of postsynaptic membrane	CNTN1	Gene-Term
+synapse	LIN7A	Gene-Term
+synapse	PLCXD3	Gene-Term
+anchored component of presynaptic membrane	CNTN6	Gene-Term
+presynapse	CDK5R1	Gene-Term
+anchored component of presynaptic membrane	CNTN5	Gene-Term
+presynaptic cytosol	CSNK2B	Gene-Term
+synaptic vesicle	PDYN	Gene-Term
+neuronal dense core vesicle lumen	PDYN	Gene-Term
+neuronal dense core vesicle lumen	PENK	Gene-Term
+synaptic vesicle lumen	PENK	Gene-Term
+synapse	PPP2R1A	Gene-Term
+synapse	PPP2R1B	Gene-Term
+postsynaptic cytosol	ALDOC	Gene-Term
+integral component of postsynaptic membrane	CHRM1	Gene-Term
+postsynaptic density	CAMK1	Gene-Term
+postsynaptic density	DYNLL2	Gene-Term
+postsynaptic actin cytoskeleton	MYO5A	Gene-Term
+postsynaptic actin cytoskeleton	MYO5B	Gene-Term
+postsynaptic density	MYO6	Gene-Term
+postsynaptic density, intracellular component	AKAP5	Gene-Term
+presynapse	GIPC1	Gene-Term
+postsynapse	GIPC1	Gene-Term
+presynaptic endocytic zone	MYO6	Gene-Term
+postsynaptic density, intracellular component	CTNNA2	Gene-Term
+integral component of synaptic vesicle membrane	ATP8A1	Gene-Term
+presynaptic active zone cytoplasmic component	CTNNA2	Gene-Term
+postsynaptic actin cytoskeleton	CTTN	Gene-Term
+postsynaptic intermediate filament cytoskeleton	NEFM	Gene-Term
+postsynaptic density, intracellular component	CTNNB1	Gene-Term
+presynaptic active zone cytoplasmic component	CTNNB1	Gene-Term
+presynaptic intermediate filament cytoskeleton	NEFM	Gene-Term
+extracellular matrix of synaptic cleft	SPARCL1	Gene-Term
+integral component of presynaptic membrane	ADORA1	Gene-Term
+integral component of postsynaptic membrane	ADORA1	Gene-Term
+integral component of presynaptic membrane	ADORA2A	Gene-Term
+presynapse	SEPT3	Gene-Term
+integral component of postsynaptic membrane	ADORA2A	Gene-Term
+integral component of presynaptic membrane	ADGRL1	Gene-Term
+integral component of presynaptic active zone membrane	CHRM2	Gene-Term
+synapse	RELA	Gene-Term
+postsynapse	WLS	Gene-Term
+presynaptic cytosol	PPP3CC	Gene-Term
+presynapse	SEPT5	Gene-Term
+presynapse	SEPT6	Gene-Term
+presynaptic membrane	SEPT7	Gene-Term
+integral component of presynaptic membrane	WLS	Gene-Term
+integral component of presynaptic membrane	PSEN1	Gene-Term
+integral component of presynaptic membrane	PSEN2	Gene-Term
+integral component of presynaptic membrane	NCSTN	Gene-Term
+integral component of presynaptic membrane	PSENEN	Gene-Term
+integral component of presynaptic membrane	APH1A	Gene-Term
+postsynaptic SER	PSEN1	Gene-Term
+postsynaptic density	CTNND2	Gene-Term
+presynapse	FLOT1	Gene-Term
+synaptic vesicle membrane	SNCA	Gene-Term
+postsynaptic density	EGLN1	Gene-Term
+postsynaptic specialization of symmetric synapse	IQSEC3	Gene-Term
+postsynaptic density, intracellular component	IQSEC2	Gene-Term
+presynaptic active zone cytoplasmic component	IQSEC2	Gene-Term
+presynaptic active zone	APP	Gene-Term
+postsynaptic density, intracellular component	IQSEC1	Gene-Term
+integral component of postsynaptic membrane	CDH2	Gene-Term
+synapse	CDH23	Gene-Term
+synapse	PPP3CA	Gene-Term
+synapse	PPP3CB	Gene-Term
+synaptic membrane	CDH8	Gene-Term
+integral component of presynaptic membrane	ADRA1A	Gene-Term
+integral component of postsynaptic membrane	ADRA1A	Gene-Term
+synaptic membrane	CALB2	Gene-Term
+postsynaptic density	SLC6A9	Gene-Term
+integral component of presynaptic membrane	SLC6A9	Gene-Term
+presynapse	PCDH15	Gene-Term
+integral component of postsynaptic density membrane	ADRA2A	Gene-Term
+integral component of postsynaptic membrane	ADRA2A	Gene-Term
+integral component of presynaptic active zone membrane	ADRA2A	Gene-Term
+integral component of presynaptic membrane	PCDH17	Gene-Term
+integral component of postsynaptic density membrane	ADRA2C	Gene-Term
+integral component of postsynaptic membrane	ADRA2C	Gene-Term
+integral component of synaptic vesicle membrane	MAL2	Gene-Term
+extrinsic component of synaptic vesicle membrane	SGTA	Gene-Term
+integral component of synaptic vesicle membrane	SLC30A3	Gene-Term
+integral component of synaptic vesicle membrane	SLC18A3	Gene-Term
+integral component of presynaptic membrane	GRIK1	Gene-Term
+integral component of presynaptic membrane	GRIK4	Gene-Term
+integral component of presynaptic membrane	GRIK5	Gene-Term
+integral component of presynaptic active zone membrane	GRM7	Gene-Term
+integral component of presynaptic membrane	GRIK4	Gene-Term
+integral component of presynaptic membrane	GRIK5	Gene-Term
+presynapse	SLC29A1	Gene-Term
+postsynapse	SLC29A1	Gene-Term
+integral component of presynaptic membrane	HTR3A	Gene-Term
+integral component of synaptic vesicle membrane	SYP	Gene-Term
+postsynaptic density	MAPK1	Gene-Term
+presynaptic cytosol	STXBP5	Gene-Term
+presynapse	SPTBN2	Gene-Term
+extrinsic component of presynaptic membrane	STXBP5	Gene-Term
+postsynaptic density	MAP2K1	Gene-Term
+integral component of synaptic membrane	SYT3	Gene-Term
+integral component of synaptic membrane	SYT6	Gene-Term
+synapse	ADORA2B	Gene-Term
+integral component of neuronal dense core vesicle membrane	SYT4	Gene-Term
+integral component of neuronal dense core vesicle membrane	SYT4	Gene-Term
+neuronal dense core vesicle	SLC18A2	Gene-Term
+synapse	ADORA3	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN3	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN2	Gene-Term
+integral component of synaptic vesicle membrane	SCAMP5	Gene-Term
+integral component of synaptic vesicle membrane	STX1A	Gene-Term
+integral component of presynaptic membrane	STX1A	Gene-Term
+integral component of synaptic vesicle membrane	SYNGR1	Gene-Term
+synaptic vesicle	SYNGR3	Gene-Term
+integral component of synaptic vesicle membrane	SLC32A1	Gene-Term
+integral component of synaptic vesicle membrane	SLC6A7	Gene-Term
+integral component of synaptic vesicle membrane	SYNPR	Gene-Term
+presynapse	STXBP3	Gene-Term
+postsynapse	STX4	Gene-Term
+integral component of presynaptic membrane	GLRA3	Gene-Term
+integral component of presynaptic membrane	GLRA1	Gene-Term
+integral component of presynaptic active zone membrane	GRIA2	Gene-Term
+integral component of presynaptic membrane	GRIA1	Gene-Term
+integral component of presynaptic membrane	GRIA2	Gene-Term
+integral component of presynaptic membrane	GRIA3	Gene-Term
+integral component of postsynaptic membrane	GRIA1	Gene-Term
+integral component of postsynaptic membrane	GRIA2	Gene-Term
+integral component of postsynaptic membrane	GRIA3	Gene-Term
+integral component of postsynaptic membrane	GRIK5	Gene-Term
+integral component of presynaptic membrane	GRIK5	Gene-Term
+integral component of presynaptic active zone membrane	GRIA1	Gene-Term
+integral component of presynaptic active zone membrane	GRIA4	Gene-Term
+integral component of postsynaptic density membrane	GRIA1	Gene-Term
+integral component of presynaptic membrane	GRIA2	Gene-Term
+presynaptic active zone	SNAP47	Gene-Term
+integral component of synaptic vesicle membrane	PTPRN2	Gene-Term
+synaptic vesicle	VPS45	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN1	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN2	Gene-Term
+extrinsic component of synaptic vesicle membrane	SYN3	Gene-Term
+integral component of synaptic vesicle membrane	SV2B	Gene-Term
+integral component of synaptic vesicle membrane	SV2A	Gene-Term
+integral component of synaptic vesicle membrane	SV2C	Gene-Term
+synaptic vesicle	EXOC4	Gene-Term
+synaptic vesicle	SEC22B	Gene-Term
+integral component of synaptic vesicle membrane	STX16	Gene-Term
+integral component of synaptic vesicle membrane	STX6	Gene-Term
+integral component of synaptic vesicle membrane	STX7	Gene-Term
+synaptic vesicle	VPS33B	Gene-Term
+integral component of synaptic vesicle membrane	WFS1	Gene-Term
+integral component of synaptic vesicle membrane	LAMP1	Gene-Term
+integral component of synaptic vesicle membrane	STX12	Gene-Term
+integral component of synaptic vesicle membrane	STX1A	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA3	Gene-Term
+synaptic vesicle	STXBP5	Gene-Term
+integral component of presynaptic membrane	GABBR1	Gene-Term
+integral component of presynaptic active zone membrane	GABRA3	Gene-Term
+extrinsic component of neuronal dense core vesicle membrane	STXBP5	Gene-Term
+neuronal dense core vesicle	STXBP5L	Gene-Term
+integral component of presynaptic membrane	GABRA5	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA5	Gene-Term
+integral component of synaptic vesicle membrane	STX6	Gene-Term
+integral component of presynaptic active zone membrane	GABRA2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA2	Gene-Term
+integral component of presynaptic active zone membrane	GABRB1	Gene-Term
+integral component of postsynaptic specialization membrane	GABRB1	Gene-Term
+integral component of presynaptic active zone membrane	GABRB2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRB2	Gene-Term
+postsynaptic intermediate filament cytoskeleton	NEFL	Gene-Term
+postsynaptic intermediate filament cytoskeleton	NEFH	Gene-Term
+postsynapse	NSMF	Gene-Term
+postsynaptic density, intracellular component	ANKS1B	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA6	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA1	Gene-Term
+integral component of presynaptic membrane	CDH9	Gene-Term
+integral component of postsynaptic membrane	CDH9	Gene-Term
+integral component of presynaptic membrane	SYT7	Gene-Term
+postsynapse	JAK2	Gene-Term
+postsynapse	CAPRIN1	Gene-Term
+postsynapse	RPL8	Gene-Term
+postsynapse	RPLP0	Gene-Term
+postsynaptic density	RPL5	Gene-Term
+integral component of postsynaptic membrane	PCDH17	Gene-Term
+integral component of presynaptic membrane	SCN1A	Gene-Term
+postsynapse	PURA	Gene-Term
+postsynapse	CPEB4	Gene-Term
+integral component of presynaptic membrane	GRIN1	Gene-Term
+integral component of presynaptic membrane	GRIN2A	Gene-Term
+integral component of presynaptic membrane	GRIN2B	Gene-Term
+postsynapse	EIF4E	Gene-Term
+postsynapse	EIF4E	Gene-Term
+postsynapse	PSD2	Gene-Term
+postsynaptic density membrane	IQSEC2	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	EPN1	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	EPS15L1	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	EPS15	Gene-Term
+postsynapse	EIF4B	Gene-Term
+postsynaptic cytosol	EIF4EBP1	Gene-Term
+postsynapse	EIF4EBP2	Gene-Term
+postsynaptic density	ARF1	Gene-Term
+postsynapse	PAK1	Gene-Term
+postsynaptic specialization of symmetric synapse	IQSEC3	Gene-Term
+integral component of presynaptic membrane	GRIN2D	Gene-Term
+integral component of synaptic vesicle membrane	VAMP3	Gene-Term
+integral component of presynaptic active zone membrane	GRIN1	Gene-Term
+integral component of presynaptic active zone membrane	GRIN2B	Gene-Term
+integral component of presynaptic active zone membrane	GRIN2D	Gene-Term
+integral component of presynaptic active zone membrane	GRIN3B	Gene-Term
+extrinsic component of neuronal dense core vesicle membrane	STXBP5	Gene-Term
+presynapse	STXBP5	Gene-Term
+presynapse	STXBP5	Gene-Term
+extrinsic component of synaptic vesicle membrane	DOC2A	Gene-Term
+extrinsic component of synaptic vesicle membrane	DOC2A	Gene-Term
+extrinsic component of synaptic vesicle membrane	RPH3A	Gene-Term
+extrinsic component of synaptic vesicle membrane	RPH3A	Gene-Term
+integral component of postsynaptic density membrane	PLPPR4	Gene-Term
+integral component of presynaptic active zone membrane	LPAR2	Gene-Term
+integral component of presynaptic membrane	CHRNA7	Gene-Term
+integral component of spine apparatus membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA4	Gene-Term
+integral component of presynaptic membrane	CHRNA6	Gene-Term
+integral component of presynaptic membrane	CHRNB2	Gene-Term
+integral component of postsynaptic membrane	CHRNA6	Gene-Term
+integral component of postsynaptic membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA6	Gene-Term
+integral component of presynaptic membrane	CHRNB2	Gene-Term
+integral component of postsynaptic membrane	CHRNA6	Gene-Term
+integral component of postsynaptic membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA4	Gene-Term
+postsynaptic cytosol	DBN1	Gene-Term
+postsynapse	ACTR2	Gene-Term
+postsynapse	ACTR3	Gene-Term
+postsynaptic spectrin-associated cytoskeleton	SPTBN2	Gene-Term
+postsynaptic actin cytoskeleton	ITSN1	Gene-Term
+integral component of presynaptic active zone membrane	KCNMA1	Gene-Term
+postsynapse	PPP1R1B	Gene-Term
+integral component of postsynaptic membrane	GRIK4	Gene-Term
+integral component of postsynaptic density membrane	GRIK5	Gene-Term
+integral component of postsynaptic membrane	HTR3A	Gene-Term
+integral component of postsynaptic density membrane	GRIA2	Gene-Term
+integral component of postsynaptic density membrane	GRIN1	Gene-Term
+integral component of postsynaptic density membrane	GRIN2B	Gene-Term
+integral component of postsynaptic density membrane	GRIN2D	Gene-Term
+integral component of postsynaptic density membrane	GRIN3B	Gene-Term
+presynaptic active zone cytoplasmic component	GUCY1B1	Gene-Term
+integral component of postsynaptic density membrane	DCC	Gene-Term
+integral component of postsynaptic membrane	GRM1	Gene-Term
+perisynaptic extracellular matrix	BCAN	Gene-Term
+postsynapse	SPTBN1	Gene-Term
+integral component of postsynaptic membrane	HTR2A	Gene-Term
+integral component of presynaptic membrane	HTR2A	Gene-Term
+integral component of presynaptic membrane	HTR1A	Gene-Term
+integral component of presynaptic membrane	HTR7	Gene-Term
+integral component of postsynaptic membrane	HTR7	Gene-Term
+integral component of presynaptic membrane	HTR1B	Gene-Term
+synapse	RTN3	Gene-Term
+integral component of neuronal dense core vesicle membrane	SLC18A2	Gene-Term
+extrinsic component of synaptic vesicle membrane	BIN1	Gene-Term
+integral component of presynaptic active zone membrane	KCNJ8	Gene-Term
+integral component of presynaptic membrane	KCNJ11	Gene-Term
+integral component of postsynaptic membrane	GRM3	Gene-Term
+integral component of presynaptic active zone membrane	GRM4	Gene-Term
+integral component of presynaptic membrane	GRM7	Gene-Term
+integral component of presynaptic active zone membrane	GRM8	Gene-Term
+integral component of presynaptic active zone membrane	GRM7	Gene-Term
+integral component of presynaptic active zone membrane	CACNA1D	Gene-Term
+integral component of presynaptic membrane	GABBR1	Gene-Term
+postsynapse	EIF4G1	Gene-Term
+postsynaptic cytosol	HNRNPA2B1	Gene-Term
+postsynapse	HNRNPK	Gene-Term
+postsynapse	CDH1	Gene-Term
+integral component of postsynaptic density membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	CHRNA7	Gene-Term
+postsynapse	INA	Gene-Term
+integral component of synaptic vesicle membrane	SYT1	Gene-Term
+integral component of synaptic vesicle membrane	SYT2	Gene-Term
+presynapse	SEPT8	Gene-Term
+postsynapse	SEPT11	Gene-Term
+integral component of synaptic vesicle membrane	SYT9	Gene-Term
+integral component of neuronal dense core vesicle membrane	SYT5	Gene-Term
+postsynapse	CALB1	Gene-Term
+synapse	ARHGDIA	Gene-Term
+synapse	GDI2	Gene-Term
+synapse	RPL8	Gene-Term
+synapse	RPS13	Gene-Term
+synapse	RPS13	Gene-Term
+synapse	RPS23	Gene-Term
+synapse	SLC3A2	Gene-Term
+presynaptic cytosol	RAPH1	Gene-Term
+synapse	AKR1A1	Gene-Term
+postsynapse	INA	Gene-Term
+synapse	APOA4	Gene-Term
+synaptic cleft	CBLN1	Gene-Term
+synapse	CLU	Gene-Term
+integral component of postsynaptic membrane	CSPG5	Gene-Term
+synapse	DPYSL3	Gene-Term
+synapse	EEF1A2	Gene-Term
+synapse	FGA	Gene-Term
+synapse	FGB	Gene-Term
+synapse	FGG	Gene-Term
+postsynaptic density	ADGRA1	Gene-Term
+postsynaptic density	PLEKHA5	Gene-Term
+synapse	GPC1	Gene-Term
+synapse	HAPLN1	Gene-Term
+presynapse	DVL1	Gene-Term
+presynapse	KALRN	Gene-Term
+postsynaptic density	EPS8	Gene-Term
+synapse	SPARC	Gene-Term
+synapse	VGF	Gene-Term
+integral component of postsynaptic membrane	GABBR1	Gene-Term
+integral component of postsynaptic membrane	GABBR2	Gene-Term
+presynaptic ribosome	RPL22	Gene-Term
+presynaptic intermediate filament cytoskeleton	NEFL	Gene-Term
+integral component of presynaptic membrane	VAPA	Gene-Term
+postsynaptic density	SNAP47	Gene-Term
+presynapse	AMPH	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	PICALM	Gene-Term
+postsynaptic density, intracellular component	DLGAP1	Gene-Term
+postsynaptic specialization	DLGAP3	Gene-Term
+presynapse	DNM3	Gene-Term
+presynaptic endocytic zone	PACSIN1	Gene-Term
+synapse	SH3GL2	Gene-Term
+synapse	SH3GL1	Gene-Term
+presynaptic endocytic zone membrane	DNM1	Gene-Term
+presynaptic endocytic zone membrane	DNM1	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	SNAP91	Gene-Term
+presynaptic endocytic zone	ITSN1	Gene-Term
+postsynaptic actin cytoskeleton	PPP1R9A	Gene-Term
+postsynaptic specialization	DLGAP4	Gene-Term
+postsynaptic specialization of symmetric synapse	SEPT11	Gene-Term
+integral component of postsynaptic density membrane	EPHA7	Gene-Term
+integral component of postsynaptic membrane	ADGRB1	Gene-Term
+postsynapse	CAMKV	Gene-Term
+integral component of presynaptic active zone membrane	P2RY1	Gene-Term
+integral component of presynaptic active zone membrane	P2RY2	Gene-Term
+integral component of presynaptic active zone membrane	P2RY4	Gene-Term
+integral component of presynaptic active zone membrane	P2RX1	Gene-Term
+integral component of presynaptic active zone membrane	P2RX2	Gene-Term
+postsynaptic density, intracellular component	FYN	Gene-Term
+integral component of postsynaptic density membrane	SLC16A3	Gene-Term
+postsynaptic density, intracellular component	ARHGEF2	Gene-Term
+presynapse	DGKQ	Gene-Term
+postsynapse	DGKQ	Gene-Term
+integral component of postsynaptic membrane	NRP2	Gene-Term
+integral component of postsynaptic membrane	ADGRL2	Gene-Term
+presynapse	HSPA8	Gene-Term
+presynapse	EHD1	Gene-Term
+postsynapse	ERBIN	Gene-Term
+integral component of presynaptic membrane	ERBB4	Gene-Term
+integral component of postsynaptic density membrane	ERBB4	Gene-Term
+extrinsic component of postsynaptic membrane	FARP1	Gene-Term
+integral component of presynaptic membrane	CDH2	Gene-Term
+extrinsic component of postsynaptic membrane	CTNNA2	Gene-Term
+extrinsic component of presynaptic membrane	CTNNA2	Gene-Term
+presynaptic membrane	CTNNB1	Gene-Term
+postsynaptic membrane	CTNNB1	Gene-Term
+postsynaptic specialization, intracellular component	SRC	Gene-Term
+postsynapse	GIT1	Gene-Term
+postsynapse	HPCA	Gene-Term
+postsynaptic density	GSK3B	Gene-Term
+presynapse	STON2	Gene-Term
+presynaptic endocytic zone membrane	DNM1L	Gene-Term
+synaptic vesicle membrane	DNM1L	Gene-Term
+postsynaptic actin cytoskeleton	MYO6	Gene-Term
+postsynaptic specialization, intracellular component	NOS1	Gene-Term
+postsynaptic recycling endosome membrane	MYO5B	Gene-Term
+postsynaptic density, intracellular component	TNIK	Gene-Term
+postsynapse	DYNLL2	Gene-Term
+postsynaptic density membrane	ACTN2	Gene-Term
+postsynaptic density, intracellular component	ACTN2	Gene-Term
+postsynapse	SIPA1L1	Gene-Term
+presynaptic endocytic zone membrane	CLTB	Gene-Term
+presynaptic endocytic zone membrane	CLTA	Gene-Term
+integral component of presynaptic membrane	SLC1A2	Gene-Term
+integral component of postsynaptic density membrane	CACNG4	Gene-Term
+integral component of postsynaptic density membrane	GSG1L	Gene-Term
+integral component of postsynaptic density membrane	ADAM22	Gene-Term
+integral component of postsynaptic membrane	NTRK3	Gene-Term
+presynapse	TNIK	Gene-Term
+postsynaptic density	EIF3A	Gene-Term
+postsynaptic density	EIF4G2	Gene-Term
+postsynaptic density	RPL18A	Gene-Term
+postsynaptic density	RPL30	Gene-Term
+postsynaptic density	RPS6KC1	Gene-Term
+postsynaptic density	TSC1	Gene-Term
+presynaptic active zone cytoplasmic component	GUCY1B1	Gene-Term
+postsynaptic density	RPL8	Gene-Term
+postsynaptic density	RPLP0	Gene-Term
+postsynaptic density	RPL12	Gene-Term
+postsynaptic density	RPL14	Gene-Term
+postsynaptic density	RPL38	Gene-Term
+postsynaptic density	RPL7	Gene-Term
+postsynaptic density	RPS13	Gene-Term
+postsynaptic density	RPS27	Gene-Term
+postsynaptic density	RPS3	Gene-Term
+postsynaptic density	RPS25	Gene-Term
+postsynaptic density	RPS19	Gene-Term
+postsynaptic density	RPS18	Gene-Term
+postsynaptic density	RPS14	Gene-Term
+postsynaptic density	PCBP2	Gene-Term
+postsynaptic density	RPL4	Gene-Term
+postsynaptic density	RPL23	Gene-Term
+postsynaptic density	RPL10A	Gene-Term
+postsynaptic density	RPL30	Gene-Term
+postsynaptic density	RPL18A	Gene-Term
+postsynaptic density	RPLP0	Gene-Term
+postsynaptic density	PCBP2	Gene-Term
+postsynaptic density	PURA	Gene-Term
+postsynaptic density	HNRNPH2	Gene-Term
+postsynaptic density	HNRNPH1	Gene-Term
+postsynaptic density	HNRNPA3	Gene-Term
+postsynaptic density	RPL6	Gene-Term
+integral component of postsynaptic membrane	NRCAM	Gene-Term
+synapse	PPP2CA	Gene-Term
+postsynaptic density	RHEB	Gene-Term
+synapse	GPC4	Gene-Term
+synapse	GPC6	Gene-Term
+synapse	PABPC1	Gene-Term
+presynapse	PTN	Gene-Term
+integral component of postsynaptic density membrane	RTN4	Gene-Term
+integral component of presynaptic membrane	SLC6A1	Gene-Term
+postsynaptic specialization, intracellular component	SRGN	Gene-Term
+postsynapse	PLAT	Gene-Term
+postsynaptic specialization, intracellular component	LYN	Gene-Term
+postsynaptic specialization, intracellular component	YES1	Gene-Term
+postsynaptic specialization, intracellular component	LCK	Gene-Term
+integral component of presynaptic membrane	SLC6A11	Gene-Term
+integral component of presynaptic membrane	GABBR2	Gene-Term
+postsynaptic cytosol	EIF4E	Gene-Term
+postsynaptic cytosol	MTOR	Gene-Term
+postsynaptic membrane	DBN1	Gene-Term
+postsynapse	PTN	Gene-Term
+integral component of postsynaptic membrane	ABHD6	Gene-Term
+integral component of presynaptic membrane	GRM3	Gene-Term
+integral component of postsynaptic specialization membrane	HTR5A	Gene-Term
+postsynaptic density, intracellular component	NOS1	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA7	Gene-Term
+integral component of presynaptic membrane	PRRT2	Gene-Term
+postsynaptic density	DBN1	Gene-Term
+postsynaptic membrane	DBN1	Gene-Term
+presynapse	RTN4R	Gene-Term
+neuronal dense core vesicle	PLAT	Gene-Term
+synapse	PPP2R1A	Gene-Term
+extrasynaptic space	PLAT	Gene-Term
+postsynapse	PLAT	Gene-Term
+integral component of presynaptic membrane	CHRNA4	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA3	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNB2	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA4	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA3	Gene-Term
+presynaptic endocytic zone	AMPH	Gene-Term
+presynaptic cytosol	SH3GL2	Gene-Term
+postsynapse	PICALM	Gene-Term
+postsynaptic membrane	SNAP91	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNB2	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA7	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA7	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA9	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA10	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNA1	Gene-Term
+integral component of postsynaptic specialization membrane	CHRND	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNB1	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNE	Gene-Term
+integral component of postsynaptic specialization membrane	CHRNE	Gene-Term
+integral component of postsynaptic specialization membrane	GLRA4	Gene-Term
+integral component of postsynaptic specialization membrane	GLRA1	Gene-Term
+integral component of postsynaptic specialization membrane	GLRA3	Gene-Term
+synapse	GLRB	Gene-Term
+integral component of presynaptic membrane	HTR3A	Gene-Term
+integral component of postsynaptic density membrane	CACNG2	Gene-Term
+integral component of postsynaptic density membrane	CACNG3	Gene-Term
+integral component of postsynaptic density membrane	CACNG8	Gene-Term
+integral component of postsynaptic ER membrane	CPT1C	Gene-Term
+postsynaptic density, intracellular component	DLG1	Gene-Term
+anchored component of postsynaptic density membrane	DLG2	Gene-Term
+anchored component of postsynaptic density membrane	DLG4	Gene-Term
+postsynaptic density, intracellular component	DLG3	Gene-Term
+integral component of postsynaptic density membrane	GRID1	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA3	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA1	Gene-Term
+integral component of postsynaptic density membrane	GRID2	Gene-Term
+synapse	GABRA3	Gene-Term
+extrinsic component of presynaptic endocytic zone membrane	AMPH	Gene-Term
+synaptic vesicle membrane	CLTA	Gene-Term
+synaptic vesicle membrane	CLTB	Gene-Term
+integral component of postsynaptic membrane	GABRA5	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA4	Gene-Term
+integral component of postsynaptic density membrane	SLC16A7	Gene-Term
+integral component of postsynaptic membrane	CACNG5	Gene-Term
+postsynaptic density	USP8	Gene-Term
+extrinsic component of postsynaptic density membrane	SCRIB	Gene-Term
+postsynaptic recycling endosome	RAB11A	Gene-Term
+postsynaptic density	DNAJB1	Gene-Term
+integral component of postsynaptic membrane	FLRT3	Gene-Term
+extrinsic component of postsynaptic density membrane	TIAM1	Gene-Term
+postsynaptic density	ARHGAP44	Gene-Term
+presynaptic active zone	ARHGAP44	Gene-Term
+presynapse	HIP1	Gene-Term
+postsynaptic membrane	HIP1	Gene-Term
+postsynapse	PTK2	Gene-Term
+postsynaptic endosome	NSG1	Gene-Term
+postsynaptic specialization membrane	RAPSN	Gene-Term
+synaptic cleft	ACHE	Gene-Term
+postsynapse	PTK2B	Gene-Term
+neuronal dense core vesicle	SCG2	Gene-Term
+synaptic cleft	LAMA5	Gene-Term
+synaptic cleft	LAMB2	Gene-Term
+postsynapse	NTRK2	Gene-Term
+integral component of postsynaptic membrane	DAGLA	Gene-Term
+integral component of postsynaptic density membrane	SHISA9	Gene-Term
+postsynaptic density	GRIP2	Gene-Term
+integral component of postsynaptic density membrane	NETO1	Gene-Term
+postsynapse	RAC1	Gene-Term
+postsynapse	STX3	Gene-Term
+postsynapse	RAC1	Gene-Term
+integral component of postsynaptic membrane	ITGB1	Gene-Term
+presynaptic endosome	AP3D1	Gene-Term
+integral component of postsynaptic membrane	KCND2	Gene-Term
+integral component of postsynaptic membrane	GABRD	Gene-Term
+integral component of postsynaptic membrane	GABRD	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA5	Gene-Term
+integral component of postsynaptic membrane	GABRB3	Gene-Term
+integral component of postsynaptic specialization membrane	GABRB3	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA1	Gene-Term
+integral component of postsynaptic specialization membrane	GABBR1	Gene-Term
+integral component of postsynaptic membrane	GABBR1	Gene-Term
+integral component of presynaptic active zone membrane	GABBR1	Gene-Term
+integral component of postsynaptic specialization membrane	GABRG2	Gene-Term
+integral component of postsynaptic membrane	PRRT1	Gene-Term
+extrinsic component of synaptic membrane	OLFM2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA6	Gene-Term
+extrinsic component of synaptic membrane	OLFM1	Gene-Term
+integral component of postsynaptic density membrane	CNIH2	Gene-Term
+integral component of postsynaptic density membrane	LRFN3	Gene-Term
+postsynaptic density, intracellular component	ABR	Gene-Term
+postsynaptic density, intracellular component	BCR	Gene-Term
+postsynaptic density	DGKZ	Gene-Term
+extrinsic component of postsynaptic density membrane	DGKI	Gene-Term
+extrinsic component of postsynaptic density membrane	DGKB	Gene-Term
+postsynaptic density, intracellular component	PSD	Gene-Term
+postsynaptic endocytic zone	SYNE1	Gene-Term
+postsynaptic density	HSPA8	Gene-Term
+synaptic cleft	LAMA2	Gene-Term
+synaptic cleft	LAMC1	Gene-Term
+synaptic cleft	LAMA4	Gene-Term
+anchored component of presynaptic membrane	GPC4	Gene-Term
+integral component of synaptic membrane	ITGB5	Gene-Term
+integral component of synaptic membrane	ITGB3	Gene-Term
+integral component of synaptic membrane	ITGB1	Gene-Term
+integral component of postsynaptic density membrane	LRFN1	Gene-Term
+integral component of postsynaptic density membrane	LRFN2	Gene-Term
+integral component of postsynaptic density membrane	LRFN4	Gene-Term
+integral component of postsynaptic density membrane	LRFN5	Gene-Term
+postsynapse	RHOA	Gene-Term
+integral component of postsynaptic density membrane	LRRC4	Gene-Term
+integral component of postsynaptic density membrane	LRRC4B	Gene-Term
+integral component of postsynaptic density membrane	LRRC4C	Gene-Term
+integral component of postsynaptic density membrane	LRRC7	Gene-Term
+integral component of presynaptic membrane	NCAM1	Gene-Term
+postsynapse	RHOA	Gene-Term
+postsynaptic density	GRIP1	Gene-Term
+integral component of presynaptic active zone membrane	NECTIN1	Gene-Term
+postsynaptic density	KALRN	Gene-Term
+integral component of postsynaptic membrane	KCND2	Gene-Term
+integral component of postsynaptic specialization membrane	KCND2	Gene-Term
+integral component of postsynaptic specialization membrane	KCND3	Gene-Term
+postsynaptic SER	MYO5A	Gene-Term
+integral component of presynaptic membrane	PTPRS	Gene-Term
+integral component of postsynaptic density membrane	PTPRF	Gene-Term
+integral component of presynaptic membrane	PTPRD	Gene-Term
+postsynaptic density, intracellular component	TANC1	Gene-Term
+postsynaptic density, intracellular component	TANC2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRB2	Gene-Term
+integral component of postsynaptic specialization membrane	GABRG2	Gene-Term
+integral component of synaptic membrane	GABRG3	Gene-Term
+integral component of postsynaptic membrane	GABRD	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA2	Gene-Term
+postsynaptic density, intracellular component	PRR7	Gene-Term
+integral component of postsynaptic membrane	GABRE	Gene-Term
+postsynapse	CACNB1	Gene-Term
+synapse	CORO1A	Gene-Term
+integral component of postsynaptic membrane	DRD1	Gene-Term
+integral component of postsynaptic density membrane	PTPRT	Gene-Term
+integral component of postsynaptic density membrane	PTPRO	Gene-Term
+integral component of synaptic membrane	PTPRA	Gene-Term
+integral component of postsynaptic density membrane	PTPRZ1	Gene-Term
+synapse	ABLIM3	Gene-Term
+postsynaptic density	CAPZB	Gene-Term
+integral component of presynaptic active zone membrane	CDH10	Gene-Term
+integral component of postsynaptic specialization membrane	CDH10	Gene-Term
+synapse	CDH11	Gene-Term
+synapse	CDH13	Gene-Term
+anchored component of presynaptic active zone membrane	NTNG1	Gene-Term
+anchored component of presynaptic active zone membrane	NTNG2	Gene-Term
+integral component of postsynaptic density membrane	NECTIN3	Gene-Term
+postsynaptic density, intracellular component	SNX1	Gene-Term
+integral component of postsynaptic density membrane	SHISA6	Gene-Term
+integral component of postsynaptic specialization membrane	SHISA7	Gene-Term
+postsynaptic density, intracellular component	GAPDH	Gene-Term
+extrinsic component of synaptic vesicle membrane	GAPDH	Gene-Term
+synapse	YWHAQ	Gene-Term
+integral component of postsynaptic membrane	ADRB2	Gene-Term
+synaptic cleft	NPTX1	Gene-Term
+presynaptic active zone cytoplasmic component	CTNND1	Gene-Term
+integral component of postsynaptic mitochondrial membrane	SLC8A2	Gene-Term
+integral component of postsynaptic mitochondrial membrane	SLC8A1	Gene-Term
+extrinsic component of postsynaptic density membrane	CNKSR2	Gene-Term
+synapse	PCDH8	Gene-Term
+integral component of postsynaptic membrane	PCDH8	Gene-Term
+postsynaptic density, intracellular component	CTNND1	Gene-Term
+extrinsic component of presynaptic active zone membrane	DGKI	Gene-Term
+synaptic vesicle	DGKI	Gene-Term
+integral component of postsynaptic density membrane	GRIN1	Gene-Term
+integral component of postsynaptic density membrane	GRIN2A	Gene-Term
+integral component of postsynaptic density membrane	GRIN2B	Gene-Term
+integral component of postsynaptic density membrane	GRIA1	Gene-Term
+synapse	MADD	Gene-Term
+synapse	ARFGAP1	Gene-Term
+synapse	PPP2R2A	Gene-Term
+integral component of postsynaptic membrane	NCAM1	Gene-Term
+postsynaptic cytosol	DAG1	Gene-Term
+postsynaptic specialization of symmetric synapse	IGSF9B	Gene-Term
+presynaptic cytosol	LRRK2	Gene-Term
+integral component of synaptic vesicle membrane	SLC22A2	Gene-Term
+postsynaptic density	TSC2	Gene-Term
+postsynapse	CDK5	Gene-Term
+presynapse	VAMP1	Gene-Term
+anchored component of synaptic vesicle membrane	RAB3B	Gene-Term
+postsynapse	ACTR3	Gene-Term
+postsynapse	WASL	Gene-Term
+integral component of synaptic vesicle membrane	STX12	Gene-Term
+presynaptic cytosol	SNCB	Gene-Term
+extrinsic component of postsynaptic membrane	FBXO2	Gene-Term
+integral component of postsynaptic density membrane	GRIA2	Gene-Term
+postsynaptic density	RAPGEF4	Gene-Term
+integral component of postsynaptic density membrane	GRIA3	Gene-Term
+postsynaptic density	CTNND2	Gene-Term
+integral component of postsynaptic density membrane	GRIA4	Gene-Term
+integral component of postsynaptic density membrane	SLC30A1	Gene-Term
+presynaptic cytosol	TRIM9	Gene-Term
+synaptic vesicle	TRIM9	Gene-Term
+postsynaptic density	MPDZ	Gene-Term
+presynapse	AAK1	Gene-Term
+integral component of postsynaptic membrane	DRD2	Gene-Term
+integral component of presynaptic membrane	DRD2	Gene-Term
+integral component of presynaptic membrane	DRD1	Gene-Term
+integral component of postsynaptic membrane	DRD1	Gene-Term
+integral component of postsynaptic membrane	DRD2	Gene-Term
+integral component of presynaptic membrane	DRD1	Gene-Term
+integral component of presynaptic membrane	DRD2	Gene-Term
+postsynapse	PPP1CC	Gene-Term
+presynapse	PPP1CC	Gene-Term
+presynapse	PPP1CA	Gene-Term
+postsynapse	PPP1CA	Gene-Term
+presynaptic cytosol	LRRK2	Gene-Term
+integral component of postsynaptic density membrane	DRD3	Gene-Term
+integral component of presynaptic membrane	DRD4	Gene-Term
+integral component of postsynaptic membrane	DRD4	Gene-Term
+integral component of postsynaptic density membrane	DRD5	Gene-Term
+presynapse	YWHAG	Gene-Term
+integral component of presynaptic membrane	DRD5	Gene-Term
+synapse	YWHAG	Gene-Term
+synapse	YWHAE	Gene-Term
+synapse	YWHAH	Gene-Term
+postsynapse	EPN1	Gene-Term
+presynapse	AP1G1	Gene-Term
+postsynapse	NRGN	Gene-Term
+postsynaptic density, intracellular component	NR3C2	Gene-Term
+postsynaptic density, intracellular component	NR3C1	Gene-Term
+presynaptic active zone cytoplasmic component	NR3C2	Gene-Term
+postsynaptic membrane	NRGN	Gene-Term
+integral component of postsynaptic density membrane	CHRM1	Gene-Term
+integral component of presynaptic membrane	CHRM1	Gene-Term
+integral component of postsynaptic membrane	CHRM2	Gene-Term
+integral component of presynaptic membrane	CHRM2	Gene-Term
+integral component of postsynaptic density membrane	CHRM3	Gene-Term
+integral component of presynaptic membrane	CHRM3	Gene-Term
+integral component of postsynaptic density membrane	CHRM4	Gene-Term
+integral component of presynaptic membrane	CHRM4	Gene-Term
+postsynapse	SYT11	Gene-Term
+presynapse	YWHAH	Gene-Term
+integral component of synaptic vesicle membrane	SYT11	Gene-Term
+integral component of presynaptic active zone membrane	SYT11	Gene-Term
+integral component of synaptic membrane	GHSR	Gene-Term
+postsynaptic density membrane	RGS9	Gene-Term
+anchored component of postsynaptic density membrane	MPP2	Gene-Term
+integral component of postsynaptic density membrane	SLITRK1	Gene-Term
+integral component of postsynaptic membrane	SLITRK3	Gene-Term
+integral component of postsynaptic density membrane	SLC16A7	Gene-Term
+integral component of postsynaptic density membrane	GRID2	Gene-Term
+integral component of postsynaptic specialization membrane	LRFN3	Gene-Term
+integral component of presynaptic active zone membrane	LRFN3	Gene-Term
+presynaptic active zone	VPS11	Gene-Term
+presynapse	VPS16	Gene-Term
+presynapse	VPS18	Gene-Term
+anchored component of postsynaptic recycling endosome membrane	ABHD17A	Gene-Term
+presynapse	VPS35	Gene-Term
+integral component of synaptic membrane	SLC2A3	Gene-Term
+anchored component of postsynaptic density membrane	ABHD17B	Gene-Term
+anchored component of postsynaptic recycling endosome membrane	ABHD17B	Gene-Term
+anchored component of postsynaptic density membrane	ABHD17A	Gene-Term
+integral component of postsynaptic density membrane	NRCAM	Gene-Term
+integral component of postsynaptic specialization membrane	GABRA2	Gene-Term
+integral component of postsynaptic density membrane	GRIN3A	Gene-Term
+presynaptic endocytic zone	VPS35	Gene-Term
+integral component of postsynaptic density membrane	SORCS3	Gene-Term
+postsynaptic density	VHL	Gene-Term
+postsynapse	ABL2	Gene-Term
+postsynaptic density	ABL1	Gene-Term
+postsynapse	ADD2	Gene-Term
+presynapse	ADD1	Gene-Term
+presynapse	ADD2	Gene-Term
+presynapse	ADD3	Gene-Term
+postsynapse	ADD1	Gene-Term
+postsynapse	ADD2	Gene-Term
+postsynapse	ADD3	Gene-Term
+integral component of postsynaptic density membrane	GRID1	Gene-Term
+integral component of postsynaptic density membrane	SLITRK1	Gene-Term
+integral component of postsynaptic membrane	SLITRK2	Gene-Term
+integral component of postsynaptic density membrane	SLITRK3	Gene-Term
+postsynapse	VPS35	Gene-Term
+presynaptic membrane	RGS9	Gene-Term
+anchored component of postsynaptic density membrane	RGS7BP	Gene-Term
+anchored component of presynaptic membrane	RGS7BP	Gene-Term
+postsynaptic membrane	RGS7	Gene-Term
+integral component of postsynaptic density membrane	CACNG7	Gene-Term
+postsynapse	VPS35	Gene-Term
+integral component of postsynaptic density membrane	CACNG3	Gene-Term
+integral component of postsynaptic density membrane	CACNG8	Gene-Term
+postsynaptic Golgi apparatus	MAPK10	Gene-Term
+integral component of postsynaptic specialization membrane	SLITRK3	Gene-Term
+integral component of postsynaptic specialization membrane	LRRTM1	Gene-Term
+integral component of postsynaptic specialization membrane	LRRTM2	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN2	Gene-Term
+presynaptic active zone cytoplasmic component	PPFIA3	Gene-Term
+presynaptic cytosol	PPFIA2	Gene-Term
+presynaptic active zone cytoplasmic component	ERC2	Gene-Term
+presynapse	AP3D1	Gene-Term
+postsynapse	AP3D1	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN1	Gene-Term
+integral component of presynaptic active zone membrane	NRXN1	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN2	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN2	Gene-Term
+postsynaptic endosome	CLSTN1	Gene-Term
+integral component of postsynaptic density membrane	LRRC4	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN3	Gene-Term
+integral component of presynaptic membrane	GABBR1	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN4X	Gene-Term
+integral component of postsynaptic specialization membrane	NLGN4Y	Gene-Term
+integral component of presynaptic active zone membrane	NRG1	Gene-Term
+integral component of postsynaptic density membrane	NRG1	Gene-Term
+postsynaptic density	FRMPD4	Gene-Term
+postsynapse	NOS1AP	Gene-Term
+synapse	WNT3A	Gene-Term
+synapse	FZD4	Gene-Term
+synapse	DVL3	Gene-Term
+postsynapse	FZD9	Gene-Term
+synapse	FZD5	Gene-Term
+postsynaptic density	DVL1	Gene-Term
+presynapse	CASKIN1	Gene-Term
+postsynapse	ARHGAP39	Gene-Term
+presynapse	NOS1AP	Gene-Term
+integral component of postsynaptic density membrane	CLSTN3	Gene-Term
+integral component of postsynaptic density membrane	CLSTN3	Gene-Term
+integral component of postsynaptic density membrane	CLSTN2	Gene-Term
+integral component of postsynaptic density membrane	CLSTN1	Gene-Term
+integral component of spine apparatus membrane	CLSTN1	Gene-Term
+presynapse	RGS7	Gene-Term
+postsynapse	RGS7BP	Gene-Term
+presynapse	GNB5	Gene-Term
+presynapse	RGS7BP	Gene-Term
+postsynaptic specialization	YWHAZ	Gene-Term
+integral component of postsynaptic membrane	GPER1	Gene-Term
+integral component of presynaptic membrane	GPER1	Gene-Term
+postsynaptic density membrane	PACSIN1	Gene-Term
+postsynapse	TRIO	Gene-Term
+postsynaptic specialization, intracellular component	ZDHHC5	Gene-Term
+presynapse	KIAA1107	Gene-Term
+postsynaptic endocytic zone membrane	RAB5A	Gene-Term
+postsynaptic endocytic zone	SH3GLB2	Gene-Term
+postsynaptic density	NUMB	Gene-Term
+postsynaptic density	RGS14	Gene-Term
+synapse	USP46	Gene-Term
+postsynaptic endocytic zone	CALY	Gene-Term
+postsynaptic endocytic zone membrane	DNM3	Gene-Term
+postsynaptic endocytic zone	CLTA	Gene-Term
+postsynaptic density, intracellular component	DNM2	Gene-Term
+synapse	EPS15	Gene-Term
+postsynaptic density	HSPA8	Gene-Term
+postsynapse	HSPA8	Gene-Term
+presynapse	HSPA8	Gene-Term
+postsynapse	DNAJB1	Gene-Term
+postsynaptic actin cytoskeleton	MYH10	Gene-Term
+presynapse	SGIP1	Gene-Term
+postsynaptic density, intracellular component	SH3GL1	Gene-Term
+presynapse	SH3GL1	Gene-Term
+synaptic vesicle membrane	SH3GL2	Gene-Term
+postsynaptic density, intracellular component	SH3GL3	Gene-Term
+postsynaptic density membrane	ARC	Gene-Term
+postsynaptic endosome	SH3GL3	Gene-Term
+postsynaptic endosome	ARC	Gene-Term
+postsynaptic density	PIP5K1C	Gene-Term
+postsynaptic actin cytoskeleton	SYNE1	Gene-Term
+postsynapse	ATAD1	Gene-Term
+postsynaptic specialization membrane	HSPA8	Gene-Term
+synapse	LIN7C	Gene-Term
+postsynaptic endocytic zone	PICK1	Gene-Term
+presynapse	CALY	Gene-Term
+presynaptic active zone	TRIO	Gene-Term
+integral component of presynaptic membrane	ANO1	Gene-Term
+integral component of presynaptic membrane	ANO2	Gene-Term
+synapse	CDH9	Gene-Term
+postsynapse	TAOK2	Gene-Term
+presynaptic ribosome	RPS6	Gene-Term
+postsynapse	RAB17	Gene-Term
+postsynapse	ARFGEF2	Gene-Term
+synapse	AXIN1	Gene-Term
+synapse	BCAS1	Gene-Term
+synapse	CDH6	Gene-Term
+synapse	CDH10	Gene-Term
+postsynapse	SH3GL2	Gene-Term
+synaptic cleft	NPTX2	Gene-Term
+integral component of presynaptic membrane	SLC22A2	Gene-Term
+postsynaptic density, intracellular component	GRIP2	Gene-Term
+postsynaptic specialization	LHFPL4	Gene-Term
+postsynaptic septin cytoskeleton	SEPT7	Gene-Term
+postsynapse	ARHGEF15	Gene-Term
+presynaptic active zone membrane	VDAC1	Gene-Term
+integral component of postsynaptic density membrane	VDAC1	Gene-Term
+postsynapse	DACT1	Gene-Term
+postsynaptic density	DISC1	Gene-Term
+presynapse	DISC1	Gene-Term
+postsynaptic density	DLG5	Gene-Term
+postsynapse	DOCK10	Gene-Term
+presynaptic active zone cytoplasmic component	CTBP2	Gene-Term
+postsynapse	STX4	Gene-Term
+presynapse	ARFGEF2	Gene-Term
+postsynapse	DBNL	Gene-Term
+presynapse	DBNL	Gene-Term
+integral component of postsynaptic specialization membrane	GABRB2	Gene-Term
+postsynapse	CALD1	Gene-Term
+postsynapse	CNN3	Gene-Term
+postsynapse	COMT	Gene-Term
+postsynaptic density	CPEB1	Gene-Term
+postsynapse	CPSF2	Gene-Term
+postsynaptic density	AURKA	Gene-Term
+postsynaptic density	TACC3	Gene-Term
+postsynapse	EIF4E	Gene-Term
+postsynaptic density, intracellular component	CRIPT	Gene-Term
+integral component of postsynaptic specialization membrane	KCNB1	Gene-Term
+integral component of postsynaptic membrane	KCNJ2	Gene-Term
+integral component of postsynaptic membrane	KCNN2	Gene-Term
+integral component of postsynaptic membrane	KCNN2	Gene-Term
+postsynapse	HIP1R	Gene-Term
+postsynaptic actin cytoskeleton	ITPKA	Gene-Term
+integral component of postsynaptic density membrane	KCNAB2	Gene-Term
+postsynapse	KLHL17	Gene-Term
+integral component of presynaptic active zone membrane	GABRB2	Gene-Term
+synaptic cleft	C1QL2	Gene-Term
+synaptic cleft	C1QL3	Gene-Term
+postsynapse	BCL11A	Gene-Term
+postsynaptic density, intracellular component	DICER1	Gene-Term
+postsynaptic density	DROSHA	Gene-Term
+postsynaptic density	DGCR8	Gene-Term
+synaptic cleft	C1QL1	Gene-Term
+postsynaptic density	EEF2K	Gene-Term
+postsynaptic actin cytoskeleton	KPTN	Gene-Term
+integral component of presynaptic membrane	LPAR1	Gene-Term
+integral component of postsynaptic density membrane	ADGRB3	Gene-Term
+anchored component of postsynaptic density membrane	LZTS1	Gene-Term
+postsynaptic density	LZTS3	Gene-Term
+postsynaptic density	GRK2	Gene-Term
+presynapse	GRK2	Gene-Term
+postsynaptic density	GRK3	Gene-Term
+presynapse	GRK3	Gene-Term
+integral component of presynaptic membrane	KCNQ5	Gene-Term
+postsynapse	MARK2	Gene-Term
+postsynapse	SPTB	Gene-Term
+postsynapse	SPTAN1	Gene-Term
+postsynaptic density	DAPK1	Gene-Term
+postsynapse	ROR2	Gene-Term
+postsynapse	MYO9A	Gene-Term
+postsynaptic density	RBMX	Gene-Term
+postsynaptic density	HNRNPD	Gene-Term
+postsynaptic density	HNRNPM	Gene-Term
+postsynaptic density	HNRNPA2B1	Gene-Term
+integral component of postsynaptic density membrane	ITGA8	Gene-Term
+postsynapse	AGAP2	Gene-Term
+extrinsic component of postsynaptic density membrane	CNKSR2	Gene-Term
+presynaptic active zone	ARFGAP3	Gene-Term
+presynapse	GAD1	Gene-Term
+presynapse	GAD2	Gene-Term
+integral component of postsynaptic density membrane	SEMA4F	Gene-Term
+postsynaptic ribosome	RPL10	Gene-Term
+postsynaptic ribosome	RPL10A	Gene-Term
+postsynaptic ribosome	RPL11	Gene-Term
+synapse	RPL12	Gene-Term
+postsynaptic ribosome	RPL12	Gene-Term
+postsynaptic ribosome	RPL13	Gene-Term
+synapse	RPL13	Gene-Term
+synapse	RPL13A	Gene-Term
+postsynaptic ribosome	RPL13A	Gene-Term
+synapse	RPL14	Gene-Term
+postsynaptic ribosome	RPL14	Gene-Term
+synapse	RPL17	Gene-Term
+postsynaptic ribosome	RPL17	Gene-Term
+synapse	RPL15	Gene-Term
+postsynaptic ribosome	RPL15	Gene-Term
+postsynaptic ribosome	RPL18	Gene-Term
+postsynaptic ribosome	RPL21	Gene-Term
+synapse	RPL21	Gene-Term
+synapse	RPL22	Gene-Term
+postsynaptic ribosome	RPL23	Gene-Term
+postsynaptic ribosome	RPL22	Gene-Term
+synapse	RPL23	Gene-Term
+synapse	RPL23A	Gene-Term
+postsynaptic ribosome	RPL23A	Gene-Term
+postsynaptic ribosome	RPL26	Gene-Term
+synapse	RPL24	Gene-Term
+synapse	RPL27	Gene-Term
+synapse	RPL26	Gene-Term
+synapse	RPL27A	Gene-Term
+synapse	RPL28	Gene-Term
+synapse	RPL30	Gene-Term
+synapse	RPL32	Gene-Term
+synapse	RPL35	Gene-Term
+synapse	RPL8	Gene-Term
+synapse	RPL35A	Gene-Term
+synapse	RPL36A	Gene-Term
+synapse	RPL37A	Gene-Term
+synapse	RPL38	Gene-Term
+synapse	RPLP1	Gene-Term
+postsynaptic ribosome	RPL24	Gene-Term
+postsynaptic ribosome	RPL27	Gene-Term
+postsynaptic ribosome	RPL27A	Gene-Term
+postsynaptic ribosome	RPL28	Gene-Term
+postsynaptic ribosome	RPL29	Gene-Term
+postsynaptic ribosome	RPL31	Gene-Term
+postsynaptic ribosome	RPL30	Gene-Term
+postsynaptic ribosome	RPL32	Gene-Term
+postsynaptic ribosome	RPL34	Gene-Term
+synapse	RPL34	Gene-Term
+postsynaptic ribosome	RPL35	Gene-Term
+postsynaptic ribosome	RPL35A	Gene-Term
+postsynaptic ribosome	RPL36	Gene-Term
+postsynaptic ribosome	RPL36A	Gene-Term
+postsynaptic ribosome	RPL37	Gene-Term
+postsynaptic ribosome	RPL37A	Gene-Term
+postsynaptic ribosome	RPL38	Gene-Term
+postsynaptic ribosome	RPL4	Gene-Term
+postsynaptic ribosome	RPL5	Gene-Term
+postsynaptic ribosome	RPL6	Gene-Term
+postsynaptic ribosome	RPL7	Gene-Term
+postsynaptic ribosome	RPL7A	Gene-Term
+postsynaptic ribosome	RPL8	Gene-Term
+postsynaptic ribosome	RPLP0	Gene-Term
+postsynaptic ribosome	RPLP1	Gene-Term
+postsynaptic ribosome	RPLP2	Gene-Term
+postsynaptic ribosome	UBA52	Gene-Term
+synapse	RPS10	Gene-Term
+synapse	RPS11	Gene-Term
+synapse	RPS12	Gene-Term
+synapse	RPS14	Gene-Term
+synapse	RPS15A	Gene-Term
+synapse	RPS16	Gene-Term
+synapse	RPS24	Gene-Term
+synapse	RPS26	Gene-Term
+synapse	RPS27A	Gene-Term
+synapse	RPS28	Gene-Term
+synapse	RPS5	Gene-Term
+postsynaptic ribosome	RPS10	Gene-Term
+postsynaptic ribosome	RPS11	Gene-Term
+postsynaptic ribosome	RPS12	Gene-Term
+postsynaptic ribosome	RPS14	Gene-Term
+postsynaptic ribosome	RPS15A	Gene-Term
+postsynaptic ribosome	RPS16	Gene-Term
+postsynaptic ribosome	RPS24	Gene-Term
+postsynaptic ribosome	RPS26	Gene-Term
+postsynaptic ribosome	RPS27A	Gene-Term
+postsynaptic ribosome	RPS28	Gene-Term
+postsynaptic ribosome	RPS5	Gene-Term
+postsynaptic ribosome	RPS13	Gene-Term
+postsynaptic ribosome	RPS15	Gene-Term
+postsynaptic ribosome	RPS17	Gene-Term
+postsynaptic ribosome	RPS18	Gene-Term
+postsynaptic ribosome	RPS19	Gene-Term
+postsynaptic ribosome	RPS2	Gene-Term
+postsynaptic ribosome	RPS20	Gene-Term
+postsynaptic ribosome	RPS21	Gene-Term
+postsynaptic ribosome	RPS23	Gene-Term
+synapse	RPS27	Gene-Term
+postsynaptic ribosome	RPS3	Gene-Term
+postsynaptic ribosome	RPS3A	Gene-Term
+postsynaptic ribosome	RPS6	Gene-Term
+postsynaptic ribosome	RPS7	Gene-Term
+postsynaptic ribosome	RPS8	Gene-Term
+postsynaptic ribosome	RPS9	Gene-Term
+postsynaptic ribosome	RPSA	Gene-Term
+postsynaptic ribosome	RPL9	Gene-Term
+presynaptic ribosome	RPL9	Gene-Term
+presynaptic ribosome	RPL10	Gene-Term
+presynaptic ribosome	RPL10A	Gene-Term
+presynaptic ribosome	RPL11	Gene-Term
+presynaptic ribosome	RPL12	Gene-Term
+presynaptic ribosome	RPL13	Gene-Term
+presynaptic ribosome	RPL13A	Gene-Term
+presynaptic ribosome	RPL14	Gene-Term
+presynaptic ribosome	RPL17	Gene-Term
+presynaptic ribosome	RPL15	Gene-Term
+presynaptic ribosome	RPL18	Gene-Term
+presynaptic ribosome	RPL23	Gene-Term
+presynaptic ribosome	RPL23A	Gene-Term
+presynaptic ribosome	RPL26	Gene-Term
+presynaptic ribosome	RPL24	Gene-Term
+presynaptic ribosome	RPL27	Gene-Term
+presynaptic ribosome	RPL27A	Gene-Term
+presynaptic ribosome	RPL28	Gene-Term
+presynaptic ribosome	RPL29	Gene-Term
+presynaptic ribosome	RPL32	Gene-Term
+presynaptic ribosome	RPL34	Gene-Term
+presynaptic ribosome	RPL35	Gene-Term
+presynaptic ribosome	RPL35A	Gene-Term
+presynaptic ribosome	RPL36	Gene-Term
+presynaptic ribosome	RPL36A	Gene-Term
+presynaptic ribosome	RPL37	Gene-Term
+presynaptic ribosome	RPL37A	Gene-Term
+presynaptic ribosome	RPL38	Gene-Term
+presynaptic ribosome	RPL4	Gene-Term
+presynaptic ribosome	RPL5	Gene-Term
+presynaptic ribosome	RPL6	Gene-Term
+presynaptic ribosome	RPL7	Gene-Term
+presynaptic ribosome	RPL7A	Gene-Term
+presynaptic ribosome	RPL8	Gene-Term
+presynaptic ribosome	RPLP0	Gene-Term
+presynaptic ribosome	RPLP2	Gene-Term
+presynaptic ribosome	UBA52	Gene-Term
+presynaptic ribosome	RPS10	Gene-Term
+presynaptic ribosome	RPS11	Gene-Term
+presynaptic ribosome	RPS12	Gene-Term
+presynaptic ribosome	RPS14	Gene-Term
+presynaptic ribosome	RPS15A	Gene-Term
+presynaptic ribosome	RPS16	Gene-Term
+presynaptic ribosome	RPS24	Gene-Term
+presynaptic ribosome	RPS26	Gene-Term
+presynaptic ribosome	RPS27A	Gene-Term
+presynaptic ribosome	RPS28	Gene-Term
+presynaptic ribosome	RPS5	Gene-Term
+presynaptic ribosome	RPS13	Gene-Term
+synaptic vesicle	SNAP29	Gene-Term
+synapse	RPS27	Gene-Term
+presynaptic ribosome	RPS27	Gene-Term
+postsynaptic ribosome	RPS27	Gene-Term
+postsynaptic density, intracellular component	INA	Gene-Term
+presynapse	CNTN6	Gene-Term
+postsynapse	MYO5A	Gene-Term
+postsynapse	MYO5B	Gene-Term
+postsynapse	FILIP1	Gene-Term
+postsynapse	CTTN	Gene-Term
+extrinsic component of synaptic vesicle membrane	SNAP29	Gene-Term
+integral component of synaptic vesicle membrane	SVOP	Gene-Term
+postsynapse	PUM1	Gene-Term
+postsynapse	PUM2	Gene-Term
+integral component of presynaptic active zone membrane	STX1A	Gene-Term
+integral component of postsynaptic density membrane	STX1A	Gene-Term
+synaptic vesicle	ATP6AP1	Gene-Term
+synaptic vesicle	ATP6V0A1	Gene-Term
+synaptic vesicle	ATP6V0A4	Gene-Term
+synaptic vesicle	ATP6V0C	Gene-Term
+synaptic vesicle	ATP6V0D1	Gene-Term
+synaptic vesicle	ATP6V1B1	Gene-Term
+synaptic vesicle	ATP6V1B2	Gene-Term
+synaptic vesicle	ATP6V1C1	Gene-Term
+synaptic vesicle	ATP6V1D	Gene-Term
+synaptic vesicle	ATP6V1E1	Gene-Term
+synaptic vesicle	ATP6V1F	Gene-Term
+synaptic vesicle	ATP6V1G1	Gene-Term
+synaptic vesicle	ATP6V1G2	Gene-Term
+synaptic vesicle	ATP6V1H	Gene-Term
+presynapse	PRKN	Gene-Term
+synaptic vesicle membrane	ANXA5	Gene-Term
+postsynaptic specialization	DMD	Gene-Term
+integral component of synaptic vesicle membrane	STX1A	Gene-Term
+postsynapse	ALK	Gene-Term
+integral component of postsynaptic membrane	STX4	Gene-Term
+presynaptic active zone membrane	NAPB	Gene-Term
+integral component of presynaptic active zone membrane	HCN1	Gene-Term
+integral component of presynaptic membrane	NPY1R	Gene-Term
+integral component of presynaptic active zone membrane	ITGA3	Gene-Term
+integral component of postsynaptic density membrane	SEMA4B	Gene-Term
+integral component of presynaptic membrane	ERBB4	Gene-Term
+postsynapse	NRG1	Gene-Term
+postsynaptic specialization, intracellular component	AKAP1	Gene-Term
+postsynapse	PRKACA	Gene-Term
+presynapse	ITGA2	Gene-Term
+presynapse	SYT10	Gene-Term
+neuronal dense core vesicle lumen	IGF1	Gene-Term
+presynapse	PRKACA	Gene-Term
+integral component of presynaptic membrane	ERBB2	Gene-Term
+presynapse	OPHN1	Gene-Term
+integral component of postsynaptic membrane	HCN1	Gene-Term
+postsynapse	PRKN	Gene-Term
+synaptic vesicle membrane	PRKN	Gene-Term
+integral component of presynaptic active zone membrane	GRIA3	Gene-Term
+postsynaptic density	AGAP3	Gene-Term
+postsynapse	ARHGEF2	Gene-Term
+integral component of postsynaptic density membrane	NETO2	Gene-Term
+extracellular matrix of synaptic cleft	LAMA5	Gene-Term
+integral component of postsynaptic membrane	ITGA3	Gene-Term
+integral component of postsynaptic membrane	ITGA5	Gene-Term
+integral component of postsynaptic membrane	ITGB4	Gene-Term
+postsynapse	PTK2	Gene-Term
+postsynaptic density, intracellular component	PTK2B	Gene-Term
+postsynaptic density, intracellular component	PTK2B	Gene-Term
+presynapse	PTK2B	Gene-Term
+integral component of postsynaptic membrane	LPAR1	Gene-Term
+postsynapse	CPEB1	Gene-Term
+postsynapse	TENT2	Gene-Term
+postsynapse	PARN	Gene-Term
+postsynapse	NGDN	Gene-Term
+presynaptic mitochondria	integral component of postsynaptic mitochondrial membrane	Child-Parent
+postsynaptic mitochondria	integral component of presynaptic mitochondrial membrane	Child-Parent
+perisynaptic space	perisynaptic extracellular matrix	Child-Parent
+extrasynaptic space	perisynaptic space	Child-Parent
