@@ -13,6 +13,7 @@ import sys
 sys.path.append('../ML_functions/')
 import find_GO_scores
 import find_training_genes_functions
+import ROC_functions
 
 import sys
 sys.path.append('../read_data_functions/')
