@@ -226,11 +226,6 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.close()
 
 
-labels=list(functions.keys())
-mean_values=list(functions.values())
-xlabel='Protein Categories'
-ylabel='Number of Proteins'
-name='synsig_gene_cat'
 
 synsig_genes=load_synsig_genes()
 
@@ -305,6 +300,11 @@ functions['Unknown functions']=uk_sum
 
 print (functions)
 
+labels=list(functions.keys())
+mean_values=list(functions.values())
+xlabel='Protein Categories'
+ylabel='Number of Proteins'
+name='synsig_gene_cat'
 
 plot_bargraph(labels, mean_values, xlabel, ylabel, name)
 
