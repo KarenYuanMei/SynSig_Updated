@@ -96,16 +96,23 @@ for item in branches:
 	term_genes[item]=(names)
 
 print (term_genes['synaptic signaling'])
+all_genes=term_genes.values()
+all_genes = [item for sublist in all_genes for item in sublist]
+#print (all_genes)
 
 predicted=load_data_functions.load_predicted_df()
-print (predicted)
+#print (predicted)
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
 for item in branches:
-	genes_remove=term_genes.values()-term_genes[item]
+	genelist=term_genes[item]
+	genes_remove=list(set(all_genes)-set(genelist))
 	print (len(genes_remove))
-#pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
+	genes_remove=list(set(genes_remove+all_training))
+
+	final_df, label, avg_score=find_pred_labels_scores(genelist, genes_remove)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 
 # syngo_genes=ont.genes
 # syngo_terms=ont.terms
