@@ -79,7 +79,7 @@ def gene_to_names(genelist, ont):
 def plot_single_ROC(tpr, fpr, auc, name):
 
 	plt.plot(fpr, tpr,
-	         label=r'% ROC (AUC = %0.2f)' % (name, auc),
+	         label='%s'%name+r' ROC (AUC = %0.2f)' % (auc),
 	         lw=2, alpha=.8)
 
 	plt.xlabel('1-Specificity', fontweight='bold')
