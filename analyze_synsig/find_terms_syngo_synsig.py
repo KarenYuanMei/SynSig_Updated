@@ -101,6 +101,10 @@ predicted=load_data_functions.load_predicted_df()
 print (predicted)
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+
+for item in branches:
+	genes_remove=term_genes.values()-term_genes[item]
+	print (len(genes_remove))
 #pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
 
 # syngo_genes=ont.genes
