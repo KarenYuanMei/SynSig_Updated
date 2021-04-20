@@ -200,12 +200,14 @@ def load_synsig_genes():
 def annotate_no_func(filename1, variable, filename2):
 	synsig=find_function_cat(filename1, variable, ['enzyme', 'ase activity'], 3, 'Other Enzymes', filename2)
 	synsig['Function Total']= synsig['Other Enzymes'].tolist()
+	synsig.to_csv('%s'%filename2)
 	return synsig
 
 def annotate_remaining_func(filename1, variable, filename2):
 	synsig=find_function_cat(filename1, variable, ['protein binding'], 3, 'Other protein binders', filename2)
 	synsig=find_function_cat(filename2, variable, ['None'], 4, 'unknown functions', filename2)
 	synsig['Function Total']= synsig.iloc[:, 3:5].sum(axis=1)
+	synsig.to_csv('%s'%filename2)
 	return synsig
 
 def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
