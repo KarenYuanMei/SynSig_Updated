@@ -86,12 +86,16 @@ print (len(synsig))
 branches=ont.parent_2_child['synapse process']
 print (branches)
 
+term_genes={}
 for item in branches:
 	genes=ont.term_2_gene[item]
 	gene_no=len(genes)
 	names=gene_to_names(genes, ont)
 	overlap=list(set(names)&set(synsig))
 	print (item, len(overlap))
+	term_genes[item]=(names)
+
+print (term_genes['synaptic signaling'])
 
 predicted=load_data_functions.load_predicted_df()
 print (predicted)
