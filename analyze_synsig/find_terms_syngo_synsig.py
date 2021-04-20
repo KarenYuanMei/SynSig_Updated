@@ -117,7 +117,7 @@ def find_syngo_bp_major_branches(ont):
 ont=load_syngo_bp_ont()
 
 #find the children directly beneath the root of syngo BP; remove presynaptic and postsynaptic process (redundant) and remove pathway (way too small and no longer on syngoportal)
-branches=find_syngo_bp_major_branches()
+branches=find_syngo_bp_major_branches(ont)
 
 #load synsig genes
 synsig=load_data_functions.load_synsig()
