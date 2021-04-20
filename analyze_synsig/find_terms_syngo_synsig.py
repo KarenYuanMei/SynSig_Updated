@@ -76,12 +76,10 @@ def gene_to_names(genelist, ont):
 		names.append(name)
 	return names
 
-def plot_single_ROC(tpr, fpr, auc):
-	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
-
+def plot_single_ROC(tpr, fpr, auc, name):
 
 	plt.plot(fpr, tpr,
-	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         label=r'% ROC (AUC = %0.2f)' % (name, auc),
 	         lw=2, alpha=.8)
 
 	plt.xlabel('1-Specificity', fontweight='bold')
@@ -95,8 +93,6 @@ def plot_single_ROC(tpr, fpr, auc):
 	#plt.show()
 	#plt.savefig('%s_ROC.svg'%name, format="svg")
 
-
-
 ont = Ontology.from_table('../source_data_files/correct_db/SynGO_BP.txt')
 ont = ont.propagate(direction='forward', gene_term=True, term_term=False)
 print (ont)
@@ -105,6 +101,7 @@ synsig=load_data_functions.load_synsig()
 print (len(synsig))
 
 branches=ont.parent_2_child['synapse process']
+branches=branches[:-1]
 print (branches)
 
 term_genes={}
@@ -136,6 +133,7 @@ for item in branches:
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 	print (auc)
 
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 	plot_single_ROC(tpr, fpr, auc)
 	plt.savefig('syngo_bp_ROC.svg', format='svg')
 
