@@ -76,6 +76,26 @@ def gene_to_names(genelist, ont):
 		names.append(name)
 	return names
 
+def plot_single_ROC(tpr, fpr, auc):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+
+	plt.plot(fpr, tpr,
+	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         lw=2, alpha=.8)
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+		# show the plot
+	#plt.show()
+	#plt.savefig('%s_ROC.svg'%name, format="svg")
+
+
 
 ont = Ontology.from_table('../source_data_files/correct_db/SynGO_BP.txt')
 ont = ont.propagate(direction='forward', gene_term=True, term_term=False)
@@ -116,48 +136,6 @@ for item in branches:
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 	print (auc)
 
-# syngo_genes=ont.genes
-# syngo_terms=ont.terms
-
-# #print (ont.term_2_gene)
-# gene_no_list=[]
-# for item in syngo_terms:
-# 	genes=ont.term_2_gene[item]
-# 	gene_no=len(genes)
-# 	gene_no_list.append(gene_no)
-
-# term_gene_no=list(zip(syngo_terms, gene_no_list))
-# term_gene_dict=dict(term_gene_no)
-# #
-# from operator import itemgetter
-
-# N = 50
-
-# res = dict(sorted(term_gene_dict.items(), key = itemgetter(1), reverse = True)[:N])
-# print (str(res))
-#terms=ont.terms
-
-# gene_terms=[]
-# for term in ont.terms: 
-# 	genes=ont.term_2_gene[term]
-# 	if len(genes)>0:
-# 		gene_terms.append(term)
-
-# print ('terms with genes', len(gene_terms))
-
-
-# training_terms=find_training_terms(ont)
-
-# pred_terms=find_predicted_terms(ont)
-
-# total_terms=list(set(training_terms+pred_terms))
-# print (len(total_terms))
-# print (pred_terms)
-
-# overlap=list(set(total_terms)&set(gene_terms))
-# print (len(overlap))
-
-# not_covered=list(set(gene_terms)-set(total_terms))
-# print (not_covered)
-
+	plot_single_ROC(tpr, fpr, auc)
+	plt.savefig('syngo_bp_ROC.svg', format='svg')
 
