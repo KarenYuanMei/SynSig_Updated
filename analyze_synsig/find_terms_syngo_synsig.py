@@ -95,6 +95,8 @@ for item in branches:
 
 predicted=load_data_functions.load_predicted_df()
 print (predicted)
+
+pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 #pred_dfs, aucs=compute_pred_dfs_aucs(genelists, all_training)
 
 # syngo_genes=ont.genes

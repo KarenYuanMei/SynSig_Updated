@@ -5,6 +5,11 @@ import numpy as np
 import csv
 import random
 
+import pathlib
+import os
+import os.path
+
+
 import ddot
 from ddot import Ontology
 
@@ -98,13 +103,18 @@ def load_pos_neg_training():
 	all_training=pos+neg
 	return pos, neg, all_training
 
+def load_pos_training():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	index_file=p+'/run_ML/ML_output/training_genes/updated_positives.csv'
+	pos=get_gene_names(index_file)
+	return pos
+
 def load_ensig_pos_neg_training():
 	pos=get_gene_names('../run_ML/ML_output/training_genes/nb_positives.csv')
 	neg=get_gene_names('../run_ML/ML_output/training_genes/nb_negatives.csv')
 	all_training=pos+neg
 	return pos, neg, all_training
-
-
 
 def define_crossvalidation_genes(pos, neg, name):
 	pos_chunks, neg_chunks=find_pos_neg_chunks(pos, neg)
