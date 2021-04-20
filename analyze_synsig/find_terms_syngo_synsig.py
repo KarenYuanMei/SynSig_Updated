@@ -111,7 +111,7 @@ for item in branches:
 	print (len(genes_remove))
 	genes_remove=list(set(genes_remove+all_training))
 
-	final_df, label, avg_score=find_pred_labels_scores(genelist, genes_remove)
+	final_df, label, avg_score=ROC_functions.find_pred_labels_scores(genelist, genes_remove)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 
 # syngo_genes=ont.genes
