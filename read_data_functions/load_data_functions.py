@@ -6,9 +6,9 @@ import pathlib
 import os
 import os.path
 
-import sys
-sys.path.append('../rwalk_functions/')
-import make_network_graph_functions
+# import sys
+# sys.path.append('../rwalk_functions/')
+# import make_network_graph_functions
 
 def get_gene_names(filename):
 	df=pd.read_csv(filename)
@@ -41,6 +41,22 @@ def find_synsysnet(big_pool):
 	synsysnet=get_gene_names(synsysnet_file)
 	synsysnet=list(set(synsysnet)&set(big_pool))
 	return synsysnet
+
+
+def load_synsig():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	index_file= p + '/analyze_synsig/synsig_only.csv'
+	synsig=get_gene_names(index_file)
+	return synsig
+
+def load_predicted_df():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	index_file= p + '/run_ML/ML_output/new_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'
+	df=pd.read_csv(index_file)
+	return df
+
 
 #load synapse mass spec screen lists====================================
 
