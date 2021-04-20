@@ -1,6 +1,8 @@
 #Goal: to add description to predicted synapse gene (synsig) gene names
 #gene_name_description.txt was downloaded on April 9th from Biomart
 
+#to annotate each SynSig protein to a molecular function category
+
 import pandas as pd
 
 import csv
@@ -99,26 +101,25 @@ def find_synsig_only(synsig_df):
 	return synsig
 
 def annotate_function(filename1, variable, filename2):
-	synsig=find_function_cat(filename1, variable, ['receptor', 'channel'], 3, 'receptor/channel', filename2)
-	synsig=find_function_cat(filename2, variable, ['kinase'], 4, 'kinase', filename2)
-	synsig=find_function_cat(filename2, variable, ['phosphatase'], 5, 'phosphatase', filename2)
-	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 6, 'ubiquitin/E3', filename2)
-	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter', 'vesic', 'dynamin', 'clathrin', 'endoc', 'VAMP', 'SNAP', 'SNARE'], 7, 'membrane/vesicle', filename2)
-	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 8, 'GTP/ATP regulators', filename2)
+	synsig=find_function_cat(filename1, variable, ['receptor', 'channel'], 3, 'Receptor/Channel', filename2)
+	synsig=find_function_cat(filename2, variable, ['kinase'], 4, 'Kinase', filename2)
+	synsig=find_function_cat(filename2, variable, ['phosphatase'], 5, 'Phosphatase', filename2)
+	synsig=find_function_cat(filename2, variable, ['ubiquitin', 'E3'], 6, 'Ubiquitin/E3', filename2)
+	synsig=find_function_cat(filename2, variable, ['vesic', 'dynamin', 'clathrin', 'endoc', 'VAMP', 'SNAP', 'SNARE', 'translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 7, 'Vesicle/Transport', filename2)
+	synsig=find_function_cat(filename2, variable, ['GTPase', 'ATPase', 'exchange factor', 'GTP', 'ATP'], 8, 'GTP/ATP Regulators', filename2)
 	synsig=find_function_cat(filename2, variable, ['DNA ', 'chromatin', 'transcription', 'nucleic acid', 'nucleotide'], 9, 'Nucleic Acid Binding', filename2)
-	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 10, 'translation', filename2)
-	synsig=find_function_cat(filename2, variable, ['translocase', 'export', 'import', 'transport', 'myosin', 'kinesin', 'dynein', 'dynactin'], 11, 'transport', filename2)
-	synsig=find_function_cat(filename2, variable, ['adhesion', 'cadherin', 'junction', 'junct', 'catenin'], 12, 'cell adhesion', filename2)
-	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 13, 'regulators', filename2)
-	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 14, 'scaffolds/adaptors', filename2)
-	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 15, 'cytoskeletal', filename2)
-	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 16, 'calcium ion binding', filename2)
+	synsig=find_function_cat(filename2, variable, ['ribosom', 'translation', 'RNA', 'helicase'], 10, 'Translation', filename2)
+	synsig=find_function_cat(filename2, variable, ['membrane', 'transmembrane', 'symporter', 'adhesion', 'cadherin', 'junction', 'junct', 'catenin'], 11, 'Membrane/Cell Adhesion', filename2)
+	synsig=find_function_cat(filename2, variable, ['heat shock', 'regulator', 'chaperone'], 12, 'Other Regulators', filename2)
+	synsig=find_function_cat(filename2, variable, ['scaffold', 'SHAN', 'assembl', 'adaptor'], 13, 'Scaffolds/Adaptors', filename2)
+	synsig=find_function_cat(filename2, variable, ['microtubule', 'actin', 'filament', 'tubulin', 'filamin', 'cytoskelet'], 14, 'Cytoskeletal', filename2)
+	synsig=find_function_cat(filename2, variable, ['calcium ion', 'calmodulin binding'], 15, 'Calcium Ion Binding', filename2)
 
-	synsig['Function Total']= synsig.iloc[:, 2:17].sum(axis=1)
+	synsig['Function Total']= synsig.iloc[:, 2:16].sum(axis=1)
 
 	func_total=synsig['Function Total'].tolist()
 	synsig.pop('Function Total')
-	synsig.insert(loc=17, column='Function Total', value=func_total)
+	synsig.insert(loc=16, column='Function Total', value=func_total)
 	#print (synsig)
 	synsig.to_csv(filename2)
 	return synsig
@@ -198,7 +199,7 @@ def load_synsig_genes():
 	return synsig_genes
 
 def annotate_no_func(filename1, variable, filename2):
-	synsig=find_function_cat(filename1, variable, ['enzyme', 'ase activity'], 3, 'enzymatic/metabolic activity', filename2)
+	synsig=find_function_cat(filename1, variable, ['enzyme', 'ase activity'], 3, 'Enzymes', filename2)
 	return synsig
 
 def annotate_remaining_func(filename1, variable, filename2):
@@ -206,6 +207,30 @@ def annotate_remaining_func(filename1, variable, filename2):
 	synsig=find_function_cat(filename2, variable, ['None'], 4, 'unknown functions', filename2)
 	return synsig
 
+def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
+
+	#plt.ylim(1, 10**5)
+	#plt.ylim(0.5, 1)
+	#plt.yscale('log')
+	# Create legend & Show graphic
+	#plt.legend()
+	#y_ticks = np.arange(0, 25, 5)
+	#plt.yticks(y_ticks)
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	plt.xticks(rotation=90)
+	plt.savefig(name+'.svg', format="svg")
+	plt.close()
+
+
+labels=list(functions.keys())
+mean_values=list(functions.values())
+xlabel='Protein Categories'
+ylabel='Number of Proteins'
+name='synsig_gene_cat'
 
 synsig_genes=load_synsig_genes()
 
@@ -240,7 +265,7 @@ unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_
 desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
 mf_func=pd.read_csv('synsig_mf_function.csv', index_col=[0])
 
-cols=np.arange(3, 17, 1).tolist()
+cols=np.arange(3, 16, 1).tolist()
 print (cols)
 
 
@@ -280,30 +305,6 @@ functions['Unknown functions']=uk_sum
 
 print (functions)
 
-def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
-	x_pos=np.arange(len(labels))
-	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
-	plt.bar(labels, mean_values, align='center', color='#2d7f5e', ecolor='black', capsize=10)
-
-	#plt.ylim(1, 10**5)
-	#plt.ylim(0.5, 1)
-	#plt.yscale('log')
-	# Create legend & Show graphic
-	#plt.legend()
-	#y_ticks = np.arange(0, 25, 5)
-	#plt.yticks(y_ticks)
-	plt.xlabel(xlabel, fontweight='bold')
-	plt.ylabel(ylabel, fontweight='bold')
-	plt.xticks(rotation=90)
-	plt.savefig(name+'.svg', format="svg")
-	plt.close()
-
-
-labels=list(functions.keys())
-mean_values=list(functions.values())
-xlabel='Protein Categories'
-ylabel='Number of Proteins'
-name='synsig_gene_cat'
 
 plot_bargraph(labels, mean_values, xlabel, ylabel, name)
 
