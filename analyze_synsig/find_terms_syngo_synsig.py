@@ -1,4 +1,4 @@
-#Goal: find which SynGO terms were represented by training; how many were recovered by SynSig
+#Goal: find the ROC recovery of syngo BP functions by synsig
 
 import pandas as pd
 
@@ -76,6 +76,15 @@ def gene_to_names(genelist, ont):
 		names.append(name)
 	return names
 
+def find_branch_genes_dict(ont):
+	term_genes={}
+	for item in branches:
+		genes=ont.term_2_gene[item]
+		gene_no=len(genes)
+		names=gene_to_names(genes, ont)
+		term_genes[item]=(names)
+	return term_genes
+
 def plot_single_ROC(tpr, fpr, auc, name):
 
 	plt.plot(fpr, tpr,
@@ -93,37 +102,40 @@ def plot_single_ROC(tpr, fpr, auc, name):
 	#plt.show()
 	#plt.savefig('%s_ROC.svg'%name, format="svg")
 
-ont = Ontology.from_table('../source_data_files/correct_db/SynGO_BP.txt')
-ont = ont.propagate(direction='forward', gene_term=True, term_term=False)
-print (ont)
+def load_syngo_bp_ont():
+	ont = Ontology.from_table('../source_data_files/correct_db/SynGO_BP.txt')
+	ont = ont.propagate(direction='forward', gene_term=True, term_term=False)
+	return ont
 
+def find_syngo_bp_major_branches(ont):
+	branches=ont.parent_2_child['synapse process']
+	branches=branches[2:-1]
+	return branches
+
+
+#load the syngo BP ontology
+ont=load_syngo_bp_ont()
+
+#find the children directly beneath the root of syngo BP; remove presynaptic and postsynaptic process (redundant) and remove pathway (way too small and no longer on syngoportal)
+branches=find_syngo_bp_major_branches()
+
+#load synsig genes
 synsig=load_data_functions.load_synsig()
-print (len(synsig))
 
-branches=ont.parent_2_child['synapse process']
-branches=branches[2:-1]
-print (branches)
+#find major branch with respective gene name dictionary:
+term_genes=find_branch_genes_dict(ont)
 
-term_genes={}
-for item in branches:
-	genes=ont.term_2_gene[item]
-	gene_no=len(genes)
-	names=gene_to_names(genes, ont)
-	overlap=list(set(names)&set(synsig))
-	print (item, len(overlap))
-	term_genes[item]=(names)
-
-print (term_genes['synaptic signaling'])
+#find all genes in the major branches:
 all_genes=term_genes.values()
 all_genes = [item for sublist in all_genes for item in sublist]
-#print (all_genes)
 
+#load the predicted score df
 predicted=load_data_functions.load_predicted_df()
-#print (predicted)
 
+#find all training genes from synsig predictions:
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
-plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+branch_roc={}
 for item in branches:
 	genelist=term_genes[item]
 	genes_remove=list(set(all_genes)-set(genelist))
@@ -133,7 +145,12 @@ for item in branches:
 	final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(genelist, genes_remove)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 	print (auc)
+	branch_roc[item]=(fpr, tpr, auc)
 
+
+plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+for item in branches:
+	tpr, fpr, auc=branch_roc[item]
 	plot_single_ROC(tpr, fpr, auc, item)
 	plt.savefig('syngo_bp_ROC.svg', format='svg')
 
