@@ -101,7 +101,7 @@ synsig=load_data_functions.load_synsig()
 print (len(synsig))
 
 branches=ont.parent_2_child['synapse process']
-branches=branches[:-1]
+branches=branches[2:-1]
 print (branches)
 
 term_genes={}
@@ -123,6 +123,7 @@ predicted=load_data_functions.load_predicted_df()
 
 pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
+plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 for item in branches:
 	genelist=term_genes[item]
 	genes_remove=list(set(all_genes)-set(genelist))
@@ -133,7 +134,6 @@ for item in branches:
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 	print (auc)
 
-	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 	plot_single_ROC(tpr, fpr, auc, item)
 	plt.savefig('syngo_bp_ROC.svg', format='svg')
 
