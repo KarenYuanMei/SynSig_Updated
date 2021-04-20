@@ -151,6 +151,6 @@ for item in branches:
 plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 for item in branches:
 	tpr, fpr, auc=branch_roc[item]
-	plot_single_ROC(tpr, fpr, auc, item)
+	plot_single_ROC(fpr, tpr, auc, item)
 	plt.savefig('syngo_bp_ROC.svg', format='svg')
 
