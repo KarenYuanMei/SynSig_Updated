@@ -258,6 +258,9 @@ no_func=find_unannotated_genes(mf_func)
 
 met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
 
+#find unannotated genes:
+no_func=find_unannotated_genes(met_func)
+
 unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
 
 desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
