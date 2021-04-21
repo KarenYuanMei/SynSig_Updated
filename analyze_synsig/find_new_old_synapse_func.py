@@ -115,9 +115,10 @@ print (totals)
 x=list(totals.index)
 known=totals['Known'].tolist()
 new=totals['New'].tolist()
-plt.bar(x, new, color='green')
-plt.bar(x, known, bottom=known, color='gray')
+plt.bar(x, known, color='gray')
+plt.bar(x, new, bottom=known, color='green')
 plt.savefig('synsig_old_new_func'+'.svg', format="svg")
+plt.xticks(rotation=90)
 plt.close()
 
 
