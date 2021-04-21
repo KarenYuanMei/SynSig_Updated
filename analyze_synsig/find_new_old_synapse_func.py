@@ -117,7 +117,9 @@ known=totals['Known'].tolist()
 new=totals['New'].tolist()
 plt.bar(x, new, color='green')
 plt.bar(x, known, bottom=known, color='gray')
-plt.show()
+plt.savefig('synsig_old_new_func'+'.svg', format="svg")
+plt.close()
+
 
 
 
