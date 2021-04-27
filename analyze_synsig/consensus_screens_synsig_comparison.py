@@ -44,4 +44,9 @@ if __name__ == '__main__':
 
 	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
 
-	df=load_data_functions.load_predicted_df()
+	#df=load_data_functions.load_predicted_df()
+	#print (df)
+
+	final, label, avg_score=find_pred_labels_scores(consensus_ms, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+	print (auc)
