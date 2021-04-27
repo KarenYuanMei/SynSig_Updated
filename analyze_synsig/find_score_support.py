@@ -1,6 +1,6 @@
 #Goal: find the relationship between the predicted scores and the number of supporting sources
 
-
+import tkinter
 import pandas as pd
 import numpy as np
 import csv
@@ -14,36 +14,15 @@ import sys
 sys.path.append('../graph_functions/')
 import graph_functions
 
-def find_syn_ratio(table):
-	thresholds=np.arange(10, 110, 10)
-	syn_ratio=[]
-	for item in thresholds:
-		perc=table['Synapse Percentile'].tolist()
-		new=table[table['Synapse Percentile']<=item]
-		total=new.shape[0]
-		print (total)
-		#totals.append(total)
-		syn_new=new[new['Lit Sum']==3]
-		#print (syn_new)
-		syn=syn_new.shape[0]
-		print (syn)
-		#syns.append(syn)
-		ratio=float(syn/(98)*100)
-		syn_ratio.append(ratio)
-		table = table[~table.index.isin(new.index)]
-		#print (table)
-	return syn_ratio
+sys.path.append('../read_data_functions/')
+import load_data_functions
 
-def plot_syn_ratio_scores():
-	table=pd.read_csv('update_web_table.csv')
+sys.path.append('../ML_functions/')
+import find_GO_scores
 
-	all_syn=table[table['Lit Sum']==3]
-	all_syn=all_syn.shape[0]
-
-	syn_ratio=find_syn_ratio(table)
-
-	labels=['<10', '10<x<20', '20<x<30', '30<x<40', '40<x<50', '50<x<60', '60<x<70', '70<x<80', '80<x<90', '90<x<100' ]
-	graph_functions.plot_bargraph(labels, syn_ratio, 'Pred Synapse Score Percentile', 'Percentage of Recovered Synapse Genes', 'syn_score')
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib import pyplot as plt
 
 
 def find_hypergeometric(genelist1, genelist2, M):
@@ -99,34 +78,126 @@ def find_synsig_all_support():
 	print(pvals)
 	return folds, pvals
 
+def find_exp_support(genelist):
+	table=pd.read_csv('../run_ML/update_web_table.csv')
+	M=table['genes'].tolist()
+	M=len(M)
+
+	source_no=np.arange(0,5,1)
+	print (source_no)
+
+	folds=[]
+	pvals=[]
+	for item in source_no:
+		screen=table[table['Exp Sum']==item]
+		screen_genes=screen['genes'].tolist()
+		#print (source)
+		#overlap=list(set(synsig)&set(source_genes))
+		fold, pval=find_hypergeometric(genelist, screen_genes, M)
+		folds.append(fold[0])
+		pvals.append(pval)
+
+	#print (folds)
+	#print(pvals)
+	return folds, pvals
+
+def make_genelist_enrich_df():
+		dfs=[]
+		for i in range(len(labels)):
+			folds, pvals=find_exp_support(genelists[i])
+			df=pd.DataFrame({'Genelists': labels[i], '%s_Enrichment'%labels[i]: folds, '%s_Significance'%labels[i]: pvals})
+			print (df)
+			dfs.append(df)
+			
+
+		final=pd.concat(dfs, axis=1)
+		
+		final.index.name = 'Found in No. of Mass Spec Screens'
+		print (final)
+
+		final.to_csv('support_screens.csv')
+
+		final=final.reset_index()
+		print (final)
+		return final
+
+def plot_enrich_df(final):
+	plt.plot( 'Found in No. of Mass Spec Screens', 'synsig_Enrichment', data=final, marker='o', markerfacecolor='darkgreen', markersize=18, color='darkgreen', linewidth=1)
+	plt.plot( 'Found in No. of Mass Spec Screens', 'syngo_Enrichment', data=final, marker='o', markerfacecolor='gray', markersize=18, color='gray', linewidth=1)
+	plt.ylim([0, 5])
+	#plt.xlim([0, 4])
+	
+	# show legend
+	plt.legend()
+
+	# show graph
+	plt.show()
 
 
 if __name__ == '__main__':
 	#find_synsig_all_support()
 	#plot is done in R
 
-	#table=pd.read_csv('../run_ML/update_web_table.csv')
-	table=pd.read_csv('update_web_table.csv')
+	big_pool=load_data_functions.load_big_pool()
+	go_human=find_GO_scores.find_GO_ont()
+	go_genes=go_human.genes
 
-	synsig_df=table[table['avg_scores']>4.45]
-	synsig=synsig_df['genes'].tolist()
+	synsig=load_data_functions.load_synsig()
+	#find_exp_support(synsig)
 
-	dbs=np.arange(0,4)
-	lit_no=[]
-	lit_ratio=[]
-	for item in dbs:
-		lit=synsig_df[synsig_df['Lit Sum']==item]
-		lit_genes=lit['genes'].tolist()
-		lit_no.append(len(lit_genes))
-		lit_ratio.append(float(len(lit_genes)/len(synsig)*100))
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	#find_exp_support(syngo)
 
-	print (lit_no)
-	print (lit_ratio)
+	synDB=load_data_functions.find_SynDB(big_pool)
+	#find_exp_support(synDB)
 
-	labels=['New', '1', '2', '3']
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
+	#find_exp_support(synsysnet)
 
-	graph_functions.plot_bargraph(labels, lit_no, 'No of Prev. Supporting DBs', 'No of SynSig', 'synsig_new_genes_bar')
+	new=list(set(synsig)-set(syngo))
 
+	folds, pvals=find_exp_support(new)
+	print (folds)
+	print (pvals)
 
+	supp_sources=np.arange(0,5,1)
 
+	plt.plot(supp_sources, folds, marker='o', markerfacecolor='darkred', markeredgecolor='gray', markersize=15, color='darkred', linewidth=3, label='Genes in SynSig and not in SynGO')
+	plt.ylim([0, 4])
+	#plt.xlim([0, 4])
+	
+	# show legend
+	plt.legend()
 
+	# show graph
+	plt.show()
+
+	# genelists=[synsig, syngo, synDB, synsysnet]
+	# labels=['synsig', 'syngo', 'synDB', 'synsysnet']
+
+	# final=make_genelist_enrich_df()
+
+	# plot_enrich_df(final)
+
+	
+
+	# no_sources=np.arange(0,5,1)
+
+	# dfs=[]
+	# for i in range(len(labels)):
+	# 	folds, pvals=find_exp_support(genelists[i])
+	# 	#label_name=labels[i]*4
+
+	# 	df=pd.DataFrame({'Genelists': labels[i], 'Enrichment': folds, 'Significance': pvals})
+	# 	df['Supp_Sources']=no_sources
+
+	# 	print (df)
+	# 	dfs.append(df)
+
+	# final=pd.concat(dfs)
+	# print (final)
+	# final.to_csv('support_screens.csv')
+
+			
+
+		
