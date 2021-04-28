@@ -43,6 +43,7 @@ if __name__ == '__main__':
 	ngn2=load_data_functions.find_ngn2(big_pool)
 
 	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
+	print (consensus_ms[:5])
 
 	#df=load_data_functions.load_predicted_df()
 	#print (df)
