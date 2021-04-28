@@ -62,9 +62,9 @@ if __name__ == '__main__':
 
 	synsig=load_data_functions.load_synsig()
 
-	synsysnet=find_synsysnet(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
 
-	synDB=find_SynDB(big_pool)
+	synDB=load_data_functions.find_SynDB(big_pool)
 
 	ctx=load_data_functions.find_adult_cortex(big_pool)
 
