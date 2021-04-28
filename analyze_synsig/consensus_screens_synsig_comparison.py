@@ -23,6 +23,29 @@ import find_training_genes_functions
 import find_GO_scores
 import ROC_functions
 
+def calc_syn_tpr_fpr(ref_list, genelist, big_pool):
+	tp=ref_list
+	found_pos=list(set(tp)&set(genelist))
+	tpr=float(len(found_pos)/len(tp))
+
+	fp=list(set(genelist)-set(ref_list))
+	tn=list(set(big_pool)-set(ref_list))
+	fpr=float(len(fp)/(len(fp)+len(tn)))
+	return tpr, fpr
+
+def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool):
+
+	ratios={}
+	#controls=[hk, golgi, mem]
+	#control_names=['hk', 'golgi', 'mem']
+	for i in range(len(genelists)):
+		tpr, fpr=calc_syn_tpr_fpr(ref_list, genelists[i], big_pool)
+		print (tpr, fpr)
+
+		ratios[genelist_names[i]]=(tpr, fpr)
+	return ratios
+
+
 if __name__ == '__main__':
 	
 	big_pool=load_data_functions.load_big_pool()
@@ -34,6 +57,8 @@ if __name__ == '__main__':
 	go_genes=human_ont.genes
 
 	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+
+	synsig=load_data_functions.load_synsig()
 
 	ctx=load_data_functions.find_adult_cortex(big_pool)
 
@@ -54,3 +79,6 @@ if __name__ == '__main__':
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
+
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	print (ratios)
