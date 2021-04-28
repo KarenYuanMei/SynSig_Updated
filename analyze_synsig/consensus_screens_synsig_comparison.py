@@ -10,6 +10,10 @@ import csv
 import ddot
 from ddot import Ontology
 
+import matplotlib
+matplotlib.use("Agg")
+from matplotlib import pyplot as plt
+
 import sys
 sys.path.append('../read_data_functions/')
 import load_data_functions
