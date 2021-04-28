@@ -154,7 +154,8 @@ if __name__ == '__main__':
 	synsysnet=load_data_functions.find_synsysnet(big_pool)
 	#find_exp_support(synsysnet)
 
-	new=list(set(synsig)-set(syngo))
+	#new=list(set(synsig)-set(syngo))
+	new=list(set(synsig)-set(syngo)-set(synDB)-set(synsysnet))
 
 	folds, pvals=find_exp_support(new)
 	print (folds)
