@@ -181,23 +181,35 @@ def compute_syn_control_ci(genelists, genelist_names, final_dfs):
 		genelist_diff_ci[genelist_names[i]]=conf_interval
 	return genelist_diff_ci
 
-def calc_syn_tpr_fpr(syn, genelist, big_pool):
-	tp=syn
+# def calc_syn_tpr_fpr(syn, genelist, big_pool):
+# 	tp=syn
+# 	found_pos=list(set(tp)&set(genelist))
+# 	tpr=float(len(found_pos)/len(tp))
+
+# 	fp=list(set(genelist)-set(syn))
+# 	tn=list(set(big_pool)-set(syn))
+# 	fpr=float(len(fp)/(len(fp)+len(tn)))
+# 	return tpr, fpr
+
+def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
+	ref_list=list(set(ref_list)-set(all_training))
+	genelist=list(set(genelist)-set(all_training))
+	tp=ref_list
 	found_pos=list(set(tp)&set(genelist))
 	tpr=float(len(found_pos)/len(tp))
 
-	fp=list(set(genelist)-set(syn))
-	tn=list(set(big_pool)-set(syn))
+	fp=list(set(genelist)-set(ref_list))
+	tn=list(set(big_pool)-set(ref_list))
 	fpr=float(len(fp)/(len(fp)+len(tn)))
 	return tpr, fpr
 
-def calc_ctrl_tpr_fpr(syn, big_pool):
+def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 
 	ratios={}
 	controls=[hk, golgi, mem]
 	control_names=['hk', 'golgi', 'mem']
 	for i in range(len(controls)):
-		tpr, fpr=calc_syn_tpr_fpr(syn, controls[i], big_pool)
+		tpr, fpr=calc_syn_tpr_fpr(syn, controls[i], big_pool, all_training)
 		print (tpr, fpr)
 
 		ratios[control_names[i]]=(tpr, fpr)
@@ -239,8 +251,9 @@ if __name__ == '__main__':
 	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	print (genelist_diff_ci)
 
-	ratios=calc_ctrl_tpr_fpr(syn, big_pool)
+	ratios=calc_ctrl_tpr_fpr(syn, big_pool, all_training)
 	print (ratios)
+	
 	
 
 
