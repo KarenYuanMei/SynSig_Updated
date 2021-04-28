@@ -82,3 +82,24 @@ if __name__ == '__main__':
 
 	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool)
 	print (ratios)
+
+	adult_consensus=list(set(ctx)&set(striatum))
+	fetal_consensus=list(set(fetal)&set(ngn2))
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(adult_consensus, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+
+	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
+	print (auc)
+
+	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	print (ratios)
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(fetal_consensus, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+
+	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
+	print (auc)
+
+	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	print (ratios)
