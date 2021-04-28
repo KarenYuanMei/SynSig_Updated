@@ -41,7 +41,7 @@ import graph_functions
 
 #find housekeeping:==============
 def find_hk(big_pool):
-	hk=pd.read_csv('../gene_lists/Human_Mouse_Common.csv', sep=';')
+	hk=pd.read_csv('../source_data_files/gene_lists/Human_Mouse_Common.csv', sep=';')
 	#print (hk)
 	hk=hk['Human'].tolist()
 	hk=list(set(hk)&set(big_pool))
@@ -49,13 +49,13 @@ def find_hk(big_pool):
 
 #find golgi:===================
 def find_golgi(big_pool):
-	golgi=load_data_functions.get_gene_names('../gene_lists/golgi_genes.csv')
+	golgi=load_data_functions.get_gene_names('../source_data_files/gene_lists/golgi_genes.csv')
 	golgi=list(set(golgi)&set(big_pool))
 	return golgi
 
 #find transmembrane:==============
 def find_mem(big_pool):
-	transm=pd.read_csv('../gene_lists/Uniprot_transmembrane.csv')
+	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
 	transm=transm['Gene names'].tolist()
 	transm=[str(x) for x in transm]
 	mem=[]
