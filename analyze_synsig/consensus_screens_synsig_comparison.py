@@ -47,6 +47,32 @@ def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool, all_trainin
 		ratios[genelist_names[i]]=(tpr, fpr)
 	return ratios
 
+def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+	plt.plot(fpr, tpr, color='maroon',
+	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         lw=2, alpha=.8)
+
+	#without training genes: {'synsig': (0.5786802030456852, 0.08594885829128539), 'syngo': (0.22081218274111675, 0.022230354038971733)}
+
+	plt.plot(0.086, 0.579, color='purple', marker='o', markersize=10)
+	plt.annotate('SynSig', color='purple', xy=(0.086, 0.579), xytext=(0.086+0.05, 0.579), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
+
+	plt.plot(0.022, 0.22, color='#7f6d5f', marker='o', markersize=10)
+	plt.annotate('SynGO', color='#7f6d5f', xy=(0.022, 0.22), xytext=(0.022+0.05, 0.22), arrowprops=dict(facecolor='#7f6d5f', lw=2, arrowstyle='->'))
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+
+
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+	plt.savefig('annotate_ROC_ms.svg', format="svg")
+
 
 if __name__ == '__main__':
 	
@@ -86,7 +112,9 @@ if __name__ == '__main__':
 	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
 
-	adult_consensus=list(set(ctx)&set(striatum))
-	fetal_consensus=list(set(fetal)&set(ngn2))
+	#adult_consensus=list(set(ctx)&set(striatum))
+	#fetal_consensus=list(set(fetal)&set(ngn2))
+
+	plot_annotate_ROC_mass_spec(tpr, fpr, auc)
 
 	
