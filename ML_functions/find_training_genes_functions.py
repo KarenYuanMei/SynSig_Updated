@@ -97,11 +97,17 @@ def find_pos_genes_in_training(training_genes, positives):
 	#print (len(input_genes))
 	return pos_training
 
-def load_pos_neg_training():
-	pos=get_gene_names('../run_ML/ML_output/training_genes/updated_positives.csv')
-	neg=get_gene_names('../run_ML/ML_output/training_genes/updated_negatives.csv')
-	all_training=pos+neg
-	return pos, neg, all_training
+# def load_pos_neg_training():
+# 	pos=get_gene_names('../run_ML/ML_output/training_genes/updated_positives.csv')
+# 	neg=get_gene_names('../run_ML/ML_output/training_genes/updated_negatives.csv')
+# 	all_training=pos+neg
+# 	return pos, neg, all_training
+
+# def load_pos_neg_training():
+# 	pos=get_gene_names('../run_ML/ML_output/training_genes/updated_positives.csv')
+# 	neg=get_gene_names('../run_ML/ML_output/training_genes/updated_negatives.csv')
+# 	all_training=pos+neg
+# 	return pos, neg, all_training
 
 def load_pos_training():
 	p = pathlib.Path(__file__).resolve().parents[1]
@@ -109,6 +115,19 @@ def load_pos_training():
 	index_file=p+'/run_ML/ML_output/training_genes/updated_positives.csv'
 	pos=get_gene_names(index_file)
 	return pos
+
+def load_neg_training():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	index_file=p+'/run_ML/ML_output/training_genes/updated_negatives.csv'
+	neg=get_gene_names(index_file)
+	return neg
+
+def load_pos_neg_training():
+	pos=load_pos_training()
+	neg=load_neg_training()
+	all_training=list(set(pos+neg))
+	return all_training
 
 def load_ensig_pos_neg_training():
 	pos=get_gene_names('../run_ML/ML_output/training_genes/nb_positives.csv')
