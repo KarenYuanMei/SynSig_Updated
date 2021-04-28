@@ -47,6 +47,6 @@ if __name__ == '__main__':
 	#df=load_data_functions.load_predicted_df()
 	#print (df)
 
-	final, label, avg_score=find_pred_labels_scores(consensus_ms, all_training)
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(consensus_ms, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 	print (auc)
