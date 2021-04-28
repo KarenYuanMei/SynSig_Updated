@@ -62,6 +62,10 @@ if __name__ == '__main__':
 
 	synsig=load_data_functions.load_synsig()
 
+	synsysnet=find_synsysnet(big_pool)
+
+	synDB=find_SynDB(big_pool)
+
 	ctx=load_data_functions.find_adult_cortex(big_pool)
 
 	striatum=load_data_functions.find_adult_striatum(big_pool)
@@ -82,7 +86,7 @@ if __name__ == '__main__':
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
 	print (ratios)
 
 	adult_consensus=list(set(ctx)&set(striatum))
@@ -94,7 +98,7 @@ if __name__ == '__main__':
 	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
+	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
 	print (ratios)
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(fetal_consensus, all_training)
@@ -103,5 +107,5 @@ if __name__ == '__main__':
 	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
+	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
 	print (ratios)
