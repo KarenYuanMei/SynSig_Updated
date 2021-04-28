@@ -23,7 +23,9 @@ import find_training_genes_functions
 import find_GO_scores
 import ROC_functions
 
-def calc_syn_tpr_fpr(ref_list, genelist, big_pool):
+def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
+	ref_list=list(set(ref_list)-set(all_training))
+	genelist=list(set(genelist)-set(all_training))
 	tp=ref_list
 	found_pos=list(set(tp)&set(genelist))
 	tpr=float(len(found_pos)/len(tp))
@@ -33,13 +35,13 @@ def calc_syn_tpr_fpr(ref_list, genelist, big_pool):
 	fpr=float(len(fp)/(len(fp)+len(tn)))
 	return tpr, fpr
 
-def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool):
+def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool, all_training):
 
 	ratios={}
 	#controls=[hk, golgi, mem]
 	#control_names=['hk', 'golgi', 'mem']
 	for i in range(len(genelists)):
-		tpr, fpr=calc_syn_tpr_fpr(ref_list, genelists[i], big_pool)
+		tpr, fpr=calc_syn_tpr_fpr(ref_list, genelists[i], big_pool, all_training)
 		print (tpr, fpr)
 
 		ratios[genelist_names[i]]=(tpr, fpr)
@@ -80,7 +82,7 @@ if __name__ == '__main__':
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
 
 	adult_consensus=list(set(ctx)&set(striatum))
@@ -92,7 +94,7 @@ if __name__ == '__main__':
 	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(fetal_consensus, all_training)
@@ -101,5 +103,5 @@ if __name__ == '__main__':
 	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool)
+	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
