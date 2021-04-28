@@ -82,8 +82,8 @@ def find_all_auc_tprs(filename,i):
 
 def find_pred_labels_scores(genelist, training_genes):
 	df=load_data_functions.load_predicted_df()
-	print (len(genelist))
-	print (training_genes)
+	#print (len(genelist))
+	#print (training_genes)
 	no_train=list(set(genelist)-set(training_genes))
 	avg_scores=df['avg_scores'].tolist()
 

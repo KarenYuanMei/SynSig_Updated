@@ -51,4 +51,6 @@ if __name__ == '__main__':
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(consensus_ms, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
