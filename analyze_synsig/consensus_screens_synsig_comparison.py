@@ -53,8 +53,7 @@ if __name__ == '__main__':
 	big_pool=load_data_functions.load_big_pool()
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
-	print (all_training[:5])
-
+	
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
@@ -75,8 +74,6 @@ if __name__ == '__main__':
 	ngn2=load_data_functions.find_ngn2(big_pool)
 
 	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
-	print (consensus_ms[:5])
-
 	#df=load_data_functions.load_predicted_df()
 	#print (df)
 
@@ -86,26 +83,10 @@ if __name__ == '__main__':
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
 
 	adult_consensus=list(set(ctx)&set(striatum))
 	fetal_consensus=list(set(fetal)&set(ngn2))
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(adult_consensus, all_training)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
-
-	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
-	print (auc)
-
-	ratios=calc_ctrl_tpr_fpr(adult_consensus, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
-	print (ratios)
-
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(fetal_consensus, all_training)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
-
-	#graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
-	print (auc)
-
-	ratios=calc_ctrl_tpr_fpr(fetal_consensus, [synsig, syngo, synsysnet, synDB], ['synsig', 'syngo', 'synsysnet', 'synDB'], big_pool, all_training)
-	print (ratios)
+	
