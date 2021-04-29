@@ -19,6 +19,7 @@ import load_data_functions
 sys.path.append('../ML_functions/')
 import find_training_genes_functions 
 import define_gene_objects
+import regressor_functions
 
 # #predict new genes=========================================================
 
@@ -66,8 +67,10 @@ if __name__ == '__main__':
 	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs)
 	print (X_train.shape)
 
-	df=define_gene_objects.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
-	df.to_csv('updated_new_all_gene_predictions.csv')
+	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
+	#df.to_csv('updated_new_all_gene_predictions.csv')
 
-	define_gene_objects.find_avg_scores(new_genes)
+	feature_imp=find_feature_importance(forest, feature_list, 'synsig')
+
+	#define_gene_objects.find_avg_scores(new_genes)
 

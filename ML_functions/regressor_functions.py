@@ -73,12 +73,12 @@ def print_pred_metrics(predictor, X_train, X_test, y_train, y_test, yfit):
 	p_value=spearmanr(y_test, yfit)[1]
 	return spearmanr_corr, p_value
 
-def find_feature_importance(predictor, number, feature_list):
+def find_feature_importance(predictor, feature_list, name):
 	performance=predictor.feature_importances_
 	performance=performance.tolist()
 	#feature_list=define_features()
 	perf=pd.DataFrame({'Features': feature_list, 'Importance': performance})
-	perf.to_csv('full60_random_forest_Feature_Importance_%s.csv'%number)
+	perf.to_csv('%s_random_forest_Feature_Importance.csv'%name)
 	return perf
 
 def run_random_forest(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, feature_list, number):
@@ -226,7 +226,7 @@ def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth,
 	df = df[['Gene1', 'Gene2', 'ypredict']]
 	print (df)
 	#df.to_csv('updated_new_all_gene_predictions.csv')
-	return df
+	return forest, df
 
 def find_avg_scores(pred_filename, new_genes, name):
 	
