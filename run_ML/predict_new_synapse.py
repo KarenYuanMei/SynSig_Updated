@@ -55,7 +55,7 @@ def define_training_test_pair_objects(feature_list):
 	print ('DONE training pairs for final rf')
 
 	new_genes=list(set(big_pool)-set(all_training))
-	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos)
+	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos, feature_list)
 	return training_pairs, synapse_new_pairs
 
 if __name__ == '__main__':
