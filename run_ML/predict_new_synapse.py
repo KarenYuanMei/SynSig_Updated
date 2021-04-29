@@ -20,6 +20,7 @@ sys.path.append('../ML_functions/')
 import find_training_genes_functions 
 import define_gene_objects
 import regressor_functions
+import define_features
 
 # #predict new genes=========================================================
 
@@ -58,7 +59,7 @@ def define_training_test_pair_objects(feature_list):
 	return training_pairs, synapse_new_pairs
 
 if __name__ == '__main__':
-	feature_list=define_gene_objects.define_features()
+	feature_list=define_features.load_filtered_features()
 
 	training_pairs, synapse_new_pairs=define_training_test_pair_objects(feature_list)
 
