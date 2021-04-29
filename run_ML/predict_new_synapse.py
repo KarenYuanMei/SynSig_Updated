@@ -38,13 +38,13 @@ def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, 
 	synapse_new_pairs=product(positive_training_objects, new_gene_objects)
 	return synapse_new_pairs
 
-def define_training_test_pair_objects():
+def define_training_test_pair_objects(feature_list):
 	big_pool=load_data_functions.load_big_pool()
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 	pos=find_training_genes_functions.load_pos_training()
 
-	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool)
+	feature_value_dict = define_gene_objects.create_feature_value_dict(big_pool, feature_list)
 
 	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
@@ -58,11 +58,11 @@ def define_training_test_pair_objects():
 	return training_pairs, synapse_new_pairs
 
 if __name__ == '__main__':
-
-	training_pairs, synapse_new_pairs=define_training_test_pair_objects()
-
 	feature_list=define_gene_objects.define_features()
 
+	training_pairs, synapse_new_pairs=define_training_test_pair_objects(feature_list)
+
+	
 	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
 	print (data_test.shape)
 	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs)
