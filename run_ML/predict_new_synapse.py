@@ -49,7 +49,7 @@ def define_training_test_pair_objects(feature_list):
 
 	go_mat_filename='../../syngo_training/syngo_GO_training_score_matrix_for_big_pool_genes.csv'
 
-	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict)
+	all_training_objects=define_gene_objects.define_all_training_objects(all_training, go_mat_filename, feature_value_dict, feature_list)
 
 	training_pairs=combinations(all_training_objects,2)
 	print ('DONE training pairs for final rf')
