@@ -39,7 +39,7 @@ def find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, 
 	return synapse_new_pairs
 
 def define_training_test_pair_objects():
-	big_pool=find_training_genes_functions.load_big_pool()
+	big_pool=load_data_functions.load_big_pool()
 
 	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
