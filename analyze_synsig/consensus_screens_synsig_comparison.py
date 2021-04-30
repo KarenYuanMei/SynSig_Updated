@@ -28,15 +28,22 @@ import find_GO_scores
 import ROC_functions
 
 def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
+	#ref_list is consensus positive genes
+	#genelist is prediction list, for example synsig
+	#big_pool is the set of all possible genes
+	#all_training is all genes used for training
+
 	ref_list=list(set(ref_list)-set(all_training))
 	genelist=list(set(genelist)-set(all_training))
+	big_pool=list(set(big_pool)-set(all_training))
+
 	tp=ref_list
 	found_pos=list(set(tp)&set(genelist))
 	tpr=float(len(found_pos)/len(tp))
 
 	fp=list(set(genelist)-set(ref_list))
-	tn=list(set(big_pool)-set(ref_list))
-	fpr=float(len(fp)/(len(fp)+len(tn)))
+	all_negatives=list(set(big_pool)-set(ref_list))
+	fpr=float(len(fp)/(len(all_negatives)))
 	return tpr, fpr
 
 def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool, all_training):
