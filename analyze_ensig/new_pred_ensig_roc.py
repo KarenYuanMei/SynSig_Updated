@@ -56,16 +56,23 @@ def plot_syngo_bargraph(labels, mean_values, xlabel, ylabel, name):
 
 if __name__ == '__main__':
 	
+	#find the pool of non-brain genes
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 
-	hk=compare_controls.find_hk(nb_pool)
+	#find housekeeping genes in the pool of non-brain genes
+	hk_nb=compare_controls.find_hk(nb_pool)
 
-	pos, neg, all_training=find_training_genes_functions.load_ensig_pos_neg_training()
+	#find the positive, negative, and all training genes used for predicting ensig:
+	pos, neg, ensig_training=find_training_genes_functions.load_ensig_pos_neg_training()
 
+
+    #find SynGo genes in the non-brain pool (syngo_nb)
+    #find SynGO genes in big pool (syngo_big_pool)
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
-
 	syngo_nb, syngo_big_pool=find_nb_all_syngo(go_genes)
+
+
 	labels=['All_SynGO', 'Non-Brain SynGO']
 	graph_functions.plot_venn2(syngo_big_pool, syngo_nb, labels, 'nb_vs_all_syngo')
 
@@ -74,33 +81,14 @@ if __name__ == '__main__':
 	ylabel='Gene No'
 	plot_syngo_bargraph(labels, gene_no, xlabel, ylabel, 'bar_nb_all_syngo')
 
-	syngo=load_data_functions.find_syngo(nb_pool, go_genes)
-	syndb=load_data_functions.find_SynDB(nb_pool)
-	synsysnet=load_data_functions.find_synsysnet(nb_pool)
-	syn=list(set(syngo)&set(syndb)&set(synsysnet))
-
-	# db_list=[syngo, syndb, synsysnet, syn]
-	# db_labels=['syngo', 'syndb', 'synsysnet', 'syn']
-
-
-	# for i in range(len(db_list)):
-	# 	final, label, avg_score=ROC_functions.find_pred_labels_scores(db_list[i], all_training)
-	# 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
-	# 	print (auc)
-	# 	ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i], 'nb')
-
-	# final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
-	# fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
-
-	# graph_functions.plot_single_ROC(tpr, fpr, auc, 'nb')
 
 	ensig_hk_labels=['Non-Brain', 'Housekeeping']
-	ensig_hk=[syngo, hk]
+	ensig_hk=[syngo_nb, hk_nb]
 	pred_df=load_data_functions.load_predicted_ensig_df()
 
 	for i in range(len(ensig_hk)):
 
-		final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, ensig_hk[i], all_training)
+		final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, ensig_hk[i], ensig_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 		print (auc)
 		
