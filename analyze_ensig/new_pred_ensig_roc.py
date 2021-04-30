@@ -96,10 +96,11 @@ if __name__ == '__main__':
 
 	ensig_hk_labels=['Non-Brain', 'Housekeeping']
 	ensig_hk=[syngo, hk]
+	pred_df=load_data_functions.load_predicted_ensig_df()
 
 	for i in range(len(ensig_hk)):
 
-		final, label, avg_score=ROC_functions.find_pred_labels_scores(ensig_hk[i], all_training)
+		final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, ensig_hk[i], all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 		print (auc)
 		

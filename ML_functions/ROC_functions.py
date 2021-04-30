@@ -80,8 +80,8 @@ def find_all_auc_tprs(filename,i):
 # 	df=pd.read_csv('../run_ML/ML_output/new_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv', index_col=[0])
 # 	return df
 
-def find_pred_labels_scores(genelist, training_genes):
-	df=load_data_functions.load_predicted_df()
+def find_pred_labels_scores(pred_df, genelist, training_genes):
+	#df=load_data_functions.load_predicted_df()
 	#print (len(genelist))
 	#print (training_genes)
 	no_train=list(set(genelist)-set(training_genes))
