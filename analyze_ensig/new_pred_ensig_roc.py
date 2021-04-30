@@ -56,21 +56,24 @@ def plot_syngo_bargraph(labels, mean_values, xlabel, ylabel, name):
 
 if __name__ == '__main__':
 	
-	#find the pool of non-brain genes
+	#find the pool of non-brain genes (genes in all of the nonbrain features)
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
 
-	#find housekeeping genes in the pool of non-brain genes
-	hk_nb=compare_controls.find_hk(nb_pool)
-
+	
 	#find the positive, negative, and all training genes used for predicting ensig:
 	pos, neg, ensig_training=find_training_genes_functions.load_ensig_pos_neg_training()
-
 
     #find SynGo genes in the non-brain pool (syngo_nb)
     #find SynGO genes in big pool (syngo_big_pool)
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
-	syngo_nb, syngo_big_pool=find_nb_all_syngo(go_genes)
+	big_pool=load_data_functions.load_big_pool()
+	syngo_big_pool=find_syngo(big_pool, go_genes)
+	syngo_nb=list(set(syngo)&set(nb_pool))
+
+	#find housekeeping genes in the pool of non-brain genes
+	hk=compare_controls.find_hk(big_pool)
+	hk_nb=list(set(hk)&set(nb_pool))
 
 
 	labels=['All_SynGO', 'Non-Brain SynGO']
