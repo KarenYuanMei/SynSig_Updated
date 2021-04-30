@@ -84,7 +84,7 @@ def load_predicted_synsig_df():
 def load_predicted_ensig_df():
 	p = pathlib.Path(__file__).resolve().parents[1]
 	p = str(p)
-	index_file= p + '/run_ML/ML_output/nb_new_all_gene_predictions.csv'
+	index_file= p + '/run_ML/ML_output/nb_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'
 	df=pd.read_csv(index_file, index_col=[0])
 	return df
 
