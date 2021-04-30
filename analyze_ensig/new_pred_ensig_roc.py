@@ -31,7 +31,7 @@ import compare_controls
 
 def find_nb_all_syngo(go_genes):
 	nb_pool=predict_ensig_genes.find_nonbrain_common_pool()
-	syngo_file='../correct_db/corr_syngo_cc.csv'
+	syngo_file='../source_data_files/correct_db/corr_syngo_cc.csv'
 	syngo=load_data_functions.get_gene_names(syngo_file)
 	syngo_nb=list(set(nb_pool)&set(syngo)&set(go_genes))
 	print (len(syngo_nb))
