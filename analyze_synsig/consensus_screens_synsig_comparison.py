@@ -43,7 +43,7 @@ def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
 
 	fp=list(set(genelist)-set(ref_list))
 	all_negatives=list(set(big_pool)-set(ref_list))
-	fpr=float(len(fp)/(len(all_negatives)))
+	fpr=float(len(fp)/(len(all_negatives))) #divide the number of false positives by the total number of ground-truth negative genes
 	return tpr, fpr
 
 def calc_ctrl_tpr_fpr(ref_list, genelists, genelist_names, big_pool, all_training):
@@ -67,10 +67,10 @@ def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
 
 	#without training genes: {'synsig': (0.5786802030456852, 0.08594885829128539), 'syngo': (0.22081218274111675, 0.022230354038971733)}
 
-	plt.plot(0.086, 0.579, color='purple', marker='o', markersize=10)
+	plt.plot(0.103, 0.579, color='purple', marker='o', markersize=10)
 	plt.annotate('SynSig', color='purple', xy=(0.103, 0.579), xytext=(0.103+0.05, 0.579), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
 
-	plt.plot(0.022, 0.22, color='#7f6d5f', marker='o', markersize=10)
+	plt.plot(0.025, 0.22, color='#7f6d5f', marker='o', markersize=10)
 	plt.annotate('SynGO', color='#7f6d5f', xy=(0.025, 0.22), xytext=(0.025+0.05, 0.22), arrowprops=dict(facecolor='#7f6d5f', lw=2, arrowstyle='->'))
 
 	plt.xlabel('1-Specificity', fontweight='bold')
