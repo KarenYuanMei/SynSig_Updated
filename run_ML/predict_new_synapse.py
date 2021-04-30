@@ -66,7 +66,7 @@ if __name__ == '__main__':
 	
 	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
 	print (data_test.shape)
-	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs)
+	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
 	print (X_train.shape)
 
 	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
