@@ -113,8 +113,9 @@ if __name__ == '__main__':
 	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
 	#df=load_data_functions.load_predicted_df()
 	#print (df)
+	pred_df=load_data_functions.load_predicted_synsig_df()
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(consensus_ms, all_training)
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, consensus_ms, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
