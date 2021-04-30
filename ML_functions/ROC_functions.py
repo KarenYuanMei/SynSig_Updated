@@ -85,9 +85,9 @@ def find_pred_labels_scores(pred_df, genelist, training_genes):
 	#print (len(genelist))
 	#print (training_genes)
 	no_train=list(set(genelist)-set(training_genes))
-	avg_scores=df['avg_scores'].tolist()
+	avg_scores=pred_df['avg_scores'].tolist()
 
-	pred_genes=df['genes'].tolist()
+	pred_genes=pred_df['genes'].tolist()
 	y_list=[]
 	for item in pred_genes:
 		if item in no_train:
