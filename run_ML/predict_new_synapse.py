@@ -72,7 +72,7 @@ if __name__ == '__main__':
 	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
 	#df.to_csv('updated_new_all_gene_predictions.csv')
 
-	feature_imp=find_feature_importance(forest, feature_list, 'synsig')
+	feature_imp=regressor_functions.find_feature_importance(forest, feature_list, 'synsig')
 
 	#define_gene_objects.find_avg_scores(new_genes)
 
