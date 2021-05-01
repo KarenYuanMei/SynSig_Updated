@@ -69,7 +69,7 @@ if __name__ == '__main__':
 	go_genes=human_ont.genes
 	big_pool=load_data_functions.load_big_pool()
 	syngo_big_pool=load_data_functions.find_syngo(big_pool, go_genes)
-	syngo_nb=list(set(syngo)&set(nb_pool))
+	syngo_nb=list(set(syngo_big_pool)&set(nb_pool))
 
 	#find housekeeping genes in the pool of non-brain genes
 	hk=compare_controls.find_hk(big_pool)
