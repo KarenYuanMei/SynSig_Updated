@@ -26,6 +26,8 @@ from sklearn.svm import SVR
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
+from sklearn.inspection import permutation_importance
+
 #from define_gene_objects import define_features
 
 def find_gene1_gene2(train_test_gene_pair_objects):
@@ -80,6 +82,23 @@ def find_feature_importance(predictor, feature_list, name):
 	perf=pd.DataFrame({'Features': feature_list, 'Importance': performance})
 	perf.to_csv('%s_random_forest_Feature_Importance.csv'%name)
 	return perf
+
+def permutation_importance(predictor, X_test, y_test):
+	#use this function to find feature importance
+	#predictor is the trained random forest
+	#X_test is the features for the test set genes
+	#y_test is the ground-truth labels for the test set genes
+
+	importance = permutation_importance(predictor, X_test, y_test, n_repeats=50, random_state=0)
+	print (importance)
+
+	with open('synsig_permutation_imp.csv', 'w') as csv_file:  
+    writer = csv.writer(csv_file)
+    for key, value in importance.items():
+       writer.writerow([key, value])
+
+	#importance is a dictionary: feature_name -> importance
+	return importance
 
 def run_random_forest(training_gene_pair_objects, X_train, y_train, train_test_gene_pair_objects, X_test, y_test, feature_list, number):
 

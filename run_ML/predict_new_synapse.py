@@ -58,12 +58,23 @@ def define_training_test_pair_objects(feature_list):
 	synapse_new_pairs=find_synapse_new_pairs(new_genes, feature_value_dict, all_training_objects, pos, feature_list)
 	return training_pairs, synapse_new_pairs
 
+def find_syngo_ytest():
+	big_pool=find_training_genes_functions.load_big_pool()
+
+	all_training=find_training_genes_functions.load_pos_neg_training()
+
+	human_ont=find_GO_scores.find_GO_ont()
+	go_genes=human_ont.genes
+
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
+	return label
+
 if __name__ == '__main__':
 	feature_list=define_features.load_filtered_features()
 
 	training_pairs, synapse_new_pairs=define_training_test_pair_objects(feature_list)
 
-	
 	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
 	print (data_test.shape)
 	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
@@ -72,7 +83,10 @@ if __name__ == '__main__':
 	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
 	#df.to_csv('updated_new_all_gene_predictions.csv')
 
-	feature_imp=regressor_functions.find_feature_importance(forest, feature_list, 'synsig')
+	ytest=find_syngo_ytest()
+
+	#feature_imp=regressor_functions.find_feature_importance(forest, feature_list, 'synsig')
+	feature_imp=regressor_functions.permutation_importance(forest, data_test, y_test)
 
 	#define_gene_objects.find_avg_scores(new_genes)
 
