@@ -21,6 +21,7 @@ import find_training_genes_functions
 import define_gene_objects
 import regressor_functions
 import define_features
+import find_GO_scores
 
 # #predict new genes=========================================================
 
