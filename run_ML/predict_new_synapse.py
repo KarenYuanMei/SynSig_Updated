@@ -86,7 +86,7 @@ if __name__ == '__main__':
 	ytest=find_syngo_ytest()
 
 	#feature_imp=regressor_functions.find_feature_importance(forest, feature_list, 'synsig')
-	feature_imp=regressor_functions.permutation_importance(forest, data_test, y_test)
+	feature_imp=regressor_functions.find_permutation_importance(forest, data_test, y_test)
 
 	#define_gene_objects.find_avg_scores(new_genes)
 

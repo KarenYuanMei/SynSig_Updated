@@ -83,7 +83,7 @@ def find_feature_importance(predictor, feature_list, name):
 	perf.to_csv('%s_random_forest_Feature_Importance.csv'%name)
 	return perf
 
-def permutation_importance(predictor, X_test, y_test):
+def find_permutation_importance(predictor, X_test, y_test):
 	#use this function to find feature importance
 	#predictor is the trained random forest
 	#X_test is the features for the test set genes
