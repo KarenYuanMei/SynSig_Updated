@@ -93,9 +93,9 @@ def find_permutation_importance(predictor, X_test, y_test):
 	print (importance)
 
 	with open('synsig_permutation_imp.csv', 'w') as csv_file:  
-    writer = csv.writer(csv_file)
-    for key, value in importance.items():
-       writer.writerow([key, value])
+	    writer = csv.writer(csv_file)
+	    for key, value in importance.items():
+	       writer.writerow([key, value])
 
 	#importance is a dictionary: feature_name -> importance
 	return importance
