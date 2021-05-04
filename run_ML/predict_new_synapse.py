@@ -59,7 +59,7 @@ def define_training_test_pair_objects(feature_list):
 	return training_pairs, synapse_new_pairs
 
 def find_syngo_ytest():
-	big_pool=find_training_genes_functions.load_big_pool()
+	big_pool=load_data_functions.load_big_pool()
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 
