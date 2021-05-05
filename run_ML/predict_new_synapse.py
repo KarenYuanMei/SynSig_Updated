@@ -69,7 +69,9 @@ def find_syngo_ytest():
 	go_genes=human_ont.genes
 
 	syngo=load_data_functions.find_syngo(big_pool, go_genes)
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
+
+	pred_df=load_predicted_synsig_df()
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syngo, all_training)
 	return label
 
 if __name__ == '__main__':
