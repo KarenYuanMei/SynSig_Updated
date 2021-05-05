@@ -70,7 +70,7 @@ def find_syngo_ytest():
 
 	syngo=load_data_functions.find_syngo(big_pool, go_genes)
 
-	pred_df=load_predicted_synsig_df()
+	pred_df=load_data_functions.load_predicted_synsig_df()
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syngo, all_training)
 	return label
 
