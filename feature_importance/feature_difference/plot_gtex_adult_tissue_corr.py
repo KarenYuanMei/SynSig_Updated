@@ -12,7 +12,7 @@ from mlxtend.evaluate import permutation_test
 
 import tkinter
 import matplotlib
-matplotlib.use("TKAgg")
+#matplotlib.use("TKAgg")
 from matplotlib import pyplot as plt
 
 from scipy import stats
