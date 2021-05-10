@@ -13,10 +13,10 @@ from itertools import product
 from collections import defaultdict
 
 import sys
-sys.path.append('../../read_data_functions/')
+sys.path.append('../read_data_functions/')
 import load_data_functions
 
-sys.path.append('../../ML_functions/')
+sys.path.append('../ML_functions/')
 import find_training_genes_functions 
 import define_gene_objects
 import regressor_functions
@@ -24,7 +24,6 @@ import define_features
 import find_GO_scores
 import ROC_functions
 
-sys.path.append('../../run_ML/')
 import predict_new_synapse
 
 if __name__ == '__main__':
