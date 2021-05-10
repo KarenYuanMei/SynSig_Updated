@@ -26,7 +26,8 @@ import ROC_functions
 
 if __name__ == '__main__':
 	feature_list=define_features.load_filtered_features()
-	features_list.remove('mentha_kernel')
+	feature_list.remove('mentha_kernel')
+	print (feature_list)
 
 	training_pairs, synapse_new_pairs=define_training_test_pair_objects(feature_list)
 
