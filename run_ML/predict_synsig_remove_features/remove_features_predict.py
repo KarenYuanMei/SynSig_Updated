@@ -24,7 +24,7 @@ import define_features
 import find_GO_scores
 import ROC_functions
 
-sys.path.append('../run_ML/')
+sys.path.append('../')
 import predict_new_synapse
 
 if __name__ == '__main__':
