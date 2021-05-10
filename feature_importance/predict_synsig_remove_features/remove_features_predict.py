@@ -24,12 +24,15 @@ import define_features
 import find_GO_scores
 import ROC_functions
 
+sys.path.append('../../run_ML/')
+import predict_new_synapse
+
 if __name__ == '__main__':
 	feature_list=define_features.load_filtered_features()
 	feature_list.remove('mentha_kernel')
 	print (feature_list)
 
-	training_pairs, synapse_new_pairs=define_training_test_pair_objects(feature_list)
+	training_pairs, synapse_new_pairs=predict_new_synapse.define_training_test_pair_objects(feature_list)
 
 	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
 	print (data_test.shape)
