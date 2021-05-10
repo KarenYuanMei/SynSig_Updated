@@ -92,6 +92,8 @@ def plot_annotate_ROC_controls(tpr, fpr, auc):
 	         label=r'ROC (AUC = %0.2f)' % (auc),
 	         lw=2, alpha=.8)
 
+	#without training genes: {'hk': (0.16326530612244897, 0.0719837783034809), 'golgi': (0.29591836734693877, 0.08122124634044332), 'mem': (0.21428571428571427, 0.130806362269526)}
+
 	plt.plot(0.11, 0.7755, color='purple', marker='o', markersize=10)
 	plt.annotate('SynSig', color='purple', xy=(0.11, 0.7755), xytext=(0.11+0.05, 0.7755), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
 
