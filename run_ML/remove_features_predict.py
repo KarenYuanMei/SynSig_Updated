@@ -50,41 +50,41 @@ def find_avg_score_df(filename, name):
 	avg_scores_df=regressor_functions.find_avg_scores(filename, new_genes, name)
 	return avg_scores_df
 
+def find_ref_lists():
+	human_ont=find_GO_scores.find_GO_ont()
+	go_genes=human_ont.genes
+
+	big_pool=load_data_functions.load_big_pool()
+
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syndb=load_data_functions.find_SynDB(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
+	syn=list(set(syngo)&set(syndb)&set(synsysnet))
+	return syngo, syn
 
 if __name__ == '__main__':
+	syngo, syn=find_ref_lists()
+	all_training=find_training_genes_functions.load_pos_neg_training()
 
-	# # #load the feature list, remove the feature of interest:
-	# feature_list=define_features.load_filtered_features()
+	# load the feature list, remove the feature of interest:
+	feature_list=define_features.load_filtered_features()
 	features_to_del=['gtex_rna_tissue_expression', 'gene_length', 'remove_mentha_kernel']
 	for item in features_to_del:
-	# 	#feature_list.remove(item)
-	# 	#print (feature_list)
+		feature_list.remove(item)
+		print (feature_list)
 
-	# 	#pred_scores_df=find_predicted_score_df(feature_list)
-		#filename='remove_%s_gene_predictions.csv'%item
-	# 	#pred_scores_df.to_csv(filename)
+		pred_scores_df=find_predicted_score_df(feature_list)
+		filename='remove_%s_gene_predictions.csv'%item
+		pred_scores_df.to_csv(filename)
 
-	
-	# # #find the average scores for each new gene:
-	# 	avg_scores_df=find_avg_score_df(filename, item)
-
+	# find the average scores for each new gene:
+		avg_scores_df=find_avg_score_df(filename, item)
 
 		#evaluate the predicted scores with ROC
-		human_ont=find_GO_scores.find_GO_ont()
-		go_genes=human_ont.genes
 
-		big_pool=load_data_functions.load_big_pool()
+		#pred_filename='%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%item
 
-		all_training=find_training_genes_functions.load_pos_neg_training()
-
-		syngo=load_data_functions.find_syngo(big_pool, go_genes)
-		syndb=load_data_functions.find_SynDB(big_pool)
-		synsysnet=load_data_functions.find_synsysnet(big_pool)
-		syn=list(set(syngo)&set(syndb)&set(synsysnet))
-
-		pred_filename='%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%item
-
-		avg_scores_df=pd.read_csv(pred_filename)
+		#avg_scores_df=pd.read_csv(pred_filename)
 
 		final, label, avg_score=ROC_functions.find_pred_labels_scores(avg_scores_df, syn, all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
