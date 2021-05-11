@@ -75,6 +75,8 @@ if __name__ == '__main__':
 
 		big_pool=load_data_functions.load_big_pool()
 
+		all_training=find_training_genes_functions.load_pos_neg_training()
+
 		syngo=load_data_functions.find_syngo(big_pool, go_genes)
 		syndb=load_data_functions.find_SynDB(big_pool)
 		synsysnet=load_data_functions.find_synsysnet(big_pool)
