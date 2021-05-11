@@ -26,11 +26,7 @@ import ROC_functions
 
 import predict_new_synapse
 
-if __name__ == '__main__':
-	feature_list=define_features.load_filtered_features()
-	feature_list.remove('mentha_kernel')
-	print (feature_list)
-
+def find_predicted_score_df(feature_list):
 	training_pairs, synapse_new_pairs=predict_new_synapse.define_training_test_pair_objects(feature_list)
 
 	data_test, data_gene1, data_gene2=define_gene_objects.find_new_array(synapse_new_pairs, feature_list)
@@ -40,4 +36,54 @@ if __name__ == '__main__':
 
 	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
 
-	df.to_csv('remove_mentha_gene_predictions.csv')
+	
+
+	return df
+
+def find_avg_score_df(filename):
+	big_pool=load_data_functions.load_big_pool()
+
+	all_training=find_training_genes_functions.load_pos_neg_training()
+
+	new_genes=list(set(big_pool)-set(all_training))
+	
+	avg_scores_df=regressor_functions.find_avg_scores(filename, new_genes, 'remove_mentha_kernel')
+	return avg_scores_df
+
+
+if __name__ == '__main__':
+
+	# #load the feature list, remove the feature of interest:
+	# feature_list=define_features.load_filtered_features()
+	# feature_list.remove('mentha_kernel')
+	# print (feature_list)
+
+	# pred_scores_df=find_predicted_score_df(feature_list)
+	filename='remove_mentha_gene_predictions.csv'
+	# pred_scores_df.to_csv(filename)
+
+	
+	# #find the average scores for each new gene:
+	avg_scores_df=find_avg_score_df(filename)
+
+
+	#evaluate the predicted scores with ROC
+	human_ont=find_GO_scores.find_GO_ont()
+	go_genes=human_ont.genes
+
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syndb=load_data_functions.find_SynDB(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
+	syn=list(set(syngo)&set(syndb)&set(synsysnet))
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+	print (auc)
+
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn_remove_ppi')
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+	print (auc)
+
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syngo_remove_ppi')
