@@ -220,12 +220,12 @@ def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 
 def df_to_network(name):
 	if name == 'mentha':
-		net_df=load_mentha_df()
+		net_df=make_mentha_ppi_df()
 		G=make_network_graph_functions.make_network_G(net_df)
 		print ('orig', len(list(G.nodes())))
 
 	if name == 'bioplex':
-		net_df=load_bioplex_df()
+		net_df=make_bioplex_ppi_df()
 		hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
 		G=make_network_graph_functions.make_network_G(net_df)
 		print ('orig', len(list(G.nodes())))
