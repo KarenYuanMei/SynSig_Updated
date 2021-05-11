@@ -80,7 +80,7 @@ if __name__ == '__main__':
 		synsysnet=load_data_functions.find_synsysnet(big_pool)
 		syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-		pred_filename='remove_%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%item
+		pred_filename='%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%item
 
 		avg_scores_df=pd.read_csv(pred_filename)
 
