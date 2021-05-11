@@ -49,7 +49,8 @@ def make_filtered_bioplex():
 
 
 def make_mentha_ppi_df():
-	filename='../ppi_files/Human_Mentha_converted.csv'
+	#filename='../ppi_files/Human_Mentha_converted.csv'
+	filename=load_data_functions.load_mentha_file()
 	df=make_network_graph_functions.make_mentha_df(filename)
 	return df
 

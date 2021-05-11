@@ -38,6 +38,15 @@ def find_syngo(big_pool, go_genes):
 	syngo=list(set(genes)&(set(big_pool)&set(go_genes)))
 	return syngo
 
+def find_full_syngo():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	file= p + '/source_data_files/correct_db/corr_syngo_cc.csv'
+	genes=get_gene_names(file)
+	return genes
+
+
+
 # def find_SynDB(big_pool):
 # 	synDB_file='../correct_db/SynDB.csv'
 # 	syndb=get_gene_names(synDB_file)
@@ -145,6 +154,14 @@ def load_bioplex_file():
 	p = str(p)
 	#print (p)
 	filename=p +'/source_data_files/ppi_files/BioPlex 3 - HEK293T default edge.csv'
+	#print (filename)
+	return filename
+
+def load_mentha_file():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	#print (p)
+	filename=p +'/source_data_files/ppi_files/Human_Mentha_converted.csv'
 	#print (filename)
 	return filename
 
