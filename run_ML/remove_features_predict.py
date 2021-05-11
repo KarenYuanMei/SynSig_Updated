@@ -54,36 +54,40 @@ def find_avg_score_df(filename):
 if __name__ == '__main__':
 
 	# #load the feature list, remove the feature of interest:
-	# feature_list=define_features.load_filtered_features()
-	# feature_list.remove('mentha_kernel')
-	# print (feature_list)
+	feature_list=define_features.load_filtered_features()
+	features_to_del=['gtex_rna_tissue_expression', 'gene_length']
+	for item in features_to_del:
+		feature_list.remove(item)
+		print (feature_list)
 
-	# pred_scores_df=find_predicted_score_df(feature_list)
-	filename='remove_mentha_gene_predictions.csv'
-	# pred_scores_df.to_csv(filename)
+		pred_scores_df=find_predicted_score_df(feature_list)
+		filename='remove_%s_gene_predictions.csv'%item
+		pred_scores_df.to_csv(filename)
 
 	
 	# #find the average scores for each new gene:
-	avg_scores_df=find_avg_score_df(filename)
+		avg_scores_df=find_avg_score_df(filename)
 
 
-	#evaluate the predicted scores with ROC
-	human_ont=find_GO_scores.find_GO_ont()
-	go_genes=human_ont.genes
+	# #evaluate the predicted scores with ROC
+	# human_ont=find_GO_scores.find_GO_ont()
+	# go_genes=human_ont.genes
 
-	syngo=load_data_functions.find_syngo(big_pool, go_genes)
-	syndb=load_data_functions.find_SynDB(big_pool)
-	synsysnet=load_data_functions.find_synsysnet(big_pool)
-	syn=list(set(syngo)&set(syndb)&set(synsysnet))
+	# big_pool=load_data_functions.load_big_pool()
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
-	print (auc)
+	# syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	# syndb=load_data_functions.find_SynDB(big_pool)
+	# synsysnet=load_data_functions.find_synsysnet(big_pool)
+	# syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn_remove_ppi')
+	# final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
+	# fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+	# print (auc)
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
-	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
-	print (auc)
+	# graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn_remove_ppi')
 
-	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syngo_remove_ppi')
+	# final, label, avg_score=ROC_functions.find_pred_labels_scores(syngo, all_training)
+	# fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
+	# print (auc)
+
+	# graph_functions.plot_single_ROC(tpr, fpr, auc, 'syngo_remove_ppi')
