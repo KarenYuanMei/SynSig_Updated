@@ -54,6 +54,7 @@ def make_mentha_ppi_df():
 	return df
 
 def find_cv_seeds(nodes):
+	#find the overlap between positive synapse genes (training) and the nodes in the network
 	pos=load_data_functions.get_gene_names('../../run_ML/ML_output/training_genes/updated_positives.csv')
 	seeds=list(set(pos)&set(nodes))
 	return seeds
@@ -119,9 +120,16 @@ def find_opt_alpha(all_mean_aucs):
 	return opt_alpha	
 
 def find_ordered_set(syngo_nodes, cv_seeds):
+	#find the synapse genes that are not in the training set
 	non_seed_pos=list(set(syngo_nodes)-set(cv_seeds))
+
+	#make ordered list of training genes first and then non-training positives
 	ordered_test=cv_seeds+non_seed_pos
+
+	#make a set with key 'syngo' and the values are the ordered list of training genes and non-training positives
 	ordered_set={'syngo': ordered_test}
+
+	#find what fraction of the ordered list is training genes
 	fraction=len(cv_seeds)/float(len(ordered_test))
 	return ordered_set, fraction
 
@@ -153,6 +161,8 @@ def find_hk_nodes(G):
 
 def find_net_test_auc(G,opt_alpha, gold_standards):
 	nodes=list(G.nodes())
+
+	#find the positive training synapse genes (same as in random forest) in the network: cv_seeds
 	cv_seeds=find_cv_seeds(nodes)
 
 	if gold_standards=='syngo':
@@ -165,11 +175,14 @@ def find_net_test_auc(G,opt_alpha, gold_standards):
 
 	#syngo_nodes=find_hk_nodes(G)
 
+	#make ordered set: training genes + pos_nodes (excludes the training genes)
 	ordered_set, seed_fraction=find_ordered_set(pos_nodes, cv_seeds)
 
 	neg=list(set(nodes)-set(pos_nodes))
 
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+
+	#seed network propagation with the syngo training genes (same as in random forest), then evaluate how well it recovers the gold standards
 	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	return fpr, tpr, threshold, roc_auc
@@ -296,10 +309,12 @@ if __name__ == '__main__':
 		print ('opt_alpha', opt_alpha)
 		
 		auc_list=find_test_auc(net)
+		print (auc_list)
 		
 		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
-		#print (net, shuff_rocs)
+		print (net, shuff_rocs)
 		rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
+		print (rand_rocs)
 
 		plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
 
