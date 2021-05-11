@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
 		pred_filename='remove_%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%item
 
-		avg_scores_df=pd.read_csv(filename)
+		avg_scores_df=pd.read_csv(pred_filename)
 
 		final, label, avg_score=ROC_functions.find_pred_labels_scores(avg_scores_df, syn, all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
