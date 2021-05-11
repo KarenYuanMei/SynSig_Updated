@@ -265,7 +265,7 @@ def find_avg_scores(pred_filename, new_genes, name):
 		df2=pred.loc[pred['Gene2'] == gene]
 		df=df1.append(df2)
 		scores=df['ypredict'].tolist()
-		print ('length of scores', len(scores))
+		#print ('length of scores', len(scores))
 		scores_np=np.array(scores)
 		avg_score=np.mean(scores_np)
 		
