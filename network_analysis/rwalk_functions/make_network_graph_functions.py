@@ -8,7 +8,7 @@ import numpy as np
 #import matplotlib.pyplot as plt
 
 import sys
-sys.path.append('../read_data_functions/')
+sys.path.append('../../read_data_functions/')
 import load_data_functions
 
 def clean_names(gene_list):
