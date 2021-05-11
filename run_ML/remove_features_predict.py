@@ -90,10 +90,10 @@ if __name__ == '__main__':
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 		print (auc)
 
-		graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn_remove_ppi')
+		#graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn_remove_ppi')
 
 		final, label, avg_score=ROC_functions.find_pred_labels_scores(avg_scores_df, syngo, all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 		print (auc)
 
-		graph_functions.plot_single_ROC(tpr, fpr, auc, 'syngo_remove_ppi')
+		#graph_functions.plot_single_ROC(tpr, fpr, auc, 'syngo_remove_ppi')
