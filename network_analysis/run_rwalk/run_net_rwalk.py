@@ -153,7 +153,7 @@ def find_synapse_nodes(G):
 	return synapse_nodes
 
 def find_hk_nodes(G):
-	hk=pd.read_csv('../../gene_lists/Human_Mouse_Common.csv', sep=';')
+	hk=pd.read_csv('../../source_data_files/gene_lists/Human_Mouse_Common.csv', sep=';')
 	#print (hk)
 	hk=hk['Human'].tolist()
 	nodes=list(G.nodes())
