@@ -320,7 +320,7 @@ if __name__ == '__main__':
 		opt_alpha=0.5
 
 		fpr, tpr, threshold, roc_auc=find_test_auc(G, opt_alpha, 'syngo')
-		graph_functions.plot_single_ROC(tpr, fpr, auc, net)
+		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, net)
 
 		shuff_rocs, tprs, mean_fpr=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
 		print (net, shuff_rocs)
