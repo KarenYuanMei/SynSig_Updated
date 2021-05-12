@@ -196,9 +196,9 @@ def find_net_syngo_shuffled_auc(G, opt_alpha, iterations):
 
 	neg=list(set(nodes)-set(syngo_nodes))
 
-	shuff_rocs=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, iterations)
+	shuff_scores, tprs, mean_fpr=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, iterations)
 	#print (shuff_rocs)
-	return shuff_rocs
+	return shuff_rocs, tprs, mean_fpr
 
 def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 	nodes=list(G.nodes())
@@ -249,15 +249,20 @@ def calc_plot_opt_alpha(G, net):
 	opt_alpha=find_opt_alpha(all_mean_aucs)
 	return alpha_cvs, opt_alpha
 
-def find_test_auc(net):
+def find_test_auc_list(net):
 	genelists=['syngo', 'hk', 'synapse']
 
 	auc_list=[]
 	for item in genelists:
 		fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, item)
-		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_%s_test'%(net, item))
+		#graph_functions.plot_single_ROC(tpr, fpr, roc_auc, '%s_%s_test'%(net, item))
 		auc_list.append(roc_auc)
 	return auc_list
+
+def find_test_auc(G, opt_alpha, ref_list):
+	#ref_list is the list of gold standards: can be syngo, hk, or synapse
+	fpr, tpr, threshold, roc_auc=find_net_test_auc(G, opt_alpha, ref_list)
+	return fpr, tpr, threshold, roc_auc
 
 def find_net_deg_marched_auc_list(G, opt_alpha, iterations):
 	nodes=list(G.nodes())
@@ -312,17 +317,27 @@ if __name__ == '__main__':
 		
 		#auc_list=find_test_auc(net)
 		#print (auc_list)
-
 		opt_alpha=0.5
-		
-		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
+
+		fpr, tpr, threshold, roc_auc=find_test_auc(G, opt_alpha, 'syngo')
+		graph_functions.plot_single_ROC(tpr, fpr, auc, net)
+
+		shuff_rocs, tprs, mean_fpr=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
 		print (net, shuff_rocs)
-		rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
-		print (rand_rocs)
 
-		plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
+		graph_functions.plot_mean_ROC(tprs, mean_fpr, shuff_rocs)
+		plt.savefig('%s_shuffled_mean_ROC.svg'%net, format="svg")
 
-		plot_all_test_aucs(net, auc_list)
+
+		# rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
+		# print (rand_rocs)
+
+		# plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
+
+		# plot_all_test_aucs(net, auc_list)
+
+		# graph_functions.plot_single_ROC(tpr, fpr, auc, name)
+	
 
 #mentha: 'syngo, hk, synapse': [0.7456864401864853, 0.7196956308940988, 0.815815521185644]
 #shuffled net: evluating with syngo:
@@ -330,3 +345,5 @@ if __name__ == '__main__':
 #degree-matched random seeds: [0.621572051208755, 0.623082056892779, 0.6253766278742644, 0.6261662178121625, 0.6182276961198311, 0.6272120776766205, 0.6195359610255194, 0.6219735479172066, 0.6167694062470768, 0.6308035741716488]
 
 #bioplex: 'syngo, hk, synapse': [0.6708521256093805, 0.5396605856727543, 0.7187177546631718]
+#'bioplex shuffled net', [0.5617163111696832, 0.5735153552091588, 0.5615875072219141, 0.5679666016240199, 0.5768385831221503, 0.5596699348636428, 0.5726495861348431, 0.5705051008084527, 0.5633273645564812, 0.5685205446599719]
+#degree-matched: [0.5492561747815808, 0.5553582929022335, 0.5558399455537568, 0.5610399615586059, 0.5583944676268677, 0.5607942381670058, 0.5623108482523445, 0.5533689814122542, 0.5519377886805794, 0.559837889818487]

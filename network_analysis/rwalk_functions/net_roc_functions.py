@@ -8,6 +8,7 @@ import scipy.stats as stats
 import sklearn.metrics as metrics
 
 import net_random_walk_functions
+from scipy import interp
 
 #calculate 5fold crossvalidation
 
@@ -68,11 +69,15 @@ def calc_net_test_roc(df, neg):
 
 def find_shuff_aucs(G, nodesets, neg, alpha, fraction, iterations):
 	shuff_scores=[]
+	tprs=[]
+	mean_fpr=np.linespace(0, 1, 100)
 	for i in range(iterations):
 		shuff=net_random_walk_functions.find_shuff_scores_df(G, nodesets, alpha, fraction)
 		fpr, tpr, threshold, roc_auc=calc_net_test_roc(shuff, neg)
 		shuff_scores.append(roc_auc)
-	return shuff_scores
+		tprs.append(interp(mean_fpr, fpr, tpr))
+		tprs[-1][0]=0
+	return shuff_scores, tprs, mean_fpr
 
 #sweep alpha:
 
