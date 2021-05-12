@@ -188,22 +188,27 @@ def find_net_test_auc(G,opt_alpha, gold_standards):
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	return fpr, tpr, threshold, roc_auc
 
-def find_net_syngo_shuffled_auc(G, opt_alpha, iterations):
+def find_net_shuffled_auc(G, opt_alpha, ref_list_name, iterations):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
-	syngo_nodes=find_syngo_nodes(G)
-	ordered_set, seed_fraction=find_ordered_set(syngo_nodes, cv_seeds)
 
-	neg=list(set(nodes)-set(syngo_nodes))
+	if ref_list_name == 'syngo':
+		ref_nodes=find_syngo_nodes(G)
+
+	elif ref_list_name == 'synapse':
+		ref_nodes=find_synapse_nodes(G)
+
+	ordered_set, seed_fraction=find_ordered_set(ref_nodes, cv_seeds)
+
+	neg=list(set(nodes)-set(ref_nodes))
 
 	shuff_scores, tprs, mean_fpr=net_roc_functions.find_shuff_aucs(G, ordered_set, neg, opt_alpha, seed_fraction, iterations)
 	#print (shuff_rocs)
-	return shuff_rocs, tprs, mean_fpr
+	return shuff_scores, tprs, mean_fpr
 
 def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 	nodes=list(G.nodes())
 	cv_seeds=find_cv_seeds(nodes)
-	
 
 	rand_seeds=net_random_walk_functions.find_rand_samples(G, cv_seeds, buckets)
 	print ('newrand', rand_seeds)
@@ -306,7 +311,7 @@ def plot_all_test_aucs(net, auc_list):
 if __name__ == '__main__':
 
 	#net_names=['mentha', 'bioplex']
-	net_names=['bioplex']
+	net_names=['mentha']
 	for net in net_names:
 
 		G=df_to_network(net)
@@ -317,16 +322,24 @@ if __name__ == '__main__':
 		
 		#auc_list=find_test_auc(net)
 		#print (auc_list)
-		opt_alpha=0.5
+		opt_alpha=0.4
 
 		fpr, tpr, threshold, roc_auc=find_test_auc(G, opt_alpha, 'syngo')
 		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, net)
 
-		shuff_rocs, tprs, mean_fpr=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
+		shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'syngo', 10)
 		print (net, shuff_rocs)
 
-		graph_functions.plot_mean_ROC(tprs, mean_fpr, shuff_rocs)
-		plt.savefig('%s_shuffled_mean_ROC.svg'%net, format="svg")
+		shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'synapse', 10)
+		print (net, shuff_rocs)
+
+		mean_auc=np.mean(shuff_rocs)
+		mean_tpr = np.mean(tprs, axis=0)
+
+		name=net+'shuffled_mean_ROC'
+
+		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,name )
+		#plt.savefig('%s_shuffled_mean_ROC.svg'%net, format="svg")
 
 
 		# rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
