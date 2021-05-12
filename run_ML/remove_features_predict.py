@@ -68,7 +68,7 @@ if __name__ == '__main__':
 
 	# load the feature list, remove the feature of interest:
 	feature_list=define_features.load_filtered_features()
-	features_to_del=['mentha_kernel']
+	features_to_del=['gene_length']
 	for item in features_to_del:
 		feature_list.remove(item)
 		print (feature_list)
