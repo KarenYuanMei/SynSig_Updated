@@ -300,7 +300,8 @@ def plot_all_test_aucs(net, auc_list):
 
 if __name__ == '__main__':
 
-	net_names=['mentha', 'bioplex']
+	#net_names=['mentha', 'bioplex']
+	net_names=['bioplex']
 	for net in net_names:
 
 		G=df_to_network(net)
@@ -321,4 +322,7 @@ if __name__ == '__main__':
 
 		plot_all_test_aucs(net, auc_list)
 
-	
+#mentha: 'syngo, hk, synapse': [0.7456864401864853, 0.7196956308940988, 0.815815521185644]
+#shuffled net: evluating with syngo:
+#mentha: ('mentha', [0.6329138649302612, 0.6384526977754723, 0.6341973340679333, 0.6368434781161163, 0.6323335819589118, 0.6295272811531072, 0.6411557625824411, 0.6228213042586394, 0.6373723444586566, 0.6334948862605102])
+#degree-matched random seeds: [0.621572051208755, 0.623082056892779, 0.6253766278742644, 0.6261662178121625, 0.6182276961198311, 0.6272120776766205, 0.6195359610255194, 0.6219735479172066, 0.6167694062470768, 0.6308035741716488]
