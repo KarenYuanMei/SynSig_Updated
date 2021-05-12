@@ -227,7 +227,7 @@ def df_to_network(name):
 
 	if name == 'bioplex':
 		net_df=make_bioplex_ppi_df()
-		hek_genes=load_data_functions.get_gene_names('../expression_file/hek_genes.csv')
+		hek_genes=load_data_functions.load_hek_genes()
 		G=make_network_graph_functions.make_network_G(net_df)
 		print ('orig', len(list(G.nodes())))
 		G=make_network_graph_functions.filter_by_hek_genes(G, hek_genes)
