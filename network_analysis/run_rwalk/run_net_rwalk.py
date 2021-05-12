@@ -306,12 +306,14 @@ if __name__ == '__main__':
 
 		G=df_to_network(net)
 
-		alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, net)
+		#alpha_cvs, opt_alpha=calc_plot_opt_alpha(G, net)
 
-		print ('opt_alpha', opt_alpha)
+		#print ('opt_alpha', opt_alpha)
 		
-		auc_list=find_test_auc(net)
-		print (auc_list)
+		#auc_list=find_test_auc(net)
+		#print (auc_list)
+
+		opt_alpha=0.5
 		
 		shuff_rocs=find_net_syngo_shuffled_auc(G, opt_alpha, 10)
 		print (net, shuff_rocs)
@@ -326,3 +328,5 @@ if __name__ == '__main__':
 #shuffled net: evluating with syngo:
 #mentha: ('mentha', [0.6329138649302612, 0.6384526977754723, 0.6341973340679333, 0.6368434781161163, 0.6323335819589118, 0.6295272811531072, 0.6411557625824411, 0.6228213042586394, 0.6373723444586566, 0.6334948862605102])
 #degree-matched random seeds: [0.621572051208755, 0.623082056892779, 0.6253766278742644, 0.6261662178121625, 0.6182276961198311, 0.6272120776766205, 0.6195359610255194, 0.6219735479172066, 0.6167694062470768, 0.6308035741716488]
+
+#bioplex: 'syngo, hk, synapse': [0.6708521256093805, 0.5396605856727543, 0.7187177546631718]
