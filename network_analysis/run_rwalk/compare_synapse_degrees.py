@@ -122,9 +122,9 @@ def find_ntwk_centrality(G, net_name):
 	bg_genes=list(set(G.nodes())-set(seed_genes))
 	compare_degrees(G, seed_genes, bg_genes, net_name)
 
-	#eigen_centrality(G, seed_genes, bg_genes, net_name)
-	#closeness_centrality(G, seed_genes, bg_genes, net_name)
-	#between_centrality(G, seed_genes, bg_genes, net_name)
+	eigen_centrality(G, seed_genes, bg_genes, net_name)
+	closeness_centrality(G, seed_genes, bg_genes, net_name)
+	between_centrality(G, seed_genes, bg_genes, net_name)
 
 
 if __name__ == '__main__':
