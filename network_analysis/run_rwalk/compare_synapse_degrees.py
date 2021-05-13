@@ -33,7 +33,7 @@ import graph_functions
 #from cross_val_ROC import find_scores_df, find_val_df, calculate_roc
 
 
-def plot_prob_hist(seed_deg, net_deg, name):
+def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
 	bins=np.histogram(np.hstack((seed_deg,net_deg)), bins=40)[1] #get the bin edges
 
@@ -47,7 +47,7 @@ def plot_prob_hist(seed_deg, net_deg, name):
 	plt.grid(b=False)
 	#plt.savefig(title, bbox_inches='tight')
 	plt.show()
-	f.savefig('Net_%s_distr.svg'%name, bbox_inches='tight')
+	f.savefig('%s_Net_%s_distr.svg'%(net_name, measure_name), bbox_inches='tight')
 
 def plot_boxplot(seed_deg, net_deg, name):
 	f = plt.figure()
@@ -60,7 +60,7 @@ def plot_boxplot(seed_deg, net_deg, name):
 	#plt.ylim(0,2500)
 	plt.yscale('log')
 	plt.show()
-	f.savefig("Net_seed_%s_centrality_box.svg"%name, bbox_inches='tight')
+	f.savefig("%s_Net_seed_%s_centrality_box.svg"%(net_name, measure_name), bbox_inches='tight')
 
 def students_test(seed_deg, net_deg):
 	## Cross Checking with the internal scipy function
@@ -69,7 +69,7 @@ def students_test(seed_deg, net_deg):
 	print("p = " + str(p2))
 	return t2, p2
 
-def closeness_centrality(G, seed_genes, bg_genes):
+def closeness_centrality(G, seed_genes, bg_genes, net_name):
 	closeness_d=nx.closeness_centrality(G)
 	print ('done')
 	seed_closeness=[closeness_d[n] for n in seed_genes]
@@ -78,18 +78,18 @@ def closeness_centrality(G, seed_genes, bg_genes):
 	print (len(seed_closeness))
 	bg_closeness=[closeness_d[n] for n in bg_genes]
 	students_test(seed_closeness, bg_closeness)
-	plot_prob_hist(seed_closeness, bg_closeness, 'Closeness')
-	plot_boxplot(seed_closeness, bg_closeness, 'Closeness')
+	plot_prob_hist(seed_closeness, bg_closeness, name_name, 'Closeness')
+	plot_boxplot(seed_closeness, bg_closeness, net_name, 'Closeness')
 
-def compare_degrees(G, seed_genes, bg_genes):
+def compare_degrees(G, seed_genes, bg_genes, net_name):
 	seed_deg=[G.degree(n) for n in seed_genes]
 	net_deg = [G.degree(n) for n in bg_genes]
 	print ('done')
 	students_test(seed_deg, net_deg)
-	plot_prob_hist(seed_deg, net_deg, 'Degree')
-	plot_boxplot(seed_deg, net_deg, 'Degree')
+	plot_prob_hist(seed_deg, net_deg, net_name, 'Degree')
+	plot_boxplot(seed_deg, net_deg, net_name, 'Degree')
 
-def eigen_centrality(G, seed_genes, bg_genes):
+def eigen_centrality(G, seed_genes, bg_genes, net_name):
 	eig=nx.eigenvector_centrality(G)
 	seed_eig=[eig[n] for n in seed_genes]
 	print ('done')
@@ -97,10 +97,10 @@ def eigen_centrality(G, seed_genes, bg_genes):
 	print (len(seed_eig))
 	bg_eig=[eig[n] for n in bg_genes]
 	students_test(seed_eig, bg_eig)
-	plot_prob_hist(seed_eig, bg_eig, 'Eigenvector')
-	plot_boxplot(seed_eig, bg_eig, 'Eigenvector')
+	plot_prob_hist(seed_eig, bg_eig, net_name, 'Eigenvector')
+	plot_boxplot(seed_eig, bg_eig, net_name, 'Eigenvector')
 
-def between_centrality(G, seed_genes, bg_genes):
+def between_centrality(G, seed_genes, bg_genes, net_name):
 	plt.legend(labels=['Seed Genes', 'Background Genes'])
 	bet=nx.betweenness_centrality(G)
 	seed=[bet[n] for n in seed_genes]
@@ -109,20 +109,20 @@ def between_centrality(G, seed_genes, bg_genes):
 	print (len(seed))
 	bg=[bet[n] for n in bg_genes]
 	students_test(seed, bg)
-	plot_prob_hist(seed, bg, 'Betweenness')
-	plot_boxplot(seed, bg, 'Betweenness')
+	plot_prob_hist(seed, bg, net_name, 'Betweenness')
+	plot_boxplot(seed, bg, net_name, 'Betweenness')
 
 
-def find_ntwk_centrality(G):
+def find_ntwk_centrality(G, net_name):
 	#G=make_network_G(network_df)
 	syngo_genes=load_data_functions.find_full_syngo()
 	seed_genes=list(set(syngo_genes)&set(G.nodes))
 	bg_genes=list(set(G.nodes())-set(seed_genes))
-	compare_degrees(G, seed_genes, bg_genes)
+	compare_degrees(G, seed_genes, bg_genes, net_name)
 
-	eigen_centrality(G, seed_genes, bg_genes)
-	closeness_centrality(G, seed_genes, bg_genes)
-	between_centrality(G, seed_genes, bg_genes)
+	eigen_centrality(G, seed_genes, bg_genes, net_name)
+	closeness_centrality(G, seed_genes, bg_genes, net_name)
+	between_centrality(G, seed_genes, bg_genes, net_name)
 
 
 if __name__ == '__main__':
@@ -135,7 +135,7 @@ if __name__ == '__main__':
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
-	find_ntwk_centrality(G)
+	find_ntwk_centrality(G, 'bioplex')
 
 
 
