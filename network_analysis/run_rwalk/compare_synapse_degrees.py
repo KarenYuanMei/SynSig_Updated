@@ -81,6 +81,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
 	plt.xticks(rotation=45)
+	plt.show()
 	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg")
 
 def students_test(seed_deg, net_deg):
