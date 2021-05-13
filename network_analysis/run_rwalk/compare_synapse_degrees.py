@@ -66,6 +66,7 @@ def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	plt.yscale('log')
 	plt.show()
 	f.savefig("%s_Net_seed_%s_centrality_box.svg"%(net_name, measure_name), bbox_inches='tight')
+	plt.close()
 
 def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name):
 	x_pos=np.arange(len(labels))
@@ -82,7 +83,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.ylabel(ylabel, fontweight='bold')
 	plt.xticks(rotation=45)
 	plt.show()
-	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg")
+	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
 def students_test(seed_deg, net_deg):
 	## Cross Checking with the internal scipy function
@@ -125,6 +126,7 @@ def eigen_centrality(G, seed_genes, bg_genes, net_name):
 	seed_mean=mean(seed_eig)
 	bg_mean=mean(bg_eig)
 	mean_values=[seed_mean, bg_mean]
+	print ('seed', seed_mean, 'bg', bg_mean)
 
 	seed_sem=stats.sem(seed_eig)
 	bg_sem=stats.sem(bg_eig)
