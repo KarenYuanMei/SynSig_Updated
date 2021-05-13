@@ -132,12 +132,12 @@ if __name__ == '__main__':
 	# network_df=make_mentha_df(filename)
 	# find_ntwk_centrality(network_df)
 	#df=run_net_rwalk.make_bioplex_ppi_df()
-	G=run_net_rwalk.df_to_network('mentha')
+	G=run_net_rwalk.df_to_network('bioplex')
 	
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
-	find_ntwk_centrality(G, 'mentha')
+	find_ntwk_centrality(G, 'bioplex')
 
 
 
