@@ -47,13 +47,13 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	plt.title('%s Centrality Distributions'%measure_name, fontweight = 'bold')
 	plt.grid(b=False)
 	#plt.savefig(title, bbox_inches='tight')
-	plt.legend()
+	plt.legend(labels=['Synapse', 'Negatives'])
 	plt.show()
 	f.savefig('%s_Net_%s_distr.svg'%(net_name, measure_name), bbox_inches='tight')
 
 def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
-	plt.boxplot([seed_deg, net_deg], showfliers=False)
+	plt.boxplot([seed_deg, net_deg], showfliers=True)
 	#plt.boxplot([x for x in [seed_deg, net_deg]], 0, 'rs', 1)
 	#plt.xticks([y+1 for y in range(len([seed_deg, net_deg]))], ['Seed Genes', 'Background Genes'])
 	plt.xlabel('Gene Group')
