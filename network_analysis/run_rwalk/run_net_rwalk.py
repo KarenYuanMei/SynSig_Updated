@@ -5,6 +5,8 @@ import scipy as sp
 import networkx as nx
 import pandas as pd
 
+from scipy import interp
+
 import pathlib
 
 import numpy as np
@@ -222,7 +224,7 @@ def find_deg_matched_auc(G, opt_alpha, kernel, buckets):
 	df=net_random_walk_functions.find_prop_scores_df(kernel, ordered_set, seed_fraction)
 	fpr, tpr, threshold, roc_auc=net_roc_functions.calc_net_test_roc(df, neg)
 	print (roc_auc)
-	return roc_auc
+	return fpr, tpr, threshold, roc_auc
 
 def df_to_network(name):
 	if name == 'mentha':
@@ -276,13 +278,18 @@ def find_net_deg_marched_auc_list(G, opt_alpha, iterations):
 	buckets=net_random_walk_functions.make_seed_bg_buckets(G, cv_seeds, bg)
 	print ('newbuckets', buckets)
 	kernel=net_random_walk_functions.construct_prop_kernel(G, opt_alpha, verbose=True)
+
 	all_rand_rocs=[]
+	tprs=[]
+	mean_fpr=np.linspace(0, 1, 100)
 	for i in range(iterations):
-		rand_seed_rocs=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
+		fpr, tpr, threshold, roc_auc=find_deg_matched_auc(G, opt_alpha, kernel, buckets)
 		#print (rand_seed_rocs)
-		all_rand_rocs.append(rand_seed_rocs)
-	print (net, all_rand_rocs)
-	return all_rand_rocs
+		all_rand_rocs.append(roc_auc)
+		tprs.append(interp(mean_fpr, fpr, tpr))
+		tprs[-1][0]=0
+	print (all_rand_rocs)
+	return all_rand_rocs, tprs, mean_fpr
 
 def plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs):
 	shuff_mean=np.mean(shuff_rocs)
@@ -326,24 +333,31 @@ if __name__ == '__main__':
 
 		fpr, tpr, threshold, roc_auc=find_test_auc(G, opt_alpha, 'syngo')
 		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, net)
+		print (roc_auc)
 
 		shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'syngo', 10)
 		print (net, shuff_rocs)
 
-		shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'synapse', 10)
-		print (net, shuff_rocs)
+		# shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'synapse', 10)
+		# print (net, shuff_rocs)
 
 		mean_auc=np.mean(shuff_rocs)
 		mean_tpr = np.mean(tprs, axis=0)
 
-		name=net+'shuffled_mean_ROC'
+		name=net+'shuffled_mean'
 
 		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,name )
 		#plt.savefig('%s_shuffled_mean_ROC.svg'%net, format="svg")
 
 
-		# rand_rocs=find_net_deg_marched_auc_list(G, opt_alpha, 10)
-		# print (rand_rocs)
+		all_rand_rocs, tprs, mean_fpr=find_net_deg_marched_auc_list(G, opt_alpha, 10)
+		print (net, all_rand_rocs)
+		mean_auc=np.mean(all_rand_rocs)
+		mean_tpr = np.mean(tprs, axis=0)
+
+		name=net+'random_seed_mean'
+		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,name)
+		
 
 		# plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
 
