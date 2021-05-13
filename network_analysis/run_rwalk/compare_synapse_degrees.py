@@ -41,15 +41,18 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	bins=np.histogram(np.hstack((seed_deg,net_deg)), bins=40)[1] #get the bin edges
 
 	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)))
+	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))))
+
+	plt.legend(labels=['Synapse', 'Negatives'])
 
 	plt.axvline(mean(seed_deg), color='blue', linestyle='dashed', linewidth=1)
 	min_ylim, max_ylim = plt.ylim()
-	plt.text(mean(seed_deg)*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(mean(seed_deg)))
+	plt.text(mean(seed_deg)*1.1, max_ylim*0.9, 'Mean: {:.3f}'.format(mean(seed_deg)))
 
-	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))))
+	
 	plt.axvline(mean(net_deg), color='orange', linestyle='dashed', linewidth=1)
 	min_ylim, max_ylim = plt.ylim()
-	plt.text(mean(net_deg)*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(mean(net_deg)))
+	plt.text(mean(net_deg)*1.1, max_ylim*0.9, 'Mean: {:.3f}'.format(mean(net_deg)))
 
 	#plt.ylabel('Non-Synapse Genes in Brain')
 	plt.yscale('log')
@@ -58,9 +61,6 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	plt.title('%s Centrality Distributions'%measure_name, fontweight = 'bold')
 	plt.grid(b=False)
 	#plt.savefig(title, bbox_inches='tight')
-	plt.legend(labels=['Synapse', 'Negatives'])
-
-
 
 	plt.show()
 	f.savefig('%s_Net_%s_distr.svg'%(net_name, measure_name), bbox_inches='tight')
