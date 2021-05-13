@@ -53,7 +53,7 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 
 def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
-	plt.boxplot([seed_deg, net_deg], showfliers=True)
+	plt.boxplot([seed_deg, net_deg], showfliers=False)
 	#plt.boxplot([x for x in [seed_deg, net_deg]], 0, 'rs', 1)
 	#plt.xticks([y+1 for y in range(len([seed_deg, net_deg]))], ['Seed Genes', 'Background Genes'])
 	plt.xlabel('Gene Group')
