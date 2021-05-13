@@ -41,6 +41,7 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))))
 
 	#plt.ylabel('Non-Synapse Genes in Brain')
+	plt.yscale('log')
 	plt.xlabel('%s Centrality'%measure_name, fontweight='bold')
 	plt.ylabel('Probability', fontweight = 'bold')
 	plt.title('%s Centrality Distributions'%measure_name, fontweight = 'bold')
@@ -120,8 +121,8 @@ def find_ntwk_centrality(G, net_name):
 	bg_genes=list(set(G.nodes())-set(seed_genes))
 	compare_degrees(G, seed_genes, bg_genes, net_name)
 
-	eigen_centrality(G, seed_genes, bg_genes, net_name)
-	closeness_centrality(G, seed_genes, bg_genes, net_name)
+	#eigen_centrality(G, seed_genes, bg_genes, net_name)
+	#closeness_centrality(G, seed_genes, bg_genes, net_name)
 	#between_centrality(G, seed_genes, bg_genes, net_name)
 
 
