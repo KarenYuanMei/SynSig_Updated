@@ -41,21 +41,21 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))))
 
 	#plt.ylabel('Non-Synapse Genes in Brain')
-	plt.xlabel('%s Centrality'%name, fontweight='bold')
+	plt.xlabel('%s Centrality'%measure_name, fontweight='bold')
 	plt.ylabel('Probability', fontweight = 'bold')
-	plt.title('%s Centrality Distributions'%name, fontweight = 'bold')
+	plt.title('%s Centrality Distributions'%measure_name, fontweight = 'bold')
 	plt.grid(b=False)
 	#plt.savefig(title, bbox_inches='tight')
 	plt.show()
 	f.savefig('%s_Net_%s_distr.svg'%(net_name, measure_name), bbox_inches='tight')
 
-def plot_boxplot(seed_deg, net_deg, name):
+def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
 	plt.boxplot([seed_deg, net_deg], showfliers=False)
 	#plt.boxplot([x for x in [seed_deg, net_deg]], 0, 'rs', 1)
 	#plt.xticks([y+1 for y in range(len([seed_deg, net_deg]))], ['Seed Genes', 'Background Genes'])
 	plt.xlabel('Gene Group')
-	t = plt.title('%s Centrality of Seed vs. Background Genes'%name)
+	t = plt.title('%s Centrality of Seed vs. Background Genes'%measure_name)
 	plt.xticks([y+1 for y in range(len([seed_deg, net_deg]))], ['Seed Genes', 'Background Genes'])
 	#plt.ylim(0,2500)
 	plt.yscale('log')
