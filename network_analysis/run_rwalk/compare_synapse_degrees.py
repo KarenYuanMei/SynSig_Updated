@@ -40,17 +40,17 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
 	bins=np.histogram(np.hstack((seed_deg,net_deg)), bins=40)[1] #get the bin edges
 
-	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', color='coral', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)), bottom=0.00001)
+	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', color='orange', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)), bottom=0.00001)
 	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', color='gray', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))), bottom=0.00001)
 
 	plt.legend(labels=['Synapse', 'Negatives'])
 
-	plt.axvline(mean(seed_deg), color='blue', linestyle='dashed', linewidth=1)
+	plt.axvline(mean(seed_deg), color='orange', linestyle='dashed', linewidth=3)
 	min_ylim, max_ylim = plt.ylim()
 	plt.text(mean(seed_deg)*1.1, max_ylim*0.9, 'Mean: {:.3f}'.format(mean(seed_deg)))
 
 	
-	plt.axvline(mean(net_deg), color='orange', linestyle='dashed', linewidth=1)
+	plt.axvline(mean(net_deg), color='gray', linestyle='dashed', linewidth=3)
 	min_ylim, max_ylim = plt.ylim()
 	plt.text(mean(net_deg)*1.1, max_ylim*0.9, 'Mean: {:.3f}'.format(mean(net_deg)))
 
@@ -172,7 +172,7 @@ def find_ntwk_centrality(G, net_name):
 	compare_degrees(G, seed_genes, bg_genes, net_name)
 
 	eigen_centrality(G, seed_genes, bg_genes, net_name)
-	closeness_centrality(G, seed_genes, bg_genes, net_name)
+	#closeness_centrality(G, seed_genes, bg_genes, net_name)
 	between_centrality(G, seed_genes, bg_genes, net_name)
 
 
