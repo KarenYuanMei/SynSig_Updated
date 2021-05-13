@@ -19,6 +19,8 @@ from statistics import mean
 
 import run_net_rwalk
 
+import sys
+
 sys.path.append('../../read_data_functions')
 import load_data_functions
 
