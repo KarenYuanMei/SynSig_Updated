@@ -17,6 +17,9 @@ import scipy.stats as stats
 import sklearn.metrics as metrics
 from statistics import mean
 
+#import statistics
+#from scipy import stats
+
 import run_net_rwalk
 
 import sys
@@ -64,6 +67,22 @@ def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	plt.show()
 	f.savefig("%s_Net_seed_%s_centrality_box.svg"%(net_name, measure_name), bbox_inches='tight')
 
+def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name):
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, yerr=sem, align='center', ecolor='black', capsize=10)
+
+	#plt.ylim(0.5, 1)
+	#plt.ylim(1, 10**5)
+	#plt.yscale('log')
+	# Create legend & Show graphic
+	#plt.legend()
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	plt.xticks(rotation=45)
+	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg")
+
 def students_test(seed_deg, net_deg):
 	## Cross Checking with the internal scipy function
 	t2, p2 = stats.ttest_ind(seed_deg,net_deg)
@@ -102,6 +121,19 @@ def eigen_centrality(G, seed_genes, bg_genes, net_name):
 	plot_prob_hist(seed_eig, bg_eig, net_name, 'Eigenvector')
 	plot_boxplot(seed_eig, bg_eig, net_name, 'Eigenvector')
 
+	seed_mean=mean(seed_eig)
+	bg_mean=mean(bg_eig)
+	mean_values=[seed_mean, bg_mean]
+
+	seed_sem=stats.sem(seed_eig)
+	bg_sem=stats.sem(bg_eig)
+	sem=[seed_sem, bg_sem]
+
+	labels=['Synapse', 'Negatives']
+	ylabel=['Eigenvector Centrality']
+	xlabel=['Genes']
+	plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, 'Eigenvector')
+
 def between_centrality(G, seed_genes, bg_genes, net_name):
 	plt.legend(labels=['Seed Genes', 'Background Genes'])
 	bet=nx.betweenness_centrality(G)
@@ -113,6 +145,7 @@ def between_centrality(G, seed_genes, bg_genes, net_name):
 	students_test(seed, bg)
 	plot_prob_hist(seed, bg, net_name, 'Betweenness')
 	plot_boxplot(seed, bg, net_name, 'Betweenness')
+
 
 
 def find_ntwk_centrality(G, net_name):
