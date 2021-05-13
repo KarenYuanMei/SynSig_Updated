@@ -47,6 +47,7 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	plt.title('%s Centrality Distributions'%measure_name, fontweight = 'bold')
 	plt.grid(b=False)
 	#plt.savefig(title, bbox_inches='tight')
+	plt.legend()
 	plt.show()
 	f.savefig('%s_Net_%s_distr.svg'%(net_name, measure_name), bbox_inches='tight')
 
