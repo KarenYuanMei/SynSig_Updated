@@ -42,14 +42,14 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 
 	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)))
 
-	plt.axvline(seed_deg.mean(), color='blue', linestyle='dashed', linewidth=1)
+	plt.axvline(mean(seed_deg), color='blue', linestyle='dashed', linewidth=1)
 	min_ylim, max_ylim = plt.ylim()
-	plt.text(seed_deg.mean()*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(seed_deg.mean()))
+	plt.text(mean(seed_deg)*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(mean(seed_deg)))
 
 	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))))
-	plt.axvline(net_deg.mean(), color='orange', linestyle='dashed', linewidth=1)
+	plt.axvline(mean(net_deg), color='orange', linestyle='dashed', linewidth=1)
 	min_ylim, max_ylim = plt.ylim()
-	plt.text(net_deg.mean()*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(net_deg.mean()))
+	plt.text(mean(net_deg)*1.1, max_ylim*0.9, 'Mean: {:.2f}'.format(mean(net_deg))
 
 	#plt.ylabel('Non-Synapse Genes in Brain')
 	plt.yscale('log')
