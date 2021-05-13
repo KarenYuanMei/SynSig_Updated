@@ -40,8 +40,8 @@ def plot_prob_hist(seed_deg, net_deg, net_name, measure_name):
 	f = plt.figure()
 	bins=np.histogram(np.hstack((seed_deg,net_deg)), bins=40)[1] #get the bin edges
 
-	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)), bottom=0.00001)
-	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))), bottom=0.00001)
+	plt.hist(seed_deg, bins, alpha=0.5, edgecolor='black', color='coral', linewidth=0.5, weights=np.ones_like(seed_deg) / float(len(seed_deg)), bottom=0.00001)
+	plt.hist(net_deg, bins, alpha=0.5, edgecolor='black', color='gray', linewidth=0.5, weights=np.ones_like(net_deg) / float((len(net_deg))), bottom=0.00001)
 
 	plt.legend(labels=['Synapse', 'Negatives'])
 
