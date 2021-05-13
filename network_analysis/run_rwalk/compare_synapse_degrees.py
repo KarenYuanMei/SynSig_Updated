@@ -120,9 +120,9 @@ def find_ntwk_centrality(G, net_name):
 	bg_genes=list(set(G.nodes())-set(seed_genes))
 	compare_degrees(G, seed_genes, bg_genes, net_name)
 
-	eigen_centrality(G, seed_genes, bg_genes, net_name)
-	closeness_centrality(G, seed_genes, bg_genes, net_name)
-	between_centrality(G, seed_genes, bg_genes, net_name)
+	#eigen_centrality(G, seed_genes, bg_genes, net_name)
+	#closeness_centrality(G, seed_genes, bg_genes, net_name)
+	#between_centrality(G, seed_genes, bg_genes, net_name)
 
 
 if __name__ == '__main__':
@@ -130,12 +130,12 @@ if __name__ == '__main__':
 	# network_df=make_mentha_df(filename)
 	# find_ntwk_centrality(network_df)
 	#df=run_net_rwalk.make_bioplex_ppi_df()
-	G=run_net_rwalk.df_to_network('bioplex')
+	G=run_net_rwalk.df_to_network('mentha')
 	
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
-	find_ntwk_centrality(G, 'bioplex')
+	find_ntwk_centrality(G, 'mentha')
 
 
 
