@@ -64,13 +64,13 @@ def plot_mean_ROC(tprs, mean_fpr, auc_list):
 	plt.legend()
 		# show the plot
 	#plt.show()
-	#plt.savefig('%s_5fold_ROC.svg'%name, format="svg")
+	plt.savefig('%s_5fold_ROC.svg'%name, format="svg")
 
-def plot_single_ROC(tpr, fpr, auc, name):
+def plot_single_ROC(tpr, fpr, auc, plotcolor, name):
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 
-	plt.plot(fpr, tpr, color='red',
+	plt.plot(fpr, tpr, color=plotcolor,
 	         label=r'ROC (AUC = %0.2f)' % (auc),
 	         lw=2, alpha=.8)
 

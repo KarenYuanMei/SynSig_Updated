@@ -332,7 +332,7 @@ if __name__ == '__main__':
 		opt_alpha=0.4
 
 		fpr, tpr, threshold, roc_auc=find_test_auc(G, opt_alpha, 'syngo')
-		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, net)
+		graph_functions.plot_single_ROC(tpr, fpr, roc_auc, 'purple', net)
 		print (roc_auc)
 
 		shuff_rocs, tprs, mean_fpr=find_net_shuffled_auc(G, opt_alpha, 'syngo', 10)
@@ -346,7 +346,7 @@ if __name__ == '__main__':
 
 		name=net+'shuffled_mean'
 
-		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,name )
+		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc, 'blue', name )
 		#plt.savefig('%s_shuffled_mean_ROC.svg'%net, format="svg")
 
 
@@ -356,7 +356,7 @@ if __name__ == '__main__':
 		mean_tpr = np.mean(tprs, axis=0)
 
 		name=net+'random_seed_mean'
-		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,name)
+		graph_functions.plot_single_ROC(mean_tpr, mean_fpr, mean_auc,'gray', name)
 		
 
 		# plot_test_control_aucs(net, auc_list, shuff_rocs, rand_rocs)
