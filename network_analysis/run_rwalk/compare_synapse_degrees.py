@@ -213,6 +213,17 @@ def find_ntwk_centrality(ref_gene_list, G, net_name):
 	#closeness_centrality(G, seed_genes, bg_genes, net_name)
 	between_centrality(G, seed_genes, bg_genes, net_name)
 
+def plot_degree_bargraph(seed_genes, bg_genes, net_name, measure_name):
+	seed_deg=[G.degree(n) for n in seed_genes]
+	bg_deg = [G.degree(n) for n in bg_genes]
+	mean_values=[mean(seed_deg), mean(bg_deg)]
+	sem=[stats.sem(seed_deg), stats.sem(bg_deg)]
+
+	labels=['SynSig (New Genes)', 'Negative Genes']
+	xlabel=['Genes']
+	ylabel=['%s'%measure_name]
+	plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name)
+
 
 if __name__ == '__main__':
 	# filename='../Data/Human_Mentha_converted.csv'
@@ -231,17 +242,8 @@ if __name__ == '__main__':
 	new_genes=list(set(synsig_genes)-set(syngo_genes))
 	bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
-	seed_deg=[G.degree(n) for n in seed_genes]
-	bg_deg = [G.degree(n) for n in bg_genes]
-	mean_values=[mean(seed_deg), mean(bg_deg)]
-	sem=[stats.sem(seed_deg), stats.sem(bg_deg)]
-
-	labels=['SynSig (New Genes)', 'Negative Genes']
-	xlabel=['Genes']
-	ylabel=['Degrees']
-	plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, 'mentha_new_genes', 'degree')
-
-
+	plot_degree_bargraph(new_genes, bg_genes, 'mentha_new_genes', 'degree')
+	
 
 
 
