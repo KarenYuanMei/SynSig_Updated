@@ -86,9 +86,9 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
 	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
-	plt.bar(labels, mean_values, yerr=sem, align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, yerr=sem, align='center', ecolor='black', capsize=10, bottom=10**-4)
 
-	#plt.ylim(0.5, 1)
+	plt.ylim(10**-4, 10**-1)
 	#plt.ylim(1, 10**5)
 	plt.yscale('log')
 	# Create legend & Show graphic
