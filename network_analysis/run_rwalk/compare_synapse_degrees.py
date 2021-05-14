@@ -183,14 +183,15 @@ if __name__ == '__main__':
 	#df=run_net_rwalk.make_bioplex_ppi_df()
 	G=run_net_rwalk.df_to_network('mentha')
 
-	#syngo_genes=load_data_functions.find_full_syngo()
+	syngo_genes=load_data_functions.find_full_syngo()
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
 	#find_ntwk_centrality(syngo_genes, G, 'mentha')
 
 	synsig_genes=load_data_functions.load_synsig()
-	find_ntwk_centrality(synsig_genes, G, 'mentha')
+	new_genes=list(set(synsig_genes)-set(syngo_genes))
+	find_ntwk_centrality(new_genes, G, 'mentha')
 
 
 
