@@ -263,6 +263,7 @@ if __name__ == '__main__':
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
 	plot_degree_bargraph(new_genes, bg_genes, 'mentha_new_genes', 'degree')
 	plot_eigen_bargraph(G, new_genes, bg_genes, 'mentha_new_genes', 'eigen')
+	eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
 	
 
 
