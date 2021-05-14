@@ -98,7 +98,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.show()
 	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
-def plot_grouped_bargraph(reg_gene_list, G, net_name):
+def plot_grouped_bargraph(ref_gene_list, G, net_name):
 	seed_genes=list(set(ref_gene_list)&set(G.nodes))
 	bg_genes=list(set(G.nodes())-set(seed_genes))
 
