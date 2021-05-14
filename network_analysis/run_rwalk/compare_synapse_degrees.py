@@ -219,7 +219,9 @@ def plot_degree_bargraph(seed_genes, bg_genes, net_name, measure_name):
 	seed_deg=[G.degree(n) for n in seed_genes]
 	bg_deg = [G.degree(n) for n in bg_genes]
 	mean_values=[mean(seed_deg), mean(bg_deg)]
+	print (mean_values)
 	sem=[stats.sem(seed_deg), stats.sem(bg_deg)]
+	print (sem)
 
 	labels=['SynSig (New Genes)', 'Negative Genes']
 	xlabel=['Genes']
@@ -232,7 +234,9 @@ def plot_eigen_bargraph(G, seed_genes, bg_genes, net_name, measure_name):
 	bg_eig=[eig[n] for n in bg_genes]
 
 	mean_values=[mean(seed_eig), mean(bg_eig)]
+	print (mean_values)
 	sem=[stats.sem(seed_eig), stats.sem(bg_eig)]
+	print (sem)
 
 	labels=['SynSig (New Genes)', 'Negative Genes']
 	xlabel=['Genes']
