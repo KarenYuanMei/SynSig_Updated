@@ -164,10 +164,10 @@ def between_centrality(G, seed_genes, bg_genes, net_name):
 
 
 
-def find_ntwk_centrality(G, net_name):
+def find_ntwk_centrality(ref_gene_list, G, net_name):
 	#G=make_network_G(network_df)
-	syngo_genes=load_data_functions.find_full_syngo()
-	seed_genes=list(set(syngo_genes)&set(G.nodes))
+	
+	seed_genes=list(set(ref_gene_list)&set(G.nodes))
 	bg_genes=list(set(G.nodes())-set(seed_genes))
 	compare_degrees(G, seed_genes, bg_genes, net_name)
 
@@ -182,11 +182,15 @@ if __name__ == '__main__':
 	# find_ntwk_centrality(network_df)
 	#df=run_net_rwalk.make_bioplex_ppi_df()
 	G=run_net_rwalk.df_to_network('mentha')
-	
+
+	#syngo_genes=load_data_functions.find_full_syngo()
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
-	find_ntwk_centrality(G, 'mentha')
+	#find_ntwk_centrality(syngo_genes, G, 'mentha')
+
+	synsig_genes=load_data_functions.load_synsig()
+	find_ntwk_centrality(synsig_genes, G, 'mentha')
 
 
 
