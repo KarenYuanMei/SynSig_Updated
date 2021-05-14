@@ -127,6 +127,7 @@ def plot_grouped_bargraph(ref_gene_list, G, net_name):
 
 	# Add some text for labels, title and custom x-axis tick labels, etc.
 	ax.set_ylabel('Centrality Measures')
+	ax.set_yscale('log')
 	ax.set_title('Genes')
 	ax.set_xticks(ind)
 	ax.set_xticklabels(('Degree', 'Eigenvector'))
