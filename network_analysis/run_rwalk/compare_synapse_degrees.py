@@ -231,9 +231,15 @@ if __name__ == '__main__':
 	new_genes=list(set(synsig_genes)-set(syngo_genes))
 	bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
-	compare_degrees(G, new_genes, bg_genes, 'mentha_new_genes')
-	eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
+	seed_deg=[G.degree(n) for n in seed_genes]
+	bg_deg = [G.degree(n) for n in bg_genes]
+	mean_values=[mean(seed_deg), mean(bg_deg)]
+	sem=[stats.sem(seed_deg), stats.sem(bg_deg)]
 
+	labels=['SynSig (New Genes)', 'Negative Genes']
+	xlabel=['Genes']
+	ylabel=['Degrees']
+	plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, 'mentha_new_genes', 'degree')
 
 
 
