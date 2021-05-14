@@ -231,8 +231,8 @@ if __name__ == '__main__':
 	new_genes=list(set(synsig_genes)-set(syngo_genes))
 	bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
-	compare_degrees(G, seed_genes, bg_genes, 'mentha_new_genes')
-	eigen_centrality(G, seed_genes, bg_genes, 'mentha_new_genes')
+	compare_degrees(G, new_genes, bg_genes, 'mentha_new_genes')
+	eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
 
 
 
