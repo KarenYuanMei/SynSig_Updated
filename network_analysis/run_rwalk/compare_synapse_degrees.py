@@ -90,7 +90,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 
 	#plt.ylim(0.5, 1)
 	#plt.ylim(1, 10**5)
-	#plt.yscale('log')
+	plt.yscale('log')
 	# Create legend & Show graphic
 	#plt.legend()
 	plt.xlabel(xlabel, fontweight='bold')
