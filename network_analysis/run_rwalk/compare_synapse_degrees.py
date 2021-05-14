@@ -96,7 +96,7 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.xlabel(xlabel, fontweight='bold')
 	plt.ylabel(ylabel, fontweight='bold')
 	#plt.xticks(rotation=45)
-	plt.figure(figsize=(3,6))
+	#plt.figure(figsize=(3,6))
 	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
 
