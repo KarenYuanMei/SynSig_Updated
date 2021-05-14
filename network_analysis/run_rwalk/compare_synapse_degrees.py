@@ -98,6 +98,42 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.show()
 	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
+def plot_grouped_bargraph(reg_gene_list, G, net_name):
+	seed_genes=list(set(ref_gene_list)&set(G.nodes))
+	bg_genes=list(set(G.nodes())-set(seed_genes))
+
+	seed_deg=[G.degree(n) for n in seed_genes]
+	bg_deg = [G.degree(n) for n in bg_genes]
+	print ('done')
+
+	eig=nx.eigenvector_centrality(G)
+	seed_eig=[eig[n] for n in seed_genes]
+	bg_eig=[eig[n] for n in bg_genes]
+	print ('done')
+
+	f = plt.figure()
+	# create data
+	seed_means, seed_std = (mean(seed_deg), mean(seed_eig)), (stats.sem(seed_deg), stats.sem(seed_eig))
+	bg_means, bg_std = (mean(bg_deg), mean(bg_eig)), (stats.sem(bg_deg), stats.sem(bg_eig))
+
+	ind = np.arange(len(seed_means))  # the x locations for the groups
+	width = 0.35  # the width of the bars
+
+	fig, ax = plt.subplots()
+	rects1 = ax.bar(ind - width/2, seed_means, width, yerr=seed_std,
+	                label='New')
+	rects2 = ax.bar(ind + width/2, bg_means, width, yerr=bg_std,
+	                label='Negatives')
+
+	# Add some text for labels, title and custom x-axis tick labels, etc.
+	ax.set_ylabel('Centrality Measures')
+	ax.set_title('Genes')
+	ax.set_xticks(ind)
+	ax.set_xticklabels(('Degree', 'Eigenvector'))
+	ax.legend()
+	plt.savefig(net_name+'_new_genes_grouped_bar'+'.svg', format="svg", bbox_inches='tight')
+
+
 def students_test(seed_deg, net_deg):
 	## Cross Checking with the internal scipy function
 	t2, p2 = stats.ttest_ind(seed_deg,net_deg)
@@ -191,8 +227,7 @@ if __name__ == '__main__':
 
 	synsig_genes=load_data_functions.load_synsig()
 	new_genes=list(set(synsig_genes)-set(syngo_genes))
-	find_ntwk_centrality(new_genes, G, 'mentha')
-
+	plot_grouped_bargraph(new_genes, G, 'mentha')
 
 
 
