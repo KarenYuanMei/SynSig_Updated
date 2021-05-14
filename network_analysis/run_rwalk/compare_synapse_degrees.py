@@ -81,6 +81,7 @@ def plot_boxplot(seed_deg, net_deg, net_name, measure_name):
 	plt.close()
 
 def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name):
+	plt.figure(figsize=(3,6))
 	f = plt.figure()
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
