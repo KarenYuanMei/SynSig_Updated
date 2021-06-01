@@ -25,7 +25,7 @@ if __name__ == '__main__':
 	
 	big_pool=load_data_functions.load_big_pool()
 
-	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+	all_training=find_training_genes_functions.load_pos_neg_training()
 
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
