@@ -23,7 +23,7 @@ import ROC_functions
 
 if __name__ == '__main__':
 	
-	big_pool=find_training_genes_functions.load_big_pool()
+	big_pool=load_data_functions.load_big_pool()
 
 	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
 
