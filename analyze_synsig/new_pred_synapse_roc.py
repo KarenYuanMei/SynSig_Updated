@@ -38,13 +38,15 @@ if __name__ == '__main__':
 	db_list=[syngo, syndb, synsysnet, syn]
 	db_labels=['syngo', 'syndb', 'synsysnet', 'syn']
 
+	pred_df=load_data_functions.load_predicted_synsig_df()
+
 	for i in range(len(db_list)):
-		final, label, avg_score=ROC_functions.find_pred_labels_scores(db_list[i], all_training)
+		final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, db_list[i], all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 		print (auc)
 		ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i])
 
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(syn, all_training)
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syn, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn')
