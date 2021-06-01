@@ -8,6 +8,11 @@ import csv
 import ddot
 from ddot import Ontology
 
+import matplotlib
+matplotlib.use("Agg")
+matplotlib.rcParams.update({'font.size': 14})
+
+
 import sys
 sys.path.append('../read_data_functions/')
 import load_data_functions
@@ -20,6 +25,27 @@ sys.path.append('../ML_functions/')
 import find_training_genes_functions
 import find_GO_scores
 import ROC_functions
+
+
+def plot_tandem_ROC(tpr, fpr, auc, name):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+
+	plt.plot(fpr, tpr,
+	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         lw=2, alpha=.8)
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+		# show the plot
+	#plt.show()
+	plt.savefig('%s_ROC.svg'%name, format="svg")
+
 
 if __name__ == '__main__':
 	
@@ -45,6 +71,7 @@ if __name__ == '__main__':
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 		print (auc)
 		ROC_functions.save_roc_df(thresholds, tpr, fpr, i, db_labels[i])
+		plot_tandem_ROC(tpr, fpr, auc,'tandem')
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syn, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
