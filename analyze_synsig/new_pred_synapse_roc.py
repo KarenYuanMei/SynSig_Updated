@@ -10,6 +10,7 @@ from ddot import Ontology
 
 import matplotlib
 matplotlib.use("Agg")
+from matplotlib import pyplot as plt
 matplotlib.rcParams.update({'font.size': 14})
 
 
