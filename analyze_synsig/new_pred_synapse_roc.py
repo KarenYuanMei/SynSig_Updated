@@ -44,7 +44,7 @@ if __name__ == '__main__':
 		final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, db_list[i], all_training)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 		print (auc)
-		ROC_functions.save_roc_df(thresholds, tpr, fpr, db_labels[i])
+		ROC_functions.save_roc_df(thresholds, tpr, fpr, i, db_labels[i])
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syn, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
