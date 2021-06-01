@@ -49,7 +49,7 @@ if __name__ == '__main__':
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, syn, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
-	graph_functions.plot_single_ROC(tpr, fpr, auc, 'syn')
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'syn')
 
 	graph_functions.plot_annotate_ROC_controls(tpr, fpr, auc)
 
