@@ -12,6 +12,10 @@ matplotlib.use("Agg")
 from matplotlib import pyplot as plt
 matplotlib.rcParams.update({'font.size': 14})
 
+from matplotlib_venn import venn2, venn2_circles, venn2_unweighted
+from matplotlib_venn import venn3, venn3_circles
+
+
 
 import sys
 sys.path.append('../read_data_functions/')
