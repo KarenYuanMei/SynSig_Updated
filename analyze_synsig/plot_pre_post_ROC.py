@@ -51,6 +51,27 @@ def draw_venn_2(genelist1, genelist2, label_list):
 	plt.show()
 	f.savefig("pre_post_terms_overlap.svg", bbox_inches='tight')
 
+def find_prepost_labels_scores(pred_df, genelist, training_genes, exclude_genes):
+	
+	no_train=list(set(genelist)-set(training_genes))
+	avg_scores=pred_df['avg_scores'].tolist()
+
+	pred_genes=pred_df['genes'].tolist()
+	y_list=[]
+	for item in pred_genes:
+		if item in no_train:
+			group=1
+		else:
+			group=0
+		y_list.append(group)
+
+	final=pd.DataFrame({'genes': pred_genes, 'avg_scores': avg_scores , 'label': y_list})
+	final = final[~final['genes'].isin(exclude_genes)]
+
+	label=final['label'].tolist()
+	avg_score=final['avg_scores'].tolist()
+	return final, label, avg_score
+
 big_pool=load_data_functions.load_big_pool()
 
 all_training=find_training_genes_functions.load_pos_neg_training()
@@ -92,8 +113,7 @@ genes_exclude=[post_genes, pre_genes]
 pred_df=load_data_functions.load_predicted_synsig_df()
 
 for i in range(len(db_list)):
-	comb_genes_exclude=list(set(genes_exclude[i]+all_training))
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, db_list[i], comb_genes_exclude)
+	final, label, avg_score=ROC_functions.find_prepost_labels_scores(pred_df, db_list[i], all_training, genes_exclude[i])
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 	print (auc)
 	ROC_functions.save_roc_df(thresholds, tpr, fpr, i, db_labels[i])
