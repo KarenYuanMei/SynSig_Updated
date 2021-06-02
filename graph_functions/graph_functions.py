@@ -85,6 +85,25 @@ def plot_single_ROC(tpr, fpr, auc, plotcolor, name):
 	#plt.show()
 	plt.savefig('%s_ROC.svg'%name, format="svg")
 
+def plot_tandem_ROC(tpr, fpr, auc, name):
+	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
+
+
+	plt.plot(fpr, tpr,
+	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         lw=2, alpha=.8)
+
+	plt.xlabel('1-Specificity', fontweight='bold')
+	plt.ylabel('Sensitivity', fontweight='bold')
+	plt.grid(False)
+	# show the legend
+	plt.legend()
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+		# show the plot
+	#plt.show()
+	plt.savefig('%s_ROC.svg'%name, format="svg")
+
 def plot_annotate_ROC_controls(tpr, fpr, auc):
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
