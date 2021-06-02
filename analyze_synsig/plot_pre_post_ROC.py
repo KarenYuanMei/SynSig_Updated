@@ -113,7 +113,7 @@ genes_exclude=[post_genes, pre_genes]
 pred_df=load_data_functions.load_predicted_synsig_df()
 
 for i in range(len(db_list)):
-	final, label, avg_score=ROC_functions.find_prepost_labels_scores(pred_df, db_list[i], all_training, genes_exclude[i])
+	final, label, avg_score=find_prepost_labels_scores(pred_df, db_list[i], all_training, genes_exclude[i])
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 	print (auc)
 	ROC_functions.save_roc_df(thresholds, tpr, fpr, i, db_labels[i])
