@@ -88,9 +88,8 @@ pre_genes, pre_terms=find_focus_terms_genes(syngo_ont, 'presynapse')
 label_list=['Presyn Genes', 'Postsyn Genes']
 
 
-draw_venn_2(post_genes, pre_genes, label_list)
-draw_venn_2(post_terms, pre_terms, label_list)
-
+#draw_venn_2(post_genes, pre_genes, label_list)
+#draw_venn_2(post_terms, pre_terms, label_list)
 
 # training_post=list(set(training)&set(post_genes))
 # print (len(training_post))
