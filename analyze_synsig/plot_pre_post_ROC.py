@@ -70,22 +70,22 @@ draw_venn_2(post_genes, pre_genes, label_list)
 draw_venn_2(post_terms, pre_terms, label_list)
 
 
-training_post=list(set(training)&set(post_genes))
-print (len(training_post))
+# training_post=list(set(training)&set(post_genes))
+# print (len(training_post))
 
-training_pre=list(set(training)&set(pre_genes))
-print (len(training_pre))
+# training_pre=list(set(training)&set(pre_genes))
+# print (len(training_pre))
 
-test_pos=list(set(list(set(post_genes)-set(training_post)))&set(GO_genes))
-print (len(test_pos))
+# test_pos=list(set(list(set(post_genes)-set(training_post)))&set(GO_genes))
+# print (len(test_pos))
 
-test_pre=list(set(list(set(pre_genes)-set(training_pre)))&set(GO_genes))
-print (len(test_pre))
+# test_pre=list(set(list(set(pre_genes)-set(training_pre)))&set(GO_genes))
+# print (len(test_pre))
 
-overlap=list(set(test_pos)&set(test_pre))
-print (len(overlap))
+# overlap=list(set(test_pos)&set(test_pre))
+# print (len(overlap))
 
-db_list=[test_pre, test_post]
+db_list=[pre_genes, post_genes]
 db_labels=['Presynapse', 'Postsynapse']
 
 pred_df=load_data_functions.load_predicted_synsig_df()
