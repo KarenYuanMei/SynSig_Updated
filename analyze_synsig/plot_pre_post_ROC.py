@@ -87,11 +87,13 @@ draw_venn_2(post_terms, pre_terms, label_list)
 
 db_list=[pre_genes, post_genes]
 db_labels=['Presynapse', 'Postsynapse']
+genes_exclude=[post_genes, pre_genes]
 
 pred_df=load_data_functions.load_predicted_synsig_df()
 
 for i in range(len(db_list)):
-	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, db_list[i], all_training)
+	comb_genes_exclude=list(set(genes_exclude[i]+all_training))
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, db_list[i], comb_genes_exclude)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 	print (auc)
 	ROC_functions.save_roc_df(thresholds, tpr, fpr, i, db_labels[i])
