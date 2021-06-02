@@ -54,6 +54,7 @@ def draw_venn_2(genelist1, genelist2, label_list):
 def find_prepost_labels_scores(pred_df, genelist, training_genes, exclude_genes):
 	
 	no_train=list(set(genelist)-set(training_genes))
+	exclude_genes=list(set(exclude_genes)-set(no_train))
 	avg_scores=pred_df['avg_scores'].tolist()
 
 	pred_genes=pred_df['genes'].tolist()
