@@ -90,7 +90,7 @@ def plot_tandem_ROC(tpr, fpr, auc, name):
 
 
 	plt.plot(fpr, tpr,
-	         label=r'ROC (AUC = %0.2f)' % (auc),
+	         label=r'ROC (AUC = %0.3f)' % (auc),
 	         lw=2, alpha=.8)
 
 	plt.xlabel('1-Specificity', fontweight='bold')
