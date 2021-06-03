@@ -1,4 +1,7 @@
 #Goal: for each molecular function category, distinguish between known vs. new synapse genes
+#new is defined as synsig gene that's not in syngo, syndb, or synsysnet
+
+#Figure 2E
 
 
 import pandas as pd
@@ -22,6 +25,7 @@ from collections import defaultdict
 import matplotlib
 matplotlib.use("Agg")
 from matplotlib import pyplot as plt
+matplotlib.rcParams.update({'font.size': 14})
 
 
 #compile all of the function files into a single file for Synsig
@@ -77,55 +81,78 @@ def compile_all_synsig_func():
 	final.to_csv('all_synsig_functions.csv')
 	return final
 
-final=compile_all_synsig_func()
-print (final)
-synsig_func_total=final.iloc[:, 3:18].sum()
-final.loc['Total']=final.sum()
-final.to_csv('all_synsig_functions.csv')
+def plot_stacked_synsig_functions(known, new, totals):
+	f = plt.figure()
+	x=list(totals.index)
+	known=totals['Known'].tolist()
+	new=totals['New'].tolist()
+	plt.bar(x, known, color='gray')
+	plt.bar(x, new, bottom=known, color='green')
+	plt.xticks(rotation=90)
+	plt.xlabel("Gene Function Categories")
+	plt.ylabel("Number of SynSig Genes")
+	plt.legend(["Known Synapse Genes", "New Synapse Genes"])
+	f.savefig('synsig_old_new_func'+'.svg', format="svg")
+	plt.close()
 
-human_go=find_GO_scores.find_GO_ont()
-go_genes=human_go.genes
+def plot_grouped_synsig_functions(known, new, totals):
+	f = plt.figure()
+	x=np.arange(15)
+	width=0.4
+	plt.bar(x-0.2, known, width, color='gray')
+	plt.bar(x+0.2, new, width, color='green')
+	labels=list(totals.index)
+	plt.xticks(x, labels)
+	plt.xticks(rotation=90)
+	plt.xlabel("Gene Function Categories")
+	plt.ylabel("Number of SynSig Genes")
+	plt.legend(["Known Synapse Genes", "New Synapse Genes"])
+	#plt.gca().invert_yaxis()
+	f.savefig('synsig_grouped_old_new_func'+'.svg', format="svg")
+	plt.close()
 
-big_pool=load_data_functions.load_big_pool()
-syngo=load_data_functions.find_syngo(big_pool, go_genes)
-syndb=load_data_functions.find_SynDB(big_pool)
-synsysnet=load_data_functions.find_synsysnet(big_pool)
+if __name__ == '__main__':
+	
+	final=compile_all_synsig_func()
+	print (final)
+	synsig_func_total=final.iloc[:, 3:18].sum()
+	final.loc['Total']=final.sum()
+	final.to_csv('all_synsig_functions.csv')
 
-known=list(set(syngo+syndb+synsysnet))
+	human_go=find_GO_scores.find_GO_ont()
+	go_genes=human_go.genes
 
-synsig_genes=final['genes'].tolist()
+	#load all genelists:
+	big_pool=load_data_functions.load_big_pool()
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syndb=load_data_functions.find_SynDB(big_pool)
+	synsysnet=load_data_functions.find_synsysnet(big_pool)
 
-overlap=list(set(synsig_genes)&set(known))
-final=final.set_index('genes')
-known_df=final.loc[overlap]
-print (known_df)
-known_df_total=known_df.iloc[:, 2:17].sum()
-print (known_df_total)
-known_df.loc['Total']=known_df.sum()
-known_df.to_csv('known_synapse_functions.csv')
+	#find known synapse genes: any gene that's in syngo, syndb, and synsysnet
+	known=list(set(syngo+syndb+synsysnet))
 
-totals=pd.concat([synsig_func_total, known_df_total], axis=1)
-print (totals)
-totals.columns=['SynSig', 'Known']
-print (totals)
-totals['New']=totals['SynSig']-totals['Known']
-print (totals)
+	synsig_genes=final['genes'].tolist()
 
+	#find synsig that's known synapse genes:
+	overlap=list(set(synsig_genes)&set(known))
+	final=final.set_index('genes')
+	known_df=final.loc[overlap]
+	print (known_df)
+	known_df_total=known_df.iloc[:, 2:17].sum()
+	print (known_df_total)
+	known_df.loc['Total']=known_df.sum()
+	known_df.to_csv('known_synapse_functions.csv')
 
-x=list(totals.index)
-known=totals['Known'].tolist()
-new=totals['New'].tolist()
-plt.barh(x, known, color='gray')
-plt.barh(x, new, bottom=known, color='green')
-plt.xticks(rotation=90)
-plt.xlabel("Gene Function Categories")
-plt.ylabel("Number of SynSig Genes")
-plt.legend(["Known Synapse Genes", "New Synapse Genes"])
-plt.savefig('synsig_old_new_func'+'.svg', format="svg")
-plt.close()
+	#find synsig genes that's new:
+	totals=pd.concat([synsig_func_total, known_df_total], axis=1)
+	print (totals)
+	totals.columns=['SynSig', 'Known']
+	print (totals)
+	totals['New']=totals['SynSig']-totals['Known']
+	print (totals)
 
-
-
+	#plot old vs. new synapse genes in synsig:
+	plot_grouped_synsig_functions(known, new, totals)
 
 
 
