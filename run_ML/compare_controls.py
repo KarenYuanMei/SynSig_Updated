@@ -169,8 +169,9 @@ def auc_bootstrap_errorbars(set1_predictions):
 def compute_pred_dfs_aucs(genelists, all_training):
 	pred_dfs=[]
 	aucs=[]
+	predicted=load_data_functions.load_predicted_synsig_df()
 	for item in genelists:
-		pred_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(item, all_training)
+		pred_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(predicted, item, all_training)
 		#print (final)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 		aucs.append(auc)
