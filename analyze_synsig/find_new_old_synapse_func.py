@@ -81,7 +81,7 @@ def compile_all_synsig_func():
 	final.to_csv('all_synsig_functions.csv')
 	return final
 
-def plot_stacked_synsig_functions(known, new, totals):
+def plot_stacked_synsig_functions(totals):
 	f = plt.figure()
 	x=list(totals.index)
 	known=totals['Known'].tolist()
@@ -95,10 +95,14 @@ def plot_stacked_synsig_functions(known, new, totals):
 	f.savefig('synsig_old_new_func'+'.svg', format="svg")
 	plt.close()
 
-def plot_grouped_synsig_functions(known, new, totals):
+def plot_grouped_synsig_functions(totals):
 	f = plt.figure()
 	x=np.arange(15)
 	width=0.4
+
+	known=totals['Known'].tolist()
+	new=totals['New'].tolist()
+
 	plt.bar(x-0.2, known, width, color='gray')
 	plt.bar(x+0.2, new, width, color='green')
 	labels=list(totals.index)
@@ -152,7 +156,7 @@ if __name__ == '__main__':
 	print (totals)
 
 	#plot old vs. new synapse genes in synsig:
-	plot_grouped_synsig_functions(known, new, totals)
+	plot_grouped_synsig_functions(totals)
 
 
 
