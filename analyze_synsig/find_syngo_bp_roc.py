@@ -152,10 +152,10 @@ if __name__ == '__main__':
 	all_genes = [item for sublist in all_genes for item in sublist]
 
 	#load the predicted score df
-	predicted=load_data_functions.load_predicted_df()
+	predicted=load_data_functions.load_predicted_synsig_df()
 
 	#find all training genes from synsig predictions:
-	pos, neg, all_training=find_training_genes_functions.load_pos_neg_training()
+	all_training=find_training_genes_functions.load_pos_neg_training()
 
 	#find the recovery roc for each syngo BP major branch:
 	branch_roc=find_branch_roc(branches, term_genes, all_genes, all_training)
