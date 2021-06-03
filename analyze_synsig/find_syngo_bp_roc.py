@@ -112,7 +112,7 @@ def find_syngo_bp_major_branches(ont):
 	branches=branches[2:-1]
 	return branches
 
-def find_branch_roc(branches, term_genes, all_genes, all_training):
+def find_branch_roc(branches, term_genes, all_genes, all_training, predicted_df):
 	branch_roc={}
 	for item in branches:
 		genelist=term_genes[item]
@@ -120,7 +120,7 @@ def find_branch_roc(branches, term_genes, all_genes, all_training):
 		print (len(genes_remove))
 		genes_remove=list(set(genes_remove+all_training))
 
-		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(genelist, genes_remove)
+		final_df, labels, avg_scores=ROC_functions.find_pred_labels_scores(predicted_df, genelist, genes_remove)
 		fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(labels, avg_scores)
 		print (auc)
 		branch_roc[item]=(fpr, tpr, auc)
@@ -158,7 +158,7 @@ if __name__ == '__main__':
 	all_training=find_training_genes_functions.load_pos_neg_training()
 
 	#find the recovery roc for each syngo BP major branch:
-	branch_roc=find_branch_roc(branches, term_genes, all_genes, all_training)
+	branch_roc=find_branch_roc(branches, term_genes, all_genes, all_training, predicted)
 
 	#plot the ROCs:
 	plot_syngo_bp_roc(branches, branch_roc)
