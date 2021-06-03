@@ -60,29 +60,18 @@ def find_golgi(big_pool):
 	return golgi
 
 #find transmembrane:==============
-# def find_mem(big_pool):
-# 	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
-# 	transm=transm['Gene names'].tolist()
-# 	transm=[str(x) for x in transm]
-# 	mem=[]
-# 	for item in transm:
-# 		entry=item[:item.find(' ')]
-# 		mem.append(entry)
-# 	mem=list(set(mem)&set(big_pool))
-# 	return mem
-
 def find_mem(big_pool):
 	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
 	transm=transm['Gene names'].tolist()
 	transm=[str(x) for x in transm]
 	mem=[]
 	for item in transm:
-		list_entries=item.split(' ')
-		mem.append(list_entries)
-	flat_mem = [item for sublist in mem for item in sublist]
-	mem=list(set(flat_mem)&set(big_pool))
+		entry=item[:item.find(' ')]
+		mem.append(entry)
+	mem=list(set(mem)&set(big_pool))
 	return mem
 
+#load the synapse gene lists and the control gene lists:
 def load_control_and_synapse_genes(big_pool, go_genes):
 	hk=find_hk(big_pool)
 	golgi=find_golgi(big_pool)
@@ -180,6 +169,8 @@ def auc_bootstrap_errorbars(set1_predictions):
 
 	return conf_intervals, errorbars
 
+
+#find the roc aucs of the predicted scores against the reference genelists
 def compute_pred_dfs_aucs(genelists, all_training):
 	pred_dfs=[]
 	aucs=[]
@@ -193,6 +184,7 @@ def compute_pred_dfs_aucs(genelists, all_training):
 		pred_dfs.append(pred_df)
 	return pred_dfs, aucs
 
+#calculate the confidence intervals for the synapse control genes
 def compute_syn_control_ci(genelists, genelist_names, final_dfs):
 	genelist_diff_ci={}
 	for i in range(1, len(genelists)):
@@ -201,16 +193,8 @@ def compute_syn_control_ci(genelists, genelist_names, final_dfs):
 		genelist_diff_ci[genelist_names[i]]=conf_interval
 	return genelist_diff_ci
 
-# def calc_syn_tpr_fpr(syn, genelist, big_pool):
-# 	tp=syn
-# 	found_pos=list(set(tp)&set(genelist))
-# 	tpr=float(len(found_pos)/len(tp))
 
-# 	fp=list(set(genelist)-set(syn))
-# 	tn=list(set(big_pool)-set(syn))
-# 	fpr=float(len(fp)/(len(fp)+len(tn)))
-# 	return tpr, fpr
-
+#calculate the true positive rate (tpr) and false positive rate(fpr):
 def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
 	ref_list=list(set(ref_list)-set(all_training))
 	genelist=list(set(genelist)-set(all_training))
@@ -223,6 +207,7 @@ def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
 	fpr=float(len(fp)/(len(fp)+len(tn)))
 	return tpr, fpr
 
+#calculate the true positive rate (tpr) and false positive rate (fpr) for the control genesets against the synapse genes:
 def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 
 	ratios={}
@@ -235,13 +220,14 @@ def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 		ratios[control_names[i]]=(tpr, fpr)
 	return ratios
 
+#plot the roc recovery of each geneset being used as the reference:
 def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
 	plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
 	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d'], align='center', ecolor='black', capsize=10)
 
-	plt.ylim(0.5, 1)
+	plt.ylim(0.4, 1)
 	#plt.ylim(1, 10**5)
 	#plt.yscale('log')
 	# Create legend & Show graphic
