@@ -1,5 +1,6 @@
 #Goal: to show how predictions compare to housekeeping and other gene lists
 #run in svm-poly environment
+# Figure 2C
 
 import pandas as pd
 import networkx as nx
@@ -18,6 +19,7 @@ from statistics import mean
 import matplotlib 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+matplotlib.rcParams.update({'font.size': 14})
 
 from itertools import combinations, combinations_with_replacement
 from itertools import product
@@ -58,15 +60,27 @@ def find_golgi(big_pool):
 	return golgi
 
 #find transmembrane:==============
+# def find_mem(big_pool):
+# 	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
+# 	transm=transm['Gene names'].tolist()
+# 	transm=[str(x) for x in transm]
+# 	mem=[]
+# 	for item in transm:
+# 		entry=item[:item.find(' ')]
+# 		mem.append(entry)
+# 	mem=list(set(mem)&set(big_pool))
+# 	return mem
+
 def find_mem(big_pool):
 	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
 	transm=transm['Gene names'].tolist()
 	transm=[str(x) for x in transm]
 	mem=[]
 	for item in transm:
-		entry=item[:item.find(' ')]
-		mem.append(entry)
-	mem=list(set(mem)&set(big_pool))
+		list_entries=item.split(' ')
+		mem.append(list_entries)
+	flat_mem = [item for sublist in mem for item in sublist]
+	mem=list(set(flat_mem)&set(big_pool))
 	return mem
 
 def load_control_and_synapse_genes(big_pool, go_genes):
@@ -221,6 +235,22 @@ def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 		ratios[control_names[i]]=(tpr, fpr)
 	return ratios
 
+def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
+	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d'], align='center', ecolor='black', capsize=10)
+
+	plt.ylim(0.5, 1)
+	#plt.ylim(1, 10**5)
+	#plt.yscale('log')
+	# Create legend & Show graphic
+	#plt.legend()
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	plt.xticks(rotation=45)
+	plt.savefig(name+'.svg', format="svg")
+
 
 if __name__ == '__main__':
 	
@@ -252,7 +282,7 @@ if __name__ == '__main__':
 	print (aucs)
 	print (ebs)
 
-	graph_functions.plot_bargraph_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
+	plot_controls_with_errorbar(labels, aucs, ebs, 'Gene Category', 'Predicted Recovery ROC', 'syn_control')
 
 	genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, pred_dfs)
 	print (genelist_diff_ci)
