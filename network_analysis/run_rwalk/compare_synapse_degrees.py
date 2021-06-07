@@ -236,7 +236,7 @@ def plot_degree_bargraph(seed_genes, bg_genes, net_name, measure_name):
 
 	#plt.ylim(10**-4, 10**-1)
 	#plt.ylim(1, 10**5)
-	plt.yscale('log')
+	#plt.yscale('log')
 	# Create legend & Show graphic
 	#plt.legend()
 	plt.xlabel(xlabel, fontweight='bold')
