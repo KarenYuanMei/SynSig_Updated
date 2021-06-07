@@ -251,19 +251,20 @@ if __name__ == '__main__':
 	#df=run_net_rwalk.make_bioplex_ppi_df()
 	G=run_net_rwalk.df_to_network('mentha')
 
-	syngo_genes=load_data_functions.find_full_syngo()
+	#syngo_genes=load_data_functions.find_full_syngo()
 	
 	#filename='../source_data_files/BioPlex 3 - HCT116 default edge.csv'
 	#filename='../Data/BioPlex 3 - HEK293T default edge.csv'
 	#find_ntwk_centrality(syngo_genes, G, 'mentha')
 
 	synsig_genes=load_data_functions.load_synsig()
-	new_genes=list(set(synsig_genes)-set(syngo_genes))
-	bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
+	#new_genes=list(set(synsig_genes)-set(syngo_genes))
+	#bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
+	bg_genes=list(set(G.nodes())-set(synsig_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
-	plot_degree_bargraph(new_genes, bg_genes, 'mentha_new_genes', 'degree')
-	plot_eigen_bargraph(G, new_genes, bg_genes, 'mentha_new_genes', 'eigen')
-	eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
+	plot_degree_bargraph(synsig_genes, bg_genes, 'mentha_synsig_genes', 'degree')
+	#plot_eigen_bargraph(G, new_genes, bg_genes, 'mentha_new_genes', 'eigen')
+	#eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
 	
 
 
