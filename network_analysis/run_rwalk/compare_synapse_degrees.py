@@ -226,7 +226,24 @@ def plot_degree_bargraph(seed_genes, bg_genes, net_name, measure_name):
 	labels=['SynSig (New Genes)', 'Negative Genes']
 	xlabel=['Genes']
 	ylabel=['%s'%measure_name]
-	plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name)
+	#plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_name, measure_name)
+	plt.figure(figsize=(3,6))
+	f = plt.figure()
+	x_pos=np.arange(len(labels))
+	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
+	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, yerr=sem, align='center', ecolor='black', capsize=10, bottom=10**-4)
+
+	#plt.ylim(10**-4, 10**-1)
+	#plt.ylim(1, 10**5)
+	plt.yscale('log')
+	# Create legend & Show graphic
+	#plt.legend()
+	plt.xlabel(xlabel, fontweight='bold')
+	plt.ylabel(ylabel, fontweight='bold')
+	#plt.xticks(rotation=45)
+	#plt.figure(figsize=(3,6))
+	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
 def plot_eigen_bargraph(G, seed_genes, bg_genes, net_name, measure_name):
 	eig=nx.eigenvector_centrality(G)
