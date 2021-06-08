@@ -138,7 +138,7 @@ def plot_grouped_mentha_bioplex_bargraph(ref_gene_list, G1,net1_name, G2, net2_n
 	ax.set_xticks(ind)
 	ax.set_xticklabels(('Compiled', 'HEK293T'))
 	ax.legend()
-	plt.savefig(net_name+'_new_genes_grouped_bar'+'.svg', format="svg", bbox_inches='tight')
+	plt.savefig(net_name1+net_name2+'_new_genes_grouped_bar'+'.svg', format="svg", bbox_inches='tight')
 
 
 def students_test(seed_deg, net_deg):
