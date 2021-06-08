@@ -282,7 +282,7 @@ if __name__ == '__main__':
 	synsig_genes=load_data_functions.load_synsig()
 	#new_genes=list(set(synsig_genes)-set(syngo_genes))
 	#bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
-	bg_genes=list(set(G.nodes())-set(synsig_genes))
+	#bg_genes=list(set(G.nodes())-set(synsig_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
 	#plot_degree_bargraph(synsig_genes, bg_genes, 'mentha_synsig_genes', 'degree')
 	#plot_eigen_bargraph(G, new_genes, bg_genes, 'mentha_new_genes', 'eigen')
