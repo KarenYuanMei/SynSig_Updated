@@ -100,23 +100,26 @@ def plot_bargraph_with_errorbar(labels, mean_values, sem, xlabel, ylabel, net_na
 	plt.savefig(net_name+'_'+measure_name+'.svg', format="svg", bbox_inches='tight')
 
 
-def plot_grouped_bargraph(ref_gene_list, G, net_name):
-	seed_genes=list(set(ref_gene_list)&set(G.nodes))
-	bg_genes=list(set(G.nodes())-set(seed_genes))
+def plot_grouped_mentha_bioplex_bargraph(ref_gene_list, G1,net1_name, G2, net2_name):
+	seed_genes=list(set(ref_gene_list)&set(G1.nodes))
+	bg_genes=list(set(G1.nodes())-set(seed_genes))
 
-	seed_deg=[G.degree(n) for n in seed_genes]
-	bg_deg = [G.degree(n) for n in bg_genes]
+	seed_deg_1=[G1.degree(n) for n in seed_genes]
+	bg_deg_1= [G1.degree(n) for n in bg_genes]
 	print ('done')
 
-	eig=nx.eigenvector_centrality(G)
-	seed_eig=[eig[n] for n in seed_genes]
-	bg_eig=[eig[n] for n in bg_genes]
+	seed_genes=list(set(ref_gene_list)&set(G2.nodes))
+	bg_genes=list(set(G2.nodes())-set(seed_genes))
+
+	seed_deg_2=[G2.degree(n) for n in seed_genes]
+	bg_deg_2= [G2.degree(n) for n in bg_genes]
 	print ('done')
+
 
 	f = plt.figure()
 	# create data
-	seed_means, seed_std = (mean(seed_deg), mean(seed_eig)), (stats.sem(seed_deg), stats.sem(seed_eig))
-	bg_means, bg_std = (mean(bg_deg), mean(bg_eig)), (stats.sem(bg_deg), stats.sem(bg_eig))
+	seed_means, seed_std = (mean(seed_deg_1), mean(seed_deg_2)), (stats.sem(seed_deg_1), stats.sem(seed_deg_2))
+	bg_means, bg_std = (mean(bg_deg_1), mean(bg_deg_2)), (stats.sem(bg_deg_1), stats.sem(bg_deg_2))
 
 	ind = np.arange(len(seed_means))  # the x locations for the groups
 	width = 0.35  # the width of the bars
@@ -128,12 +131,12 @@ def plot_grouped_bargraph(ref_gene_list, G, net_name):
 	                label='Negatives')
 
 	# Add some text for labels, title and custom x-axis tick labels, etc.
-	ax.set_ylabel('Centrality Measures')
-	ax.set_yscale('log')
-	ax.set_ylim([10**-3, 10**3])
+	ax.set_ylabel('Number of Protein Partners')
+	#ax.set_yscale('log')
+	#ax.set_ylim([10**-3, 10**3])
 	ax.set_title('Genes')
 	ax.set_xticks(ind)
-	ax.set_xticklabels(('Degree', 'Eigenvector'))
+	ax.set_xticklabels(('Compiled', 'HEK293T'))
 	ax.legend()
 	plt.savefig(net_name+'_new_genes_grouped_bar'+'.svg', format="svg", bbox_inches='tight')
 
@@ -266,7 +269,9 @@ if __name__ == '__main__':
 	# network_df=make_mentha_df(filename)
 	# find_ntwk_centrality(network_df)
 	#df=run_net_rwalk.make_bioplex_ppi_df()
-	G=run_net_rwalk.df_to_network('mentha')
+	G1=run_net_rwalk.df_to_network('mentha')
+	G2=run_net_rwalk.df_to_network('bioplex')
+
 
 	#syngo_genes=load_data_functions.find_full_syngo()
 	
@@ -279,9 +284,11 @@ if __name__ == '__main__':
 	#bg_genes=list(set(G.nodes())-set(synsig_genes)-set(syngo_genes))
 	bg_genes=list(set(G.nodes())-set(synsig_genes))
 	#plot_grouped_bargraph(new_genes, G, 'mentha')
-	plot_degree_bargraph(synsig_genes, bg_genes, 'mentha_synsig_genes', 'degree')
+	#plot_degree_bargraph(synsig_genes, bg_genes, 'mentha_synsig_genes', 'degree')
 	#plot_eigen_bargraph(G, new_genes, bg_genes, 'mentha_new_genes', 'eigen')
 	#eigen_centrality(G, new_genes, bg_genes, 'mentha_new_genes')
+
+	plot_grouped_mentha_bioplex_bargraph(synsig_genes, G1,'mentha', G2, 'bioplex')
 	
 
 
