@@ -59,6 +59,7 @@ def find_nuclear(big_pool):
 	nuclear=pd.read_table('../source_data_files/gene_lists/subcell_location_Nucleoplasm_Nuclear.tsv')
 	print (nuclear)
 	nuclear=nuclear['Gene'].tolist()
+	print (nuclear[:5])
 	nuclear=list(set(nuclear)&set(big_pool))
 	return nuclear
 
@@ -89,7 +90,7 @@ def load_control_and_synapse_genes(big_pool, go_genes):
 	syngo=load_data_functions.find_syngo(big_pool, go_genes)
 	syndb=load_data_functions.find_SynDB(big_pool)
 	synsysnet=load_data_functions.find_synsysnet(big_pool)
-	return hk, golgi, mem, syngo, syndb, synsysnet
+	return hk, nuclear, golgi, mem, syngo, syndb, synsysnet
 
 def compare_auc_bootstrap(set1_predictions,set2_predictions):
 	#set1_predictions and set2_predictions should be the output from find_true_y
@@ -253,7 +254,6 @@ if __name__ == '__main__':
 	big_pool=load_data_functions.load_big_pool()
 
 	nuclear=find_nuclear(big_pool)
-	print (nuclear[:5])
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 
