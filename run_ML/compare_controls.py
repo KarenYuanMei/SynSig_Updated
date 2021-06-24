@@ -56,8 +56,8 @@ def find_hk(big_pool):
 #find nuclear proteins:=========
 #downloaded from https://www.proteinatlas.org/search/subcell_location%3ANucleoplasm%2CNuclear+speckles%2CNuclear+bodies%2CKinetochore%2CMitotic+chromosome, 06/24/21
 def find_nuclear(big_pool):
-	nuclear=pd.read_csv('../source_data_files/gene_lists/subcell_location_Nucleoplasm_Nuclear.tsv', sep=';')
-	#print (hk)
+	nuclear=pd.read_csv('../source_data_files/gene_lists/subcell_location_Nucleoplasm_Nuclear.tsv')
+	print (nuclear)
 	nuclear=nuclear['Gene'].tolist()
 	nuclear=list(set(nuclear)&set(big_pool))
 	return nuclear
