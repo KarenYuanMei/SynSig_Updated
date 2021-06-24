@@ -235,7 +235,7 @@ def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	x_pos=np.arange(len(labels))
 	#plt.bar(labels, mean_values, yerr=sem, color=['#7f6d5f', '#2d7f5e', '#557f2d','silver', 'dimgray', 'rosybrown'], align='center', ecolor='black', capsize=10)
-	plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
+	plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#3776ab', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
 	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d'], align='center', ecolor='black', capsize=10)
 
 	plt.ylim(0.4, 1)
@@ -264,8 +264,8 @@ if __name__ == '__main__':
 
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-	genelists=[syn, nuclear, hk, golgi, mem]
-	genelist_names=['syn', 'nuclear', 'hk', 'golgi', 'mem']
+	genelists=[syn, hk, nuclear, golgi, mem]
+	genelist_names=['syn', 'hk', 'nuclear', 'golgi', 'mem']
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
@@ -276,7 +276,7 @@ if __name__ == '__main__':
 		#print (errorbars)
 		ebs.append(errorbars)
 
-	labels=['Synapse', 'Nuclear', 'Housekeeping', 'Golgi App', 'Transmem']
+	labels=['Synapse', 'Housekeeping', 'Nuclear', 'Golgi App', 'Transmem']
 
 	print (aucs)
 	print (ebs)
