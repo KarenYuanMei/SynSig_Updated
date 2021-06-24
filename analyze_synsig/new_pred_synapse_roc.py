@@ -122,7 +122,7 @@ if __name__ == '__main__':
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'syn')
-	print ('tpr fpr auc', tpr, fpr, auc
+	#print ('tpr fpr auc', tpr, fpr, auc
 
 	#make Figure 2D
 	plot_annotate_ROC_controls(tpr, fpr, auc)
