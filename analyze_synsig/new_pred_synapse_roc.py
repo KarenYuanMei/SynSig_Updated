@@ -49,6 +49,7 @@ import ROC_functions
 # 	plt.savefig('%s_ROC.svg'%name, format="svg")
 
 def plot_annotate_ROC_controls(tpr, fpr, auc):
+	f = plt.figure()
 	plt.plot([0,1],[0,1],linestyle = '--',color = 'black', label='Random Chance')
 
 	plt.plot(fpr, tpr, color='maroon',
@@ -86,7 +87,7 @@ def plot_annotate_ROC_controls(tpr, fpr, auc):
 	plt.legend()
 	plt.xlim([0, 1])
 	plt.ylim([0, 1])
-	plt.savefig('annotate_ROC_controls.svg', format="svg")
+	f.savefig('annotate_ROC_controls.svg', format="svg")
 
 
 if __name__ == '__main__':
@@ -121,7 +122,7 @@ if __name__ == '__main__':
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)	
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'syn')
-	print ('tpr fpr auc', tpr, fpr, auc)
+	print ('tpr fpr auc', tpr, fpr, auc
 
 	#make Figure 2D
 	plot_annotate_ROC_controls(tpr, fpr, auc)
