@@ -53,6 +53,15 @@ def find_hk(big_pool):
 	hk=list(set(hk)&set(big_pool))
 	return hk
 
+#find nuclear proteins:=========
+#downloaded from https://www.proteinatlas.org/search/subcell_location%3ANucleoplasm%2CNuclear+speckles%2CNuclear+bodies%2CKinetochore%2CMitotic+chromosome, 06/24/21
+def find_nuclear(big_pool):
+	nuclear=pd.read_csv('../source_data_files/gene_lists/subcell_location_Nucleoplasm_Nuclear.tsv', sep=';')
+	#print (hk)
+	nuclear=nuclear['Human'].tolist()
+	nuclear=list(set(nuclear)&set(big_pool))
+	return nuclear
+
 #find golgi:===================
 def find_golgi(big_pool):
 	golgi=load_data_functions.get_gene_names('../source_data_files/gene_lists/golgi_genes.csv')
@@ -74,6 +83,7 @@ def find_mem(big_pool):
 #load the synapse gene lists and the control gene lists:
 def load_control_and_synapse_genes(big_pool, go_genes):
 	hk=find_hk(big_pool)
+	nuclear=find_nuclear(big_pool)
 	golgi=find_golgi(big_pool)
 	mem=find_mem(big_pool)
 	syngo=load_data_functions.find_syngo(big_pool, go_genes)
@@ -247,12 +257,12 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	hk, golgi, mem, syngo, syndb, synsysnet=load_control_and_synapse_genes(big_pool, go_genes)
+	hk, nuclear, golgi, mem, syngo, syndb, synsysnet=load_control_and_synapse_genes(big_pool, go_genes)
 
 	syn=list(set(syngo)&set(syndb)&set(synsysnet))
 
-	genelists=[syn, hk, golgi, mem]
-	genelist_names=['syn', 'hk', 'golgi', 'mem']
+	genelists=[syn, nuclear, hk, golgi, mem]
+	genelist_names=['syn', 'nuclear', 'hk', 'golgi', 'mem']
 	#genelist_diff_ci=compute_syn_control_ci(genelists, genelist_names, all_training)
 	#print (genelist_diff_ci)
 
@@ -263,7 +273,7 @@ if __name__ == '__main__':
 		#print (errorbars)
 		ebs.append(errorbars)
 
-	labels=['Synapse', 'Housekeeping', 'Golgi App', 'Transmem']
+	labels=['Synapse', 'Nuclear', 'Housekeeping', 'Golgi App', 'Transmem']
 
 	print (aucs)
 	print (ebs)
