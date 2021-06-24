@@ -222,8 +222,8 @@ def calc_syn_tpr_fpr(ref_list, genelist, big_pool, all_training):
 def calc_ctrl_tpr_fpr(syn, big_pool, all_training):
 
 	ratios={}
-	controls=[hk, golgi, mem]
-	control_names=['hk', 'golgi', 'mem']
+	controls=[hk, nuclear, golgi, mem]
+	control_names=['hk', 'nuclear', 'golgi', 'mem']
 	for i in range(len(controls)):
 		tpr, fpr=calc_syn_tpr_fpr(syn, controls[i], big_pool, all_training)
 		print (tpr, fpr)
