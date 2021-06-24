@@ -58,7 +58,7 @@ def find_hk(big_pool):
 def find_nuclear(big_pool):
 	nuclear=pd.read_csv('../source_data_files/gene_lists/subcell_location_Nucleoplasm_Nuclear.tsv', sep=';')
 	#print (hk)
-	nuclear=nuclear['Human'].tolist()
+	nuclear=nuclear['Gene'].tolist()
 	nuclear=list(set(nuclear)&set(big_pool))
 	return nuclear
 
@@ -251,6 +251,9 @@ def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 if __name__ == '__main__':
 	
 	big_pool=load_data_functions.load_big_pool()
+
+	nuclear=find_nuclear(big_pool)
+	print (nuclear[:5])
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 
