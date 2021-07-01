@@ -69,7 +69,7 @@ def find_synapse_stat(count_df):
 	print (count_df)
 	return count_df
 
-def find_synapse_perc(count_df):
+def find_synapse_perc(pred, count_df):
 	count_df=pred.sort_values(by='avg_scores', ascending=False)
 	scores=count_df['avg_scores'].tolist()
 
@@ -99,7 +99,7 @@ def format_count_df(pred, all_gl, all_gl_names):
 
 	count_df['SynSig'] = np.where(count_df['avg_scores']>4.45, 'yes', 'no')
 
-	count_df=find_synapse_stat(count_df)
+	count_df=find_synapse_stat(pred, count_df)
 
 	perc=find_synapse_perc(count_df)
 	count_df['Synapse Percentile']=perc
