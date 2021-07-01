@@ -29,6 +29,17 @@ def load_synapse_lists(big_pool, go_genes):
 	ngn2=load_data_functions.find_ngn2(big_pool)
 	return syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2
 
+def load_full_databases():
+	syngo=load_data_functions.find_full_syngo()
+	syndb=load_data_functions.find_full_SynDB()
+	synsysnet=load_data_functions.find_full_synsysnet()
+
+	cortex=load_data_functions.find_full_adult_cortex()
+	striatum=load_data_functions.find_full_adult_striatum()
+	fetal=load_data_functions.find_full_fetal()
+	ngn2=load_data_functions.find_full_ngn2()
+	return syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2
+
 def count_in_genelist(pred_genes, genelist):
 	count=[]
 	for gene in pred_genes:
@@ -92,10 +103,10 @@ def format_count_df(pred, all_gl, all_gl_names):
 
 	perc=find_synapse_perc(count_df)
 	count_df['Synapse Percentile']=perc
-	count_df.to_csv('update_web_table.csv')
+	#count_df.to_csv('update_web_table.csv')
 	return count_df
 
-if __name__ == '__main__':
+def make_pred_db_table_with_bigpool():
 	pred=ROC_functions.load_predicted_df()
 	print (pred)
 
@@ -108,3 +119,22 @@ if __name__ == '__main__':
 	all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
 	all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 	count_df=format_count_df(pred, all_gl, all_gl_names)
+	count_df.to_csv('update_web_table.csv')
+
+def make_pred_db_table_with_full_genes():
+	pred=ROC_functions.load_predicted_df()
+	print (pred)
+	syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2=load_full_databases()
+	all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
+	all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
+	count_df=format_count_df(pred, all_gl, all_gl_names)
+	count_df.to_csv('update_web_table_full_db.csv')
+
+
+
+if __name__ == '__main__':
+	make_pred_db_table_with_full_genes()
+
+	
+
+	
