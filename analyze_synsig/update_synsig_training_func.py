@@ -37,7 +37,7 @@ def format_training_ms_count_df(pos_df, all_gl, all_gl_names):
 	pos_genes=pos_df['genes'].tolist()
 	all_counts=[]
 	for item in all_gl:
-		gl_count=make_pred_db_data_table.count_in_genelist(pred_genes, item)
+		gl_count=make_pred_db_data_table.count_in_genelist(pos_genes, item)
 		all_counts.append(gl_count)
 
 	for i in range(len(all_counts)):
