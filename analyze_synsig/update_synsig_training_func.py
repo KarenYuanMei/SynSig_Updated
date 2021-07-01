@@ -52,7 +52,7 @@ def format_training_training_ms_count_df(pos_df, all_gl, all_gl_names):
 
 	# count_df['Synapse Percentile']=perc
 	# count_df.to_csv('training_pos_ms_table.csv')
-	return count_df
+	return pos_df
 
 training_pos=pd.read_csv('../run_ML/ML_output/training_genes/updated_positives.csv')
 print (training_pos)
@@ -67,12 +67,15 @@ pos_desc_mf=update_synsig_gene_func.add_mf_function(pos_genes, pos_desc)
 pos_desc_mf.to_csv('training_pos_desc_mf.csv')
 print (pos_desc_mf)
 
-big_pool=find_training_genes_functions.load_big_pool()
+syngo=load_data_functions.find_full_syngo()
+syndb=load_data_functions.find_full_SynDB()
+synsysnet=load_data_functions.find_full_synsysnet()
 
-human_ont=find_GO_scores.find_GO_ont()
-go_genes=human_ont.genes
+cortex=load_data_functions.find_full_adult_cortex()
+striatum=load_data_functions.find_full_adult_striatum()
+fetal=load_data_functions.find_full_fetal()
+ngn2=load_data_functions.find_full_ngn2()
 
-syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2=make_pred_db_data_table.load_synapse_lists(big_pool, go_genes)
 all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
 all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 

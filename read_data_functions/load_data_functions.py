@@ -61,6 +61,13 @@ def find_SynDB(big_pool):
 	syndb=list(set(genes)&set(big_pool))
 	return syndb
 
+def find_full_SynDB():
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	file= p + '/source_data_files/correct_db/SynDB.csv'
+	genes=get_gene_names(file)
+	return genes
+
 # def find_synsysnet(big_pool):
 # 	synsysnet_file='../correct_db/synsysnet.csv'
 # 	synsysnet=get_gene_names(synsysnet_file)
@@ -75,6 +82,12 @@ def find_synsysnet(big_pool):
 	synsysnet=list(set(genes)&set(big_pool))
 	return synsysnet
 
+def find_full_synsysnet(big_pool):
+	p = pathlib.Path(__file__).resolve().parents[1]
+	p = str(p)
+	file= p + '/source_data_files/correct_db/synsysnet.csv'
+	genes=get_gene_names(file)
+	return genes
 
 def load_synsig():
 	p = pathlib.Path(__file__).resolve().parents[1]
@@ -109,6 +122,13 @@ def find_adult_cortex(big_pool):
 	overlap_ctx=list(set(ctx_genes)&set(big_pool))
 	return overlap_ctx
 
+def find_full_adult_cortex():
+	ctx_file='../../../SynSig/experimental_validation/weijun_ctx_uniprot.csv'
+	ctx_genes=pd.read_csv(ctx_file, sep='\t')
+	ctx_genes=ctx_genes['To'].tolist()
+	ctx_genes=[x.upper() for x in ctx_genes]
+	return ctx_genes
+
 def find_adult_striatum(big_pool):
 	str_file='../../../SynSig/experimental_validation/weijun_str_uniprot.csv'
 	str_genes=pd.read_csv(str_file, sep='\t')
@@ -117,6 +137,13 @@ def find_adult_striatum(big_pool):
 	#print (ctx_genes)
 	overlap_str=list(set(str_genes)&set(big_pool))
 	return overlap_str
+
+def find_full_adult_striatum():
+	str_file='../../../SynSig/experimental_validation/weijun_str_uniprot.csv'
+	str_genes=pd.read_csv(str_file, sep='\t')
+	str_genes=str_genes['To'].tolist()
+	str_genes=[x.upper() for x in str_genes]
+	return str_genes
 
 def find_fetal(big_pool):
 	fetal_file='../../../SynSig/experimental_validation/coba_fetal_brain.csv'
@@ -127,6 +154,13 @@ def find_fetal(big_pool):
 	overlap_fetal=list(set(fetal_genes)&set(big_pool))
 	return overlap_fetal
 
+def find_full_fetal():
+	fetal_file='../../../SynSig/experimental_validation/coba_fetal_brain.csv'
+	fetal_genes=pd.read_csv(fetal_file)
+	fetal_genes=fetal_genes['Norm_Symbol'].tolist()
+	fetal_genes=[x.upper() for x in fetal_genes]
+	return fetal_genes
+
 def find_ngn2(big_pool):
 	ngn2_file='../../../SynSig/experimental_validation/Coba_NGN2.csv'
 	ngn2_genes=pd.read_csv(ngn2_file)
@@ -136,6 +170,12 @@ def find_ngn2(big_pool):
 	overlap_ngn2=list(set(ngn2_genes)&set(big_pool))
 	return overlap_ngn2
 
+def find_full_ngn2():
+	ngn2_file='../../../SynSig/experimental_validation/Coba_NGN2.csv'
+	ngn2_genes=pd.read_csv(ngn2_file)
+	ngn2_genes=ngn2_genes['Norm_Symbol'].tolist()
+	ngn2_genes=[x.upper() for x in ngn2_genes]
+	return ngn2_genes
 #load hek293 genes==========================================================
 
 def load_hek_genes():
