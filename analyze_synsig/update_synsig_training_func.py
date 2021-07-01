@@ -33,7 +33,7 @@ import find_GO_scores
 import update_synsig_gene_func
 import make_pred_db_data_table
 
-def format_training_training_ms_count_df(pos_df, all_gl, all_gl_names):
+def format_training_ms_count_df(pos_df, all_gl, all_gl_names):
 	pos_genes=pos_df['genes'].tolist()
 	all_counts=[]
 	for item in all_gl:
@@ -44,15 +44,16 @@ def format_training_training_ms_count_df(pos_df, all_gl, all_gl_names):
 		pos_df[all_gl_names[i]]=all_counts[i]
 
 	print (pos_df)
-	# count_df['Lit Sum']=count_df[['syngo', 'syndb', 'synsysnet']].sum(axis=1)
+	count_df['Lit Sum']=pos_df[['syngo', 'syndb', 'synsysnet']].sum(axis=1)
 	
-	# count_df['Exp Sum']=count_df[['cortex', 'striatum', 'fetal', 'ngn2']].sum(axis=1)
+	count_df['Exp Sum']=count_df[['cortex', 'striatum', 'fetal', 'ngn2']].sum(axis=1)
 
-	# count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
+	count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
 
 	# count_df['Synapse Percentile']=perc
-	# count_df.to_csv('training_pos_ms_table.csv')
-	return pos_df
+	count_df.to_csv('training_pos_ms_table.csv')
+	print (count_df)
+	return count_df
 
 training_pos=pd.read_csv('../run_ML/ML_output/training_genes/updated_positives.csv')
 print (training_pos)
@@ -79,4 +80,4 @@ ngn2=load_data_functions.find_full_ngn2()
 all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
 all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 
-format_count_df(pred, all_gl, all_gl_names)
+format_training_ms_count_df(training_pos, all_gl, all_gl_names)
