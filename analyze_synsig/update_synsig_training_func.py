@@ -44,16 +44,16 @@ def format_training_ms_count_df(pos_df, all_gl, all_gl_names):
 		pos_df[all_gl_names[i]]=all_counts[i]
 
 	print (pos_df)
-	count_df['Lit Sum']=pos_df[['syngo', 'syndb', 'synsysnet']].sum(axis=1)
+	pos_df['Lit Sum']=pos_df[['syngo', 'syndb', 'synsysnet']].sum(axis=1)
 	
-	count_df['Exp Sum']=count_df[['cortex', 'striatum', 'fetal', 'ngn2']].sum(axis=1)
+	pos_df['Exp Sum']=pos_df[['cortex', 'striatum', 'fetal', 'ngn2']].sum(axis=1)
 
-	count_df['All Sum']=count_df[all_gl_names].sum(axis=1)
+	pos_df['All Sum']=pos_df[all_gl_names].sum(axis=1)
 
 	# count_df['Synapse Percentile']=perc
-	count_df.to_csv('training_pos_ms_table.csv')
-	print (count_df)
-	return count_df
+	pos_df.to_csv('training_pos_ms_table.csv')
+	print (pos_df)
+	return pos_df
 
 training_pos=pd.read_csv('../run_ML/ML_output/training_genes/updated_positives.csv')
 print (training_pos)
@@ -80,4 +80,4 @@ ngn2=load_data_functions.find_full_ngn2()
 all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
 all_gl_names=['syngo', 'syndb', 'synsysnet', 'cortex', 'striatum', 'fetal', 'ngn2']
 
-format_training_ms_count_df(training_pos, all_gl, all_gl_names)
+format_training_ms_count_df(pos_desc_mf, all_gl, all_gl_names)
