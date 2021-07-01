@@ -91,7 +91,8 @@ def add_gene_desc_web(names_desc_dict, genelist):
 	#synsig_df.insert(loc=idx, column='description', value=synsig_desc_list)
 
 	#synsig_df.to_csv('update_web_table_desc.csv')
-	synsig_df=pd.DataFrame({'genes': synsig_genes, 'description': synsig_desc_list})
+	#synsig_df=pd.DataFrame({'genes': synsig_genes, 'description': synsig_desc_list})
+	synsig_df=pd.DataFrame({'genes': genelist, 'description': synsig_desc_list})
 	
 	return synsig_df
 
@@ -228,91 +229,91 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.savefig(name+'.svg', format="svg")
 	plt.close()
 
+if __name__ == '__main__':
+
+	synsig_genes=load_synsig_genes()
+
+	#add description all synsig genes:
+	synsig_desc=add_desc(synsig_genes)
+	synsig_desc.to_csv('synsig_genes_desc.csv')
+
+	#add mf to all synsig genes:
+	synsig_desc_mf=add_mf_function(synsig_genes, synsig_desc)
+	synsig_desc_mf.to_csv('synsig_desc_mf.csv')
+	print (synsig_desc_mf)
+
+	#first annotate genes by gene description:
+	desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_desc_function.csv')
+	print (desc_func)
+
+	#find unannotated genes:
+	no_func=find_unannotated_genes(desc_func)
+	#print (no_func)
+
+	#second annotate genes by molecular function:
+	mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
+	#print (mf_func)
+
+	#find unannotated genes:
+	no_func=find_unannotated_genes(mf_func)
+
+	met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
+
+	#find unannotated genes:
+	no_func=find_unannotated_genes(met_func)
+
+	unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
+
+	desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
+	mf_func=pd.read_csv('synsig_mf_function.csv', index_col=[0])
+
+	cols=np.arange(3, 15, 1).tolist()
+	print (cols)
 
 
-synsig_genes=load_synsig_genes()
+	functions={}
+	for item in cols:
+		headers=list(desc_func.columns)
+		function_name=headers[item]
+		print (headers[item])
+		sum1=desc_func[desc_func.columns[item]].sum()
+		print (sum1)
+		
+		sum2=mf_func[mf_func.columns[item]].sum()
+		print (sum2)
+		
+		total=sum1+sum2
+		print (total)
 
-#add description all synsig genes:
-synsig_desc=add_desc(synsig_genes)
-synsig_desc.to_csv('synsig_genes_desc.csv')
+		functions[function_name]=(total)
 
-#add mf to all synsig genes:
-synsig_desc_mf=add_mf_function(synsig_genes, synsig_desc)
-synsig_desc_mf.to_csv('synsig_desc_mf.csv')
-print (synsig_desc_mf)
+	print (functions)
 
-#first annotate genes by gene description:
-desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_desc_function.csv')
-print (desc_func)
+	met_func=pd.read_csv('synsig_met_function.csv', index_col=[0])
+	met_sum=met_func[met_func.columns[3]].sum()
+	print (met_sum)
 
-#find unannotated genes:
-no_func=find_unannotated_genes(desc_func)
-#print (no_func)
+	uk_func=pd.read_csv('synsig_unknown_function.csv', index_col=[0])
+	print (uk_func)
+	pb_sum=uk_func[uk_func.columns[3]].sum()
+	print (pb_sum)
 
-#second annotate genes by molecular function:
-mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
-#print (mf_func)
+	uk_sum=uk_func[uk_func.columns[4]].sum()
+	print (uk_sum)
 
-#find unannotated genes:
-no_func=find_unannotated_genes(mf_func)
+	functions['Other Enzymes']=met_sum
+	functions['Other protein binders']=pb_sum
+	functions['Unknown functions']=uk_sum
 
-met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
+	print (functions)
 
-#find unannotated genes:
-no_func=find_unannotated_genes(met_func)
+	labels=list(functions.keys())
+	mean_values=list(functions.values())
+	xlabel='Protein Categories'
+	ylabel='Number of Proteins'
+	name='synsig_gene_cat'
 
-unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
-
-desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
-mf_func=pd.read_csv('synsig_mf_function.csv', index_col=[0])
-
-cols=np.arange(3, 15, 1).tolist()
-print (cols)
-
-
-functions={}
-for item in cols:
-	headers=list(desc_func.columns)
-	function_name=headers[item]
-	print (headers[item])
-	sum1=desc_func[desc_func.columns[item]].sum()
-	print (sum1)
-	
-	sum2=mf_func[mf_func.columns[item]].sum()
-	print (sum2)
-	
-	total=sum1+sum2
-	print (total)
-
-	functions[function_name]=(total)
-
-print (functions)
-
-met_func=pd.read_csv('synsig_met_function.csv', index_col=[0])
-met_sum=met_func[met_func.columns[3]].sum()
-print (met_sum)
-
-uk_func=pd.read_csv('synsig_unknown_function.csv', index_col=[0])
-print (uk_func)
-pb_sum=uk_func[uk_func.columns[3]].sum()
-print (pb_sum)
-
-uk_sum=uk_func[uk_func.columns[4]].sum()
-print (uk_sum)
-
-functions['Other Enzymes']=met_sum
-functions['Other protein binders']=pb_sum
-functions['Unknown functions']=uk_sum
-
-print (functions)
-
-labels=list(functions.keys())
-mean_values=list(functions.values())
-xlabel='Protein Categories'
-ylabel='Number of Proteins'
-name='synsig_gene_cat'
-
-plot_bargraph(labels, mean_values, xlabel, ylabel, name)
+	plot_bargraph(labels, mean_values, xlabel, ylabel, name)
 
 
 
