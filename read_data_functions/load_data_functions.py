@@ -82,7 +82,7 @@ def find_synsysnet(big_pool):
 	synsysnet=list(set(genes)&set(big_pool))
 	return synsysnet
 
-def find_full_synsysnet(big_pool):
+def find_full_synsysnet():
 	p = pathlib.Path(__file__).resolve().parents[1]
 	p = str(p)
 	file= p + '/source_data_files/correct_db/synsysnet.csv'
