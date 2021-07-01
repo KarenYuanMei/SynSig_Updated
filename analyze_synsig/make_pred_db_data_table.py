@@ -107,7 +107,7 @@ def format_count_df(pred, all_gl, all_gl_names):
 	return count_df
 
 def make_pred_db_table_with_bigpool():
-	pred=ROC_functions.load_predicted_df()
+	pred=load_data_functions.load_predicted_synsig_df()
 	print (pred)
 
 	big_pool=find_training_genes_functions.load_big_pool()
@@ -122,7 +122,7 @@ def make_pred_db_table_with_bigpool():
 	count_df.to_csv('update_web_table.csv')
 
 def make_pred_db_table_with_full_genes():
-	pred=ROC_functions.load_predicted_df()
+	pred=load_data_functions.load_predicted_synsig_df()
 	print (pred)
 	syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2=load_full_databases()
 	all_gl=[syngo, syndb, synsysnet, cortex, striatum, fetal, ngn2]
