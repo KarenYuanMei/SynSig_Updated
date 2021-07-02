@@ -123,7 +123,7 @@ if __name__ == '__main__':
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, consensus_ms, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
 
-	graph_functions.plot_single_ROC(tpr, fpr, auc, 'consensus_ms')
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'consensus_ms')
 	print (auc)
 
 	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
