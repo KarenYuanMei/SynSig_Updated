@@ -1,5 +1,6 @@
 #Goal: 1) draw the ROC curve for predicted synapse scores with consensus mass spectrometry genes as metric
 #      2) annotate how syngo and synsig compare
+	#  3) Figure 3F
 
 
 
@@ -87,14 +88,15 @@ def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
 
 if __name__ == '__main__':
 	
-	big_pool=load_data_functions.load_big_pool()
+	#big_pool=load_data_functions.load_big_pool()
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 	
-	human_ont=find_GO_scores.find_GO_ont()
-	go_genes=human_ont.genes
+	#human_ont=find_GO_scores.find_GO_ont()
+	#go_genes=human_ont.genes
 
-	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	#syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syngo=load_data_functions.find_full_syngo()
 
 	synsig=load_data_functions.load_synsig()
 
