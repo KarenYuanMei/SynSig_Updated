@@ -95,11 +95,14 @@ if __name__ == '__main__':
 	human_ont=find_GO_scores.find_GO_ont()
 	go_genes=human_ont.genes
 
-	syngo=load_data_functions.find_syngo(big_pool, go_genes)
-	print (len(syngo))
-	syngo=load_data_functions.find_full_syngo()
-	syngo=list(set(syngo)&set(big_pool))
-	print (len(syngo))
+	syngo1=load_data_functions.find_syngo(big_pool, go_genes)
+	print (len(syngo1))
+	syngo2=load_data_functions.find_full_syngo()
+	syngo2=list(set(syngo2)&set(big_pool))
+	print (len(syngo2))
+
+	overlap=list(set(syngo1)&set(syngo2))
+	print ('overlap', len(overlap))
 
 	synsig=load_data_functions.load_synsig()
 
