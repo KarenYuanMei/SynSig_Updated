@@ -92,12 +92,14 @@ if __name__ == '__main__':
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 	
-	#human_ont=find_GO_scores.find_GO_ont()
-	#go_genes=human_ont.genes
+	human_ont=find_GO_scores.find_GO_ont()
+	go_genes=human_ont.genes
 
-	#syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	syngo=load_data_functions.find_syngo(big_pool, go_genes)
+	print (len(syngo))
 	syngo=load_data_functions.find_full_syngo()
 	syngo=list(set(syngo)&set(big_pool))
+	print (len(syngo))
 
 	synsig=load_data_functions.load_synsig()
 
