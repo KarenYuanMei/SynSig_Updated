@@ -88,7 +88,7 @@ def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
 
 if __name__ == '__main__':
 	
-	#big_pool=load_data_functions.load_big_pool()
+	big_pool=load_data_functions.load_big_pool()
 
 	all_training=find_training_genes_functions.load_pos_neg_training()
 	
@@ -97,12 +97,15 @@ if __name__ == '__main__':
 
 	#syngo=load_data_functions.find_syngo(big_pool, go_genes)
 	syngo=load_data_functions.find_full_syngo()
+	syngo=list(set(syngo)&set(big_pool))
 
 	synsig=load_data_functions.load_synsig()
 
 	synsysnet=load_data_functions.find_synsysnet(big_pool)
+	#synsysnet=load_data_functions.find_full_synsysnet()
 
 	synDB=load_data_functions.find_SynDB(big_pool)
+	#synDB=load_data_functions.find_full_SynDB()
 
 	ctx=load_data_functions.find_adult_cortex(big_pool)
 
