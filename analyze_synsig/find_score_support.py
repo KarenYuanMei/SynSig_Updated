@@ -31,6 +31,8 @@ def find_hypergeometric(genelist1, genelist2, M):
 	N=len(genelist1)
 	n=len(genelist2)
 	x=len(overlap)
+
+	print ('M', M, 'N', N, 'n', n, 'x', x)
 	pval = hypergeom.sf(x-1, M, n, N)
 
 	rv = hypergeom(M, n, N)
@@ -155,7 +157,7 @@ if __name__ == '__main__':
 	#find_exp_support(synsysnet)
 
 	#new=list(set(synsig)-set(syngo))
-	new=list(set(synsig)-set(syngo)-set(synDB)-set(synsysnet))
+	new=list(set(synsig)-set(syngo))
 
 	folds, pvals=find_exp_support(new)
 	print (folds)
