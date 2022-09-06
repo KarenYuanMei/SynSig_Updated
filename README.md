@@ -4,11 +4,39 @@ The synapse is a complex protein-dense structure critical for proper brain funct
 
 Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global Molecular Signatures."
 
-# Dependencies:
+## Dependencies:
 
-Environment dependencies:
+### Batch installation of packages:
   -Packages necessary are listed in env_packages folder
   -yml, txt, and piplock versions are all included for easy installation
  
-# Manual installation of dependencies:
+### Manual installation of dependencies:
+  - use Python=3.7
+
+  conda create <myenv> python=3.7
+  
+  - Numpy, Scipy, Networkx
+  
+  conda install -y pandas numpy scipy networkx=1.11
+
+  - igraph
+  
+  conda install -y -c conda-forge python-igraph
+  conda install -y libiconv # Needed for igraph to run properly
+  
+  - tulip-python, ndex-dev
+  
+  pip install tulip-python
+  pip install ndex-dev
+  
+  -ddot
+  
+  cd <path to ddot repo>
+  
+  pip install <path to ddot repo>
+  
+  -scikit-learn
+  
+  pip install -U scikit-learn
+
 
