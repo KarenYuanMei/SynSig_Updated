@@ -13,7 +13,7 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
 ### Manual installation of dependencies:
   - use Python=3.7
 
-  conda create <myenv> python=3.7
+  conda create '<myenv>'python=3.7
   
   - Numpy, Scipy, Networkx
   
@@ -29,11 +29,11 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   pip install tulip-python
   pip install ndex-dev
   
-  -ddot
+  - ddot
   
-  cd <path to ddot repo>
+  cd '<path to ddot repo>'
   
-  pip install <path to ddot repo>
+  pip install '<path to ddot repo>'
   
   -scikit-learn
   
