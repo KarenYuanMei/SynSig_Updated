@@ -35,7 +35,7 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   
   pip install /path to ddot repo/
   
-  -scikit-learn
+  - scikit-learn
   
   pip install -U scikit-learn
 
