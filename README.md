@@ -4,11 +4,11 @@ The synapse is a complex protein-dense structure critical for proper brain funct
 
 Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global Molecular Signatures."
 
-#Dependencies:
+# Dependencies:
 
 Environment dependencies:
   -Packages necessary are listed in env_packages folder
   -yml, txt, and piplock versions are all included for easy installation
  
-#Manual installation of dependencies:
+# Manual installation of dependencies:
 
