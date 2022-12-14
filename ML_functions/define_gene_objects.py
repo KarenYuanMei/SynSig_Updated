@@ -370,7 +370,6 @@ def create_new_gene_list(gene_names,is_test_gene,feature_value_dict, feature_lis
 	return gene_list
 
 
-
 def find_gene_objects(gene_objects, gene_name_list):
 	sel_objects=[]
 	for item in gene_objects:

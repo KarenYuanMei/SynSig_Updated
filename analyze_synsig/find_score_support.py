@@ -1,6 +1,6 @@
 #Goal: find the relationship between the predicted scores and the number of supporting sources
 
-import tkinter
+
 import pandas as pd
 import numpy as np
 import csv
@@ -19,6 +19,8 @@ import load_data_functions
 
 sys.path.append('../ML_functions/')
 import find_GO_scores
+
+import tkinter
 
 import matplotlib
 matplotlib.use("TkAgg")
@@ -80,10 +82,11 @@ def find_synsig_all_support():
 	print(pvals)
 	return folds, pvals
 
-def find_exp_support(genelist):
+def find_exp_support(genelist, exclude_genes):
 	table=pd.read_csv('../run_ML/update_web_table.csv')
-	M=table['genes'].tolist()
-	M=len(M)
+	pool_genes=table['genes'].tolist()
+	after_excluded_pool=list(set(pool_genes)-set(exclude_genes))
+	M=len(after_excluded_pool)
 
 	source_no=np.arange(0,5,1)
 	print (source_no)
@@ -93,6 +96,7 @@ def find_exp_support(genelist):
 	for item in source_no:
 		screen=table[table['Exp Sum']==item]
 		screen_genes=screen['genes'].tolist()
+		screen_genes=list(set(screen_genes)-set(exclude_genes))
 		#print (source)
 		#overlap=list(set(synsig)&set(source_genes))
 		fold, pval=find_hypergeometric(genelist, screen_genes, M)
@@ -158,8 +162,9 @@ if __name__ == '__main__':
 
 	#new=list(set(synsig)-set(syngo))
 	new=list(set(synsig)-set(syngo))
+	known=list(set(synsig)&set(syngo))
 
-	folds, pvals=find_exp_support(new)
+	folds, pvals=find_exp_support(new, known)
 	print (folds)
 	print (pvals)
 

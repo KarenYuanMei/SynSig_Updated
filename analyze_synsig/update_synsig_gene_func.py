@@ -2,6 +2,7 @@
 #gene_name_description.txt was downloaded on April 9th from Biomart
 
 #to annotate each SynSig protein to a molecular function category
+#need to run this on the cluster
 
 import pandas as pd
 
@@ -229,40 +230,125 @@ def plot_bargraph(labels, mean_values, xlabel, ylabel, name):
 	plt.savefig(name+'.svg', format="svg")
 	plt.close()
 
+def load_full_synsig_genes():
+
+	df=pd.read_csv('~/Documents/SynSig_August2020/revisions/SynSig_Updated/supp_tables/updated_synsig_table_full_syngo_included_101222.csv')
+	print (df)
+	genes=df['genes'].tolist()
+
+	return genes
+
+#compile all of the function files into a single file for Synsig
+def compile_all_synsig_func():
+	file1='synsig_desc_function.csv'
+	file2='synsig_mf_function.csv'
+	file3='synsig_met_function.csv'
+	file4='synsig_unknown_function.csv'
+
+	first_two=[file1, file2]
+
+	ann_gene_dfs=[]
+	for item in first_two:
+		df=pd.read_csv(item, index_col=[0])
+		#print (df)
+		annotated=df[df['Function Total']>0]
+		#print (annotated)
+		ann_gene_dfs.append(annotated)
+
+	final=pd.concat(ann_gene_dfs)
+	final.insert(loc=15, column='Other Enzymes', value=0)
+	final.insert(loc=16, column='Other protein binders', value=0)
+	final.insert(loc=17, column='unknown functions', value=0)
+	print (final)
+
+	cols=list(final.columns)
+
+	col_no=np.arange(3,15,1).tolist()
+	#print (col_no)
+
+	df3=pd.read_csv(file3, index_col=[0])
+	annotated3=df3[df3['Function Total']>0]
+
+	for item in col_no:
+		annotated3.insert(loc=item, column=cols[item], value=0)
+
+	annotated3.insert(loc=16, column='Other protein binders', value=0)
+	annotated3.insert(loc=17, column='unknown functions', value=0)
+	print (annotated3)
+
+
+	df4=pd.read_csv(file4, index_col=[0])
+	annotated4=df4[df4['Function Total']>0]
+	#print (annotated)
+	for item in col_no:
+		annotated4.insert(loc=item, column=cols[item], value=0)
+
+	annotated4.insert(loc=15, column='Other Enzymes', value=0)
+	print (annotated4)
+
+	final=pd.concat([final, annotated3, annotated4])
+	#print (final)
+	final.to_csv('all_synsig_functions.csv')
+	return final
+
+
 if __name__ == '__main__':
 
-	synsig_genes=load_synsig_genes()
+	#synsig_genes=load_synsig_genes()
+	print ('STEP 1')
+
+	# synsig_genes=load_full_synsig_genes()
+	# print (len(synsig_genes))
+	# print (len(list(set(synsig_genes))))
+
+	df=pd.read_csv('../supp_tables/updated_synsig_table_full_syngo_included_101222.csv')
+	print (df)
+	df=df.reset_index()
+	print (df)
+	df=df.rename(columns={ df.columns[1]: "genes" })
+	
+	synsig_genes=df['genes'].tolist()
+
 
 	#add description all synsig genes:
+	print ('STEP 2')
 	synsig_desc=add_desc(synsig_genes)
 	synsig_desc.to_csv('synsig_genes_desc.csv')
 
 	#add mf to all synsig genes:
+	print ('STEP 3')
 	synsig_desc_mf=add_mf_function(synsig_genes, synsig_desc)
 	synsig_desc_mf.to_csv('synsig_desc_mf.csv')
 	print (synsig_desc_mf)
 
 	#first annotate genes by gene description:
+	print ('STEP 4')
 	desc_func=annotate_function('synsig_desc_mf.csv', 'description', 'synsig_desc_function.csv')
 	print (desc_func)
 
 	#find unannotated genes:
+	print ('STEP 5')
 	no_func=find_unannotated_genes(desc_func)
 	#print (no_func)
 
 	#second annotate genes by molecular function:
+	print ('STEP 6')
 	mf_func=annotate_function('no_func.csv', 'MF Terms', 'synsig_mf_function.csv')
-	#print (mf_func)
+	print (mf_func)
 
 	#find unannotated genes:
+	print ('STEP 7')
 	no_func=find_unannotated_genes(mf_func)
 
 	met_func=annotate_no_func('no_func.csv', 'MF Terms', 'synsig_met_function.csv')
+	print (met_func)
 
 	#find unannotated genes:
+	print ('STEP 8')
 	no_func=find_unannotated_genes(met_func)
 
 	unknown_func=annotate_remaining_func('no_func.csv', 'MF Terms', 'synsig_unknown_function.csv')
+	print (unknown_func)
 
 	desc_func=pd.read_csv('synsig_desc_function.csv', index_col=[0])
 	mf_func=pd.read_csv('synsig_mf_function.csv', index_col=[0])
@@ -314,6 +400,12 @@ if __name__ == '__main__':
 	name='synsig_gene_cat'
 
 	plot_bargraph(labels, mean_values, xlabel, ylabel, name)
+
+	final=compile_all_synsig_func()
+	print (final)
+	synsig_func_total=final.iloc[:, 3:18].sum()
+	final.loc['Total']=final.sum()
+	final.to_csv('../supp_tables/all_synsig_functions.csv')
 
 
 

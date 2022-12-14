@@ -46,6 +46,7 @@ sys.path.append('../graph_functions/')
 import graph_functions
 
 #find housekeeping:==============
+#housekeeping genes from paper: Hounkpe et al, 2021
 def find_hk(big_pool):
 	hk=pd.read_csv('../source_data_files/gene_lists/Human_Mouse_Common.csv', sep=';')
 	#print (hk)
@@ -63,13 +64,13 @@ def find_nuclear(big_pool):
 	nuclear=list(set(nuclear)&set(big_pool))
 	return nuclear
 
-#find golgi:===================
+#find golgi (Golgi):===================
 def find_golgi(big_pool):
 	golgi=load_data_functions.get_gene_names('../source_data_files/gene_lists/golgi_genes.csv')
 	golgi=list(set(golgi)&set(big_pool))
 	return golgi
 
-#find transmembrane:==============
+#find transmembrane:(uniprot)==============
 def find_mem(big_pool):
 	transm=pd.read_csv('../source_data_files/gene_lists/Uniprot_transmembrane.csv')
 	transm=transm['Gene names'].tolist()
@@ -238,7 +239,7 @@ def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#3776ab', '#557f2d','silver'], align='center', ecolor='black', capsize=10)
 	#plt.bar(labels, mean_values, yerr=sem, color=['#2d7f5e', '#7f6d5f', '#557f2d'], align='center', ecolor='black', capsize=10)
 
-	plt.ylim(0.4, 1)
+	plt.ylim(0.5, 1)
 	#plt.ylim(1, 10**5)
 	#plt.yscale('log')
 	# Create legend & Show graphic
@@ -247,6 +248,8 @@ def plot_controls_with_errorbar(labels, mean_values, sem, xlabel, ylabel, name):
 	plt.ylabel(ylabel, fontweight='bold')
 	plt.xticks(rotation=45)
 	plt.savefig(name+'.svg', format="svg")
+
+
 
 
 if __name__ == '__main__':

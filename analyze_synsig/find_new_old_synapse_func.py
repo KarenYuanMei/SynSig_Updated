@@ -155,6 +155,8 @@ if __name__ == '__main__':
 	totals['New']=totals['SynSig']-totals['Known']
 	print (totals)
 
+	totals.to_csv('total_synapse_functions.csv')
+
 	#plot old vs. new synapse genes in synsig:
 	plot_grouped_synsig_functions(totals)
 

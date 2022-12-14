@@ -233,7 +233,11 @@ def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth,
 	print(np.where(np.isnan(new_test)))
 	print('infinity', np.isfinite(new_test).all())
 
+	print (new_test.shape)
+
 	new_fit=forest.predict(new_test)
+
+
 
 	print (len(new_fit))
 
@@ -247,33 +251,50 @@ def run_new_rf(X_train, y_train, new_test, new_gene1, new_gene2, tree_no, depth,
 	#df.to_csv('updated_new_all_gene_predictions.csv')
 	return forest, df
 
-def find_avg_scores(pred_filename, new_genes, name):
+# def find_avg_scores(pred_filename, new_genes, name):
 	
-	print ('new_genes', len(new_genes))
+# 	print ('new_genes', len(new_genes))
+
+# 	#pred_filename='new_all_gene_predictions.csv'
+# 	pred=pd.read_csv(pred_filename, index_col=[0])
+# 	print (pred)
+# 	gene1=pred['Gene1'].tolist()
+# 	gene2=pred['Gene2'].tolist()
+
+# 	avg_scores=[]
+# 	novel_genes=[]
+# 	for gene in new_genes:
+# 		df1=pred.loc[pred['Gene1'] == gene]
+		
+# 		df2=pred.loc[pred['Gene2'] == gene]
+# 		df=df1.append(df2)
+# 		scores=df['ypredict'].tolist()
+# 		#print ('length of scores', len(scores))
+# 		scores_np=np.array(scores)
+# 		avg_score=np.mean(scores_np)
+		
+# 		avg_scores.append(avg_score)
+# 		novel_genes.append(gene)
+
+# 	print ('novel_genes', len(novel_genes), 'all_average_scores', len(avg_scores))
+
+# 	df=pd.DataFrame({'genes': novel_genes, 'avg_scores': avg_scores})
+	# df.to_csv('%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%name)
+	# return df
+
+def find_avg_scores(pred_filename, name):
+	#print ('new_genes', len(new_genes))
 
 	#pred_filename='new_all_gene_predictions.csv'
 	pred=pd.read_csv(pred_filename, index_col=[0])
 	print (pred)
-	gene1=pred['Gene1'].tolist()
-	gene2=pred['Gene2'].tolist()
 
-	avg_scores=[]
-	novel_genes=[]
-	for gene in new_genes:
-		df1=pred.loc[pred['Gene1'] == gene]
-		
-		df2=pred.loc[pred['Gene2'] == gene]
-		df=df1.append(df2)
-		scores=df['ypredict'].tolist()
-		#print ('length of scores', len(scores))
-		scores_np=np.array(scores)
-		avg_score=np.mean(scores_np)
-		
-		avg_scores.append(avg_score)
-		novel_genes.append(gene)
+	avg_df=pred.groupby('Gene2').mean().reset_index()
+	#avg_df=avg_df.reset_index()
+	avg_df.columns = ['genes', 'avg_scores']
+	avg_df=avg_df.set_index('genes')
+	#avg_df=avg_df.set_index('genes')
+	avg_df.to_csv('%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%name)
+	return avg_df
 
-	print ('novel_genes', len(novel_genes), 'all_average_scores', len(avg_scores))
 
-	df=pd.DataFrame({'genes': novel_genes, 'avg_scores': avg_scores})
-	df.to_csv('%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv'%name)
-	return df

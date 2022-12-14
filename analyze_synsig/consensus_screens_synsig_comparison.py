@@ -68,11 +68,14 @@ def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
 
 	#without training genes: {'synsig': (0.5786802030456852, 0.08594885829128539), 'syngo': (0.22081218274111675, 0.022230354038971733)}
 
-	plt.plot(0.103, 0.579, color='purple', marker='o', markersize=10)
+	plt.plot(0.103, 0.579, color='purple', marker='o', markersize=5)
 	plt.annotate('SynSig', color='purple', xy=(0.103, 0.579), xytext=(0.103+0.05, 0.579), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
 
-	plt.plot(0.025, 0.22, color='#7f6d5f', marker='o', markersize=10)
+	plt.plot(0.025, 0.22, color='#7f6d5f', marker='o', markersize=5)
 	plt.annotate('SynGO', color='#7f6d5f', xy=(0.025, 0.22), xytext=(0.025+0.05, 0.22), arrowprops=dict(facecolor='#7f6d5f', lw=2, arrowstyle='->'))
+
+	plt.plot(0.025, 0.27, color='purple', marker='o', markersize=5)
+	plt.annotate('SynSig-300', color='purple', xy=(0.025, 0.27), xytext=(0.025+0.05, 0.27), arrowprops=dict(facecolor='purple', lw=2, arrowstyle='->'))
 
 	plt.xlabel('1-Specificity', fontweight='bold')
 	plt.ylabel('Sensitivity', fontweight='bold')
@@ -87,6 +90,11 @@ def plot_annotate_ROC_mass_spec(tpr, fpr, auc):
 
 
 if __name__ == '__main__':
+	df=load_data_functions.load_predicted_synsig_df()
+	print (df)
+	print (df[df['avg_scores']>4.78])
+
+
 	
 	big_pool=load_data_functions.load_big_pool()
 
@@ -121,17 +129,19 @@ if __name__ == '__main__':
 	ngn2=load_data_functions.find_ngn2(big_pool)
 
 	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
+	print ('original consensus', len(consensus_ms))
 	#df=load_data_functions.load_predicted_df()
 	#print (df)
 	pred_df=load_data_functions.load_predicted_synsig_df()
 
 	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, consensus_ms, all_training)
 	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+	ROC_functions.save_roc_df(thresholds, tpr, fpr, 'only', 'consensus_ms')
 
 	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'consensus_ms')
 	print (auc)
 
-	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo], ['synsig', 'syngo'], big_pool, all_training)
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo2], ['synsig', 'syngo'], big_pool, all_training)
 	print (ratios)
 
 	#adult_consensus=list(set(ctx)&set(striatum))
@@ -139,4 +149,50 @@ if __name__ == '__main__':
 
 	plot_annotate_ROC_mass_spec(tpr, fpr, auc)
 
-	
+	#==10/27/22 update=========use full proteomics sets without constraint of GO and big_pool====================
+
+	ctx=load_data_functions.find_full_adult_cortex()
+
+	striatum=load_data_functions.find_full_adult_striatum()
+
+	fetal=load_data_functions.find_full_fetal()
+
+	ngn2=load_data_functions.find_full_ngn2()
+
+	consensus_ms=list(set(ctx)&set(striatum)&set(fetal)&set(ngn2))
+	print ('consensus', len(consensus_ms))
+	#df=load_data_functions.load_predicted_df()
+	#print (df)
+	pred_df=load_data_functions.load_predicted_synsig_df()
+
+	final, label, avg_score=ROC_functions.find_pred_labels_scores(pred_df, consensus_ms, all_training)
+	fpr, tpr, thresholds, auc=ROC_functions.calculate_roc(label, avg_score)
+	ROC_functions.save_roc_df(thresholds, tpr, fpr, 'only', 'consensus_ms')
+
+	graph_functions.plot_single_ROC(tpr, fpr, auc, 'maroon', 'consensus_ms')
+	print (auc)
+
+	ratios=calc_ctrl_tpr_fpr(consensus_ms, [synsig, syngo2], ['synsig', 'syngo'], big_pool, all_training)
+	print (ratios)
+
+	#adult_consensus=list(set(ctx)&set(striatum))
+	#fetal_consensus=list(set(fetal)&set(ngn2))
+
+	plot_annotate_ROC_mass_spec(tpr, fpr, auc)
+
+	#==10/27/22 update=========print out all proteomics datasets with constraint of big pool====================
+	ctx=load_data_functions.find_adult_cortex(big_pool)
+	df=pd.DataFrame({'genes': ctx})
+	df.to_csv('adult_ctx_big_pool_genes.csv')
+
+	striatum=load_data_functions.find_adult_striatum(big_pool)
+	df=pd.DataFrame({'genes': striatum})
+	df.to_csv('adult_striatum_big_pool_genes.csv')
+
+	fetal=load_data_functions.find_fetal(big_pool)
+	df=pd.DataFrame({'genes': fetal})
+	df.to_csv('fetal_human_big_pool_genes.csv')
+
+	ngn2=load_data_functions.find_ngn2(big_pool)
+	df=pd.DataFrame({'genes': ngn2})
+	df.to_csv('human_ngn2_big_pool_genes.csv')

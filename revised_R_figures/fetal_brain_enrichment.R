@@ -23,4 +23,5 @@ theme(text = element_text(size=20))+
     theme(panel.border = element_rect(colour = "black", fill=NA), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))+
     theme(legend.position = c(0.2, 0.9))
 
+p <- p + scale_y_continuous(expand = c(0, 0), limits = c(0, 5))
 

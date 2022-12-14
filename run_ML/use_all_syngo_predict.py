@@ -34,7 +34,9 @@ from predict_new_synapse import find_synapse_new_pairs
 def find_syngo_negative_training(big_pool, GO_genes, syngo):
 	big_pool_in_GO=list(set(big_pool)&set(GO_genes))
 	negatives=list(set(big_pool_in_GO)-set(syngo))
-	random.seed(0)
+	negatives.sort()
+	print (negatives[:5])
+	random.seed(1)
 	pos_training=list(set(big_pool)&set(GO_genes)&set(syngo))
 	sel=random.sample(negatives, len(pos_training))
 	return sel
@@ -60,12 +62,14 @@ if __name__ == '__main__':
 	neg_training=find_syngo_negative_training(big_pool, GO_genes, syngo)
 	print (len(neg_training))
 
-
 	#compile all training genes:=========
 	all_training=list(pos_training+neg_training)
 
 	#find the new genes that need prediction scores:=================
 	new_genes=list(set(big_pool)-set(all_training))
+	print ('new genes', len(new_genes))
+	print (new_genes[:5])
+
 
 	#double check that the new genes do not overlap with new genes; len of overlap should be 0:
 	overlap=list(set(pos_training)&set(new_genes))
@@ -98,10 +102,10 @@ if __name__ == '__main__':
 	train_pair_objects, X_train, y_train=define_gene_objects.create_input_pair_objects(training_pairs, feature_list)
 	print (X_train.shape)
 
-	#run the random forest model:====================================================
+	# #run the random forest model:====================================================
 
 	forest, df=regressor_functions.run_new_rf(X_train, y_train, data_test, data_gene1,data_gene2, 100, 50, 2)
-	pred_filename='./ML_output/use_all_syngo_new_gene_predictions.csv'
+	pred_filename='../run_ML/ML_output/use_all_syngo_new_gene_predictions.csv'
 	df.to_csv(pred_filename)
 
 	#find the average semantic similarity score for each gene and output to '%s_brain_RNA_big_pool_novel_synapse_genes_avg_scores.csv':=======================

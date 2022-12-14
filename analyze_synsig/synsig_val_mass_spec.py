@@ -20,12 +20,15 @@ def find_hypergeometric(genelist1, genelist2, big_pool, training):
 	pool_no_training=list(set(big_pool)-set(training))
 	overlap=list(set(genes1)&set(genes2))
 	M=len(pool_no_training)
+
 	#print (M)
 	#M=20000
 	N=len(genes1)
 	n=len(genes2)
 	x=len(overlap)
 	pval = hypergeom.sf(x-1, M, n, N)
+
+	print ('M', M, 'N', N, 'n', n, 'x', x)
 
 	rv = hypergeom(M, n, N)
 	distr = np.arange(0, n+1)

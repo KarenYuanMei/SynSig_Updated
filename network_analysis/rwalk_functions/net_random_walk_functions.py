@@ -157,11 +157,11 @@ def shuffle_network(network, max_tries_n=10, verbose=False):
 		nx.double_edge_swap(shuff_net, nswap=edge_len, max_tries=edge_len*max_tries_n)
 	except:
 		if verbose:
-			print 'Note: Maximum number of swap attempts ('+repr(edge_len*max_tries_n)+') exceeded before desired swaps achieved ('+repr(edge_len)+').'
+			print ('Note: Maximum number of swap attempts ('+repr(edge_len*max_tries_n)+') exceeded before desired swaps achieved ('+repr(edge_len)+').')
 	if verbose:
 		# Evaluate Network Similarity
 		shared_edges = len(set(network.edges()).intersection(set(shuff_net.edges())))
-		print 'Network shuffled:', time.time()-shuff_time, 'seconds. Edge similarity:', shared_edges/float(edge_len)
+		print ('Network shuffled:', time.time()-shuff_time, 'seconds. Edge similarity:', shared_edges/float(edge_len))
 	return shuff_net
 
 def find_shuff_scores_df(G, nodesets, alpha, fraction):
