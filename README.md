@@ -22,11 +22,13 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   - igraph
   
   conda install -y -c conda-forge python-igraph
+  
   conda install -y libiconv # Needed for igraph to run properly
   
   - tulip-python, ndex-dev
   
   pip install tulip-python
+  
   pip install ndex-dev
   
   - ddot
