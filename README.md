@@ -33,8 +33,6 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   
   - ddot
   
-  cd path to ddot repo
-  
   pip install /path to ddot repo/
   
   - scikit-learn
