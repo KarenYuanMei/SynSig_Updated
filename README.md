@@ -18,6 +18,10 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   - Numpy, Scipy, Networkx
   
   conda install -y pandas numpy scipy networkx=1.11
+  
+  -openpyxl
+  
+  conda install openpyxl
 
   - igraph
   
