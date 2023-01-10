@@ -22,6 +22,10 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   -openpyxl
   
   conda install openpyxl
+  
+  -xlrd
+  
+  conda install xlrd
 
   - igraph
   
