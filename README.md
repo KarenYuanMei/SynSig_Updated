@@ -46,5 +46,8 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   - scikit-learn
   
   pip install -U scikit-learn
-
+  
+  -mygene
+  
+  pip install mygene
 
