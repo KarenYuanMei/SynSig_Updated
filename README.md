@@ -50,4 +50,8 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   -mygene
   
   pip install mygene
+  
+  -matplotlib
+  
+  pip install matplotlib
 
