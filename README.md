@@ -59,6 +59,6 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   
   pip install matplotlib_venn
   
-  -nbimporter
+  -nbformat
   
-  pip install nbimporter
+  pip install nbformat
