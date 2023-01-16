@@ -62,3 +62,21 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   -nbformat
   
   pip install nbformat
+
+## For analysis of the datasets, some graphs were generated using R in a separate environment
+## To load dependencies for the R environment:
+### create R environment in jupyter:
+
+conda activate <R-ENV>
+conda install r-irkernel
+Pip install Jupyter
+Rscript -e 'IRkernel::installspec(name="<R-ENV>", displayname="R <R-ENV>")'
+
+then if you start a jupyter job you can use that R environment in a notebook like any python environment
+
+### dependencies in R environment: 
+  install.packages("VennDiagram")
+  install.packages("grid")
+  install.packages("futile.logger")
+  
+ 
