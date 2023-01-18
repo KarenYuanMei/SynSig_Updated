@@ -62,6 +62,10 @@ Manuscript in preparation: Mei et al., "Identifying Synapse Genes Using Global M
   -nbformat
   
   pip install nbformat
+  
+  -seaborn 
+  
+  pip install seaborn
 
 ## For analysis of the datasets, some graphs were generated using R in a separate environment
 ## To load dependencies for the R environment:
