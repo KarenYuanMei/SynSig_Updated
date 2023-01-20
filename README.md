@@ -82,5 +82,9 @@ then if you start a jupyter job you can use that R environment in a notebook lik
   install.packages("VennDiagram")
   install.packages("grid")
   install.packages("futile.logger")
+ 
+###if using Jupyter, can be more stable if install using conda in the environment:
+  conda install -c bioconda r-venndiagram
+  conda install r-essentials r-base
   
  
